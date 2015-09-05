@@ -15,7 +15,6 @@ const saveCrashReport = require('./save-crash-report')
 const viewCrashReport = require('./view-crash-report')
 
 fs.accessSync('.', fs.W_OK)
-fs.accessSync('config.ini', fs.R_OK | fs.W_OK)
 
 const app = express()
 const server = app.listen(config.port, function () {
