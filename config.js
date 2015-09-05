@@ -6,6 +6,7 @@ let config = {}
 
 fs.access('config.inix', fs.R_OK | fs.W_OK, function (err) {
   if (err && err.code === 'ENOENT') {
+    console.log(process.env)
     config.port = process.env.PORT
     config.web = {
       enabled: process.env.WEB_ENABLED,
@@ -21,6 +22,7 @@ fs.access('config.inix', fs.R_OK | fs.W_OK, function (err) {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS
     }
+    console.log(config)
     if (!config.port ||
         !config.web.enabled ||
         !config.email.subject ||
