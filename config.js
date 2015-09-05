@@ -29,11 +29,11 @@ fs.access('config.inix', fs.R_OK | fs.W_OK, function (err) {
         !config.email.provider ||
         !config.email.user ||
         !config.email.pass) throw new Error('invalid configuration')
+    else module.exports = config
   } else if (err) {
     throw err
   } else {
     config = ini.parse(fs.readFileSync('config.ini', 'utf-8'))
+    module.exports = config
   }
 })
-
-module.exports = config
