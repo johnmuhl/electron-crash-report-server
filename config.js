@@ -2,7 +2,7 @@
 
 const fs = require('fs')
 const ini = require('ini')
-let config
+let config = {}
 
 fs.access('config.inix', fs.R_OK | fs.W_OK, function (err) {
   if (err && err.code === 'ENOENT') {
