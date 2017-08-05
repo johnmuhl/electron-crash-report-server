@@ -1,6 +1,6 @@
 {
   "name": "electron-crash-report-server",
-  "version": "0.4.1",
+  "version": "0.5.4",
   "description": "Crash report server for Electron applications",
   "repository": "github:johnmuhl/electron-crash-report-server",
   "author": "John Muhl <git@johnmuhl.com>",
@@ -8,25 +8,60 @@
   "bugs": "https://github.com/johnmuhl/electron-crash-report-server/issues",
   "homepage": "https://johnmuhl.github.io/electron-crash-report-server",
   "scripts": {
+    "format": "yarn prettier && yarn lint -- --fix",
+    "lint": "eslint --ignore-pattern=electron-bomb/node_modules .",
+    "prettier": "prettier --write --use-tabs --no-semi --single-quote --no-bracket-spacing --trailing-comma=es5 '{*,electron-bomb/*}.js'",
     "start-dev": "node-dev server.js",
-    "test": "standard | snazzy"
+    "test": "yarn lint"
   },
   "engines": {
-    "node": "6.9.2"
+    "node": "^6.11.1"
   },
   "dependencies": {
-    "boom": "4.2.0",
-    "handlebars": "4.0.6",
-    "hapi": "16.0.1",
-    "hapi-auth-basic": "4.2.0",
-    "massive": "2.5.0",
-    "vision": "4.1.1"
+    "boom": "^4.3.1",
+    "handlebars": "^4.0.10",
+    "hapi": "^16.1.1",
+    "hapi-auth-basic": "^4.2.0",
+    "massive": "^2.6.1",
+    "vision": "^4.1.1"
   },
   "devDependencies": {
-    "dotenv": "^2",
-    "node-dev": "^3",
-    "snazzy": "^5.0",
-    "standard": "^8.6"
+    "dotenv": "^4.0.0",
+    "eslint": "^3.19.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-config-standard-jsx": "^4.0.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-node": "^4.2.2",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-react": "^7.0.1",
+    "eslint-plugin-standard": "^3.0.1",
+    "node-dev": "^3.1.3",
+    "prettier": "^1.3.1"
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:react/recommended",
+      "standard"
+    ],
+    "ignores": [
+      "vendor/bundle/**/*"
+    ],
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
+    "plugins": [
+      "react"
+    ],
+    "rules": {
+      "comma-dangle": 0,
+      "indent": [
+        "error",
+        "tab"
+      ],
+      "no-tabs": 0
+    }
   },
   "standard": {
     "ignore": [
