@@ -1,0 +1,5 @@
+/crash-reports/
+/node_modules/
+/config.ini
+
+.env
