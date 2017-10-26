@@ -15,7 +15,7 @@
     "test": "yarn lint"
   },
   "engines": {
-    "node": "^6.11.1"
+    "node": "^8.1.0"
   },
   "dependencies": {
     "boom": "^4.3.1",
