@@ -44,7 +44,7 @@ server.register([Basic, Vision], err => {
 		config: {
 			auth: 'simple',
 			handler: (request, reply) => {
-				const sql = 'SELECT * FROM reports ORDER BY created_at DESC'
+				const sql = 'SELECT * FROM reports ORDER BY created_at DESC LIMIT 500'
 				db.run(sql, (err, reports) => {
 					if (err) throw err
 					const auth = Buffer.from(
