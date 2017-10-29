@@ -1,0 +1,21 @@
+version: 2
+
+jobs:
+  build:
+    working_directory: ~/electron-crash-report-server
+    docker:
+      - image: circleci/node:6
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: yarn install
+          command: yarn install
+      - run:
+          name: yarn test
+          command: yarn test
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
