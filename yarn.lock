@@ -1334,7 +1334,7 @@ marked@^0.3.6:
   version "0.3.6"
   resolved "https://registry.yarnpkg.com/marked/-/marked-0.3.6.tgz#b2c6c618fccece4ef86c4fc6cb8a7cbf5aeda8d7"
 
-massive@^2.6.1:
+massive@^2.7.1:
   version "2.7.2"
   resolved "https://registry.yarnpkg.com/massive/-/massive-2.7.2.tgz#16abdb80ee4f5455ccaca67d57fe167793508644"
   dependencies:

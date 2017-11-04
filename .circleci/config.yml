@@ -4,7 +4,7 @@ jobs:
   build:
     working_directory: ~/electron-crash-report-server
     docker:
-      - image: circleci/node:6
+      - image: circleci/node:8
     steps:
       - checkout
       - restore_cache:
