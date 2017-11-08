@@ -1,3 +1,7 @@
 
+/crash-reports/
+/node_modules/
+/config.ini
+
 .env
-node_modules
+
