@@ -1,6 +1,6 @@
 {
   "name": "electron-crash-report-server",
-  "version": "0.5.4",
+  "version": "0.5.6",
   "description": "Crash report server for Electron applications",
   "repository": "github:johnmuhl/electron-crash-report-server",
   "author": "John Muhl <git@johnmuhl.com>",
@@ -8,7 +8,7 @@
   "bugs": "https://github.com/johnmuhl/electron-crash-report-server/issues",
   "homepage": "https://johnmuhl.github.io/electron-crash-report-server",
   "scripts": {
-    "format": "yarn prettier && yarn lint -- --fix",
+    "format": "yarn run prettier && yarn run lint --fix",
     "lint": "eslint --ignore-pattern=electron-bomb/node_modules .",
     "prettier": "prettier --write --use-tabs --no-semi --single-quote --no-bracket-spacing --trailing-comma=es5 '{*,electron-bomb/*}.js'",
     "start-dev": "node-dev server.js",
@@ -19,53 +19,20 @@
   },
   "dependencies": {
     "boom": "^4.3.1",
-    "handlebars": "^4.0.10",
-    "hapi": "^16.1.1",
+    "handlebars": "^4.0.11",
+    "hapi": "^16.6.2",
     "hapi-auth-basic": "^4.2.0",
     "massive": "^2.6.1",
     "vision": "^4.1.1"
   },
   "devDependencies": {
     "dotenv": "^4.0.0",
-    "eslint": "^3.19.0",
-    "eslint-config-standard": "^10.2.1",
-    "eslint-config-standard-jsx": "^4.0.1",
-    "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-node": "^4.2.2",
-    "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-react": "^7.0.1",
-    "eslint-plugin-standard": "^3.0.1",
+    "eslint": "^4.10.0",
+    "eslint-config-oz": "github:johnmuhl/eslint-config-oz",
     "node-dev": "^3.1.3",
-    "prettier": "^1.3.1"
+    "prettier": "^1.7.4"
   },
   "eslintConfig": {
-    "extends": [
-      "plugin:react/recommended",
-      "standard"
-    ],
-    "ignores": [
-      "vendor/bundle/**/*"
-    ],
-    "parserOptions": {
-      "ecmaFeatures": {
-        "jsx": true
-      }
-    },
-    "plugins": [
-      "react"
-    ],
-    "rules": {
-      "comma-dangle": 0,
-      "indent": [
-        "error",
-        "tab"
-      ],
-      "no-tabs": 0
-    }
-  },
-  "standard": {
-    "ignore": [
-      "**/node_modules/*"
-    ]
+    "extends": "oz"
   }
 }
