@@ -302,12 +302,6 @@ boom@2.x.x:
   dependencies:
     hoek "2.x.x"
 
-boom@3.x.x:
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/boom/-/boom-3.2.2.tgz#0f0cc5d04adc5003b8c7d71f42cca7271fef0e78"
-  dependencies:
-    hoek "4.x.x"
-
 boom@6.x.x:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/boom/-/boom-6.0.0.tgz#9b36c52a12afab3f0e55536131b7fd5021aad0cc"
@@ -1181,12 +1175,12 @@ handlebars@~4.0.11:
   optionalDependencies:
     uglify-js "^2.6"
 
-hapi-auth-basic@~4.2.0:
+"hapi-auth-basic@github:hapijs/hapi-auth-basic#v17":
   version "4.2.0"
-  resolved "https://registry.yarnpkg.com/hapi-auth-basic/-/hapi-auth-basic-4.2.0.tgz#a2f16b3e14317d44e3ad7934fe833f995ee82fc0"
+  resolved "https://codeload.github.com/hapijs/hapi-auth-basic/tar.gz/d6396b9b05bd1c686c61f51ea5a557cb20860d97"
   dependencies:
-    boom "3.x.x"
-    hoek "4.x.x"
+    boom "7.x.x"
+    hoek "5.x.x"
 
 hapi@~17.0.1:
   version "17.0.1"
@@ -1261,10 +1255,6 @@ heavy@6.x.x:
 hoek@2.x.x:
   version "2.16.3"
   resolved "https://registry.yarnpkg.com/hoek/-/hoek-2.16.3.tgz#20bb7403d3cea398e91dc4710a8ff1b8274a25ed"
-
-hoek@4.x.x:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/hoek/-/hoek-4.2.0.tgz#72d9d0754f7fe25ca2d01ad8f8f9a9449a89526d"
 
 hoek@5.x.x:
   version "5.0.2"

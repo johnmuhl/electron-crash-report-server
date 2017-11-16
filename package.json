@@ -21,7 +21,7 @@
     "boom": "~7.1.1",
     "handlebars": "~4.0.11",
     "hapi": "~17.0.1",
-    "hapi-auth-basic": "~4.2.0",
+    "hapi-auth-basic": "github:hapijs/hapi-auth-basic#v17",
     "massive": "~4.4.0",
     "vision": "~5.1.0"
   },
