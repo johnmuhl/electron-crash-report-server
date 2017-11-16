@@ -15,7 +15,7 @@
     "test": "yarn lint"
   },
   "engines": {
-    "node": "^8.9.0"
+    "node": "^8.9.1"
   },
   "dependencies": {
     "babel-core": "~6.26.0",
