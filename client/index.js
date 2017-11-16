@@ -154,55 +154,8 @@ class App extends React.Component {
 				</tbody>
 			</table>
 		)
-		/* return this.state.reports.map((report, index) => {
-     *   return (
-     *     <article key={index} className={reportClassName(index, this.state.active)}>
-     *       <header>
-     *         {moment(report.created_at).fromNow()}
-     *       </header>
-
-     *       <div className="report detail">
-     *         <pre className="report body">
-     *           {JSON.stringify(report.body, null, 2)}
-     *         </pre>
-
-     *         <div className="report actions">
-     *           <div className="report download">
-     *             <a href={`/reports/${report.id}/dump`} className="report download button">
-     *               download minidump
-     *             </a>
-     *           </div>
-     *           <div className="report status">
-     *             {report.open ? (
-     *               <button
-     *                 className="report status close button"
-     *                 onClick={this.toggleReportStatus}
-     *                 data-id={report.id}
-     *               >
-     *                 close
-     *               </button>
-     *             ) : (
-     *               <button
-     *                 className="report status open button"
-     *                 onClick={this.toggleReportStatus}
-     *                 data-id={report.id}
-     *               >
-     *                 open
-     *               </button>
-     *             )}
-     *           </div>
-     *         </div>
-     *       </div>
-     *     </article>
-     *   )
-     * }) */
 	}
 }
-
-/* function reportClassName (index, active) {
- *  return index === active ? 'active report' : 'report'
- * }
- * */
 
 function toggleBtnClassName (open) {
 	return open ? 'btn close' : 'btn open'
