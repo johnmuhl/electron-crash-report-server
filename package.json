@@ -9,8 +9,8 @@
   "homepage": "https://johnmuhl.github.io/electron-crash-report-server",
   "scripts": {
     "format": "yarn run prettier && yarn run lint --fix",
-    "lint": "eslint .",
-    "prettier": "prettier --write '{*,sql/*}.js'",
+    "lint": "eslint --ignore-pattern=public/* .",
+    "prettier": "prettier --write '{*,client/*}.js'",
     "start-dev": "nodemon server.js",
     "test": "yarn lint"
   },
@@ -28,6 +28,7 @@
     "hapi-auth-basic": "github:hapijs/hapi-auth-basic#v17",
     "inert": "~5.0.1",
     "massive": "~4.4.0",
+    "moment": "~2.19.2",
     "prop-types": "~15.6.0",
     "react": "~16.1.1",
     "react-dom": "~16.1.1",
@@ -41,6 +42,27 @@
     "nodemon": "~1.12.1",
     "prettier": "~1.7.4"
   },
+  "babel": {
+    "presets": [
+      "react",
+      [
+        "env",
+        {
+          "modules": false,
+          "targets": {
+            "browsers": [
+              "last 2 Chrome versions",
+              "last 2 Firefox versions"
+            ]
+          }
+        }
+      ]
+    ]
+  },
+  "browserlist": [
+    "last 2 Chrome versions",
+    "last 2 Firefox versions"
+  ],
   "eslintConfig": {
     "extends": "oz"
   },
