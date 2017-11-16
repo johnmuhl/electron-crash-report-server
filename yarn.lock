@@ -712,9 +712,9 @@ escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
 
-"eslint-config-oz@github:johnmuhl/eslint-config-oz#v1.0.0":
+"eslint-config-oz@github:johnmuhl/eslint-config-oz#v1.1.0":
   version "1.0.0"
-  resolved "https://codeload.github.com/johnmuhl/eslint-config-oz/tar.gz/5c3603f0cb187debf9260fb675a0fe8ea548feed"
+  resolved "https://codeload.github.com/johnmuhl/eslint-config-oz/tar.gz/7a6c88e2a947860521d0e8b93990bceb801f4873"
   dependencies:
     babel-eslint "*"
     eslint-config-standard "*"
