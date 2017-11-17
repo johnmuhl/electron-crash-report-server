@@ -9,7 +9,7 @@
   "homepage": "https://johnmuhl.github.io/electron-crash-report-server",
   "scripts": {
     "dev": "nodemon server.js",
-    "fmt": "yarn run prettier && yarn run lint --fix",
+    "fmt": "yarn run prettier && yarn run eslint --fix",
     "test": "yarn eslint",
     "eslint": "eslint --ignore-pattern=public/* .",
     "prettier": "prettier --write '*.js'"
@@ -20,9 +20,11 @@
   "dependencies": {
     "babel-core": "~6.26.0",
     "babel-loader": "~7.1.2",
+    "babel-minify-webpack-plugin": "~0.2.0",
     "babel-preset-env": "~1.6.1",
     "babel-preset-react": "~6.24.1",
     "boom": "~7.1.1",
+    "dotenv": "~4.0.0",
     "handlebars": "~4.0.11",
     "hapi": "~17.0.1",
     "hapi-auth-basic": "github:hapijs/hapi-auth-basic#v17",
@@ -36,7 +38,6 @@
     "webpack": "~3.8.1"
   },
   "devDependencies": {
-    "dotenv": "~4.0.0",
     "eslint": "~4.10.0",
     "eslint-config-oz": "github:johnmuhl/eslint-config-oz#v1.1.0",
     "nodemon": "~1.12.1",
