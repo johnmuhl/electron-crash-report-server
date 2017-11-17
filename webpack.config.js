@@ -1,5 +1,6 @@
 'use strict'
 
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const {resolve} = require('path')
 
 module.exports = {
@@ -19,4 +20,6 @@ module.exports = {
 			},
 		],
 	},
+
+	plugins: [new UglifyJsPlugin()],
 }

@@ -32,6 +32,7 @@
     "prop-types": "~15.6.0",
     "react": "~16.1.1",
     "react-dom": "~16.1.1",
+    "uglifyjs-webpack-plugin": "~1.0.1",
     "vision": "~5.1.0",
     "webpack": "~3.8.1"
   },
@@ -48,13 +49,7 @@
       [
         "env",
         {
-          "modules": false,
-          "targets": {
-            "browsers": [
-              "last 2 Chrome versions",
-              "last 2 Firefox versions"
-            ]
-          }
+          "modules": false
         }
       ]
     ]
