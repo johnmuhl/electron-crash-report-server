@@ -1,4 +1,5 @@
 /* global fetch Headers */
+
 import moment from 'moment'
 import PropTypes from 'prop-types'
 import React from 'react'
@@ -11,7 +12,7 @@ class App extends React.Component {
 		this.state = {
 			auth: `Basic ${document.cookie.split('=')[1]}`,
 			active: {},
-			filter: false,
+			filter: true,
 			reports: [],
 		}
 

@@ -10,7 +10,7 @@
   "scripts": {
     "format": "yarn run prettier && yarn run lint --fix",
     "lint": "eslint --ignore-pattern=public/* .",
-    "prettier": "prettier --write '{*,client/*}.js'",
+    "prettier": "prettier --write '*.js'",
     "start-dev": "nodemon server.js",
     "test": "yarn lint"
   },
