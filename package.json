@@ -12,7 +12,8 @@
     "fmt": "yarn run prettier && yarn run eslint --fix",
     "test": "yarn eslint",
     "eslint": "eslint --ignore-pattern=public/* .",
-    "prettier": "prettier --write '{*,client/*}.js'"
+    "prettier": "prettier --write '{*,client/*}.js'",
+    "heroku-postbuild": "webpack"
   },
   "engines": {
     "node": "^8.9.1"
