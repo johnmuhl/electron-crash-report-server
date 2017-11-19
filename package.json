@@ -12,7 +12,7 @@
     "fmt": "yarn run prettier && yarn run eslint --fix",
     "test": "yarn eslint",
     "eslint": "eslint --ignore-pattern=public/* .",
-    "prettier": "prettier --write '*.js'"
+    "prettier": "prettier --write '{*,client/*}.js'"
   },
   "engines": {
     "node": "^8.9.1"
@@ -31,6 +31,7 @@
     "inert": "~5.0.1",
     "massive": "~4.4.0",
     "moment": "~2.19.2",
+    "pretty-ms": "~3.0.1",
     "prop-types": "~15.6.0",
     "react": "~16.1.1",
     "react-dom": "~16.1.1",
