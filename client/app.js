@@ -1,4 +1,4 @@
-/* global fetch Headers */
+/* global fetch Headers localStorage */
 
 import './index.css'
 import authHeader from './auth-header.js'
@@ -30,6 +30,17 @@ export default class App extends React.Component {
 	}
 
 	async componentDidMount () {
+		// Restore filters from localStorage
+		if (localStorage.filtersApplication || localStorage.filtersClosed) {
+			const application = localStorage.filtersApplication || ''
+			let closed = localStorage.filtersClosed
+
+			if (closed == null) closed = false
+			closed = closed === 'true'
+
+			this.setState({filters: {application, closed}})
+		}
+
 		try {
 			const headers = new Headers({authorization: authHeader()})
 			const response = await fetch('/reports', {headers})
@@ -50,13 +61,10 @@ export default class App extends React.Component {
 
 	filterApplicationToggle (event) {
 		const filters = Object.assign({}, this.state.filters)
-		const index = event.target.value
+		const value = event.target.value
 
-		if (!index) {
-			filters.application = ''
-		} else {
-			filters.application = this.state.applications[index]
-		}
+		filters.application = value
+		localStorage.filtersApplication = filters.application
 
 		return this.setState({filters})
 	}
@@ -65,6 +73,7 @@ export default class App extends React.Component {
 		const filters = Object.assign({}, this.state.filters)
 
 		filters.closed = !this.state.filters.closed
+		localStorage.filtersClosed = filters.closed
 
 		this.setState({filters})
 	}

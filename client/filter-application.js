@@ -6,10 +6,10 @@ export default function FilterApplication (props) {
 
 	return (
 		<div>
-			<select onChange={props.onChange}>
+			<select value={props.filter} onChange={props.onChange}>
 				<option value="">Show all</option>
 				{props.applications.map((item, index) => (
-					<option key={index} value={index}>
+					<option key={index} value={item}>
 						{item}
 					</option>
 				))}
