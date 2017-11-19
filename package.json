@@ -8,11 +8,11 @@
   "bugs": "https://github.com/johnmuhl/electron-crash-report-server/issues",
   "homepage": "https://johnmuhl.github.io/electron-crash-report-server",
   "scripts": {
-    "dev": "nodemon server.js",
+    "dev": "nodemon server",
     "fmt": "yarn run prettier && yarn run eslint --fix",
     "test": "yarn eslint",
     "eslint": "eslint --ignore-pattern=public/* .",
-    "prettier": "prettier --write '{*,client/*}.js'",
+    "prettier": "prettier --write '{*,client/*,server/*}.js'",
     "heroku-postbuild": "webpack"
   },
   "engines": {
