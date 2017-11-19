@@ -1,5 +1,6 @@
 /* global fetch Headers */
 
+import './index.css'
 import authHeader from './auth-header.js'
 import FilterApplication from './filter-application.js'
 import FilterClosed from './filter-closed.js'
