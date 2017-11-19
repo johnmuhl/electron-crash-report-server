@@ -4,7 +4,8 @@ const MinifyPlugin = require('babel-minify-webpack-plugin')
 const webpack = require('webpack')
 const {resolve} = require('path')
 
-module.exports = {
+const env = process.env.NODE_ENV || 'development'
+const config = {
 	entry: resolve(__dirname, 'client', 'index.js'),
 
 	output: {
@@ -23,9 +24,17 @@ module.exports = {
 	},
 
 	plugins: [
-		new MinifyPlugin(),
 		new webpack.DefinePlugin({
-			'process.env.NODE_ENV': JSON.stringify('production'),
+			'process.env.NODE_ENV': JSON.stringify(env),
 		}),
 	],
 }
+
+if (env === 'production') {
+	config.devtool = false
+	config.plugins.push(new MinifyPlugin())
+} else {
+	config.devtool = 'eval-cheap-module-source-map'
+}
+
+module.exports = config
