@@ -101,6 +101,9 @@ async function main () {
 						return reports.map(r => {
 							const report = Object.assign({}, r)
 
+							delete report.dump
+							delete report.search
+
 							return report
 						})
 					} catch (error) {
@@ -120,7 +123,12 @@ async function main () {
 					const id = Number(request.params.id)
 
 					try {
-						return await server.app.db.reports.find(id)
+						const report = await server.app.db.reports.find(id)
+
+						delete report.dump
+						delete report.search
+
+						return report
 					} catch (error) {
 						throw new Error(error)
 					}
