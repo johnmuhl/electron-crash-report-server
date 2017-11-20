@@ -46,7 +46,7 @@
     "eslint": "~4.10.0",
     "eslint-config-oz": "github:johnmuhl/eslint-config-oz#v1.1.0",
     "nodemon": "~1.12.1",
-    "prettier": "~1.7.4"
+    "prettier": "^1.8.2"
   },
   "babel": {
     "presets": [
