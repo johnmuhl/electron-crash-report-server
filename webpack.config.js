@@ -9,7 +9,7 @@ const config = {
 	entry: resolve(__dirname, 'client', 'index.js'),
 
 	output: {
-		path: resolve(__dirname, 'public'),
+		path: resolve(__dirname, 'server', 'public'),
 		filename: 'index.js',
 	},
 

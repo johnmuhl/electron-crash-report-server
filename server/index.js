@@ -8,7 +8,7 @@ const Hapi = require('hapi')
 const Inert = require('inert')
 const massive = require('massive')
 const {resolve} = require('path')
-const SQL = require('./sql.js')
+const SQL = require('./sql/index.js')
 const validate = require('./validate.js')
 const Vision = require('vision')
 
