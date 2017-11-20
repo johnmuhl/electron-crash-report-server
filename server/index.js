@@ -23,7 +23,34 @@ async function main () {
 	try {
 		const db = await massive(process.env.DATABASE_URL)
 
-		// Prepare, upgrade database
+		// Upgrade v0.x database
+		try {
+			const dumps = await db.run('SELECT * FROM dumps')
+
+			// Add new columns to reports
+			await db.run('ALTER TABLE reports ADD COLUMN dump bytea')
+			await db.run('ALTER TABLE reports ADD COLUMN open boolean DEFAULT TRUE')
+			await db.run('ALTER TABLE reports ADD COLUMN closed_at timestamptz')
+			await db.run(
+				'ALTER TABLE reports ADD COLUMN updated_at timestamptz DEFAULT now()'
+			)
+			// Migrate dumps table to reports.dump
+			dumps.forEach(async dump => {
+				await db.reports.update({
+					id: dump.report_id,
+					dump: dump.file,
+				})
+			})
+			// Add NOT NULL to dump column
+			await db.run('ALTER TABLE reports ALTER COLUMN dump SET NOT NULL')
+			// Drop old dumps table
+			await db.run('DROP TABLE dumps')
+		} catch (error) {
+			console.error('Database upgrade failed')
+			throw new Error(error)
+		}
+
+		// Prepare database
 		await db.run(SQL)
 
 		// Load, configure plugins
