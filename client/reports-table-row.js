@@ -33,6 +33,7 @@ export default function ReportsTableRow (props) {
 					{report.open ? 'Open' : 'Closed'}
 				</button>
 			</td>
+			{props.applications.length > 1 && <td>{report.body._productName}</td>}
 			<td>{report.body._version}</td>
 			<td>{report.body.ver}</td>
 			<td>{report.body.platform}</td>
@@ -58,6 +59,7 @@ export default function ReportsTableRow (props) {
 }
 
 ReportsTableRow.propTypes = {
+	applications: PropTypes.array,
 	filters: PropTypes.object,
 	index: PropTypes.number,
 	report: PropTypes.object,

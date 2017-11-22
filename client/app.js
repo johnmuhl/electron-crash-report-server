@@ -145,6 +145,7 @@ export default class App extends React.Component {
 				</header>
 				<main>
 					<ReportsTable
+						applications={this.state.applications}
 						filters={this.state.filters}
 						reports={this.state.reports}
 						selected={this.state.selected}

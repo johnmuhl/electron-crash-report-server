@@ -9,6 +9,7 @@ export default function ReportsTable (props) {
 				<tr>
 					<th>ID</th>
 					<th>Status</th>
+					{props.applications.length > 1 && <th>Application</th>}
 					<th>Version</th>
 					<th>Electron</th>
 					<th>Platform</th>
@@ -21,6 +22,7 @@ export default function ReportsTable (props) {
 				{props.reports.map((item, index) => (
 					<ReportsTableRow
 						key={index}
+						applications={props.applications}
 						filters={props.filters}
 						index={index}
 						report={item}
@@ -36,6 +38,7 @@ export default function ReportsTable (props) {
 }
 
 ReportsTable.propTypes = {
+	applications: PropTypes.array,
 	filters: PropTypes.object,
 	reports: PropTypes.array,
 	selected: PropTypes.number,
