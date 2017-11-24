@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React from 'react'
+import {h} from 'preact' // eslint-disable-line no-unused-vars
 
 export default function FilterApplication (props) {
 	if (props.applications.length === 1) return null

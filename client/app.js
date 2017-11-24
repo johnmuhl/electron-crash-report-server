@@ -4,13 +4,13 @@ import './index.css'
 import authHeader from './auth-header.js'
 import FilterApplication from './filter-application.js'
 import FilterClosed from './filter-closed.js'
-import React from 'react'
 import ReportDetails from './report-details.js'
 import ReportsTable from './reports-table.js'
+import {Component, h} from 'preact' // eslint-disable-line no-unused-vars
 
-export default class App extends React.Component {
-	constructor (props) {
-		super(props)
+export default class App extends Component {
+	constructor () {
+		super()
 
 		this.state = {
 			applications: [''],
@@ -129,26 +129,26 @@ export default class App extends React.Component {
 		}
 	}
 
-	render () {
+	render (props, state) {
 		return (
 			<div className="container">
 				<header>
 					<FilterClosed
-						filter={this.state.filters.closed}
+						filter={state.filters.closed}
 						onChange={this.filterClosedToggle}
 					/>
 					<FilterApplication
-						applications={this.state.applications}
-						filter={this.state.filters.application}
+						applications={state.applications}
+						filter={state.filters.application}
 						onChange={this.filterApplicationToggle}
 					/>
 				</header>
 				<main>
 					<ReportsTable
-						applications={this.state.applications}
-						filters={this.state.filters}
-						reports={this.state.reports}
-						selected={this.state.selected}
+						applications={state.applications}
+						filters={state.filters}
+						reports={state.reports}
+						selected={state.selected}
 						showReportDetails={this.showReportDetails}
 						toggleReportStatus={this.toggleReportStatus}
 						deleteReport={this.deleteReport}

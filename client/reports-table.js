@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
-import React from 'react'
 import ReportsTableRow from './reports-table-row.js'
+import {h} from 'preact' // eslint-disable-line no-unused-vars
 
 export default function ReportsTable (props) {
 	return (

@@ -1,6 +1,6 @@
 import prettyMs from 'pretty-ms'
 import PropTypes from 'prop-types'
-import React from 'react'
+import {h} from 'preact' // eslint-disable-line no-unused-vars
 
 export default function ReportDetails (props) {
 	if (props.selected == null) return null

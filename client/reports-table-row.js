@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React from 'react'
+import {h} from 'preact' // eslint-disable-line no-unused-vars
 
 export default function ReportsTableRow (props) {
 	const application = props.filters.application

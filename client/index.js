@@ -1,5 +1,4 @@
 import App from './app.js'
-import React from 'react'
-import {render} from 'react-dom'
+import {h, render} from 'preact' // eslint-disable-line no-unused-vars
 
-render(<App />, document.getElementById('root'))
+render(<App />, document.body)
