@@ -15,13 +15,13 @@ environments.
 
 ## usage
 
-~~~ javascript
+```javascript
 const {crashReporter} = require('electron')
 crashReporter.start({
-  // ...other options
-  submitURL: 'https://app-name-12345.herokuapp.com/'
+	// ...other options
+	submitURL: 'https://app-name-12345.herokuapp.com/',
 })
-~~~
+```
 
 Refer to the [`crashReporter`][docs] documentation for the full details. _Don't
 forget to start the `crashReporter` in the main process and each renderer that
@@ -37,7 +37,7 @@ reports to the demo server.
 
 Node.js 6.10+, [`yarn`][yarn] and PostgreSQL 9.4+ are required.
 
-~~~ sh
+```sh
 git clone https://github.com/johnmuhl/electron-crash-report-server
 cd electron-crash-report-server
 createdb electron-crash-report-server
@@ -45,7 +45,7 @@ cp .env-example .env
 yarn && yarn start-dev
 # make changes
 yarn format
-~~~
+```
 
 ## bugs & features
 
