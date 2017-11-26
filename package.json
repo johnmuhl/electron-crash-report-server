@@ -29,7 +29,7 @@
     "dotenv": "^4.0.0",
     "handlebars": "^4.0.11",
     "hapi": "^17.0.2",
-    "hapi-auth-basic": "github:hapijs/hapi-auth-basic#v17",
+    "hapi-auth-basic": "^5.0.0",
     "inert": "^5.0.1",
     "massive": "^4.5.0",
     "moment": "^2.19.2",
