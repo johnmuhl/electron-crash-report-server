@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import {h} from 'preact' // eslint-disable-line no-unused-vars
+import {h} from 'preact'
 
 export default function ReportsTableRow (props) {
 	const application = props.filters.application
@@ -11,50 +11,73 @@ export default function ReportsTableRow (props) {
 	// filter by open status
 	if (!showClosed && !report.open) return null
 
-	return (
-		<tr
-			data-index={props.index}
-			className={props.index === props.selected ? 'active' : null}
-		>
-			<td>
-				<button onClick={props.showDetails} className="details">
-					<img
-						alt={`View report ${report.id}`}
-						src="/ic_open_in_new_black_24px.svg"
-					/>
-					{report.id}
-				</button>
-			</td>
-			<td>
-				<button
-					className={report.open ? 'open' : 'closed'}
-					onClick={props.toggleStatus}
-				>
-					{report.open ? 'Open' : 'Closed'}
-				</button>
-			</td>
-			{props.applications.length > 1 && <td>{report.body._productName}</td>}
-			<td>{report.body._version}</td>
-			<td>{report.body.ver}</td>
-			<td>{report.body.platform}</td>
-			<td>{report.body.process_type}</td>
-			<td>
-				<a href={`/reports/${report.id}/dump`} className="button icon download">
-					<img
-						alt={`Download minidump ${report.id}`}
-						src="/ic_file_download_white_24px.svg"
-					/>
-				</a>
-			</td>
-			<td onClick={props.deleteReport}>
-				<button onClick={props.deleteReport} className="icon delete">
-					<img
-						alt={`Delete report ${report.id}`}
-						src="/ic_delete_forever_white_24px.svg"
-					/>
-				</button>
-			</td>
-		</tr>
+	return h(
+		'tr',
+		{
+			'data-index': props.index,
+			class: props.index === props.selected ? 'active' : null,
+		},
+		h(
+			'td',
+			null,
+			h(
+				'button',
+				{onClick: props.showDetails, class: 'details'},
+				h('img', {
+					alt: `View report ${report.id}`,
+					src: '/ic_open_in_new_black_24px.svg',
+				}),
+				report.id
+			)
+		),
+		h(
+			'td',
+			null,
+			h(
+				'button',
+				{
+					onClick: props.toggleStatus,
+					class: report.open ? 'open' : 'closed',
+				},
+				report.open ? 'Open' : 'Closed'
+			)
+		),
+
+		props.applications.length > 1 && h('td', null, report.body._productName),
+		h('td', null, report.body._version),
+		h('td', null, report.body.ver),
+		h('td', null, report.body.platform),
+		h('td', null, report.body.process_type),
+		h(
+			'td',
+			null,
+			h(
+				'a',
+				{
+					href: `/reports/${report.id}/dump`,
+					class: 'button icon download',
+				},
+				h('img', {
+					alt: `Download minidump ${report.id}`,
+					src: '/ic_file_download_white_24px.svg',
+				})
+			)
+		),
+		h(
+			'td',
+			{onClick: props.deleteReport},
+			h(
+				'button',
+				{
+					onClick: props.deleteReport,
+					class: 'icon delete',
+				},
+				h('img', {
+					alt: `Delete report ${report.id}`,
+					src: '/ic_delete_forever_white_24px.svg',
+				})
+			)
+		)
 	)
 }
 

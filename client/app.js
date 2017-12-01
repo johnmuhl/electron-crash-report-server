@@ -6,7 +6,7 @@ import FilterApplication from './filter-application.js'
 import FilterClosed from './filter-closed.js'
 import ReportDetails from './report-details.js'
 import ReportsTable from './reports-table.js'
-import {Component, h} from 'preact' // eslint-disable-line no-unused-vars
+import {Component, h} from 'preact'
 
 export default class App extends Component {
 	constructor () {
@@ -130,37 +130,43 @@ export default class App extends Component {
 	}
 
 	render (props, state) {
-		return (
-			<div className="container">
-				<header>
-					<FilterClosed
-						filter={state.filters.closed}
-						onChange={this.filterClosedToggle}
-					/>
-					<FilterApplication
-						applications={state.applications}
-						filter={state.filters.application}
-						onChange={this.filterApplicationToggle}
-					/>
-				</header>
-				<main>
-					<ReportsTable
-						applications={state.applications}
-						filters={state.filters}
-						reports={state.reports}
-						selected={state.selected}
-						showReportDetails={this.showReportDetails}
-						toggleReportStatus={this.toggleReportStatus}
-						deleteReport={this.deleteReport}
-					/>
-				</main>
-				<aside>
-					<ReportDetails
-						reports={this.state.reports}
-						selected={this.state.selected}
-					/>
-				</aside>
-			</div>
+		return h(
+			'div',
+			{class: 'container'},
+			h(
+				'header',
+				null,
+				h(FilterClosed, {
+					filter: state.filters.closed,
+					onChange: this.filterClosedToggle,
+				}),
+				h(FilterApplication, {
+					applications: state.applications,
+					filter: state.filters.application,
+					onChange: this.filterApplicationToggle,
+				})
+			),
+			h(
+				'main',
+				null,
+				h(ReportsTable, {
+					applications: state.applications,
+					filters: state.filters,
+					reports: state.reports,
+					selected: state.selected,
+					showReportDetails: this.showReportDetails,
+					toggleReportStatus: this.toggleReportStatus,
+					deleteReport: this.deleteReport,
+				})
+			),
+			h(
+				'aside',
+				null,
+				h(ReportDetails, {
+					reports: this.state.reports,
+					selected: this.state.selected,
+				})
+			)
 		)
 	}
 }

@@ -1,18 +1,20 @@
 import PropTypes from 'prop-types'
-import {h} from 'preact' // eslint-disable-line no-unused-vars
+import {h} from 'preact'
 
 export default function FilterClosed (props) {
-	return (
-		<div>
-			<label>
-				<input
-					checked={props.filter}
-					onChange={props.onChange}
-					type="checkbox"
-				/>
-				Show closed reports?
-			</label>
-		</div>
+	return h(
+		'div',
+		null,
+		h(
+			'label',
+			null,
+			h('input', {
+				checked: props.filter,
+				onChange: props.onChange,
+				type: 'checkbox',
+			}),
+			'Show closed reports?'
+		)
 	)
 }
 

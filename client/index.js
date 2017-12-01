@@ -1,4 +1,4 @@
 import App from './app.js'
-import {h, render} from 'preact' // eslint-disable-line no-unused-vars
+import {h, render} from 'preact'
 
-render(<App />, document.body)
+render(h(App), document.body)
