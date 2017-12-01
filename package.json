@@ -30,6 +30,7 @@
   "devDependencies": {
     "eslint": "^4.11.0",
     "eslint-config-oz": "github:johnmuhl/eslint-config-oz#v1.1.0",
+    "greenkeeper-lockfile": "^1.12.0",
     "nodemon": "^1.12.1",
     "prettier": "^1.8.2"
   },

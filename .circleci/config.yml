@@ -13,9 +13,15 @@ jobs:
           name: yarn install
           command: yarn install
       - run:
+          name: update lockfile
+          command: yarn greenkeeper-lockfile-update
+      - run:
           name: yarn test
           command: yarn test
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
+      - run:
+          name: upload lockfile
+          command: yarn greenkeeper-lockfile-upload
