@@ -1,14 +1,12 @@
-import PropTypes from 'prop-types'
-import {h} from 'preact'
-
+/* global preact, PropTypes */
 export default function FilterClosed (props) {
-	return h(
+	return preact.h(
 		'div',
 		null,
-		h(
+		preact.h(
 			'label',
 			null,
-			h('input', {
+			preact.h('input', {
 				checked: props.filter,
 				onChange: props.onChange,
 				type: 'checkbox',

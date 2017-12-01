@@ -1,20 +1,20 @@
-import PropTypes from 'prop-types'
-import {h} from 'preact'
-
+/* global preact, PropTypes */
 export default function FilterApplication (props) {
 	if (props.applications.length === 1) return null
 
-	return h(
+	return preact.h(
 		'div',
 		null,
-		h(
+		preact.h(
 			'select',
 			{
 				value: props.filter,
 				onChange: props.onChange,
 			},
-			h('option', {value: ''}, 'Show all'),
-			props.applications.map((value, key) => h('option', {key, value}, value))
+			preact.h('option', {value: ''}, 'Show all'),
+			props.applications.map((value, key) =>
+				preact.h('option', {key, value}, value)
+			)
 		)
 	)
 }

@@ -1,44 +1,43 @@
-import prettyMs from 'pretty-ms'
-import PropTypes from 'prop-types'
-import {h} from 'preact'
+/* global preact PropTypes */
+import prettyMs from '/client/pretty-ms.js'
 
 export default function ReportDetails (props) {
 	if (props.selected == null) return null
 
 	const report = props.reports[props.selected]
 
-	return h(
+	return preact.h(
 		'div',
 		{class: 'report'},
-		h(
+		preact.h(
 			'div',
 			{class: 'timestamp'},
-			h('img', {
+			preact.h('img', {
 				alt: 'Created at',
 				src: '/ic_access_time_black_18px.svg',
 			}),
 			new Date(report.created_at).toString()
 		),
 		report.closed_at &&
-			h(
+			preact.h(
 				'div',
 				{class: 'timestamp'},
-				h('img', {
+				preact.h('img', {
 					alt: 'Closed at',
 					src: '/ic_watch_later_black_18px.svg',
 				}),
 				new Date(report.closed_at).toString()
 			),
-		h(
+		preact.h(
 			'div',
 			{class: 'timestamp'},
-			h('img', {
+			preact.h('img', {
 				alt: 'Open for',
 				src: '/ic_timer_black_18px.svg',
 			}),
 			reportLifetime(report)
 		),
-		h('pre', null, JSON.stringify(report.body, null, 2))
+		preact.h('pre', null, JSON.stringify(report.body, null, 2))
 	)
 }
 

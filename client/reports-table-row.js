@@ -1,6 +1,4 @@
-import PropTypes from 'prop-types'
-import {h} from 'preact'
-
+/* global preact PropTypes */
 export default function ReportsTableRow (props) {
 	const application = props.filters.application
 	const showClosed = props.filters.closed
@@ -11,29 +9,29 @@ export default function ReportsTableRow (props) {
 	// filter by open status
 	if (!showClosed && !report.open) return null
 
-	return h(
+	return preact.h(
 		'tr',
 		{
 			'data-index': props.index,
 			class: props.index === props.selected ? 'active' : null,
 		},
-		h(
+		preact.h(
 			'td',
 			null,
-			h(
+			preact.h(
 				'button',
 				{onClick: props.showDetails, class: 'details'},
-				h('img', {
+				preact.h('img', {
 					alt: `View report ${report.id}`,
 					src: '/ic_open_in_new_black_24px.svg',
 				}),
 				report.id
 			)
 		),
-		h(
+		preact.h(
 			'td',
 			null,
-			h(
+			preact.h(
 				'button',
 				{
 					onClick: props.toggleStatus,
@@ -43,36 +41,37 @@ export default function ReportsTableRow (props) {
 			)
 		),
 
-		props.applications.length > 1 && h('td', null, report.body._productName),
-		h('td', null, report.body._version),
-		h('td', null, report.body.ver),
-		h('td', null, report.body.platform),
-		h('td', null, report.body.process_type),
-		h(
+		props.applications.length > 1 &&
+			preact.h('td', null, report.body._productName),
+		preact.h('td', null, report.body._version),
+		preact.h('td', null, report.body.ver),
+		preact.h('td', null, report.body.platform),
+		preact.h('td', null, report.body.process_type),
+		preact.h(
 			'td',
 			null,
-			h(
+			preact.h(
 				'a',
 				{
 					href: `/reports/${report.id}/dump`,
 					class: 'button icon download',
 				},
-				h('img', {
+				preact.h('img', {
 					alt: `Download minidump ${report.id}`,
 					src: '/ic_file_download_white_24px.svg',
 				})
 			)
 		),
-		h(
+		preact.h(
 			'td',
 			{onClick: props.deleteReport},
-			h(
+			preact.h(
 				'button',
 				{
 					onClick: props.deleteReport,
 					class: 'icon delete',
 				},
-				h('img', {
+				preact.h('img', {
 					alt: `Delete report ${report.id}`,
 					src: '/ic_delete_forever_white_24px.svg',
 				})

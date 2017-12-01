@@ -1,33 +1,32 @@
-import PropTypes from 'prop-types'
-import ReportsTableRow from './reports-table-row.js'
-import {h} from 'preact'
+/* global preact PropTypes */
+import ReportsTableRow from '/client/reports-table-row.js'
 
 export default function ReportsTable (props) {
-	return h(
+	return preact.h(
 		'table',
 		null,
-		h(
+		preact.h(
 			'thead',
 			null,
-			h(
+			preact.h(
 				'tr',
 				null,
-				h('th', null, 'ID'),
-				h('th', null, 'Status'),
-				props.applications.length > 1 && h('th', null, 'Application'),
-				h('th', null, 'Version'),
-				h('th', null, 'Electron'),
-				h('th', null, 'Platform'),
-				h('th', null, 'Process'),
-				h('th', null, 'Minidump'),
-				h('th', null, 'Delete')
+				preact.h('th', null, 'ID'),
+				preact.h('th', null, 'Status'),
+				props.applications.length > 1 && preact.h('th', null, 'Application'),
+				preact.h('th', null, 'Version'),
+				preact.h('th', null, 'Electron'),
+				preact.h('th', null, 'Platform'),
+				preact.h('th', null, 'Process'),
+				preact.h('th', null, 'Minidump'),
+				preact.h('th', null, 'Delete')
 			)
 		),
-		h(
+		preact.h(
 			'tbody',
 			null,
 			props.reports.map((item, index) =>
-				h(ReportsTableRow, {
+				preact.h(ReportsTableRow, {
 					key: index,
 					applications: props.applications,
 					filters: props.filters,

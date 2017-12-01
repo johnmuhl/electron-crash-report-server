@@ -250,6 +250,17 @@ async function main () {
 		},
 	})
 
+	// Server client side javascript
+	server.route({
+		method: 'GET',
+		path: '/client/{path}',
+		options: {
+			handler: (request, h) => {
+				return h.file(resolve('client', request.params.path))
+			},
+		},
+	})
+
 	// Serve static assets
 	server.route({
 		method: 'GET',

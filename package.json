@@ -8,37 +8,24 @@
   "bugs": "https://github.com/johnmuhl/electron-crash-report-server/issues",
   "homepage": "https://johnmuhl.github.io/electron-crash-report-server",
   "scripts": {
-    "dev": "nodemon server",
+    "dev": "nodemon -w client -w server server",
     "fmt": "yarn run prettier && yarn run eslint --fix",
     "test": "yarn eslint",
     "eslint": "eslint --ignore-pattern=server/public/* .",
-    "prettier": "prettier --write '{*,client/*,server/*}.{js,md}'",
-    "heroku-postbuild": "webpack"
+    "prettier": "prettier --write '{*,client/*,server/*}.{js,md}'"
   },
   "engines": {
     "node": "^8.9.1"
   },
   "dependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-minify-webpack-plugin": "^0.2.0",
-    "babel-preset-env": "^1.6.1",
     "boom": "^7.1.1",
-    "css-loader": "^0.28.7",
     "dotenv": "^4.0.0",
     "handlebars": "^4.0.11",
     "hapi": "^17.0.2",
     "hapi-auth-basic": "^5.0.0",
     "inert": "^5.0.1",
     "massive": "^4.5.0",
-    "moment": "^2.19.2",
-    "postcss-loader": "^2.0.8",
-    "preact": "^8.2.6",
-    "pretty-ms": "^3.1.0",
-    "prop-types": "^15.6.0",
-    "style-loader": "^0.19.0",
-    "vision": "^5.2.0",
-    "webpack": "^3.8.1"
+    "vision": "^5.2.0"
   },
   "devDependencies": {
     "eslint": "^4.11.0",
@@ -46,37 +33,10 @@
     "nodemon": "^1.12.1",
     "prettier": "^1.8.2"
   },
-  "babel": {
-    "presets": [
-      [
-        "env",
-        {
-          "modules": false,
-          "targets": {
-            "browsers": [
-              "last 2 Chrome versions",
-              "last 2 Firefox versions"
-            ]
-          }
-        }
-      ]
-    ]
-  },
-  "browserlist": [
-    "last 2 Chrome versions",
-    "last 2 Firefox versions"
-  ],
   "eslintConfig": {
     "extends": "oz",
     "globals": {
       "React": true
-    }
-  },
-  "postcss": {
-    "from": "./client/index.css",
-    "to": "./public/index.css",
-    "plugins": {
-      "autoprefixer": {}
     }
   },
   "prettier": {
