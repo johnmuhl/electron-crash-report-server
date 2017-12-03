@@ -1,6 +1,4 @@
-'use strict'
-
-module.exports = `
+export default `
   CREATE TABLE IF NOT EXISTS reports (
     id serial PRIMARY KEY,
     body jsonb NOT NULL,

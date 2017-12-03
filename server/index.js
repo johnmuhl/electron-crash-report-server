@@ -1,15 +1,13 @@
-'use strict'
-
-const Basic = require('hapi-auth-basic')
-const Boom = require('boom')
-const dotenv = require('dotenv')
-const Handlebars = require('handlebars')
-const Hapi = require('hapi')
-const Inert = require('inert')
-const massive = require('massive')
-const {resolve} = require('path')
-const SQL = require('./sql.js')
-const Vision = require('vision')
+import Basic from 'hapi-auth-basic'
+import Boom from 'boom'
+import dotenv from 'dotenv'
+import Handlebars from 'handlebars'
+import Hapi from 'hapi'
+import Inert from 'inert'
+import massive from 'massive'
+import {resolve} from 'path'
+import SQL from './sql.js'
+import Vision from 'vision'
 
 const UNDEFINED_TABLE = '42P01'
 

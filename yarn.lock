@@ -54,6 +54,10 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
+"@std/esm@^0.18.0":
+  version "0.18.0"
+  resolved "https://registry.yarnpkg.com/@std/esm/-/esm-0.18.0.tgz#e212b565c765f93b29ec522a493a192ce7ae2ba6"
+
 abbrev@1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"
