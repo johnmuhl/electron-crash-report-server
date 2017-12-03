@@ -1,13 +1,11 @@
 import Basic from 'hapi-auth-basic'
 import Boom from 'boom'
 import dotenv from 'dotenv'
-import Handlebars from 'handlebars'
 import Hapi from 'hapi'
 import Inert from 'inert'
 import massive from 'massive'
 import {resolve} from 'path'
 import SQL from './sql.js'
-import Vision from 'vision'
 
 const UNDEFINED_TABLE = '42P01'
 
@@ -60,7 +58,7 @@ async function main () {
 	}
 
 	try {
-		await server.register([Basic, Inert, Vision])
+		await server.register([Basic, Inert])
 	} catch (error) {
 		throw new Error(error)
 	}
@@ -74,12 +72,6 @@ async function main () {
 
 	// Load, configure plugins
 	server.auth.strategy('simple', 'basic', {validate})
-	server.views({
-		engines: {html: Handlebars},
-		layout: true,
-		path: 'views',
-		relativeTo: __dirname,
-	})
 
 	// Application state
 	server.app.db = db
@@ -96,10 +88,11 @@ async function main () {
 			auth: 'simple',
 			handler: (request, h) => {
 				const auth = Buffer.from(server.app.auth).toString('base64')
+				const index = resolve(__dirname, 'public', 'index.html')
 				const isSecure = server.app.env === 'production'
 				const options = {isHttpOnly: false, isSecure}
 
-				return h.view('index').state('authorization', auth, options)
+				return h.file(index).state('authorization', auth, options)
 			},
 		},
 		path: '/',
