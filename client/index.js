@@ -11,7 +11,7 @@ export default class App extends preact.Component {
 		super()
 
 		this.state = {
-			applications: [''],
+			applications: new Set(['']),
 			filters: {
 				application: '',
 				closed: true,
@@ -49,10 +49,15 @@ export default class App extends preact.Component {
 			if (response.status !== 200) return console.error(response)
 
 			const reports = await response.json()
-			const applications = reports
-				.map(report => report.body._productName)
-				.filter((item, index, array) => array.indexOf(item) === index)
-				.sort()
+			const applications = new Set(
+				reports
+					.map(report => report.body._productName)
+					.filter(item => item != null)
+					.filter(item => item.toString().trim().length)
+					.filter(item => !!item)
+					.filter((item, index, array) => array.indexOf(item) === index)
+					.sort()
+			)
 
 			this.setState({applications, reports})
 		} catch (error) {
