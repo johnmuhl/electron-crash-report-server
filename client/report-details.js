@@ -4,7 +4,7 @@ import prettyMs from '/client/pretty-ms.js'
 export default function ReportDetails (props) {
 	if (props.selected == null) return null
 
-	const report = props.reports[props.selected]
+	const report = props.reports.get(props.selected)
 
 	return preact.h(
 		'div',

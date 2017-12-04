@@ -2,7 +2,7 @@
 export default function ReportsTableRow (props) {
 	const application = props.filters.get('application')
 	const showClosed = props.filters.get('closed')
-	const report = props.report
+	const report = props.report[1]
 
 	// filter by selected application
 	if (application && report.body._productName !== application) return null
@@ -13,7 +13,7 @@ export default function ReportsTableRow (props) {
 		'tr',
 		{
 			class: props.index === props.selected ? 'active' : null,
-			'data-index': props.index,
+			'data-index': report.id,
 		},
 		preact.h(
 			'td',

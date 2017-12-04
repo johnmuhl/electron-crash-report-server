@@ -25,19 +25,21 @@ export default function ReportsTable (props) {
 		preact.h(
 			'tbody',
 			null,
-			props.reports.slice(0, props.limit).map((item, index) =>
-				preact.h(ReportsTableRow, {
-					applications: props.applications,
-					deleteReport: props.deleteReport,
-					filters: props.filters,
-					index: index,
-					key: index,
-					report: item,
-					selected: props.selected,
-					showDetails: props.showReportDetails,
-					toggleStatus: props.toggleReportStatus,
-				})
-			)
+			Array.from(props.reports)
+				.slice(0, props.limit)
+				.map((item, index) =>
+					preact.h(ReportsTableRow, {
+						applications: props.applications,
+						deleteReport: props.deleteReport,
+						filters: props.filters,
+						index: item[0],
+						key: index,
+						report: item,
+						selected: props.selected,
+						showDetails: props.showReportDetails,
+						toggleStatus: props.toggleReportStatus,
+					})
+				)
 		),
 		props.reports.length > props.limit &&
 			preact.h(
