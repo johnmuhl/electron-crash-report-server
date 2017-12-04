@@ -13,7 +13,7 @@ export default function ReportsTable (props) {
 				null,
 				preact.h('th', null, 'ID'),
 				preact.h('th', null, 'Status'),
-				props.applications.length > 1 && preact.h('th', null, 'Application'),
+				props.applications.size > 1 && preact.h('th', null, 'Application'),
 				preact.h('th', null, 'Version'),
 				preact.h('th', null, 'Electron'),
 				preact.h('th', null, 'Platform'),
@@ -49,7 +49,7 @@ export default function ReportsTable (props) {
 					preact.h(
 						'td',
 						{
-							colspan: props.applications.length > 1 ? 9 : 8,
+							colspan: props.applications.size > 1 ? 9 : 8,
 						},
 						preact.h(
 							'button',

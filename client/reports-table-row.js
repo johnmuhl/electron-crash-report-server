@@ -1,7 +1,7 @@
 /* global preact PropTypes */
 export default function ReportsTableRow (props) {
-	const application = props.filters.application
-	const showClosed = props.filters.closed
+	const application = props.filters.get('application')
+	const showClosed = props.filters.get('closed')
 	const report = props.report
 
 	// filter by selected application
@@ -41,7 +41,7 @@ export default function ReportsTableRow (props) {
 			)
 		),
 
-		props.applications.length > 1 &&
+		props.applications.size > 1 &&
 			preact.h('td', null, report.body._productName),
 		preact.h('td', null, report.body._version),
 		preact.h('td', null, report.body.ver),

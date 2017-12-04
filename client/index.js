@@ -12,10 +12,7 @@ export default class App extends preact.Component {
 
 		this.state = {
 			applications: new Set(['']),
-			filters: {
-				application: '',
-				closed: true,
-			},
+			filters: new Map([['application', ''], ['closed', true]]),
 			limit: 50,
 			reports: [],
 			selected: null,
@@ -39,7 +36,9 @@ export default class App extends preact.Component {
 			if (closed == null) closed = false
 			closed = closed === 'true'
 
-			this.setState({filters: {application, closed}})
+			this.setState({
+				filters: new Map([['application', application], ['closed', closed]]),
+			})
 		}
 
 		try {
@@ -66,20 +65,20 @@ export default class App extends preact.Component {
 	}
 
 	filterApplicationToggle (event) {
-		const filters = Object.assign({}, this.state.filters)
+		const filters = new Map([...this.state.filters])
 		const value = event.target.value
 
-		filters.application = value
-		localStorage.filtersApplication = filters.application
+		filters.set('application', value)
+		localStorage.filtersApplication = filters.get('application')
 
 		return this.setState({filters})
 	}
 
 	filterClosedToggle (event) {
-		const filters = Object.assign({}, this.state.filters)
+		const filters = new Map([...this.state.filters])
 
-		filters.closed = !this.state.filters.closed
-		localStorage.filtersClosed = filters.closed
+		filters.set('closed', !this.state.filters.get('closed'))
+		localStorage.filtersClosed = filters.get('closed')
 
 		this.setState({filters})
 	}
@@ -146,12 +145,12 @@ export default class App extends preact.Component {
 				'header',
 				null,
 				preact.h(FilterClosed, {
-					filter: state.filters.closed,
+					filter: state.filters.get('closed'),
 					onChange: this.filterClosedToggle,
 				}),
 				preact.h(FilterApplication, {
 					applications: state.applications,
-					filter: state.filters.application,
+					filter: state.filters.get('application'),
 					onChange: this.filterApplicationToggle,
 				})
 			),
