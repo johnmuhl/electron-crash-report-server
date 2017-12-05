@@ -1,4 +1,4 @@
-/* global preact, PropTypes */
+/* global preact */
 export default function FilterClosed (props) {
 	return preact.h(
 		'div',
@@ -7,16 +7,11 @@ export default function FilterClosed (props) {
 			'label',
 			null,
 			preact.h('input', {
-				checked: props.filter,
+				checked: props.filters.get('closed'),
 				onChange: props.onChange,
 				type: 'checkbox',
 			}),
 			'Show closed reports?'
 		)
 	)
-}
-
-FilterClosed.propTypes = {
-	filter: PropTypes.bool,
-	onChange: PropTypes.func,
 }

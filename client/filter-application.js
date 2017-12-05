@@ -1,6 +1,6 @@
-/* global preact, PropTypes */
+/* global preact */
 export default function FilterApplication (props) {
-	if (props.applications.length === 1) return null
+	if (props.applications.size === 1) return null
 
 	return preact.h(
 		'div',
@@ -9,7 +9,7 @@ export default function FilterApplication (props) {
 			'select',
 			{
 				onChange: props.onChange,
-				value: props.filter,
+				value: props.filters.get('application'),
 			},
 			preact.h('option', {value: ''}, 'Show all'),
 			Array.from(props.applications).map((value, key) =>
@@ -17,10 +17,4 @@ export default function FilterApplication (props) {
 			)
 		)
 	)
-}
-
-FilterApplication.propTypes = {
-	applications: PropTypes.array,
-	filter: PropTypes.string,
-	onChange: PropTypes.func,
 }

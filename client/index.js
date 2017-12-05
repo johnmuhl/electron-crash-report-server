@@ -146,13 +146,9 @@ export default class App extends preact.Component {
 			preact.h(
 				'header',
 				null,
-				preact.h(FilterClosed, {
-					filter: state.filters.get('closed'),
-					onChange: this.filterClosedToggle,
-				}),
+				preact.h(FilterClosed, {...state, onChange: this.filterClosedToggle}),
 				preact.h(FilterApplication, {
-					applications: state.applications,
-					filter: state.filters.get('application'),
+					...state,
 					onChange: this.filterApplicationToggle,
 				})
 			),
