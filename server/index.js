@@ -189,7 +189,12 @@ async function main () {
 					report.open = !report.open
 					report.closed_at = closedAt
 
-					return await server.app.db.reports.save(report)
+					const response = await server.app.db.reports.save(report)
+
+					delete response.dump
+					delete response.search
+
+					return response
 				} catch (error) {
 					throw new Error(error)
 				}
@@ -207,7 +212,12 @@ async function main () {
 				const id = Number(request.params.id)
 
 				try {
-					return await server.app.db.reports.destroy(id)
+					const response = await server.app.db.reports.destroy(id)
+
+					delete response.dump
+					delete response.search
+
+					return response
 				} catch (error) {
 					throw new Error(error)
 				}
