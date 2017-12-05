@@ -1,4 +1,4 @@
-/* global preact PropTypes */
+/* global preact */
 import prettyMs from '/client/pretty-ms.js'
 
 export default function ReportDetails (props) {
@@ -41,15 +41,10 @@ export default function ReportDetails (props) {
 	)
 }
 
-ReportDetails.propTypes = {
-	reports: PropTypes.array,
-	selected: PropTypes.number,
-}
-
 function reportLifetime (report) {
 	const closed = new Date(report.closed_at || Date.now())
 	const created = new Date(report.created_at)
-	let duration = prettyMs(closed - created) // .replace(/\s\d+.*s/, '')
+	let duration = prettyMs(closed - created)
 
 	if (duration.split(' ').length === 1) return duration
 

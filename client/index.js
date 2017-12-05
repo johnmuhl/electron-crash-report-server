@@ -167,14 +167,7 @@ export default class App extends preact.Component {
 					toggleReportStatus: this.toggleReportStatus,
 				})
 			),
-			preact.h(
-				'aside',
-				null,
-				preact.h(ReportDetails, {
-					reports: this.state.reports,
-					selected: this.state.selected,
-				})
-			)
+			preact.h('aside', null, preact.h(ReportDetails, {...state}))
 		)
 	}
 }
