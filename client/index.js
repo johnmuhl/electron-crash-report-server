@@ -1,8 +1,5 @@
 /* global fetch Headers localStorage preact */
-import FilterApplication from '/client/filter-application.js'
-import FilterClosed from '/client/filter-closed.js'
-import ReportDetails from '/client/report-details.js'
-import ReportsTable from '/client/reports-table.js'
+import prettyMs from '/client/pretty-ms.js'
 
 const authorization = `Basic ${document.cookie.split('=')[1]}`
 
@@ -166,6 +163,237 @@ export default class App extends preact.Component {
 			preact.h('aside', null, preact.h(ReportDetails, {...state}))
 		)
 	}
+}
+
+function FilterClosed (props) {
+	return preact.h(
+		'div',
+		null,
+		preact.h(
+			'label',
+			null,
+			preact.h('input', {
+				checked: props.filters.get('closed'),
+				onChange: props.onChange,
+				type: 'checkbox',
+			}),
+			'Show closed reports?'
+		)
+	)
+}
+
+function FilterApplication (props) {
+	if (props.applications.size === 1) return null
+
+	return preact.h(
+		'div',
+		null,
+		preact.h(
+			'select',
+			{
+				onChange: props.onChange,
+				value: props.filters.get('application'),
+			},
+			preact.h('option', {value: ''}, 'Show all'),
+			Array.from(props.applications).map((value, key) =>
+				preact.h('option', {key, value}, value)
+			)
+		)
+	)
+}
+
+function ReportsTable (props) {
+	return preact.h(
+		'table',
+		null,
+		preact.h(
+			'thead',
+			null,
+			preact.h(
+				'tr',
+				null,
+				preact.h('th', null, 'ID'),
+				preact.h('th', null, 'Status'),
+				props.applications.size > 1 && preact.h('th', null, 'Application'),
+				preact.h('th', null, 'Version'),
+				preact.h('th', null, 'Electron'),
+				preact.h('th', null, 'Platform'),
+				preact.h('th', null, 'Process'),
+				preact.h('th', null, 'Minidump'),
+				preact.h('th', null, 'Delete')
+			)
+		),
+		preact.h(
+			'tbody',
+			null,
+			Array.from(props.reports)
+				.slice(0, props.limit)
+				.map(report => preact.h(ReportsTableRow, {...props, report}))
+		),
+		props.reports.size > props.limit &&
+			preact.h(
+				'tfoot',
+				null,
+				preact.h(
+					'tr',
+					null,
+					preact.h(
+						'td',
+						{colspan: props.applications.size > 1 ? 9 : 8},
+						preact.h(
+							'button',
+							{
+								class: 'more',
+								onClick: props.showMoreReports,
+							},
+							'Load more'
+						)
+					)
+				)
+			)
+	)
+}
+
+function ReportsTableRow (props) {
+	const application = props.filters.get('application')
+	const showClosed = props.filters.get('closed')
+	const report = props.report[1]
+
+	// filter by selected application
+	if (application && report.body._productName !== application) return null
+	// filter by open status
+	if (!showClosed && !report.open) return null
+
+	return preact.h(
+		'tr',
+		{
+			class: report.id === props.selected ? 'active' : null,
+			'data-index': report.id,
+		},
+		preact.h(
+			'td',
+			null,
+			preact.h(
+				'button',
+				{
+					class: 'details',
+					onClick: props.showReportDetails,
+				},
+				preact.h('img', {
+					alt: `View report ${report.id}`,
+					class: 'open-in-new large',
+					src: '/icons.png',
+				}),
+				report.id
+			)
+		),
+		preact.h(
+			'td',
+			null,
+			preact.h(
+				'button',
+				{
+					class: report.open ? 'open' : 'closed',
+					onClick: props.toggleReportStatus,
+				},
+				report.open ? 'Open' : 'Closed'
+			)
+		),
+
+		props.applications.size > 1 &&
+			preact.h('td', null, report.body._productName),
+		preact.h('td', null, report.body._version),
+		preact.h('td', null, report.body.ver),
+		preact.h('td', null, report.body.platform),
+		preact.h('td', null, report.body.process_type),
+		preact.h(
+			'td',
+			null,
+			preact.h(
+				'a',
+				{
+					class: 'button icon download',
+					href: `/reports/${report.id}/dump`,
+				},
+				preact.h('img', {
+					alt: `Download minidump ${report.id}`,
+					class: 'file-download large',
+					src: '/icons.png',
+				})
+			)
+		),
+		preact.h(
+			'td',
+			null,
+			preact.h(
+				'button',
+				{
+					class: 'icon delete',
+					onClick: props.deleteReport,
+				},
+				preact.h('img', {
+					alt: `Delete report ${report.id}`,
+					class: 'delete-forever large',
+					src: '/icons.png',
+				})
+			)
+		)
+	)
+}
+
+function ReportDetails (props) {
+	if (props.selected == null) return null
+
+	const report = props.reports.get(props.selected)
+
+	return preact.h(
+		'div',
+		{class: 'report'},
+		preact.h(
+			'div',
+			{class: 'timestamp'},
+			preact.h('img', {
+				alt: 'Created at',
+				class: 'access-time small',
+				src: '/icons.png',
+			}),
+			new Date(report.created_at).toString()
+		),
+		report.closed_at &&
+			preact.h(
+				'div',
+				{class: 'timestamp'},
+				preact.h('img', {
+					alt: 'Closed at',
+					class: 'watch-later small',
+					src: '/icons.png',
+				}),
+				new Date(report.closed_at).toString()
+			),
+		preact.h(
+			'div',
+			{class: 'timestamp'},
+			preact.h('img', {
+				alt: 'Open for',
+				class: 'timer small',
+				src: '/icons.png',
+			}),
+			reportLifetime(report)
+		),
+		preact.h('pre', null, JSON.stringify(report.body, null, 2))
+	)
+}
+
+function reportLifetime (report) {
+	const closed = new Date(report.closed_at || Date.now())
+	const created = new Date(report.created_at)
+	let duration = prettyMs(closed - created)
+
+	if (duration.split(' ').length === 1) return duration
+
+	duration = duration.replace(/\s\d+[.\d]+s$/, '')
+
+	return duration
 }
 
 preact.render(preact.h(App), document.body)

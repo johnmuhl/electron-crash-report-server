@@ -34,6 +34,45 @@ header {
   padding: .5em 0 1em 0;
 }
 
+img {
+  object-fit: none;
+  object-position: 0 0;
+}
+
+img.large {
+  width: 24px;
+  height: 24px;
+}
+
+img.small {
+  width: 18px;
+  height: 18px;
+}
+
+img.open-in-new {
+  object-position: 0 0;
+}
+
+img.file-download {
+  object-position: 0 -24px;
+}
+
+img.delete-forever {
+  object-position: 0 -48px;
+}
+
+img.access-time {
+  object-position: -3px -72px;
+}
+
+img.watch-later {
+  object-position: -3px -90px;
+}
+
+img.timer {
+  object-position: -3px -108px;
+}
+
 button,
 .button {
   display: flex;
