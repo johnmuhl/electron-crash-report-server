@@ -27,12 +27,7 @@ export default function ReportsTable (props) {
 			null,
 			Array.from(props.reports)
 				.slice(0, props.limit)
-				.map(report =>
-					preact.h(ReportsTableRow, {
-						...props,
-						report,
-					})
-				)
+				.map(report => preact.h(ReportsTableRow, {...props, report}))
 		),
 		props.reports.size > props.limit &&
 			preact.h(
@@ -43,9 +38,7 @@ export default function ReportsTable (props) {
 					null,
 					preact.h(
 						'td',
-						{
-							colspan: props.applications.size > 1 ? 9 : 8,
-						},
+						{colspan: props.applications.size > 1 ? 9 : 8},
 						preact.h(
 							'button',
 							{

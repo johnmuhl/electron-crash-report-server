@@ -20,7 +20,10 @@ export default function ReportsTableRow (props) {
 			null,
 			preact.h(
 				'button',
-				{class: 'details', onClick: props.showReportDetails},
+				{
+					class: 'details',
+					onClick: props.showReportDetails,
+				},
 				preact.h('img', {
 					alt: `View report ${report.id}`,
 					src: '/ic_open_in_new_black_24px.svg',
