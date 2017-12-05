@@ -1,4 +1,4 @@
-/* global preact PropTypes */
+/* global preact */
 import ReportsTableRow from '/client/reports-table-row.js'
 
 export default function ReportsTable (props) {
@@ -27,17 +27,10 @@ export default function ReportsTable (props) {
 			null,
 			Array.from(props.reports)
 				.slice(0, props.limit)
-				.map((item, index) =>
+				.map(report =>
 					preact.h(ReportsTableRow, {
-						applications: props.applications,
-						deleteReport: props.deleteReport,
-						filters: props.filters,
-						index: item[0],
-						key: index,
-						report: item,
-						selected: props.selected,
-						showDetails: props.showReportDetails,
-						toggleStatus: props.toggleReportStatus,
+						...props,
+						report,
 					})
 				)
 		),
@@ -65,15 +58,4 @@ export default function ReportsTable (props) {
 				)
 			)
 	)
-}
-
-ReportsTable.propTypes = {
-	applications: PropTypes.array,
-	deleteReport: PropTypes.func,
-	filters: PropTypes.object,
-	reports: PropTypes.array,
-	selected: PropTypes.number,
-	showMoreReports: PropTypes.func,
-	showReportDetails: PropTypes.func,
-	toggleReportStatus: PropTypes.func,
 }

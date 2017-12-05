@@ -156,12 +156,8 @@ export default class App extends preact.Component {
 				'main',
 				null,
 				preact.h(ReportsTable, {
-					applications: state.applications,
+					...state,
 					deleteReport: this.deleteReport,
-					filters: state.filters,
-					limit: state.limit,
-					reports: state.reports,
-					selected: state.selected,
 					showMoreReports: this.showMoreReports,
 					showReportDetails: this.showReportDetails,
 					toggleReportStatus: this.toggleReportStatus,
