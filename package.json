@@ -31,7 +31,7 @@
     "eslint": "^4.12.1",
     "eslint-config-oz": "github:johnmuhl/eslint-config-oz#v1.3.0",
     "greenkeeper-lockfile": "^1.12.0",
-    "nodemon": "^1.12.1",
+    "nodemon": "^1.12.5",
     "prettier": "^1.8.2"
   },
   "@std/esm": "cjs",
