@@ -15,7 +15,8 @@
     "prettier": "prettier --write '{*,client/*,server/*}.{js,md}'"
   },
   "engines": {
-    "node": "^8.9.2"
+    "node": "^8.9.2",
+    "yarn": "^1.3.2"
   },
   "dependencies": {
     "@std/esm": "^0.18.0",
