@@ -12,7 +12,7 @@
     "fmt": "yarn run prettier && yarn run eslint --fix",
     "test": "yarn eslint",
     "eslint": "eslint .",
-    "prettier": "prettier --write '{*,client/*,server/*}.{js,md}'"
+    "prettier": "prettier --write './*.{json,md}' '{client,server}/*.{css,js}'"
   },
   "engines": {
     "node": "^8.9.1",
@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "eslint": "^4.14.0",
-    "eslint-config-oz": "github:johnmuhl/eslint-config-oz#v2.1.0",
+    "eslint-config-oz": "github:johnmuhl/eslint-config-oz#v2.2.0",
     "nodemon": "^1.14.3",
     "prettier": "^1.9.2"
   },
@@ -38,10 +38,7 @@
     "extends": "oz"
   },
   "prettier": {
-    "bracketSpacing": false,
-    "semi": false,
-    "singleQuote": true,
-    "trailingComma": "es5",
-    "useTabs": true
+    "proseWrap": "always",
+    "trailingComma": "es5"
   }
 }

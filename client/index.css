@@ -31,8 +31,8 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: .125em solid var(--grey-400);
-  padding: .5em 0 1em 0;
+  border-bottom: 0.125em solid var(--grey-400);
+  padding: 0.5em 0 1em 0;
 }
 
 img {
@@ -87,7 +87,7 @@ button,
   color: var(--text-color);
   background-color: var(--background-color);
   border: 0;
-  border-radius: .125em;
+  border-radius: 0.125em;
   appearance: none;
 }
 
@@ -99,7 +99,7 @@ button.details,
 
 button.details img,
 .button.details img {
-  margin-right: .25em;
+  margin-right: 0.25em;
 }
 
 button.open,
@@ -152,11 +152,10 @@ table {
 }
 
 th {
-  padding: .5em;
+  padding: 0.5em;
   text-align: left;
   border-bottom: 1px solid var(--grey-400);
 }
-
 
 tbody tr:not(:last-child) td {
   border-bottom: 1px solid var(--grey-200);
@@ -171,7 +170,7 @@ tbody tr.active td {
 }
 
 tbody td {
-  padding: .25em .5em;
+  padding: 0.25em 0.5em;
 }
 
 .report {
@@ -183,7 +182,7 @@ tbody td {
   max-width: 50%;
   padding: 1em;
   background-color: #fff;
-  box-shadow: 0 0 .5em -1px rgba(0, 0, 0, .25);
+  box-shadow: 0 0 0.5em -1px rgba(0, 0, 0, 0.25);
   overflow: auto;
 }
 
@@ -194,14 +193,14 @@ tbody td {
 
 .report .timestamp {
   display: flex;
-  margin: .5em 0;
+  margin: 0.5em 0;
   align-items: center;
   font-size: 1.125em;
   line-height: 1;
 }
 
 .report .timestamp img {
-  margin-right: .25em;
+  margin-right: 0.25em;
 }
 
 .truncate {

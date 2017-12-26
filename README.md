@@ -16,11 +16,11 @@ environments.
 ## usage
 
 ```javascript
-const {crashReporter} = require('electron')
+const { crashReporter } = require("electron");
 crashReporter.start({
-	// ...other options
-	submitURL: 'https://app-name-12345.herokuapp.com/',
-})
+  // ...other options
+  submitURL: "https://app-name-12345.herokuapp.com/",
+});
 ```
 
 Refer to the [`crashReporter` documentation][docs] for the full details.

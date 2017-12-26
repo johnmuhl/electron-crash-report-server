@@ -34,4 +34,4 @@ export default `
 
   DROP TRIGGER IF EXISTS set_updated_at ON reports;
   CREATE TRIGGER set_updated_at BEFORE INSERT ON reports FOR EACH ROW EXECUTE PROCEDURE reports_set_updated_at();
-`
+`;
