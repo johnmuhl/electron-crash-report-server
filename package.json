@@ -25,7 +25,7 @@
     "hapi": "^17.2.0",
     "hapi-auth-basic": "^5.0.0",
     "inert": "^5.0.1",
-    "massive": "^4.5.0"
+    "massive": "^4.6.3"
   },
   "devDependencies": {
     "eslint": "4.14.0",
