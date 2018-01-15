@@ -2408,6 +2408,10 @@ mimos@4.x.x:
     hoek "5.x.x"
     mime-db "1.x.x"
 
+minidump@0.11.0:
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/minidump/-/minidump-0.11.0.tgz#f997b956cdb9979a3de4f74ffac2d679c7204d4e"
+
 minimatch@^3.0.0, minimatch@^3.0.2, minimatch@^3.0.3, minimatch@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-3.0.4.tgz#5166e286457f03306064be5497e8dbb0c3d32083"
