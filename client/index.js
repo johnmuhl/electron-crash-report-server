@@ -155,7 +155,9 @@ function ReportsTable(props) {
       null,
       Array.from(props.reports)
         .slice(0, props.limit)
-        .map(report => preact.h(ReportsTableRow, { ...props, report }))
+        .map(report =>
+          preact.h(ReportsTableRow, Object.assign({}, props, { report }))
+        )
     ),
     props.reports.size > props.limit &&
       preact.h(
@@ -376,24 +378,31 @@ export default class App extends preact.Component {
       preact.h(
         "header",
         null,
-        preact.h(FilterClosed, { ...state, onChange: this.filterClosedToggle }),
-        preact.h(FilterApplication, {
-          ...state,
-          onChange: this.filterApplicationToggle,
-        })
+        preact.h(
+          FilterClosed,
+          Object.assign({}, state, { onChange: this.filterClosedToggle })
+        ),
+        preact.h(
+          FilterApplication,
+          Object.assign({}, state, {
+            onChange: this.filterApplicationToggle,
+          })
+        )
       ),
       preact.h(
         "main",
         null,
-        preact.h(ReportsTable, {
-          ...state,
-          deleteReport: this.deleteReport,
-          showMoreReports: this.showMoreReports,
-          showReportDetails: this.showReportDetails,
-          toggleReportStatus: this.toggleReportStatus,
-        })
+        preact.h(
+          ReportsTable,
+          Object.assign({}, state, {
+            deleteReport: this.deleteReport,
+            showMoreReports: this.showMoreReports,
+            showReportDetails: this.showReportDetails,
+            toggleReportStatus: this.toggleReportStatus,
+          })
+        )
       ),
-      preact.h("aside", null, preact.h(ReportDetails, { ...state }))
+      preact.h("aside", null, preact.h(ReportDetails, Object.assign({}, state)))
     );
   }
 }
