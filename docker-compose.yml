@@ -1,24 +1,30 @@
-version: "3"
+version: "3.3"
 services:
   web:
-    build:
-      context: ./
-      dockerfile: ./server/Dockerfile
+    build: .
     command: yarn dev
+    volumes:
+      - ./client:/app/client
+      - ./server:/app/server
     environment:
       - DATABASE_URL=postgres://example:example@db/electron-crash-report-server
       - AUTH_USER=crash
       - AUTH_PASS=electron
-      - PORT=7777
+      - PORT=8000
     ports:
-      - 80:7777
+      - 80:8000
     depends_on:
       - db
     restart: always
   db:
-    image: postgres
+    image: postgres:alpine
     restart: always
+    volumes:
+      - "db-data:/var/lib/postgresql/data"
     environment:
       - POSTGRES_USER=example
       - POSTGRES_PASSWORD=example
       - POSTGRES_DB=electron-crash-report-server
+
+volumes:
+  db-data:
