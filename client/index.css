@@ -74,6 +74,10 @@ img.timer {
   object-position: -3px -108px;
 }
 
+img.open-in-browser {
+  object-position: 0 -126px;
+}
+
 button,
 .button {
   display: flex;
@@ -105,9 +109,11 @@ button.details img,
 button.open,
 button.download,
 button.delete,
+button.view,
 .button.open,
 .button.download,
-.button.delete {
+.button.delete,
+.button.view {
   color: white;
 }
 
@@ -122,7 +128,9 @@ button.closed,
 }
 
 button.download,
-.button.download {
+.button.download,
+button.view,
+.button.view {
   background-color: var(--blue-900);
 }
 
@@ -143,6 +151,11 @@ button.more,
   padding-left: 1em;
   font-size: 87.5%;
   background-color: var(--grey-200);
+}
+
+button.view,
+.button.view {
+  margin-left: 0.25em;
 }
 
 table {
@@ -207,4 +220,8 @@ tbody td {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.flex {
+  display: flex;
 }

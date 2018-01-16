@@ -1,13 +1,20 @@
+import { unlink, writeFile } from "fs";
 import Basic from "hapi-auth-basic";
 import Boom from "boom";
 import dotenv from "dotenv";
 import Hapi from "hapi";
 import Inert from "inert";
 import massive from "massive";
+import { promisify } from "util";
 import { resolve } from "path";
-import SQL from "./sql";
+import SQL from "./sql.js";
+import { tmpdir } from "os";
+import { walkStack } from "minidump";
 
 const UNDEFINED_TABLE = "42P01";
+const unlinkAsync = promisify(unlink);
+const walkStackAsync = promisify(walkStack);
+const writeFileAsync = promisify(writeFile);
 
 dotenv.config();
 
@@ -257,6 +264,31 @@ async function main() {
       },
     },
     path: "/reports/{id}/dump",
+  });
+
+  // route: GET /reports/:id/stack
+  server.route({
+    method: "GET",
+    options: {
+      auth: "simple",
+      handler: async request => {
+        const id = Number(request.params.id);
+
+        try {
+          const report = await server.app.db.reports.find(id);
+          const path = resolve(tmpdir(), `${report.id}.dmp`);
+
+          await writeFileAsync(path, report.dump, "binary");
+          const stack = await walkStackAsync(path);
+          await unlinkAsync(path);
+
+          return stack.toString();
+        } catch (error) {
+          throw new Error(error);
+        }
+      },
+    },
+    path: "/reports/{id}/stack",
   });
 
   // Serve static assets
