@@ -26,6 +26,7 @@
     "hapi-auth-basic": "5.0.0",
     "inert": "5.0.1",
     "massive": "4.6.3",
+    "preact": "8.2.7",
     "pretty-ms": "3.1.0",
     "rollup": "0.54.0",
     "rollup-plugin-babel-minify": "3.1.2",
