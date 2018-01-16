@@ -1,5 +1,6 @@
 /* global document fetch Headers localStorage */
 import "./index.css";
+import icons from "./icons.png";
 import preact from "preact";
 import prettyMs from "pretty-ms";
 
@@ -71,7 +72,7 @@ function ReportsTableRow(props) {
         preact.h("img", {
           alt: `View report ${report.id}`,
           class: "open-in-new large",
-          src: "/icons.png",
+          src: icons,
         }),
         report.id
       )
@@ -107,7 +108,7 @@ function ReportsTableRow(props) {
         preact.h("img", {
           alt: `Download minidump ${report.id}`,
           class: "file-download large",
-          src: "/icons.png",
+          src: icons,
         })
       )
     ),
@@ -123,7 +124,7 @@ function ReportsTableRow(props) {
         preact.h("img", {
           alt: `Delete report ${report.id}`,
           class: "delete-forever large",
-          src: "/icons.png",
+          src: icons,
         })
       )
     )
@@ -211,7 +212,7 @@ function ReportDetails(props) {
       preact.h("img", {
         alt: "Created at",
         class: "access-time small",
-        src: "/icons.png",
+        src: icons,
       }),
       new Date(report.created_at).toString()
     ),
@@ -222,7 +223,7 @@ function ReportDetails(props) {
         preact.h("img", {
           alt: "Closed at",
           class: "watch-later small",
-          src: "/icons.png",
+          src: icons,
         }),
         new Date(report.closed_at).toString()
       ),
@@ -232,7 +233,7 @@ function ReportDetails(props) {
       preact.h("img", {
         alt: "Open for",
         class: "timer small",
-        src: "/icons.png",
+        src: icons,
       }),
       reportLifetime(report)
     ),

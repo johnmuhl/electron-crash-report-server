@@ -1,5 +1,6 @@
 import cjs from "rollup-plugin-commonjs";
 import css from "rollup-plugin-css-only";
+import img from "rollup-plugin-img";
 import json from "rollup-plugin-json";
 import minify from "rollup-plugin-babel-minify";
 import resolve from "rollup-plugin-node-resolve";
@@ -18,6 +19,7 @@ export default {
     json(),
     resolve(),
     css({ output: "server/public/bundle.css" }),
+    img(),
     production ? minify() : {},
   ],
 };

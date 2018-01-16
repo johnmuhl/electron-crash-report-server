@@ -33,6 +33,7 @@
     "rollup-plugin-babel-minify": "3.1.2",
     "rollup-plugin-commonjs": "8.2.6",
     "rollup-plugin-css-only": "0.4.0",
+    "rollup-plugin-img": "1.1.0",
     "rollup-plugin-json": "2.3.0",
     "rollup-plugin-node-resolve": "3.0.2"
   },
