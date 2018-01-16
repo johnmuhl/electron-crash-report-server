@@ -1,7 +1,10 @@
-import commonjs from "rollup-plugin-commonjs";
+import cjs from "rollup-plugin-commonjs";
+import css from "rollup-plugin-css-only";
 import json from "rollup-plugin-json";
 import minify from "rollup-plugin-babel-minify";
 import resolve from "rollup-plugin-node-resolve";
+
+const production = process.env.NODE_ENV === "production";
 
 export default {
   input: "client/index.js",
@@ -10,5 +13,11 @@ export default {
     format: "iife",
     name: "ECRS",
   },
-  plugins: [commonjs(), json(), minify(), resolve()],
+  plugins: [
+    cjs(),
+    json(),
+    resolve(),
+    css({ output: "server/public/bundle.css" }),
+    production ? minify() : {},
+  ],
 };
