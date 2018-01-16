@@ -25,7 +25,12 @@
     "hapi": "17.2.0",
     "hapi-auth-basic": "5.0.0",
     "inert": "5.0.1",
-    "massive": "4.6.3"
+    "massive": "4.6.3",
+    "rollup": "0.54.0",
+    "rollup-plugin-babel-minify": "3.1.2",
+    "rollup-plugin-commonjs": "8.2.6",
+    "rollup-plugin-json": "2.3.0",
+    "rollup-plugin-node-resolve": "3.0.2"
   },
   "devDependencies": {
     "eslint": "4.15.0",
@@ -37,6 +42,7 @@
   "eslintConfig": {
     "extends": "oz"
   },
+  "eslintIgnore": ["bundle.*"],
   "prettier": {
     "proseWrap": "always",
     "trailingComma": "es5"
