@@ -259,15 +259,6 @@ async function main() {
     path: "/reports/{id}/dump",
   });
 
-  // Serve client side javascript
-  server.route({
-    method: "GET",
-    options: {
-      handler: (request, h) => h.file(resolve("client", request.params.path)),
-    },
-    path: "/client/{path}",
-  });
-
   // Serve static assets
   server.route({
     method: "GET",
