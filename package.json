@@ -12,7 +12,8 @@
     "fmt": "yarn run prettier && yarn run eslint --fix",
     "test": "yarn eslint",
     "eslint": "eslint .",
-    "prettier": "prettier --write './*.{json,md}' '{client,server}/*.{css,js}'"
+    "prettier": "prettier --write './*.{json,md}' '{client,server}/*.{css,js}'",
+    "postinstall": "rollup -c"
   },
   "engines": {
     "node": "8.9.4",
