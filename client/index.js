@@ -1,5 +1,5 @@
 /* global document fetch Headers localStorage preact */
-import prettyMs from "./pretty-ms.js";
+import prettyMs from "pretty-ms";
 
 const authorization = `Basic ${document.cookie.split("=")[1]}`;
 
