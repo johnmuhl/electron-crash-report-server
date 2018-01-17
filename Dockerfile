@@ -5,8 +5,7 @@ WORKDIR /app
 
 # Install requirements from package.json
 ADD package.json /app/package.json
-RUN apt-get update
-RUN apt-get install -y build-essential
+RUN apt-get update && apt-get install -y build-essential
 RUN yarn install
 
 # Copy source files from the current folder to /app inside the container
