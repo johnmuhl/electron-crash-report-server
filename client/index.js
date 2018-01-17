@@ -120,7 +120,7 @@ function ReportsTableRow(props) {
         preact.h("img", {
           alt: `View stack trace ${report.id}`,
           class: "open-in-browser large",
-          src: "/icons.png",
+          src: icons,
         })
       )
     ),
