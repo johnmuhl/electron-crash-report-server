@@ -9,8 +9,10 @@
   "homepage": "https://johnmuhl.github.io/electron-crash-report-server",
   "scripts": {
     "build": "rollup -c",
-    "dev": "nodemon -r @std/esm -w client -w server server",
+    "build:dev": "rollup -cw",
+    "dev": "run-p --race *:dev",
     "fmt": "yarn run prettier && yarn run eslint --fix",
+    "start:dev": "nodemon -r @std/esm -w client -w server server",
     "test": "yarn eslint",
     "eslint": "eslint .",
     "prettier": "prettier --write './*.{json,md}' '{client,server}/*.{css,js}'",
@@ -43,6 +45,7 @@
     "eslint": "4.15.0",
     "eslint-config-oz": "github:johnmuhl/eslint-config-oz#v2.2.1",
     "nodemon": "1.14.11",
+    "npm-run-all": "4.1.2",
     "prettier": "1.10.2"
   },
   "@std/esm": "cjs",
