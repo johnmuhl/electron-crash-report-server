@@ -6,6 +6,7 @@ services:
     volumes:
       - ./client:/app/client
       - ./server:/app/server
+      - ./node_modules
     environment:
       - DATABASE_URL=postgres://example:example@db/electron-crash-report-server
       - AUTH_USER=crash
