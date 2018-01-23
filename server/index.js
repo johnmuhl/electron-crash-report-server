@@ -11,6 +11,7 @@ import SQL from "./sql.js";
 import { tmpdir } from "os";
 import { walkStack } from "minidump";
 
+const DUPLICATE_COLUMN = "42701";
 const UNDEFINED_TABLE = "42P01";
 const unlinkAsync = promisify(unlink);
 const walkStackAsync = promisify(walkStack);
@@ -49,15 +50,20 @@ async function main() {
   }
 
   if (dumps) {
+    // Add new columns to reports
     try {
-      // Add new columns to reports
       await db.run("ALTER TABLE reports ADD COLUMN dump bytea");
       await db.run("ALTER TABLE reports ADD COLUMN open boolean DEFAULT TRUE");
       await db.run("ALTER TABLE reports ADD COLUMN closed_at timestamptz");
       await db.run(
         "ALTER TABLE reports ADD COLUMN updated_at timestamptz DEFAULT now()"
       );
-      // Migrate dumps table to reports.dump
+    } catch (error) {
+      if (error.code !== DUPLICATE_COLUMN) throw new Error(error);
+    }
+
+    // Migrate dumps table to reports.dump
+    try {
       await Promise.all(
         dumps.map(async dump => {
           await db.reports.update({
@@ -66,9 +72,19 @@ async function main() {
           });
         })
       );
-      // Add NOT NULL to dump column
+    } catch (error) {
+      throw new Error(error);
+    }
+
+    // Add NOT NULL to dump column
+    try {
       await db.run("ALTER TABLE reports ALTER COLUMN dump SET NOT NULL");
-      // Drop old dumps table
+    } catch (error) {
+      throw new Error(error);
+    }
+
+    // Drop old dumps table
+    try {
       await db.run("DROP TABLE dumps");
     } catch (error) {
       throw new Error(error);
