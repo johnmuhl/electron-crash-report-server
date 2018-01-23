@@ -57,18 +57,20 @@ async function main() {
         "ALTER TABLE reports ADD COLUMN updated_at timestamptz DEFAULT now()"
       );
       // Migrate dumps table to reports.dump
-      dumps.forEach(async dump => {
-        await db.reports.update({
-          dump: dump.file,
-          id: dump.report_id,
-        });
-      });
+      await Promise.all(
+        dumps.map(async dump => {
+          await db.reports.update({
+            dump: dump.file,
+            id: dump.report_id,
+          });
+        })
+      );
       // Add NOT NULL to dump column
       await db.run("ALTER TABLE reports ALTER COLUMN dump SET NOT NULL");
       // Drop old dumps table
       await db.run("DROP TABLE dumps");
     } catch (error) {
-      console.error(error);
+      throw new Error(error);
     }
   }
 
