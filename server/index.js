@@ -11,21 +11,22 @@ import SQL from "./sql.js";
 import { tmpdir } from "os";
 import { walkStack } from "minidump";
 
-const config = dotenv.config().parsed;
 const UNDEFINED_TABLE = "42P01";
 const unlinkAsync = promisify(unlink);
 const walkStackAsync = promisify(walkStack);
 const writeFileAsync = promisify(writeFile);
 
+dotenv.config();
+
 const server = new Hapi.Server({
-  port: config.PORT,
+  port: process.env.PORT,
   router: { stripTrailingSlash: true },
 });
 
 function validate(request, user, pass) {
   if (!user || !pass) return Boom.unauthorized();
-  if (user !== config.AUTH_USER) return Boom.unauthorized();
-  if (pass === config.AUTH_PASS) {
+  if (user !== process.env.AUTH_USER) return Boom.unauthorized();
+  if (pass === process.env.AUTH_PASS) {
     return { credentials: { pass, user }, isValid: true };
   }
   return Boom.unauthorized();
@@ -36,7 +37,7 @@ async function main() {
   let dumps;
 
   try {
-    db = await massive(config.DATABASE_URL);
+    db = await massive(process.env.DATABASE_URL);
   } catch (error) {
     throw new Error(error);
   }
@@ -93,8 +94,8 @@ async function main() {
   // Application state
   server.app.db = db;
   server.app.env = process.env.NODE_ENV;
-  server.app.user = config.AUTH_USER;
-  server.app.pass = config.AUTH_PASS;
+  server.app.user = process.env.AUTH_USER;
+  server.app.pass = process.env.AUTH_PASS;
   server.app.auth = `${server.app.user}:${server.app.pass}`;
 
   // Application routes
