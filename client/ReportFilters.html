@@ -4,6 +4,7 @@
     Show closed?
   </label>
 
+  {{#if $applications.length > 1}}
   <select bind:value=$application on:change="change(this)">
     <option value="">Show all</option>
 
@@ -13,6 +14,7 @@
     </option>
     {{/each}}
   </select>
+  {{/if}}
 </div>
 
 <style>
