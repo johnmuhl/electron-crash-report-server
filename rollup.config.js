@@ -1,11 +1,11 @@
 import cjs from "rollup-plugin-commonjs";
-import css from "rollup-plugin-css-only";
+// import cssnext from "postcss-cssnext";
 import img from "rollup-plugin-img";
 import json from "rollup-plugin-json";
 import minify from "rollup-plugin-babel-minify";
+// import postcss from "rollup-plugin-postcss";
 import resolve from "rollup-plugin-node-resolve";
-
-const production = process.env.NODE_ENV === "production";
+import svelte from "rollup-plugin-svelte";
 
 export default {
   input: "client/index.js",
@@ -13,13 +13,23 @@ export default {
     file: "server/public/bundle.js",
     format: "iife",
     name: "ECRS",
+    sourcemap: true,
   },
   plugins: [
     cjs(),
     json(),
     resolve(),
-    css({ output: "server/public/bundle.css" }),
+    // postcss({
+    //   extract: "server/public/bundle.css",
+    //   minimize: { autoprefixer: false },
+    //   plugins: [cssnext],
+    //   sourceMap: true,
+    // }),
+    svelte({
+      css: css => css.write("server/public/bundle.css"),
+      store: true,
+    }),
     img(),
-    production ? minify() : {},
+    minify(),
   ],
 };

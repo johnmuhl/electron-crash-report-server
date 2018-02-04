@@ -1,0 +1,294 @@
+<div class="details">
+  <div class="timestamp created-on">
+    <picture>
+      <source srcset="/icons-1x.png, /icons-2x.png 2x">
+      <img
+        alt="created on"
+        src="/icons-1x.png"
+        srcset="/icons-1x.png, /icons-2x.png 2x"
+        width="18"
+        height="18"
+      >
+    </picture>
+    {{new Date($report.created_at)}}
+  </div>
+
+  <div class="timestamp closed-on">
+    <picture>
+      <source srcset="/icons-1x.png, /icons-2x.png 2x">
+      <img
+        alt="created on"
+        src="/icons-1x.png"
+        srcset="/icons-1x.png, /icons-2x.png 2x"
+        width="18"
+        height="18"
+      >
+    </picture>
+    {{#if $report.open}}
+      —
+    {{else}}
+      {{new Date($report.closed_at)}}
+    {{/if}}
+  </div>
+
+  <div class="timestamp open-for">
+    <picture>
+      <source srcset="/icons-1x.png, /icons-2x.png 2x">
+      <img
+        alt="created on"
+        src="/icons-1x.png"
+        srcset="/icons-1x.png, /icons-2x.png 2x"
+        width="18"
+        height="18"
+      >
+    </picture>
+    {{lifetime($report)}}
+  </div>
+
+  <div>
+    {{#if $report.open}}
+    <button class="close" on:click="toggleStatus(event)">
+      Close report
+    </button>
+    {{else}}
+    <button on:click="toggleStatus(event)">
+      Reopen report
+    </button>
+    {{/if}}
+  </div>
+
+  <div>
+    <button
+      class={{showDetails ? 'active' : ''}}
+      on:click="set({ showDetails: !showDetails })"
+    >
+      View report details
+    </button>
+
+    {{#if showDetails}}
+    <pre>{{JSON.stringify($report.body, null, 2)}}</pre>
+    {{/if}}
+  </div>
+
+  <div>
+    <button
+      class={{showStackTrace ? 'active' : ''}}
+      on:click="getStackTrace()"
+    >
+      View stack trace
+    </button>
+
+    {{#if showStackTrace}}
+    <pre>{{stackTrace}}</pre>
+    {{/if}}
+  </div>
+
+  <div>
+    <a class="button" href="/reports/{{$report.id}}/dump">
+      Download minidump
+    </a>
+  </div>
+
+  <div>
+    <button class="delete" on:click="deleteReport()">
+      Delete report
+    </button>
+  </div>
+</div>
+
+<style>
+  div {
+    padding: 0.25rem 0.5rem;
+  }
+
+  button,
+  .button {
+    display: block;
+    padding: 1rem 0.5rem;
+    width: 100%;
+    font-family: sans-serif;
+    font-size: 1.125em;
+    text-align: left;
+    text-decoration: none;
+    line-height: 1.2;
+    color: #212121;
+    background-color: #eee;
+    border: 0;
+  }
+
+  button.active,
+  .button.active {
+    color: white;
+    background-color: #2962ff;
+  }
+
+  pre {
+    padding: 0.25rem;
+    width: 100%;
+    overflow: auto;
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-top: 0;
+  }
+
+  .close {
+    color: black;
+    background-color: #00c853;
+  }
+
+  .delete {
+    color: white;
+    background-color: #d50000;
+  }
+
+  .details {
+    position: fixed;
+    top: calc(2 * 1rem + 1.125em);
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0 0 0.5rem 0;
+    overflow: auto;
+    background-color: white;
+  }
+
+  .timestamp {
+    display: flex;
+    align-items: center;
+    padding: 0.125rem 1rem;
+    font-size: 0.875em;
+  }
+
+  .timestamp img {
+    margin-right: 0.25rem;
+  }
+
+  .created-on {
+    padding-top: 0.5rem;
+  }
+
+  .created-on img {
+    object-position: -3px -24px;
+  }
+
+  .closed-on img {
+    object-position: -3px -42px;
+  }
+
+  .open-for {
+    padding-bottom: 0.5rem;
+  }
+
+  .open-for img {
+    object-position: -3px -60px;
+  }
+</style>
+
+<script>
+  import prettyMs from "pretty-ms";
+
+  export default {
+    oncreate() {
+      const id = this.store.get("report").id;
+
+      document.body.style.overflow = "hidden";
+    },
+    ondestroy() {
+      document.body.style.overflow = "auto";
+    },
+    data() {
+      return {
+        showDetails: false,
+        showStackTrace: false,
+        stackTrace: null,
+      };
+    },
+    helpers: {
+      lifetime(report) {
+        const closed = new Date(report.closed_at || Date.now());
+        const created = new Date(report.created_at);
+        let duration = prettyMs(closed - created);
+
+        if (duration.split(" ").length === 1) return duration;
+
+        duration = duration.replace(/\s\d+[.\d]+s$/, "");
+
+        return duration;
+      },
+    },
+    methods: {
+      async deleteReport() {
+        const authorization = `Basic ${document.cookie.split("=")[1]}`;
+        const headers = new Headers({ authorization });
+        const id = this.store.get("report").id;
+        const options = { headers, method: "DELETE" };
+        const previous = this.store.get("reports");
+        const reports = previous.slice(0, previous.length);
+
+        try {
+          await fetch(`/reports/${id}`, options);
+
+          let i;
+          reports.forEach((item, index) => {
+            if (item.id === id) {
+              i = index;
+            }
+          });
+          reports.splice(i, 1);
+
+          this.store.set({
+            reports,
+            report: null,
+          });
+        } catch (error) {
+          throw new Error(error);
+        }
+      },
+      async getStackTrace() {
+        if (this.get("stackTrace")) {
+          this.set({ showStackTrace: !this.get("showStackTrace") });
+        } else {
+          const authorization = `Basic ${document.cookie.split("=")[1]}`;
+          const headers = new Headers({ authorization });
+          const id = this.store.get("report").id;
+          const options = { headers, method: "GET" };
+
+          try {
+            const response = await fetch(`/reports/${id}/stack`, options);
+            const stackTrace = await response.json();
+
+            this.set({
+              showStackTrace: !this.get("showStackTrace"),
+              stackTrace: stackTrace.text,
+            });
+          } catch (error) {
+            throw new Error(error);
+          }
+        }
+      },
+      async toggleStatus(event) {
+        const authorization = `Basic ${document.cookie.split("=")[1]}`;
+        const headers = new Headers({ authorization });
+        const id = this.store.get("report").id;
+        const options = { headers, method: "PATCH" };
+        const previous = this.store.get("reports");
+        const reports = previous.slice(0, previous.length);
+
+        try {
+          const response = await fetch(`/reports/${id}`, options);
+          const report = await response.json();
+
+          reports.forEach((item, index) => {
+            if (item.id === id) {
+              reports[index] = report;
+            }
+          });
+
+          this.store.set({ reports, report });
+        } catch (error) {
+          throw new Error(error);
+        }
+      },
+    },
+  };
+</script>

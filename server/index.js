@@ -168,15 +168,18 @@ async function main() {
 
         try {
           const reports = await server.app.db.run(sql);
+          const response = [];
 
-          return reports.map(r => {
+          reports.forEach(r => {
             const report = Object.assign({}, r);
 
             delete report.dump;
             delete report.search;
 
-            return report;
+            response.push(report);
           });
+
+          return response;
         } catch (error) {
           throw new Error(error);
         }
@@ -300,7 +303,7 @@ async function main() {
           const stack = await walkStackAsync(path);
           await unlinkAsync(path);
 
-          return stack.toString();
+          return { text: stack.toString() };
         } catch (error) {
           throw new Error(error);
         }

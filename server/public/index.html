@@ -4,8 +4,47 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="icon" href="/favicon.png">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      color: #212121;
+      background-color: #fafafa;
+      box-sizing: border-box;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: inherit;
+    }
+
+    body {
+      margin-top: calc(2 * 1rem + 1.125em);
+      font-family: sans-serif;
+      line-height: 1.5;
+    }
+
+    picture {
+      line-height: 0;
+    }
+
+    picture img {
+      object-fit: none;
+      object-position: 0 0;
+    }
+
+    .truncate {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  </style>
   <link rel="stylesheet" href="/bundle.css">
-  <body>
-    <script async src="/bundle.js"></script>
-  </body>
+  <script async src="/bundle.js"></script>
+  <body></body>
 </html>

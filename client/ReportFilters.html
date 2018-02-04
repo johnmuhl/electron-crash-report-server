@@ -1,0 +1,45 @@
+<div>
+  <label>
+    <input bind:checked=$closed on:change="toggle()" type="checkbox">
+    Show closed?
+  </label>
+
+  <select bind:value=$application on:change="change(this)">
+    <option value="">Show all</option>
+
+    {{#each $applications as application}}
+    <option value={{application}}>
+      {{application}}
+    </option>
+    {{/each}}
+  </select>
+</div>
+
+<style>
+  div {
+    position: sticky;
+    top: 0;
+    top: calc(2 * 1rem + 1.125em);
+    display: flex;
+    padding: 1rem;
+    justify-content: space-between;
+    background-color: white;
+    border-bottom: 1px solid #e0e0e0;
+  }
+</style>
+
+<script>
+  export default {
+    methods: {
+      change(s) {
+        const application = s.options[s.selectedIndex].value;
+
+        this.store.set({ application });
+        localStorage.application = application;
+      },
+      toggle() {
+        localStorage.closed = this.store.get("closed");
+      },
+    },
+  };
+</script>

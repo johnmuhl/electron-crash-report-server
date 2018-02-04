@@ -12,10 +12,10 @@
     "build:dev": "rollup -cw",
     "dev": "run-p --race *:dev",
     "fmt": "yarn run prettier && yarn run eslint --fix",
-    "start:dev": "nodemon -r @std/esm -w client -w server server",
+    "start:dev": "nodemon -r @std/esm -i client -i 'server/public/bundle.*' server",
     "test": "yarn eslint",
     "eslint": "eslint .",
-    "prettier": "prettier --write './*.{json,md}' '{client,server}/*.{css,js}' '!./package.json'",
+    "prettier": "prettier --write './*.{js,json,md}' '{client,server}/*.{css,js}' '!./package.json'",
     "heroku-postbuild": "yarn build"
   },
   "engines": {
@@ -31,6 +31,8 @@
     "inert": "5.1.0",
     "massive": "4.6.3",
     "minidump": "0.11.0",
+    "normalize.css": "7.0.0",
+    "postcss-cssnext": "3.1.0",
     "preact": "8.2.7",
     "pretty-ms": "3.1.0",
     "rollup": "0.55.0",
@@ -39,7 +41,10 @@
     "rollup-plugin-css-only": "0.4.0",
     "rollup-plugin-img": "1.1.0",
     "rollup-plugin-json": "2.3.0",
-    "rollup-plugin-node-resolve": "3.0.2"
+    "rollup-plugin-node-resolve": "3.0.2",
+    "rollup-plugin-postcss": "1.2.5",
+    "rollup-plugin-svelte": "4.0.0",
+    "svelte": "1.54.0"
   },
   "devDependencies": {
     "eslint": "4.16.0",
@@ -49,6 +54,9 @@
     "prettier": "1.10.2"
   },
   "@std/esm": "cjs",
+  "browserslist": [
+    "last 2 versions"
+  ],
   "eslintConfig": {
     "extends": "oz"
   },

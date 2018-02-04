@@ -1,0 +1,84 @@
+<div>
+  <ul>
+    {{#each $reports as report, index}}
+    {{#if $closed || report.open}}
+    {{#if !$application || report.body._productName === $application }}
+    <li class={{report.open ? 'open' : 'closed'}}>
+      <a
+        data-reports-index={{index}}
+        href="/reports/{{report.id}}"
+        on:click="show(event)"
+      >
+        <div class="id">
+          <span class="pound">#</span>{{report.id}}
+        </div>
+        <div class="version">
+          {{#if report.body._version}}
+          <span class="v">v</span>{{report.body._version}}
+          {{/if}}
+        </div>
+      </a>
+    </li>
+    {{/if}}
+    {{/if}}
+    {{/each}}
+  </ul>
+</div>
+
+<style>
+  li:not(:last-child) {
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    font-size: 1.25em;
+    color: #212121;
+    text-decoration: none;
+  }
+
+  .id {
+    font-weight: 500;
+  }
+
+  .version {
+    font-size: 1rem;
+    font-weight: 300;
+  }
+
+  .closed,
+  .closed a,
+  .pound {
+    color: #616161;
+  }
+
+  .closed {
+    background-color: #eee;
+  }
+
+  .closed .id {
+    font-weight: 400;
+  }
+
+  .pound {
+    font-weight: 300;
+  }
+</style>
+
+<script>
+  export default {
+    methods: {
+      show(event) {
+        const index = Number(event.target.dataset.reportsIndex);
+        const report = this.store.get("reports")[index];
+
+        this.store.set({ report });
+
+        event.preventDefault();
+      },
+    },
+  };
+</script>
