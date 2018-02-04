@@ -6,53 +6,52 @@
 {{/if}}
 
 <script>
-  import AppBar from "./AppBar.html";
-  import ReportDetails from "./ReportDetails.html";
-  import ReportFilters from "./ReportFilters.html";
-  import ReportList from "./ReportList.html";
+import AppBar from "./AppBar.html";
+import ReportDetails from "./ReportDetails.html";
+import ReportFilters from "./ReportFilters.html";
+import ReportList from "./ReportList.html";
 
+export default {
+  components: {
+    AppBar,
+    ReportDetails,
+    ReportFilters,
+    ReportList,
+  },
 
-  export default {
-    components: {
-      AppBar,
-      ReportDetails,
-      ReportFilters,
-      ReportList,
-    },
+  async oncreate() {
+    // Restore filters from localStorage
+    if (localStorage.application || localStorage.closed) {
+      const application = localStorage.application || "";
+      let closed = localStorage.closed;
 
-    async oncreate() {
-      // Restore filters from localStorage
-      if (localStorage.application || localStorage.closed) {
-        const application = localStorage.application || "";
-        let closed = localStorage.closed;
+      if (closed == null) closed = false;
+      closed = closed === "true";
 
-        if (closed == null) closed = false;
-        closed = closed === "true";
+      this.store.set({ application, closed });
+    }
 
-        this.store.set({ application, closed });
-      }
+    try {
+      const headers = new Headers({
+        authorization: this.store.get("authorization"),
+      });
+      const response = await fetch("/reports", { headers });
 
-      try {
-        const headers = new Headers({
-          authorization: this.store.get("authorization")
-        });
-        const response = await fetch("/reports", { headers });
+      if (response.status !== 200) return console.error(response);
 
-        if (response.status !== 200) return console.error(response);
+      const reports = await response.json();
+      const applications = reports
+        .map(report => report.body._productName)
+        .filter(item => item != null)
+        .filter(item => item.toString().trim().length)
+        .filter(item => !!item)
+        .filter((item, index, array) => array.indexOf(item) === index)
+        .sort();
 
-        const reports = await response.json();
-        const applications = reports
-          .map(report => report.body._productName)
-          .filter(item => item != null)
-          .filter(item => item.toString().trim().length)
-          .filter(item => !!item)
-          .filter((item, index, array) => array.indexOf(item) === index)
-          .sort();
-
-        this.store.set({ applications, reports });
-      } catch (error) {
-        throw new Error(error);
-      }
-    },
-  };
+      this.store.set({ applications, reports });
+    } catch (error) {
+      throw new Error(error);
+    }
+  },
+};
 </script>

@@ -22,45 +22,45 @@
 </div>
 
 <style>
-  header {
-    display: flex;
-    align-content: center;
-    justify-content: space-between;
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    padding: 0 1rem;
-    color: white;
-    background-color: black;
-  }
+header {
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding: 0 1rem;
+  color: white;
+  background-color: black;
+}
 
-  h1 {
-    padding: 1rem 0;
-    margin: 0;
-    font-size: 1.125em;
-    font-weight: 500;
-    line-height: 1;
-  }
+h1 {
+  padding: 1rem 0;
+  margin: 0;
+  font-size: 1.125em;
+  font-weight: 500;
+  line-height: 1;
+}
 
-  button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    cursor: default;
-    background-color: transparent;
-    border: 0;
-    appearance: none;
-  }
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: default;
+  background-color: transparent;
+  border: 0;
+  appearance: none;
+}
 </style>
 
 <script>
-  export default {
-    methods: {
-      hide() {
-        this.store.set({ report: null });
-      },
+export default {
+  methods: {
+    hide() {
+      this.store.set({ report: null });
     },
-  };
+  },
+};
 </script>
