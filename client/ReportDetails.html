@@ -185,17 +185,10 @@ pre {
 </style>
 
 <script>
+/* global document fetch Headers */
 import prettyMs from "pretty-ms";
 
 export default {
-  oncreate() {
-    const id = this.store.get("report").id;
-
-    document.body.style.overflow = "hidden";
-  },
-  ondestroy() {
-    document.body.style.overflow = "auto";
-  },
   data() {
     return {
       showDetails: false,
@@ -220,7 +213,7 @@ export default {
     async deleteReport() {
       const authorization = `Basic ${document.cookie.split("=")[1]}`;
       const headers = new Headers({ authorization });
-      const id = this.store.get("report").id;
+      const { id } = this.store.get("report");
       const options = { headers, method: "DELETE" };
       const previous = this.store.get("reports");
       const reports = previous.slice(0, previous.length);
@@ -237,8 +230,8 @@ export default {
         reports.splice(i, 1);
 
         this.store.set({
-          reports,
           report: null,
+          reports,
         });
       } catch (error) {
         throw new Error(error);
@@ -250,7 +243,7 @@ export default {
       } else {
         const authorization = `Basic ${document.cookie.split("=")[1]}`;
         const headers = new Headers({ authorization });
-        const id = this.store.get("report").id;
+        const { id } = this.store.get("report");
         const options = { headers, method: "GET" };
 
         try {
@@ -266,10 +259,10 @@ export default {
         }
       }
     },
-    async toggleStatus(event) {
+    async toggleStatus() {
       const authorization = `Basic ${document.cookie.split("=")[1]}`;
       const headers = new Headers({ authorization });
-      const id = this.store.get("report").id;
+      const { id } = this.store.get("report");
       const options = { headers, method: "PATCH" };
       const previous = this.store.get("reports");
       const reports = previous.slice(0, previous.length);
@@ -284,11 +277,17 @@ export default {
           }
         });
 
-        this.store.set({ reports, report });
+        this.store.set({ report, reports });
       } catch (error) {
         throw new Error(error);
       }
     },
+  },
+  oncreate() {
+    document.body.style.overflow = "hidden";
+  },
+  ondestroy() {
+    document.body.style.overflow = "auto";
   },
 };
 </script>

@@ -6,6 +6,7 @@
 {{/if}}
 
 <script>
+/* global fetch Headers localStorage */
 import AppBar from "./AppBar.html";
 import ReportDetails from "./ReportDetails.html";
 import ReportFilters from "./ReportFilters.html";
@@ -22,8 +23,8 @@ export default {
   async oncreate() {
     // Restore filters from localStorage
     if (localStorage.application || localStorage.closed) {
-      const application = localStorage.application || "";
-      let closed = localStorage.closed;
+      const { application } = localStorage || "";
+      let { closed } = localStorage;
 
       if (closed == null) closed = false;
       closed = closed === "true";
@@ -41,14 +42,14 @@ export default {
 
       const reports = await response.json();
       const applications = reports
-        .map(report => report.body._productName)
+        .map(report => report.body._productName) // eslint-disable-line no-underscore-dangle
         .filter(item => item != null)
         .filter(item => item.toString().trim().length)
         .filter(item => !!item)
         .filter((item, index, array) => array.indexOf(item) === index)
         .sort();
 
-      this.store.set({ applications, reports });
+      return this.store.set({ applications, reports });
     } catch (error) {
       throw new Error(error);
     }
