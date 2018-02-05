@@ -186,7 +186,7 @@ pre {
 
 <script>
 /* global document fetch Headers */
-import prettyMs from "pretty-ms";
+import parseMs from "parse-ms";
 
 export default {
   data() {
@@ -200,13 +200,11 @@ export default {
     lifetime(report) {
       const closed = new Date(report.closed_at || Date.now());
       const created = new Date(report.created_at);
-      let duration = prettyMs(closed - created);
+      const { days, hours, minutes } = parseMs(closed - created);
 
-      if (duration.split(" ").length === 1) return duration;
-
-      duration = duration.replace(/\s\d+[.\d]+s$/, "");
-
-      return duration;
+      if (days) return `${days}d ${hours}h ${minutes}m`;
+      if (hours) return `${hours}h ${minutes}m`;
+      return `${minutes}m`;
     },
   },
   methods: {
