@@ -37,7 +37,6 @@
     "parse-ms": "1.0.1",
     "postcss": "6.0.17",
     "postcss-cssnext": "3.1.0",
-    "preact": "8.2.7",
     "rollup": "0.55.0",
     "rollup-plugin-babel-minify": "3.1.2",
     "rollup-plugin-commonjs": "8.2.6",
