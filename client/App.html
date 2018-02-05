@@ -42,7 +42,8 @@ export default {
 
       const reports = await response.json();
       const applications = reports
-        .map(report => report.body._productName) // eslint-disable-line no-underscore-dangle
+        // eslint-disable-next-line no-underscore-dangle
+        .map(report => report.body._productName)
         .filter(item => item != null)
         .filter(item => item.toString().trim().length)
         .filter(item => !!item)
