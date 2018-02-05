@@ -2,12 +2,12 @@
   {{#each $reports as report, index}}
   {{#if $closed || report.open}}
   {{#if !$application || report.body._productName === $application }}
-  <li class={{report.open ? 'open' : 'closed'}}>
-    <a
-      data-reports-index={{index}}
-      href="/reports/{{report.id}}"
-      on:click="show(event)"
-    >
+  <li
+    class={{report.open ? 'open' : 'closed'}}
+    data-reports-index={{index}}
+    on:click="show(event)"
+  >
+    <a href="/reports/{{report.id}}">
       <div class="id">
         <span class="pound">#</span>{{report.id}}
       </div>
@@ -70,7 +70,7 @@ a {
 export default {
   methods: {
     show(event) {
-      const index = Number(event.target.dataset.reportsIndex);
+      const index = Number(event.target.closest("li").dataset.reportsIndex);
       const report = this.store.get("reports")[index];
 
       this.store.set({ report });
