@@ -37,6 +37,6 @@ export default {
       store: true,
     }),
     img(),
-    minify(),
+    production && minify(),
   ],
 };
