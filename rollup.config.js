@@ -7,7 +7,7 @@ import postcss from "postcss";
 import resolve from "rollup-plugin-node-resolve";
 import svelte from "rollup-plugin-svelte";
 
-const production = process.env.NODE_ENV === 'production';
+const production = process.env.NODE_ENV === "production";
 
 export default {
   input: "client/index.js",
