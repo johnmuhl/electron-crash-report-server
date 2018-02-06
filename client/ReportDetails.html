@@ -59,8 +59,8 @@
 
   <div>
     <button
-      class={{showDetails ? 'active' : ''}}
       on:click="set({ showDetails: !showDetails })"
+      style={{showDetails && "color: white; background-color: #2962ff;"}}
     >
       View report details
     </button>
@@ -72,8 +72,8 @@
 
   <div>
     <button
-      class={{showStackTrace ? 'active' : ''}}
       on:click="getStackTrace()"
+      style={{showStackTrace && "color: white; background-color: #2962ff;"}}
     >
       View stack trace
     </button>
@@ -114,12 +114,6 @@ button,
   color: #212121;
   background-color: #eee;
   border: 0;
-}
-
-button.active,
-.button.active {
-  color: white;
-  background-color: #2962ff;
 }
 
 pre {
