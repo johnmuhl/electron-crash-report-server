@@ -6,7 +6,7 @@
 {{/if}}
 
 <script>
-/* global fetch Headers localStorage */
+/* global devicePixelRatio fetch Headers Image localStorage */
 import AppBar from "./AppBar.html";
 import ReportDetails from "./ReportDetails.html";
 import ReportFilters from "./ReportFilters.html";
@@ -40,6 +40,7 @@ export default {
 
       if (response.status !== 200) return console.error(response);
 
+      const img = new Image();
       const reports = await response.json();
       const applications = reports
         // eslint-disable-next-line no-underscore-dangle
@@ -50,7 +51,10 @@ export default {
         .filter((item, index, array) => array.indexOf(item) === index)
         .sort();
 
-      return this.store.set({ applications, reports });
+      this.store.set({ applications, reports });
+      img.src = devicePixelRatio > 1 ? "/icons-2x.png" : "/icons-1x.png";
+
+      return this;
     } catch (error) {
       throw new Error(error);
     }
