@@ -44,7 +44,7 @@
     "rollup-plugin-json": "2.3.0",
     "rollup-plugin-node-resolve": "3.0.2",
     "rollup-plugin-svelte": "4.0.0",
-    "svelte": "1.54.0"
+    "svelte": "1.54.1"
   },
   "devDependencies": {
     "eslint": "4.16.0",
