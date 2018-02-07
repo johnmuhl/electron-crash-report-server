@@ -7,6 +7,10 @@ const store = new Store({
   applications: [],
   authorization: `Basic ${document.cookie.split("=")[1]}`,
   closed: false,
+  endOfList: false,
+  fetchPending: false,
+  limit: 50,
+  offset: 50,
   report: null,
   reports: [],
 });

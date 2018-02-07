@@ -1,3 +1,4 @@
+<:Window on:scroll='scroll()' />
 <AppBar />
 <ReportFilters />
 <ReportList />
@@ -6,7 +7,7 @@
 {{/if}}
 
 <script>
-/* global devicePixelRatio fetch Headers Image localStorage */
+/* global devicePixelRatio document fetch Headers Image localStorage window */
 import AppBar from "./AppBar.html";
 import ReportDetails from "./ReportDetails.html";
 import ReportFilters from "./ReportFilters.html";
@@ -19,7 +20,53 @@ export default {
     ReportFilters,
     ReportList,
   },
+  methods: {
+    async scroll() {
+      const authorization = this.store.get("authorization");
+      const endOfList = this.store.get("endOfList");
+      const fetchPending = this.store.get("fetchPending");
+      const limit = this.store.get("limit");
+      const offset = this.store.get("offset");
+      const scrollPosition = window.pageYOffset;
+      const { clientHeight, scrollHeight } = document.documentElement;
 
+      if (
+        endOfList ||
+        (fetchPending && scrollHeight - (scrollPosition + clientHeight) < 120)
+      ) {
+        return null;
+      }
+
+      const headers = new Headers({ authorization, limit, offset });
+
+      try {
+        this.store.set({ fetchPending: true });
+
+        const response = await fetch("/reports", { headers });
+
+        if (response.status !== 200) return console.error(response);
+
+        const next = await response.json();
+        const prev = this.store.get("reports");
+        const reports = prev.concat(next);
+
+        if (prev.length === reports.length) {
+          return this.store.set({
+            endOfList: true,
+            fetchPending: false,
+          });
+        }
+
+        return this.store.set({
+          fetchPending: false,
+          offset: offset + limit,
+          reports: prev.concat(next),
+        });
+      } catch (error) {
+        throw new Error(error);
+      }
+    },
+  },
   async oncreate() {
     // Restore filters from localStorage
     if (localStorage.application || localStorage.closed) {
