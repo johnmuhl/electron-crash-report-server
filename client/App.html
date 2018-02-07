@@ -58,7 +58,7 @@ export default {
           });
         }
 
-        const applications = reports
+        reports
           // eslint-disable-next-line no-underscore-dangle
           .map(report => report.body._productName)
           .filter(item => item != null)
@@ -67,9 +67,9 @@ export default {
           .filter((item, index, array) => array.indexOf(item) === index)
           .forEach(item => {
             if (prevApps.indexOf(item) === -1) {
-              prevApps.push(item)
+              prevApps.push(item);
             }
-          })
+          });
 
         return this.store.set({
           applications: prevApps.sort(),
