@@ -49,6 +49,7 @@ export default {
         const next = await response.json();
         const prev = this.store.get("reports");
         const reports = prev.concat(next);
+        const prevApps = this.store.get("applications");
 
         if (prev.length === reports.length) {
           return this.store.set({
@@ -57,7 +58,21 @@ export default {
           });
         }
 
+        const applications = reports
+          // eslint-disable-next-line no-underscore-dangle
+          .map(report => report.body._productName)
+          .filter(item => item != null)
+          .filter(item => item.toString().trim().length)
+          .filter(item => !!item)
+          .filter((item, index, array) => array.indexOf(item) === index)
+          .forEach(item => {
+            if (prevApps.indexOf(item) === -1) {
+              prevApps.push(item)
+            }
+          })
+
         return this.store.set({
+          applications: prevApps.sort(),
           fetchPending: false,
           offset: offset + limit,
           reports: prev.concat(next),
