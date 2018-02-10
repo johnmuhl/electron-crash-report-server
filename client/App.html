@@ -23,17 +23,14 @@ export default {
   methods: {
     async scroll() {
       const authorization = this.store.get("authorization");
-      const endOfList = this.store.get("endOfList");
-      const fetchPending = this.store.get("fetchPending");
+      const eol = this.store.get("endOfList");
+      const fpend = this.store.get("fetchPending");
       const limit = this.store.get("limit");
       const offset = this.store.get("offset");
-      const scrollPosition = window.pageYOffset;
+      const { pageYOffset } = window;
       const { clientHeight, scrollHeight } = document.documentElement;
 
-      if (
-        endOfList ||
-        (fetchPending && scrollHeight - (scrollPosition + clientHeight) < 120)
-      ) {
+      if (eol || (fpend && scrollHeight - (pageYOffset + clientHeight) < 120)) {
         return null;
       }
 
