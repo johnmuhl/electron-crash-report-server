@@ -1,4 +1,4 @@
-<!-- <:Window on:scroll='scroll()' /> -->
+<:Window on:scroll='handleScroll()' />
 <Header :report on:hideReport="hideReport()" />
 <Filters
   :application
@@ -21,7 +21,8 @@
 {{/if}}
 
 <script>
-/* global devicePixelRatio document fetch Headers Image localStorage */
+/* global devicePixelRatio document fetch Headers Image localStorage window */
+import debounce from "sb-debounce";
 import Details from "./Details.html";
 import Filters from "./Filters.html";
 import Header from "./Header.html";
@@ -34,12 +35,16 @@ export default {
     Header,
     List,
   },
+
   data() {
     return {
       application: "",
       applications: new Set(),
       authorization: `Basic ${document.cookie.split("=")[1]}`,
       closed: false,
+      eol: false,
+      limit: 10,
+      offset: 10,
       report: null,
       reports: new Map(),
       showDetails: false,
@@ -101,6 +106,42 @@ export default {
         throw new Error(error);
       }
     },
+
+    handleScroll: debounce(async function scroller() {
+      const eol = this.get("eol");
+      const limit = this.get("limit");
+      const offset = this.get("offset");
+      const reports = this.get("reports");
+      const { clientHeight, scrollHeight } = document.documentElement;
+      const { pageYOffset } = window;
+
+      if (!eol && scrollHeight - (pageYOffset + clientHeight) < 50) {
+        try {
+          const headers = new Headers({
+            authorization: this.get("authorization"),
+            limit,
+            offset,
+          });
+          let response = await fetch("/reports", { headers });
+
+          if (response.status !== 200) return console.error(response);
+
+          response = await response.json();
+          response.forEach(report => reports.set(report.id, report));
+
+          this.set({
+            eol: !response.length,
+            offset: limit + offset,
+            reports,
+          });
+          return window.scrollBy(0, window.innerHeight / 10);
+        } catch (error) {
+          throw new Error(error);
+        }
+      } else {
+        return null;
+      }
+    }, 150),
 
     hideReport() {
       this.set({ report: null });
