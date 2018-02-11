@@ -1,13 +1,13 @@
-<ul>
-  {{#each $reports as report, index}}
-  {{#if $closed || report.open}}
-  {{#if !$application || report.body._productName === $application }}
+<ul id="reports">
+  {{#each Array.from(reports.values()) as report}}
+  {{#if closed || report.open}}
+  {{#if !application || report.body._productName === application }}
   <li
     class={{report.open ? 'open' : 'closed'}}
-    data-reports-index={{index}}
-    on:click="show(event)"
+    data-id={{report.id}}
+    on:click="fire('showReport', event)"
   >
-    <a href="/reports/{{report.id}}">
+    <a class="flexbox" href="/reports/{{report.id}}">
       <div class="id">
         <span class="pound">#</span>{{report.id}}
       </div>
@@ -29,9 +29,6 @@ li:not(:last-child) {
 }
 
 a {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   padding: 1rem;
   font-size: 1.25em;
   color: #212121;
@@ -65,18 +62,3 @@ a {
   font-weight: 300;
 }
 </style>
-
-<script>
-export default {
-  methods: {
-    show(event) {
-      const index = Number(event.target.closest("li").dataset.reportsIndex);
-      const report = this.store.get("reports")[index];
-
-      this.store.set({ report });
-
-      event.preventDefault();
-    },
-  },
-};
-</script>

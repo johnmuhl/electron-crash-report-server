@@ -1,0 +1,42 @@
+<div class="flexbox">
+  <!-- show closed filter -->
+  <div>
+    <input
+      bind:checked="closed"
+      on:change="fire('toggleClosedFilter')"
+      id="show-closed"
+      type="checkbox"
+    >
+    <label for="show-closed">Show closed?</label>
+  </div>
+
+  <!-- application filter -->
+  {{#if applications.size > 1}}
+  <div>
+    <label for="applications" class="sr-only">Applications</label>
+    <select
+      bind:value="application"
+      on:change="fire('changeApplicationFilter', event)"
+      id="applications"
+    >
+      <option value="">Show all</option>
+      {{#each Array.from(applications) as application}}
+      <option value={{application}}>
+        {{application}}
+      </option>
+      {{/each}}
+    </select>
+  </div>
+  {{/if}}
+</div>
+
+<style>
+.flexbox {
+  position: sticky;
+  top: 0;
+  top: calc(2 * 1rem + 1.125em);
+  padding: 1rem;
+  background-color: white;
+  border-bottom: 1px solid #e0e0e0;
+}
+</style>

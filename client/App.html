@@ -1,122 +1,214 @@
-<:Window on:scroll='scroll()' />
-<AppBar />
-<ReportFilters />
-<ReportList />
-{{#if $report}}
-<ReportDetails />
+<!-- <:Window on:scroll='scroll()' /> -->
+<Header :report on:hideReport="hideReport()" />
+<Filters
+  :application
+  :applications
+  :closed
+  on:changeApplicationFilter="changeApplicationFilter(event)"
+  on:toggleClosedFilter="toggleClosedFilter()"
+/>
+<List :application :closed :reports on:showReport="showReport(event)" />
+{{#if report}}
+<Details
+  report="{{reports.get(report)}}"
+  :reports
+  :showDetails
+  :showStackTrace
+  on:deleteReport="deleteReport()"
+  on:getStackTrace="getStackTrace()"
+  on:toggleStatus="toggleStatus()"
+/>
 {{/if}}
 
 <script>
-/* global devicePixelRatio document fetch Headers Image localStorage window */
-import AppBar from "./AppBar.html";
-import ReportDetails from "./ReportDetails.html";
-import ReportFilters from "./ReportFilters.html";
-import ReportList from "./ReportList.html";
+/* global devicePixelRatio document fetch Headers Image localStorage */
+import Details from "./Details.html";
+import Filters from "./Filters.html";
+import Header from "./Header.html";
+import List from "./List.html";
 
 export default {
   components: {
-    AppBar,
-    ReportDetails,
-    ReportFilters,
-    ReportList,
+    Details,
+    Filters,
+    Header,
+    List,
   },
+  data() {
+    return {
+      application: "",
+      applications: new Set(),
+      authorization: `Basic ${document.cookie.split("=")[1]}`,
+      closed: false,
+      report: null,
+      reports: new Map(),
+      showDetails: false,
+      showStackTrace: false,
+    };
+  },
+
   methods: {
-    async scroll() {
-      const authorization = this.store.get("authorization");
-      const eol = this.store.get("endOfList");
-      const fpend = this.store.get("fetchPending");
-      const limit = this.store.get("limit");
-      const offset = this.store.get("offset");
-      const { pageYOffset } = window;
-      const { clientHeight, scrollHeight } = document.documentElement;
+    changeApplicationFilter(event) {
+      this.set({ application: event.target.value });
+    },
 
-      if (eol || (fpend && scrollHeight - (pageYOffset + clientHeight) < 120)) {
-        return null;
-      }
-
-      const headers = new Headers({ authorization, limit, offset });
-
+    async deleteReport() {
       try {
-        this.store.set({ fetchPending: true });
-
-        const response = await fetch("/reports", { headers });
+        const headers = new Headers({
+          authorization: this.get("authorization"),
+        });
+        const options = { headers, method: "DELETE" };
+        const id = this.get("report");
+        const reports = this.get("reports");
+        const response = await fetch(`/reports/${id}`, options);
 
         if (response.status !== 200) return console.error(response);
 
-        const next = await response.json();
-        const prev = this.store.get("reports");
-        const reports = prev.concat(next);
-        const prevApps = this.store.get("applications");
+        reports.delete(id);
 
-        if (prev.length === reports.length) {
-          return this.store.set({
-            endOfList: true,
-            fetchPending: false,
-          });
-        }
+        return this.set({ report: null, reports });
+      } catch (error) {
+        throw new Error(error);
+      }
+    },
 
-        reports
-          // eslint-disable-next-line no-underscore-dangle
-          .map(report => report.body._productName)
-          .filter(item => item != null)
-          .filter(item => item.toString().trim().length)
-          .filter(item => !!item)
-          .filter((item, index, array) => array.indexOf(item) === index)
-          .forEach(item => {
-            if (prevApps.indexOf(item) === -1) {
-              prevApps.push(item);
-            }
-          });
+    async getStackTrace() {
+      const reports = this.get("reports");
+      const report = reports.get(this.get("report"));
 
-        return this.store.set({
-          applications: prevApps.sort(),
-          fetchPending: false,
-          offset: offset + limit,
-          reports: prev.concat(next),
+      if (report.stackTrace) {
+        return this.set({ showStackTrace: !this.get("showStackTrace") });
+      }
+
+      try {
+        const headers = new Headers({
+          authorization: this.get("authorization"),
+        });
+        let response = await fetch(`/reports/${report.id}/stack`, { headers });
+
+        if (response.status !== 200) return console.error(response);
+
+        response = await response.json();
+        report.stackTrace = response.text;
+
+        reports.set(report.id, report);
+
+        return this.set({
+          reports,
+          showStackTrace: !this.get("showStackTrace"),
         });
       } catch (error) {
         throw new Error(error);
       }
     },
+
+    hideReport() {
+      this.set({ report: null });
+    },
+
+    showReport(event) {
+      const id = Number(event.target.closest("li").dataset.id);
+
+      this.set({ report: id });
+
+      event.preventDefault();
+    },
+
+    toggleClosedFilter() {
+      this.set({ closed: !this.get("closed") });
+    },
+
+    async toggleStatus() {
+      const reports = this.get("reports");
+      const report = reports.get(this.get("report"));
+      const { id, stackTrace } = report;
+
+      report.open = !report.open;
+      report.closed_at = new Date();
+      reports.set(id, report);
+      this.set({ reports });
+
+      try {
+        const headers = new Headers({
+          authorization: this.get("authorization"),
+        });
+        const options = { headers, method: "PATCH" };
+        let response = await fetch(`/reports/${id}`, options);
+
+        if (response.status !== 200) return console.error(response);
+
+        response = await response.json();
+
+        if (stackTrace) response.stackTrace = stackTrace;
+
+        reports.set(id, response);
+
+        return this.set({ reports });
+      } catch (error) {
+        throw new Error(error);
+      }
+    },
   },
+
   async oncreate() {
+    this.observe(
+      "application",
+      application => {
+        localStorage.application = application;
+      },
+      { init: false }
+    );
+
+    this.observe(
+      "closed",
+      closed => {
+        localStorage.closed = closed;
+      },
+      { init: false }
+    );
+
     // Restore filters from localStorage
     if (localStorage.application || localStorage.closed) {
-      const { application } = localStorage || "";
+      const { application } = localStorage;
       let { closed } = localStorage;
 
       if (closed == null) closed = false;
       closed = closed === "true";
 
-      this.store.set({ application, closed });
+      this.set({ application, closed });
     }
 
+    // Fetch reports and build list of applications
     try {
-      const headers = new Headers({
-        authorization: this.store.get("authorization"),
-      });
-      const response = await fetch("/reports", { headers });
+      const headers = new Headers({ authorization: this.get("authorization") });
+      let response = await fetch("/reports", { headers });
 
       if (response.status !== 200) return console.error(response);
 
-      const img = new Image();
-      const reports = await response.json();
-      const applications = reports
-        // eslint-disable-next-line no-underscore-dangle
-        .map(report => report.body._productName)
-        .filter(item => item != null)
-        .filter(item => item.toString().trim().length)
-        .filter(item => !!item)
-        .filter((item, index, array) => array.indexOf(item) === index)
-        .sort();
+      response = await response.json();
 
-      this.store.set({ applications, reports });
-      img.src = devicePixelRatio > 1 ? "/icons-2x.png" : "/icons-1x.png";
+      const applications = new Set(
+        response
+          // eslint-disable-next-line no-underscore-dangle
+          .map(report => report.body._productName)
+          .filter(item => item != null)
+          .filter(item => item.toString().trim().length)
+          .filter(item => !!item)
+          .sort()
+      );
+      const reports = new Map(response.map(report => [report.id, report]));
 
-      return this;
+      this.set({ applications, reports });
+      /* this.set({ report: 70 }); */
     } catch (error) {
       throw new Error(error);
     }
+
+    // Preload icons
+    const img = new Image();
+    img.src = devicePixelRatio > 1 ? "/icons-2x.png" : "/icons-1x.png";
+
+    return this;
   },
 };
 </script>

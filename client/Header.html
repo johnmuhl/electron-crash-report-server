@@ -1,10 +1,8 @@
-<header>
-  <h1>
-    Crash reports
-  </h1>
+<header class="flexbox">
+  <h1>Crash reports</h1>
 
-  {{#if $report}}
-  <button on:click="hide()">
+  {{#if report}}
+  <button class="flexbox" on:click="fire('hideReport')">
     <picture>
       <source srcset="/icons-1x.png, /icons-2x.png 2x">
       <img
@@ -21,9 +19,6 @@
 
 <style>
 header {
-  display: flex;
-  align-content: center;
-  justify-content: space-between;
   position: fixed;
   top: 0;
   right: 0;
@@ -42,8 +37,6 @@ h1 {
 }
 
 button {
-  display: flex;
-  align-items: center;
   justify-content: center;
   padding: 0;
   cursor: default;
@@ -52,13 +45,3 @@ button {
   appearance: none;
 }
 </style>
-
-<script>
-export default {
-  methods: {
-    hide() {
-      this.store.set({ report: null });
-    },
-  },
-};
-</script>

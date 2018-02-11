@@ -1,0 +1,205 @@
+<div id="details">
+  <div class="flexbox timestamp created-on">
+    <picture>
+      <source srcset="/icons-1x.png, /icons-2x.png 2x">
+      <img
+        alt="created on"
+        src="/icons-1x.png"
+        srcset="/icons-1x.png, /icons-2x.png 2x"
+        width="18"
+        height="18"
+      >
+    </picture>
+    {{new Date(report.created_at)}}
+  </div>
+
+  <div class="flexbox timestamp closed-on">
+    <picture>
+      <source srcset="/icons-1x.png, /icons-2x.png 2x">
+      <img
+        alt="created on"
+        src="/icons-1x.png"
+        srcset="/icons-1x.png, /icons-2x.png 2x"
+        width="18"
+        height="18"
+      >
+    </picture>
+    {{#if report.open}}
+    —
+    {{else}}
+    {{new Date(report.closed_at)}}
+    {{/if}}
+  </div>
+
+  <div class="flexbox timestamp open-for">
+    <picture>
+      <source srcset="/icons-1x.png, /icons-2x.png 2x">
+      <img
+        alt="created on"
+        src="/icons-1x.png"
+        srcset="/icons-1x.png, /icons-2x.png 2x"
+        width="18"
+        height="18"
+      >
+    </picture>
+    {{lifetime(report)}}
+  </div>
+
+  <div>
+    {{#if report.open}}
+    <button class="close" on:click="fire('toggleStatus')">
+      Close report
+    </button>
+    {{else}}
+    <button on:click="fire('toggleStatus')">
+      Reopen report
+    </button>
+    {{/if}}
+  </div>
+
+  <div>
+    <button
+      on:click="set({ showDetails: !showDetails })"
+      style={{showDetails && "color: white; background-color: #2962ff;"}}
+    >
+      View report details
+    </button>
+
+    {{#if showDetails}}
+    <pre>{{JSON.stringify(report.body, null, 2)}}</pre>
+    {{/if}}
+  </div>
+
+  <div>
+    <button
+      on:click="fire('getStackTrace')"
+      style={{showStackTrace && "color: white; background-color: #2962ff;"}}
+    >
+      View stack trace
+    </button>
+
+    {{#if showStackTrace}}
+    <pre>{{report.stackTrace}}</pre>
+    {{/if}}
+  </div>
+
+  <div>
+    <a class="button" href="/reports/{{report.id}}/dump">
+      Download minidump
+    </a>
+  </div>
+
+  <div>
+    <button class="delete" on:click="fire('deleteReport')">
+      Delete report
+    </button>
+  </div>
+</div>
+
+<script>
+/* global document */
+import parseMs from "parse-ms";
+
+export default {
+  helpers: {
+    lifetime(report) {
+      const closed = new Date(report.closed_at || Date.now());
+      const created = new Date(report.created_at);
+      const { days, hours, minutes } = parseMs(closed - created);
+
+      if (days) return `${days}d ${hours}h ${minutes}m`;
+      if (hours) return `${hours}h ${minutes}m`;
+      return `${minutes}m`;
+    },
+  },
+
+  oncreate() {
+    document.body.style.overflow = "hidden";
+  },
+
+  ondestroy() {
+    document.body.style.overflow = "auto";
+  },
+};
+</script>
+
+<style>
+#details {
+  position: fixed;
+  top: calc(2 * 1rem + 1.125em);
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 0.5rem 0;
+  overflow: auto;
+  background-color: white;
+}
+
+pre {
+  padding: 0.25rem;
+  width: 100%;
+  overflow: auto;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  border-top: 0;
+}
+
+button,
+.button {
+  display: block;
+  padding: 1rem 0.5rem;
+  width: 100%;
+  font-family: sans-serif;
+  font-size: 1.125em;
+  text-align: left;
+  text-decoration: none;
+  line-height: 1.2;
+  color: #212121;
+  background-color: #eee;
+  border: 0;
+}
+
+.close {
+  color: black;
+  background-color: #00c853;
+}
+
+.delete {
+  color: white;
+  background-color: #d50000;
+}
+
+div {
+  padding: 0.25rem 0.5rem;
+}
+
+.timestamp {
+  padding: 0.125rem 1rem;
+  font-size: 0.875em;
+  justify-content: flex-start;
+}
+
+.timestamp img {
+  margin-right: 0.25rem;
+}
+
+.created-on {
+  padding-top: 0.5rem;
+}
+
+.created-on img {
+  object-position: -3px -24px;
+}
+
+.closed-on img {
+  object-position: -3px -42px;
+}
+
+.open-for {
+  padding-bottom: 0.5rem;
+}
+
+.open-for img {
+  object-position: -3px -60px;
+}
+</style>
