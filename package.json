@@ -32,7 +32,6 @@
     "hapi-auth-basic": "5.0.0",
     "inert": "5.1.0",
     "massive": "4.6.3",
-    "minidump": "0.11.0",
     "parse-ms": "1.0.1",
     "postcss": "6.0.17",
     "postcss-cssnext": "3.1.0",
