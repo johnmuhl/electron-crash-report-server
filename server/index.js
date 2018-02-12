@@ -164,11 +164,13 @@ async function main() {
     options: {
       auth: "simple",
       handler: async request => {
+        const select = `SELECT * FROM reports ORDER BY created_at DESC`;
         let { limit, offset } = request.headers;
+
         limit = Number(limit) || 50;
         offset = Number(offset) || 0;
 
-        const sql = `SELECT * FROM reports ORDER BY created_at DESC LIMIT ${limit} OFFSET ${offset}`;
+        const sql = `${select} LIMIT ${limit} OFFSET ${offset}`;
 
         try {
           const reports = await server.app.db.run(sql);
