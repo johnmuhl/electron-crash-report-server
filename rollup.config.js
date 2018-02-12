@@ -1,7 +1,5 @@
 import cjs from "rollup-plugin-commonjs";
 import cssnext from "postcss-cssnext";
-import img from "rollup-plugin-img";
-import json from "rollup-plugin-json";
 import minify from "rollup-plugin-babel-minify";
 import postcss from "postcss";
 import resolve from "rollup-plugin-node-resolve";
@@ -19,7 +17,6 @@ export default {
   },
   plugins: [
     cjs(),
-    json(),
     resolve(),
     svelte({
       cascade: false,
@@ -36,7 +33,6 @@ export default {
       },
       store: true,
     }),
-    img(),
     production && minify(),
   ],
 };
