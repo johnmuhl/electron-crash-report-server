@@ -71,7 +71,12 @@ export default {
 
         reports.delete(id);
 
-        return this.set({ report: null, reports });
+        return this.set({
+          report: null,
+          reports,
+          showDetails: false,
+          showStackTrace: false,
+        });
       } catch (error) {
         throw new Error(error);
       }
@@ -144,7 +149,11 @@ export default {
     }, 150),
 
     hideReport() {
-      this.set({ report: null });
+      this.set({
+        report: null,
+        showDetails: false,
+        showStackTrace: false,
+      });
     },
 
     showReport(event) {
