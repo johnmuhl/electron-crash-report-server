@@ -7,7 +7,13 @@
   on:changeApplicationFilter="changeApplicationFilter(event)"
   on:toggleClosedFilter="toggleClosedFilter()"
 />
-<List :application :closed :reports on:showReport="showReport(event)" />
+<List
+  :application
+  :applications
+  :closed
+  :reports
+  on:showReport="showReport(event)"
+/>
 {{#if report}}
 <Details
   report="{{reports.get(report)}}"

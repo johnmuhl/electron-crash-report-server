@@ -11,10 +11,18 @@
       <div class="id">
         <span class="pound">#</span>{{report.id}}
       </div>
-      <div class="version">
-        {{#if report.body._version}}
-        v{{report.body._version}}
+      <div class="flexbox">
+        {{#if applications.size > 1}}
+        <div class="name">
+          {{report.body._productName || ""}}
+        </div>
         {{/if}}
+
+        <div class="version">
+          {{#if report.body._version}}
+          v{{report.body._version}}
+          {{/if}}
+        </div>
       </div>
     </a>
   </li>
@@ -35,10 +43,19 @@ a {
   text-decoration: none;
 }
 
+.flexbox {
+  align-items: baseline;
+}
+
 .id {
   font-weight: 500;
 }
 
+.name {
+  margin-right: 0.5rem;
+}
+
+.name,
 .version {
   font-size: 1rem;
   font-weight: 300;
