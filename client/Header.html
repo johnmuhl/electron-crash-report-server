@@ -1,20 +1,22 @@
-<header class="flexbox">
-  <h1>Crash reports</h1>
+<header>
+  <div class="flexbox wrap">
+    <h1>Crash reports</h1>
 
-  {{#if report}}
-  <button class="flexbox" on:click="fire('hideReport')">
-    <picture>
-      <source srcset="/icons-1x.png, /icons-2x.png 2x">
-      <img
-        alt="hide report"
-        src="/icons-1x.png"
-        srcset="/icons-1x.png, /icons-2x.png 2x"
-        width="24"
-        height="24"
-      >
-    </picture>
-  </button>
-  {{/if}}
+    {{#if report}}
+    <button class="flexbox" on:click="fire('hideReport')">
+      <picture>
+        <source srcset="/icons-1x.png, /icons-2x.png 2x">
+        <img
+          alt="hide report"
+          src="/icons-1x.png"
+          srcset="/icons-1x.png, /icons-2x.png 2x"
+          width="24"
+          height="24"
+        >
+      </picture>
+    </button>
+    {{/if}}
+  </div>
 </header>
 
 <style>

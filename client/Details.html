@@ -1,98 +1,100 @@
 <div id="details">
-  <div class="flexbox timestamp created-on">
-    <picture>
-      <source srcset="/icons-1x.png, /icons-2x.png 2x">
-      <img
-        alt="created on"
-        src="/icons-1x.png"
-        srcset="/icons-1x.png, /icons-2x.png 2x"
-        width="18"
-        height="18"
+  <div class="wrap">
+    <div class="flexbox timestamp created-on">
+      <picture>
+        <source srcset="/icons-1x.png, /icons-2x.png 2x">
+        <img
+          alt="created on"
+          src="/icons-1x.png"
+          srcset="/icons-1x.png, /icons-2x.png 2x"
+          width="18"
+          height="18"
+        >
+      </picture>
+      {{new Date(report.created_at)}}
+    </div>
+
+    <div class="flexbox timestamp closed-on">
+      <picture>
+        <source srcset="/icons-1x.png, /icons-2x.png 2x">
+        <img
+          alt="created on"
+          src="/icons-1x.png"
+          srcset="/icons-1x.png, /icons-2x.png 2x"
+          width="18"
+          height="18"
+        >
+      </picture>
+      {{#if report.open}}
+      —
+      {{else}}
+      {{new Date(report.closed_at)}}
+      {{/if}}
+    </div>
+
+    <div class="flexbox timestamp open-for">
+      <picture>
+        <source srcset="/icons-1x.png, /icons-2x.png 2x">
+        <img
+          alt="created on"
+          src="/icons-1x.png"
+          srcset="/icons-1x.png, /icons-2x.png 2x"
+          width="18"
+          height="18"
+        >
+      </picture>
+      {{lifetime(report)}}
+    </div>
+
+    <div>
+      {{#if report.open}}
+      <button class="close" on:click="fire('toggleStatus')">
+        Close report
+      </button>
+      {{else}}
+      <button on:click="fire('toggleStatus')">
+        Reopen report
+      </button>
+      {{/if}}
+    </div>
+
+    <div>
+      <button
+        on:click="set({ showDetails: !showDetails })"
+        style={{showDetails && "color: white; background-color: #2962ff;"}}
       >
-    </picture>
-    {{new Date(report.created_at)}}
-  </div>
+        View report details
+      </button>
 
-  <div class="flexbox timestamp closed-on">
-    <picture>
-      <source srcset="/icons-1x.png, /icons-2x.png 2x">
-      <img
-        alt="created on"
-        src="/icons-1x.png"
-        srcset="/icons-1x.png, /icons-2x.png 2x"
-        width="18"
-        height="18"
+      {{#if showDetails}}
+      <pre>{{JSON.stringify(report.body, null, 2)}}</pre>
+      {{/if}}
+    </div>
+
+    <div>
+      <button
+        on:click="fire('getStackTrace')"
+        style={{showStackTrace && "color: white; background-color: #2962ff;"}}
       >
-    </picture>
-    {{#if report.open}}
-    —
-    {{else}}
-    {{new Date(report.closed_at)}}
-    {{/if}}
-  </div>
+        View stack trace
+      </button>
 
-  <div class="flexbox timestamp open-for">
-    <picture>
-      <source srcset="/icons-1x.png, /icons-2x.png 2x">
-      <img
-        alt="created on"
-        src="/icons-1x.png"
-        srcset="/icons-1x.png, /icons-2x.png 2x"
-        width="18"
-        height="18"
-      >
-    </picture>
-    {{lifetime(report)}}
-  </div>
+      {{#if showStackTrace}}
+      <pre>{{report.stackTrace}}</pre>
+      {{/if}}
+    </div>
 
-  <div>
-    {{#if report.open}}
-    <button class="close" on:click="fire('toggleStatus')">
-      Close report
-    </button>
-    {{else}}
-    <button on:click="fire('toggleStatus')">
-      Reopen report
-    </button>
-    {{/if}}
-  </div>
+    <div>
+      <a class="button" href="/reports/{{report.id}}/dump">
+        Download minidump
+      </a>
+    </div>
 
-  <div>
-    <button
-      on:click="set({ showDetails: !showDetails })"
-      style={{showDetails && "color: white; background-color: #2962ff;"}}
-    >
-      View report details
-    </button>
-
-    {{#if showDetails}}
-    <pre>{{JSON.stringify(report.body, null, 2)}}</pre>
-    {{/if}}
-  </div>
-
-  <div>
-    <button
-      on:click="fire('getStackTrace')"
-      style={{showStackTrace && "color: white; background-color: #2962ff;"}}
-    >
-      View stack trace
-    </button>
-
-    {{#if showStackTrace}}
-    <pre>{{report.stackTrace}}</pre>
-    {{/if}}
-  </div>
-
-  <div>
-    <a class="button" href="/reports/{{report.id}}/dump">
-      Download minidump
-    </a>
-  </div>
-
-  <div>
-    <button class="delete" on:click="fire('deleteReport')">
-      Delete report
-    </button>
+    <div>
+      <button class="delete" on:click="fire('deleteReport')">
+        Delete report
+      </button>
+    </div>
   </div>
 </div>
 

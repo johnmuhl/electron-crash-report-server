@@ -1,4 +1,4 @@
-<ul>
+<ul class="wrap">
   {{#each Array.from(reports.values()) as report @id}}
   {{#if closed || report.open}}
   {{#if !application || report.body._productName === application }}
@@ -32,6 +32,10 @@
 </ul>
 
 <style>
+ul {
+  list-style-type: none;
+}
+
 li:not(:last-child) {
   border-bottom: 1px solid #e0e0e0;
 }
