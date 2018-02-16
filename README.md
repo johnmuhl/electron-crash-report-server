@@ -1,4 +1,4 @@
-**electron-crash-report-server** is a Node.js ([hapi], [preact]) and PostgreSQL
+**electron-crash-report-server** is a Node.js ([hapi], [svelte]) and PostgreSQL
 ([massive]) application for collecting crash reports from Electron applications.
 
 ## install
@@ -58,7 +58,7 @@ Use the [issue tracker][issues] to report bugs or discuss changes and features.
 [MIT license][license]
 
 [hapi]: https://hapijs.com/
-[preact]: https://preactjs.com/
+[svelte]: https://svelte.technology/
 [massive]: https://dmfay.github.io/massive-js/
 [deploy-img]: https://www.herokucdn.com/deploy/button.svg
 [deploy-url]: https://heroku.com/deploy
