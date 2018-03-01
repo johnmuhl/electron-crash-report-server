@@ -14,7 +14,7 @@ jobs:
           command: |
             cd ~ && \
             wget https://yarnpkg.com/latest.tar.gz && \
-            tar zvxf latest.tar.gz
+            tar zxf latest.tar.gz
       - run:
           name: yarn install
           command: ~/yarn-v1.5.1/bin/yarn install
