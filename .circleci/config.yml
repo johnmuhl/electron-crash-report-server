@@ -12,10 +12,11 @@ jobs:
       - run:
           name: yarn upgrade
           command: |
+            sudo apt install apt-transport-https
             curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
             echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-            sudo apt-get update
-            sudo apt-get install yarn
+            sudo apt update
+            sudo apt install yarn
             yarn --version
       - run:
           name: yarn install
