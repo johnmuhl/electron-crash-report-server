@@ -10,14 +10,6 @@ jobs:
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
-          name: yarn upgrade
-          command: |
-            cd ~ && \
-            wget -q https://yarnpkg.com/latest.tar.gz && \
-            tar zxf latest.tar.gz
-            export PATH="$PATH:/opt/yarn-v1.5.1/bin"
-            export PATH="$PATH:`yarn global bin`"
-      - run:
           name: yarn install
           command: |
             yarn global add greenkeeper-lockfile@1
@@ -25,9 +17,9 @@ jobs:
       - run:
           name: yarn test
           command: |
-            greenkeeper-lockfile-update
+            "`yarn global bin`/greenkeeper-lockfile-update"
             yarn test
-            greenkeeper-lockfile-upload
+            "`yarn global bin`/greenkeeper-lockfile-upload"
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
