@@ -10,6 +10,13 @@ jobs:
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
+          name: yarn upgrade
+          command: |
+            cd /opt
+            wget https://yarnpkg.com/latest.tar.gz
+            tar zvxf latest.tar.gz
+            ls -a /opt
+      - run:
           name: yarn install
           command: yarn install
       - run:
