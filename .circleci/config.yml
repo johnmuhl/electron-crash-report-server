@@ -12,8 +12,8 @@ jobs:
       - run:
           command: |
             which yarn
-            apt update
-            apt list --upgradable
+            sudo apt update
+            sudo apt list --upgradable
       - run:
           name: yarn install
           command: yarn install
