@@ -17,10 +17,15 @@ jobs:
             tar zxf latest.tar.gz
       - run:
           name: yarn install
-          command: ~/yarn-v1.5.1/bin/yarn install
+          command: |
+            ~/yarn-v1.5.1/bin/yarn global add greenkeeper-lockfile@1
+            ~/yarn-v1.5.1/bin/yarn install
       - run:
           name: yarn test
-          command: ~/yarn-v1.5.1/bin/yarn test
+          command: |
+            "`~/yarn-v1.5.1/bin/yarn global bin`/greenkeeper-lockfile-update"
+            ~/yarn-v1.5.1/bin/yarn test
+            "`~/yarn-v1.5.1/bin/yarn global bin`/greenkeeper-lockfile-upload"
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:

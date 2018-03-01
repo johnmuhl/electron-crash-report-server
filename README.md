@@ -3,8 +3,6 @@
 
 ## install
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/johnmuhl/electron-crash-report-server.svg)](https://greenkeeper.io/)
-
 [![Deploy][deploy-img]][deploy-url]
 
 During setup change the `AUTH_USER` and `AUTH_PASS` environment variables. Once
