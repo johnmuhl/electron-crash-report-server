@@ -75,9 +75,9 @@
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@comandeer/babel-plugin-banner/-/babel-plugin-banner-1.0.0.tgz#40bcce0bbee084b5b02545a33635d053c248356f"
 
-"@std/esm@0.23.3":
-  version "0.23.3"
-  resolved "https://registry.yarnpkg.com/@std/esm/-/esm-0.23.3.tgz#c09b0011ee454bb916c34f6bb84d14038826edda"
+"@std/esm@0.23.4":
+  version "0.23.4"
+  resolved "https://registry.yarnpkg.com/@std/esm/-/esm-0.23.4.tgz#e047aeb8a79bbea1d2f62f862de5d88c8faafd37"
 
 abbrev@1:
   version "1.1.1"
