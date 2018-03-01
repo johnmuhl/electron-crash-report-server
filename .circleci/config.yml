@@ -14,14 +14,13 @@ jobs:
           command: |
             cd ~ && \
             wget https://yarnpkg.com/latest.tar.gz && \
-            tar zvxf latest.tar.gz && \
-            ls -a ~/yarn-v1.5.1
+            tar zvxf latest.tar.gz
       - run:
           name: yarn install
-          command: yarn install
+          command: ~/yarn-v1.5.1/bin/yarn install
       - run:
           name: yarn test
-          command: yarn test
+          command: ~/yarn-v1.5.1/bin/yarn test
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
