@@ -25,7 +25,7 @@
     "yarn": "1.5.1"
   },
   "dependencies": {
-    "@std/esm": "0.23.3",
+    "@std/esm": "0.23.4",
     "boom": "7.2.0",
     "dotenv": "5.0.1",
     "hapi": "17.2.1",
