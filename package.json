@@ -45,12 +45,12 @@
     "svelte": "1.55.0"
   },
   "devDependencies": {
-    "eslint": "4.17.0",
+    "eslint": "4.18.1",
     "eslint-config-oz": "github:johnmuhl/eslint-config-oz#v2.2.1",
     "eslint-plugin-html": "4.0.2",
-    "nodemon": "1.14.12",
+    "nodemon": "1.17.1",
     "npm-run-all": "4.1.2",
-    "prettier": "1.10.2"
+    "prettier": "1.11.1"
   },
   "@std/esm": "cjs",
   "browserslist": [
