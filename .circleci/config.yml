@@ -12,10 +12,10 @@ jobs:
       - run:
           name: yarn upgrade
           command: |
-            cd /opt
-            wget https://yarnpkg.com/latest.tar.gz
-            tar zvxf latest.tar.gz
-            ls -a /opt
+            cd ~ && \
+            wget https://yarnpkg.com/latest.tar.gz && \
+            tar zvxf latest.tar.gz && \
+            ls -a ~
       - run:
           name: yarn install
           command: yarn install
