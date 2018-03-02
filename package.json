@@ -44,7 +44,7 @@
     "svelte": "1.55.0"
   },
   "devDependencies": {
-    "eslint": "4.18.1",
+    "eslint": "4.18.2",
     "eslint-config-oz": "github:johnmuhl/eslint-config-oz#v2.2.1",
     "eslint-plugin-html": "4.0.2",
     "nodemon": "1.17.1",
