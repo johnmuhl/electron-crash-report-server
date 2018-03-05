@@ -1,5 +1,5 @@
 <ul class="wrap">
-  {{#each Array.from(reports.values()) as report}}
+  {{#each Array.from(reports.values()) as report @id}}
   {{#if closed || report.open}}
   {{#if !application || report.body._productName === application }}
   <li
