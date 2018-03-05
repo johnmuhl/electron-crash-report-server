@@ -38,7 +38,7 @@
     "postcss-cssnext": "3.1.0",
     "rollup": "0.56.4",
     "rollup-plugin-babel-minify": "4.0.0",
-    "rollup-plugin-commonjs": "8.4.0",
+    "rollup-plugin-commonjs": "9.0.0",
     "rollup-plugin-node-resolve": "3.0.3",
     "rollup-plugin-svelte": "4.0.0",
     "sb-debounce": "1.0.2",
