@@ -28,7 +28,7 @@
     "@std/esm": "0.25.2",
     "boom": "7.2.0",
     "dotenv": "5.0.1",
-    "hapi": "17.2.1",
+    "hapi": "17.2.2",
     "hapi-auth-basic": "5.0.0",
     "inert": "5.1.0",
     "massive": "4.7.0",
