@@ -650,6 +650,10 @@ binary-extensions@^1.0.0:
   version "1.11.0"
   resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-1.11.0.tgz#46aa1751fb6a2f93ee5e689bb1087d4b14c6c205"
 
+bindings@1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/bindings/-/bindings-1.2.1.tgz#14ad6113812d2d37d72e67b4cacb4bb726505f11"
+
 block-stream@*:
   version "0.0.9"
   resolved "https://registry.yarnpkg.com/block-stream/-/block-stream-0.0.9.tgz#13ebfe778a03205cfe03751481ebb4b3300c126a"
@@ -954,9 +958,13 @@ combined-stream@^1.0.5, combined-stream@~1.0.5:
   dependencies:
     delayed-stream "~1.0.0"
 
-commander@^2.11.0, commander@~2.14.0:
+commander@^2.11.0:
   version "2.14.1"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.14.1.tgz#2235123e37af8ca3c65df45b026dbd357b01b9aa"
+
+commander@~2.15.0:
+  version "2.15.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-2.15.0.tgz#ad2a23a1c3b036e392469b8012cec6b33b4c1322"
 
 component-emitter@^1.2.1:
   version "1.2.1"
@@ -2026,7 +2034,7 @@ inflight@^1.0.4:
     once "^1.3.0"
     wrappy "1"
 
-inherits@2, inherits@^2.0.1, inherits@^2.0.3, inherits@~2.0.0, inherits@~2.0.3:
+inherits@2, inherits@^2.0.1, inherits@^2.0.3, inherits@~2.0.0, inherits@~2.0.1, inherits@~2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.3.tgz#633c2c83e3da42a502f52466022480f4208261de"
 
@@ -2310,6 +2318,10 @@ is-windows@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/is-windows/-/is-windows-1.0.2.tgz#d1850eb9791ecd18e6182ce12a30f396634bb19d"
 
+isarray@0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/isarray/-/isarray-0.0.1.tgz#8a18acfca9a8f4177e09abfc6038939b05d1eedf"
+
 isarray@1.0.0, isarray@^1.0.0, isarray@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/isarray/-/isarray-1.0.0.tgz#bb935d48582cba168c06834957a54a3e07124f11"
@@ -2472,6 +2484,13 @@ levn@^0.3.0, levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
+libpq@^1.7.0:
+  version "1.8.7"
+  resolved "https://registry.yarnpkg.com/libpq/-/libpq-1.8.7.tgz#c2deb121e28f7f84bd3b2451afff68b6663e74f9"
+  dependencies:
+    bindings "1.2.1"
+    nan "^2.3.0"
+
 load-json-file@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/load-json-file/-/load-json-file-2.0.0.tgz#7947e42149af80d696cbf797bcaabcfe1fe29ca8"
@@ -2563,7 +2582,7 @@ make-dir@^1.0.0:
   dependencies:
     pify "^3.0.0"
 
-manakin@~0.5.1:
+manakin@0.5.1:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/manakin/-/manakin-0.5.1.tgz#c4a7116f6b00df3d5f1a37ad3ca515d22065a658"
 
@@ -2581,14 +2600,14 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
-massive@4.7.0:
-  version "4.7.0"
-  resolved "https://registry.yarnpkg.com/massive/-/massive-4.7.0.tgz#8a47fcf02c8e9ae1f3701548f36c74220ce57827"
+massive@4.7.1:
+  version "4.7.1"
+  resolved "https://registry.yarnpkg.com/massive/-/massive-4.7.1.tgz#03d5954e00fa5b5316f0ca25b9a87c11ffffcda1"
   dependencies:
-    commander "~2.14.0"
+    commander "~2.15.0"
     glob "~7.1.1"
     lodash "~4.17.4"
-    pg-promise "~7.5.2"
+    pg-promise "~8.2.0"
     pg-query-stream "~1.1.1"
 
 math-expression-evaluator@^1.2.14:
@@ -3048,28 +3067,51 @@ pg-cursor@1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/pg-cursor/-/pg-cursor-1.3.0.tgz#b220f1908976b7b40daa373c7ada5fca823ab0d9"
 
-pg-minify@~0.5.4:
+pg-int8@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/pg-int8/-/pg-int8-1.0.1.tgz#943bd463bf5b71b4170115f80f8efc9a0c0eb78c"
+
+pg-minify@0.5.4:
   version "0.5.4"
   resolved "https://registry.yarnpkg.com/pg-minify/-/pg-minify-0.5.4.tgz#89d5261cacfd44dd7927fa052222a404e9b2a3c9"
+
+pg-native@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/pg-native/-/pg-native-2.2.0.tgz#bc84756f4ecbf600ff7cb48ea5854141830cf1e4"
+  dependencies:
+    libpq "^1.7.0"
+    pg-types "^1.12.1"
+    readable-stream "1.0.31"
 
 pg-pool@~2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/pg-pool/-/pg-pool-2.0.3.tgz#c022032c8949f312a4f91fb6409ce04076be3257"
 
-pg-promise@~7.5.2:
-  version "7.5.4"
-  resolved "https://registry.yarnpkg.com/pg-promise/-/pg-promise-7.5.4.tgz#c1ef2f91ad8687296499dccfc7709d4b3c3fa43c"
+pg-promise@~8.2.0:
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/pg-promise/-/pg-promise-8.2.0.tgz#fc0315795f62d64686ad81cb26884a39ff1e1dc4"
   dependencies:
-    manakin "~0.5.1"
-    pg "~7.4.1"
-    pg-minify "~0.5.4"
-    spex "~2.0.2"
+    manakin "0.5.1"
+    pg "7.4.1"
+    pg-minify "0.5.4"
+    pg-native "^2.2.0"
+    spex "2.0.2"
 
 pg-query-stream@~1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/pg-query-stream/-/pg-query-stream-1.1.1.tgz#65e97436ef809d1e160eba84ebf11b9e4742eab4"
   dependencies:
     pg-cursor "1.3.0"
+
+pg-types@^1.12.1:
+  version "1.13.0"
+  resolved "https://registry.yarnpkg.com/pg-types/-/pg-types-1.13.0.tgz#75f490b8a8abf75f1386ef5ec4455ecf6b345c63"
+  dependencies:
+    pg-int8 "1.0.1"
+    postgres-array "~1.0.0"
+    postgres-bytea "~1.0.0"
+    postgres-date "~1.0.0"
+    postgres-interval "^1.1.0"
 
 pg-types@~1.12.1:
   version "1.12.1"
@@ -3080,7 +3122,7 @@ pg-types@~1.12.1:
     postgres-date "~1.0.0"
     postgres-interval "^1.1.0"
 
-pg@~7.4.1:
+pg@7.4.1:
   version "7.4.1"
   resolved "https://registry.yarnpkg.com/pg/-/pg-7.4.1.tgz#f3411c8ddf9f692322fe05e7017a1888e47f78f1"
   dependencies:
@@ -3524,6 +3566,15 @@ read-pkg@^3.0.0:
     normalize-package-data "^2.3.2"
     path-type "^3.0.0"
 
+readable-stream@1.0.31:
+  version "1.0.31"
+  resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-1.0.31.tgz#8f2502e0bc9e3b0da1b94520aabb4e2603ecafae"
+  dependencies:
+    core-util-is "~1.0.0"
+    inherits "~2.0.1"
+    isarray "0.0.1"
+    string_decoder "~0.10.x"
+
 readable-stream@^2.0.2, readable-stream@^2.0.6, readable-stream@^2.1.4, readable-stream@^2.2.2:
   version "2.3.4"
   resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-2.3.4.tgz#c946c3f47fa7d8eabc0b6150f4a12f69a4574071"
@@ -3953,7 +4004,7 @@ spdx-license-ids@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/spdx-license-ids/-/spdx-license-ids-3.0.0.tgz#7a7cd28470cc6d3a1cfe6d66886f6bc430d3ac87"
 
-spex@~2.0.2:
+spex@2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/spex/-/spex-2.0.2.tgz#e8c8d633a4c67af642dded701ec2350c9de964a0"
 
@@ -4039,6 +4090,10 @@ string.prototype.padend@^3.0.0:
     define-properties "^1.1.2"
     es-abstract "^1.4.3"
     function-bind "^1.0.2"
+
+string_decoder@~0.10.x:
+  version "0.10.31"
+  resolved "https://registry.yarnpkg.com/string_decoder/-/string_decoder-0.10.31.tgz#62e203bc41766c6c28c9fc84301dab1c5310fa94"
 
 string_decoder@~1.0.3:
   version "1.0.3"
