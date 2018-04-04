@@ -1,1 +1,9 @@
 /server/public/bundle.*
+
+/crash-reports/
+/node_modules/
+/config.ini
+
+.env
+
+

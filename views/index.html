@@ -1,0 +1,23 @@
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Date</th>
+    <th>Error</th>
+    <th>User</th>
+    <th>Version</th>
+    <th>Source</th>
+  </tr>
+  {{#each reports}}
+
+  <tr>
+    <td><a href="/reports/{{id}}">
+      {{id}}
+    </a></td>
+    <td>{{created_at}}</td>
+    <td>{{body.error}}</td>
+    <td>{{body.username}}</td>
+    <td>{{body._version}}</td>
+    <td>{{body.source}} line {{body.lineno}}</td>
+  </tr>
+  {{/each}}
+</table>
