@@ -10,6 +10,8 @@ import { resolve } from "path";
 import SQL from "./sql.js";
 import { tmpdir } from "os";
 import { walkStack } from "minidump";
+import { sendTo } from "./services.js"
+import types from "./types.js";
 
 const DUPLICATE_COLUMN = "42701";
 const UNDEFINED_TABLE = "42P01";
@@ -147,6 +149,7 @@ async function main() {
 
             return report.id;
           } catch (error) {
+            console.log(error)
             throw new Error(error);
           }
         } else {
@@ -172,9 +175,17 @@ async function main() {
 
           try {
             const report = await server.app.db.reports.save({ body, dump });
+            if (process.env.ELECTRON_CRASH_TO_BACKTRACE) {
+              sendTo(types.BACKTRACE, body);
+            }
+
+            if (process.env.ELECTRON_CRASH_TO_METABASE) {
+              sendTo(types.METABASE, body);
+            }
 
             return report.id;
           } catch (error) {
+            console.log(error)
             throw new Error(error);
           }
         } else {
@@ -199,9 +210,17 @@ async function main() {
 
           try {
             const report = await server.app.db.reports.save({ body, dump });
+            if (process.env.JS_ERROR_TO_BACKTRACE) {
+              sendTo(types.BACKTRACE, body);
+            }
+
+            if (process.env.JS_ERROR_TO_METABASE) {
+              sendTo(types.METABASE, body);
+            }
 
             return report.id;
           } catch (error) {
+            console.log(error)
             throw new Error(error);
           }
         } else {
