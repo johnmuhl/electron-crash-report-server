@@ -48,6 +48,8 @@ yarn && yarn dev
 # make changes
 yarn fmt
 ```
+In windows if you have problems with the `createdb` command use an IDE to create the database i.e. pgAdmin
+If you have problesm with command `yarn && yarn dev` try `yarn -and yarn dev` or `npm run start:dev`
 
 ## bugs & features
 
