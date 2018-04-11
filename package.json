@@ -1,6 +1,6 @@
 {
   "name": "electron-crash-report-server",
-  "version": "0.5.6",
+  "version": "1.1.0",
   "description": "Crash report server for Electron applications",
   "repository": "github:johnmuhl/electron-crash-report-server",
   "author": "John Muhl <git@johnmuhl.com>",
@@ -8,31 +8,67 @@
   "bugs": "https://github.com/johnmuhl/electron-crash-report-server/issues",
   "homepage": "https://johnmuhl.github.io/electron-crash-report-server",
   "scripts": {
-    "format": "yarn run prettier && yarn run lint --fix",
-    "lint": "eslint --ignore-pattern=electron-bomb/node_modules .",
-    "prettier": "prettier --write --use-tabs --no-semi --single-quote --no-bracket-spacing --trailing-comma=es5 '{*,electron-bomb/*}.js'",
-    "start-dev": "node-dev server.js",
-    "test": "yarn lint"
+    "build": "rollup -c",
+    "build:dev": "rollup -cw",
+    "dev": "run-p --race *:dev",
+    "fmt": "yarn run prettier && yarn run eslint --fix",
+    "start:dev": "nodemon -r @std/esm -i client -i 'server/public/bundle.*' server",
+    "test": "yarn eslint",
+    "eslint": "eslint --ext html,js .",
+    "prettier": "yarn prettier:default && yarn prettier:html",
+    "prettier:default": "prettier --write './*.{js,json,md}' '{client,server}/*.{css,js}' '!./package.json'",
+    "prettier:html": "prettier --write --parser vue '{client,server}/**/*.html'",
+    "heroku-postbuild": "yarn build"
   },
   "engines": {
-    "node": "^8.1.0"
+    "node": "^8.9.4",
+    "yarn": "^1.3.2"
   },
   "dependencies": {
-    "boom": "^4.3.1",
+    "@std/esm": "0.25.2",
+    "boom": "7.2.0",
+    "dotenv": "5.0.1",
     "handlebars": "^4.0.11",
-    "hapi": "^16.6.2",
-    "hapi-auth-basic": "^4.2.0",
-    "massive": "^2.6.1",
-    "vision": "^4.1.1"
+    "hapi": "17.2.2",
+    "hapi-auth-basic": "5.0.0",
+    "inert": "5.1.0",
+    "massive": "4.7.0",
+    "minidump": "0.13.0",
+    "parse-ms": "1.0.1",
+    "postcss": "6.0.19",
+    "postcss-cssnext": "3.1.0",
+    "rollup": "0.56.5",
+    "rollup-plugin-babel-minify": "4.0.0",
+    "rollup-plugin-commonjs": "9.0.0",
+    "rollup-plugin-node-resolve": "3.1.0",
+    "rollup-plugin-svelte": "4.0.0",
+    "sb-debounce": "1.0.2",
+    "svelte": "1.57.0",
+    "vision": "^5.3.2"
   },
   "devDependencies": {
-    "dotenv": "^4.0.0",
-    "eslint": "^4.10.0",
-    "eslint-config-oz": "github:johnmuhl/eslint-config-oz",
-    "node-dev": "^3.1.3",
-    "prettier": "^1.7.4"
+    "eslint": "4.18.2",
+    "eslint-config-oz": "github:johnmuhl/eslint-config-oz#v2.2.1",
+    "eslint-plugin-html": "4.0.2",
+    "nodemon": "1.17.1",
+    "npm-run-all": "4.1.2",
+    "prettier": "1.11.1"
   },
+  "@std/esm": "cjs",
+  "browserslist": [
+    "last 2 versions"
+  ],
   "eslintConfig": {
-    "extends": "oz"
+    "extends": "oz",
+    "plugins": [
+      "html"
+    ]
+  },
+  "eslintIgnore": [
+    "bundle.*"
+  ],
+  "prettier": {
+    "proseWrap": "always",
+    "trailingComma": "es5"
   }
 }
