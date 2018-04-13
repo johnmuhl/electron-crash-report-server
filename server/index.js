@@ -157,6 +157,61 @@ async function main() {
     path: "/",
   });
 
+  // route: POST /electron-crashes
+  server.route({
+    method: "POST",
+    options: {
+      handler: async request => {
+        if (request.payload) {
+          const body = Object.assign({}, request.payload);
+          const dump = request.payload.upload_file_minidump;
+          const type = "electron-crashes";
+          body.type = type;
+
+          delete body.upload_file_minidump;
+
+          try {
+            const report = await server.app.db.reports.save({ body, dump });
+
+            return report.id;
+          } catch (error) {
+            throw new Error(error);
+          }
+        } else {
+          return Boom.badRequest();
+        }
+      },
+    },
+    path: "/electron-crashes",
+  });
+
+  // route: POST /js-errors
+  server.route({
+    method: "POST",
+    options: {
+      handler: async request => {
+        if (request.payload) {
+          const body = Object.assign({}, request.payload);
+          const dump = request.payload.upload_file_minidump;
+          const type = "js-errors";
+          body.type = type;
+          delete body.upload_file_minidump;
+
+          try {
+            const report = await server.app.db.reports.save({ body, dump });
+
+            return report.id;
+          } catch (error) {
+            throw new Error(error);
+          }
+        } else {
+          return Boom.badRequest();
+        }
+      },
+    },
+    path: "/js-errors",
+  });
+
   // route: GET /reports
   server.route({
     method: "GET",

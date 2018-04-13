@@ -46,6 +46,11 @@
       {{lifetime(report)}}
     </div>
 
+    <div class="flexbox timestamp type">
+      <label>Type:</label>
+      {{report.type || "Unknown"}}
+    </div>
+
     <div>
       {{#if report.open}}
       <button class="close" on:click="fire('toggleStatus')">
@@ -197,11 +202,15 @@ div {
   object-position: -3px -42px;
 }
 
-.open-for {
+.open-for img {
+  object-position: -3px -60px;
+}
+.type {
   padding-bottom: 0.5rem;
 }
 
-.open-for img {
-  object-position: -3px -60px;
+.type label {
+  font-weight: bold;
+  margin-right: 0.25rem;
 }
 </style>
