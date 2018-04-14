@@ -43,7 +43,7 @@
     "rollup-plugin-node-resolve": "3.1.0",
     "rollup-plugin-svelte": "4.1.0",
     "sb-debounce": "1.0.2",
-    "svelte": "1.60.3"
+    "svelte": "1.61.0"
   },
   "devDependencies": {
     "eslint": "4.19.1",
