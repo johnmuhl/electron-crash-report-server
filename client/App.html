@@ -14,9 +14,9 @@
   :reports
   on:showReport="showReport(event)"
 />
-{{#if report}}
+{#if report}
 <Details
-  report="{{reports.get(report)}}"
+  report={reports.get(report)}
   :reports
   :showDetails
   :showStackTrace
@@ -24,7 +24,7 @@
   on:getStackTrace="getStackTrace()"
   on:toggleStatus="toggleStatus()"
 />
-{{/if}}
+{/if}
 
 <script>
 /* global devicePixelRatio document fetch Headers Image localStorage window */

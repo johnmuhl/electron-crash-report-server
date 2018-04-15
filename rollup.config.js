@@ -19,9 +19,9 @@ export default {
     cjs(),
     resolve(),
     svelte({
-      cascade: false,
       css: css => css.write("server/public/bundle.css"),
       dev: !production,
+      parser: "v2",
       preprocess: {
         style: async ({ content }) => {
           const { css } = await postcss([cssnext]).process(content, {
@@ -31,7 +31,6 @@ export default {
           return { code: css };
         },
       },
-      store: true,
     }),
     production && minify(),
   ],

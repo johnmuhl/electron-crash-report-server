@@ -1,34 +1,34 @@
 <ul class="wrap">
-  {{#each Array.from(reports.values()) as report @id}}
-  {{#if closed || report.open}}
-  {{#if !application || report.body._productName === application }}
+  {#each Array.from(reports.values()) as report @id}
+  {#if closed || report.open}
+  {#if !application || report.body._productName === application }
   <li
-    class={{report.open ? "open" : "closed"}}
-    data-id={{report.id}}
+    class={report.open ? "open" : "closed"}
+    data-id={report.id}
     on:click="fire('showReport', event)"
   >
-    <a class="flexbox" href="/reports/{{report.id}}">
+    <a class="flexbox" href="/reports/{report.id}">
       <div class="id">
-        <span class="pound">#</span>{{report.id}}
+        <span class="pound">#</span>{report.id}
       </div>
       <div class="flexbox">
-        {{#if applications.size > 1}}
+        {#if applications.size > 1}
         <div class="name">
-          {{report.body._productName || ""}}
+          {report.body._productName || ""}
         </div>
-        {{/if}}
+        {/if}
 
         <div class="version">
-          {{#if report.body._version}}
-          v{{report.body._version}}
-          {{/if}}
+          {#if report.body._version}
+          v{report.body._version}
+          {/if}
         </div>
       </div>
     </a>
   </li>
-  {{/if}}
-  {{/if}}
-  {{/each}}
+  {/if}
+  {/if}
+  {/each}
 </ul>
 
 <style>

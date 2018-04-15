@@ -11,7 +11,7 @@
           height="18"
         >
       </picture>
-      {{new Date(report.created_at)}}
+      {new Date(report.created_at)}
     </div>
 
     <div class="flexbox timestamp closed-on">
@@ -25,11 +25,11 @@
           height="18"
         >
       </picture>
-      {{#if report.open}}
+      {#if report.open}
       —
-      {{else}}
-      {{new Date(report.closed_at)}}
-      {{/if}}
+      {:else}
+      {new Date(report.closed_at)}
+      {/if}
     </div>
 
     <div class="flexbox timestamp open-for">
@@ -43,49 +43,49 @@
           height="18"
         >
       </picture>
-      {{lifetime(report)}}
+      {lifetime(report)}
     </div>
 
     <div>
-      {{#if report.open}}
+      {#if report.open}
       <button class="close" on:click="fire('toggleStatus')">
         Close report
       </button>
-      {{else}}
+      {:else}
       <button on:click="fire('toggleStatus')">
         Reopen report
       </button>
-      {{/if}}
+      {/if}
     </div>
 
     <div>
       <button
         on:click="set({ showDetails: !showDetails })"
-        style={{showDetails && "color: white; background-color: #2962ff;"}}
+        style={showDetails && "color: white; background-color: #2962ff;"}
       >
         View report details
       </button>
 
-      {{#if showDetails}}
-      <pre>{{JSON.stringify(report.body, null, 2)}}</pre>
-      {{/if}}
+      {#if showDetails}
+      <pre>{JSON.stringify(report.body, null, 2)}</pre>
+      {/if}
     </div>
 
     <div>
       <button
         on:click="fire('getStackTrace')"
-        style={{showStackTrace && "color: white; background-color: #2962ff;"}}
+        style={showStackTrace && "color: white; background-color: #2962ff;"}
       >
         View stack trace
       </button>
 
-      {{#if showStackTrace}}
-      <pre>{{report.stackTrace}}</pre>
-      {{/if}}
+      {#if showStackTrace}
+      <pre>{report.stackTrace}</pre>
+      {/if}
     </div>
 
     <div>
-      <a class="button" href="/reports/{{report.id}}/dump">
+      <a class="button" href="/reports/{report.id}/dump">
         Download minidump
       </a>
     </div>

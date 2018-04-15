@@ -12,7 +12,7 @@
     </div>
 
     <!-- application filter -->
-    {{#if applications.size > 1}}
+    {#if applications.size > 1}
     <div>
       <label for="applications" class="sr-only">Applications</label>
       <select
@@ -21,14 +21,14 @@
         id="applications"
       >
         <option value="">Show all</option>
-        {{#each Array.from(applications) as application}}
-        <option value={{application}}>
-          {{application}}
+        {#each Array.from(applications) as application}
+        <option value={application}>
+          {application}
         </option>
-        {{/each}}
+        {/each}
       </select>
     </div>
-    {{/if}}
+    {/if}
   </div>
 </div>
 
