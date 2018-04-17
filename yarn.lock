@@ -2621,9 +2621,9 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
-massive@4.7.1:
-  version "4.7.1"
-  resolved "https://registry.yarnpkg.com/massive/-/massive-4.7.1.tgz#03d5954e00fa5b5316f0ca25b9a87c11ffffcda1"
+massive@4.7.2:
+  version "4.7.2"
+  resolved "https://registry.yarnpkg.com/massive/-/massive-4.7.2.tgz#e7cb4f00a36ffe39e7e2d48a551f7a0156dd4747"
   dependencies:
     commander "~2.15.0"
     glob "~7.1.1"
