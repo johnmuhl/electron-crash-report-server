@@ -45,7 +45,7 @@ async function main() {
   }
 
   try {
-    dumps = await db.run("SELECT * FROM dumps");
+    dumps = await db.run("SELECT * FROM dumps LIMIT 50 OFFSET 0");
   } catch (error) {
     if (error.code !== UNDEFINED_TABLE) throw new Error(error);
   }
