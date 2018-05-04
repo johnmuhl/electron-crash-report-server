@@ -3906,9 +3906,9 @@ supports-color@^5.2.0, supports-color@^5.3.0, supports-color@^5.4.0:
   dependencies:
     has-flag "^3.0.0"
 
-svelte@2.4.3:
-  version "2.4.3"
-  resolved "https://registry.yarnpkg.com/svelte/-/svelte-2.4.3.tgz#bcb10c24cb81b47e78b2ccacd5a37794afe1fbf9"
+svelte@2.4.4:
+  version "2.4.4"
+  resolved "https://registry.yarnpkg.com/svelte/-/svelte-2.4.4.tgz#53c1378d4ef5de0844317df5c1af9f8116d27eb1"
 
 table@4.0.2:
   version "4.0.2"
