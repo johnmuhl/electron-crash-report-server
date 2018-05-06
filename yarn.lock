@@ -2420,14 +2420,14 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
-massive@4.7.2:
-  version "4.7.2"
-  resolved "https://registry.yarnpkg.com/massive/-/massive-4.7.2.tgz#e7cb4f00a36ffe39e7e2d48a551f7a0156dd4747"
+massive@4.8.0:
+  version "4.8.0"
+  resolved "https://registry.yarnpkg.com/massive/-/massive-4.8.0.tgz#e59f1e61bce83ad53898c4fcebeb1f2c1be360a2"
   dependencies:
     commander "~2.15.0"
     glob "~7.1.1"
     lodash "~4.17.4"
-    pg-promise "~8.2.0"
+    pg-promise "~8.4.0"
     pg-query-stream "~1.1.1"
 
 math-expression-evaluator@^1.2.14:
@@ -2912,9 +2912,9 @@ pg-pool@~2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/pg-pool/-/pg-pool-2.0.3.tgz#c022032c8949f312a4f91fb6409ce04076be3257"
 
-pg-promise@~8.2.0:
-  version "8.2.3"
-  resolved "https://registry.yarnpkg.com/pg-promise/-/pg-promise-8.2.3.tgz#dc8d71820a6cfc6e772c2af30091618ce09f61e7"
+pg-promise@~8.4.0:
+  version "8.4.2"
+  resolved "https://registry.yarnpkg.com/pg-promise/-/pg-promise-8.4.2.tgz#283d63ed430efd661d8b78fe6751d77789e83f8d"
   dependencies:
     manakin "0.5.1"
     pg "7.4.1"
