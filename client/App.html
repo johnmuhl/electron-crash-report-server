@@ -124,6 +124,7 @@ export default {
 
       if (!eol && scrollHeight - (pageYOffset + clientHeight) < 50) {
         try {
+          const { applications } = this.get();
           const headers = new Headers({
             authorization: this.get().authorization,
             limit,
@@ -134,9 +135,15 @@ export default {
           if (response.status !== 200) return console.error(response);
 
           response = await response.json();
-          response.forEach(report => reports.set(report.id, report));
+          response.forEach(report => {
+            if (report.body._productName) {
+              applications.add(report.body._productName);
+            }
+            reports.set(report.id, report);
+          });
 
           this.set({
+            applications,
             eol: !response.length,
             offset: limit + offset,
             reports,
