@@ -136,9 +136,11 @@ export default {
 
           response = await response.json();
           response.forEach(report => {
+            /* eslint-disable no-underscore-dangle */
             if (report.body._productName) {
               applications.add(report.body._productName);
             }
+            /* eslint-enable no-underscore-dangle */
             reports.set(report.id, report);
           });
 
