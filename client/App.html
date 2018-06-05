@@ -145,7 +145,7 @@ export default {
           });
 
           this.set({
-            applications,
+            applications: new Set(Array.from(applications).sort()),
             eol: !response.length,
             offset: limit + offset,
             reports,
