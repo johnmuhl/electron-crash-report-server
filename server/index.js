@@ -43,7 +43,7 @@ async function main() {
   }
 
   try {
-    dumps = await db.run("SELECT * FROM dumps");
+    dumps = await db.query("SELECT * FROM dumps");
   } catch (error) {
     if (error.code !== UNDEFINED_TABLE) throw new Error(error);
   }
@@ -51,10 +51,12 @@ async function main() {
   if (dumps) {
     // Add new columns to reports
     try {
-      await db.run("ALTER TABLE reports ADD COLUMN dump bytea");
-      await db.run("ALTER TABLE reports ADD COLUMN open boolean DEFAULT TRUE");
-      await db.run("ALTER TABLE reports ADD COLUMN closed_at timestamptz");
-      await db.run(
+      await db.query("ALTER TABLE reports ADD COLUMN dump bytea");
+      await db.query(
+        "ALTER TABLE reports ADD COLUMN open boolean DEFAULT TRUE"
+      );
+      await db.query("ALTER TABLE reports ADD COLUMN closed_at timestamptz");
+      await db.query(
         "ALTER TABLE reports ADD COLUMN updated_at timestamptz DEFAULT now()"
       );
     } catch (error) {
@@ -77,14 +79,14 @@ async function main() {
 
     // Add NOT NULL to dump column
     try {
-      await db.run("ALTER TABLE reports ALTER COLUMN dump SET NOT NULL");
+      await db.query("ALTER TABLE reports ALTER COLUMN dump SET NOT NULL");
     } catch (error) {
       throw new Error(error);
     }
 
     // Drop old dumps table
     try {
-      await db.run("DROP TABLE dumps");
+      await db.query("DROP TABLE dumps");
     } catch (error) {
       throw new Error(error);
     }
@@ -98,7 +100,7 @@ async function main() {
 
   try {
     // Prepare database
-    await db.run(SQL);
+    await db.query(SQL);
   } catch (error) {
     throw new Error(error);
   }
@@ -172,7 +174,7 @@ async function main() {
         const sql = `${select} LIMIT ${limit} OFFSET ${offset}`;
 
         try {
-          const reports = await server.app.db.run(sql);
+          const reports = await server.app.db.query(sql);
 
           return reports.map(r => {
             const report = Object.assign({}, r);
