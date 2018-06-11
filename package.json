@@ -27,7 +27,7 @@
   "dependencies": {
     "boom": "7.2.0",
     "dotenv": "6.0.0",
-    "esm": "3.0.48",
+    "esm": "3.0.49",
     "hapi": "17.5.1",
     "hapi-auth-basic": "5.0.0",
     "inert": "5.1.0",
