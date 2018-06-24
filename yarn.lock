@@ -1768,9 +1768,9 @@ hapi-auth-basic@5.0.0:
     boom "7.x.x"
     hoek "5.x.x"
 
-hapi@17.5.1:
-  version "17.5.1"
-  resolved "https://registry.yarnpkg.com/hapi/-/hapi-17.5.1.tgz#0e6ca5d3d908c4c96203221c9c246e23fce4b49b"
+hapi@17.5.2:
+  version "17.5.2"
+  resolved "https://registry.yarnpkg.com/hapi/-/hapi-17.5.2.tgz#9c5823cdcdd17e5621ebc8928aefb144d033caac"
   dependencies:
     accept "3.x.x"
     ammo "3.x.x"
