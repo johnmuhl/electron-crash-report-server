@@ -1,0 +1,253 @@
+<div ref:report>
+  <div data-timestamp>
+    <Picture alt="created on" position="-3px 0" />
+    <span>{new Date(report.created_at)}</span>
+  </div>
+
+  <div data-timestamp>
+    <Picture alt="closed on" position="-3px -18px" />
+    <span>
+      {#if report.open}
+      —
+      {:else}
+      {new Date(report.closed_at)}
+      {/if}
+    </span>
+  </div>
+
+  <div data-timestamp>
+    <Picture alt="open for" position="-3px -36px" />
+    <span>{lifetime(report)}</span>
+  </div>
+
+  <div ref:views>
+    <button
+      on:click="set({ detailsVisible: !detailsVisible })"
+      data-is-visible={detailsVisible}
+    >
+      View report details
+    </button>
+
+    <button
+      on:click=getStackTrace()
+      data-is-visible={stackTraceVisible}
+    >
+      View stack trace
+    </button>
+
+    <a href="/reports/{report.id}/dump" role="button">
+      Download minidump
+    </a>
+  </div>
+
+  <div ref:actions>
+    <button data-is-open={report.open} on:click=toggleStatus() type="button">
+      {report.open ? "Close" : "Open" } report
+    </button>
+
+    <button ref:delete on:click=deleteReport()>
+      Delete report
+    </button>
+  </div>
+
+  {#if detailsVisible}
+  <pre>{JSON.stringify(report.body, null, 2)}</pre>
+  {/if}
+
+  {#if stackTraceVisible}
+  <pre>{report.stackTrace}</pre>
+  {/if}
+</div>
+
+<script type="module">
+/* global fetch */
+import { goto } from "sapper/runtime.js";
+import headers from "../../_headers.js";
+import prettyMs from "pretty-ms";
+
+export default {
+  components: {
+    Picture: "../../../components/picture.html",
+  },
+
+  data: () => ({
+    detailsVisible: true,
+    stackTraceVisible: false,
+  }),
+
+  helpers: {
+    lifetime(report) {
+      const closed = new Date(report.closed_at || Date.now());
+      const created = new Date(report.created_at);
+      const options = { secDecimalDigits: 0 };
+
+      return prettyMs(closed - created, options);
+    },
+  },
+
+  methods: {
+    async deleteReport() {
+      try {
+        const { report } = this.get();
+        const response = await fetch(`/reports/${report.id}`, {
+          headers,
+          method: "DELETE",
+        });
+
+        if (response.status !== 200) return console.error(response);
+
+        return goto("/");
+      } catch (error) {
+        console.error(error);
+        throw error;
+      }
+    },
+
+    async getStackTrace() {
+      const { report } = this.get();
+
+      if (report.stackTrace) {
+        return this.set({ stackTraceVisible: !this.get().stackTraceVisible });
+      }
+
+      try {
+        const response = await fetch(`/reports/${report.id}/stack`, {
+          headers,
+        });
+
+        if (response.status !== 200) return console.error(response);
+
+        const data = await response.json();
+
+        report.stackTrace = data.stackTrace;
+
+        return this.set({
+          report,
+          stackTraceVisible: !this.get().stackTraceVisible,
+        });
+      } catch (error) {
+        console.error(error);
+        throw error;
+      }
+    },
+
+    async toggleStatus() {
+      const { report } = this.get();
+      const { stackTrace } = report;
+
+      if (report.open) {
+        report.open = false;
+        report.closed_at = new Date();
+      } else {
+        report.open = true;
+        report.closed_at = null;
+      }
+
+      try {
+        const response = await fetch(`/reports/${report.id}`, {
+          body: JSON.stringify(report),
+          headers: { ...headers, "content-type": "application/json" },
+          method: "PATCH",
+        });
+        const data = await response.json();
+
+        if (stackTrace) data.stackTrace = stackTrace;
+        this.set({ report: data });
+      } catch (error) {
+        console.error(error);
+        throw error;
+      }
+    },
+  },
+
+  async preload({ params }) {
+    try {
+      const response = await this.fetch(`reports/${params.id}.json`, {
+        headers,
+      });
+      const report = await response.json();
+
+      this.store.set({ report });
+
+      return { report };
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  },
+};
+</script>
+
+<style>
+ref:report {
+  padding: 2rem;
+  border-top: 1px solid gainsboro;
+}
+
+ref:actions,
+ref:views {
+  display: flex;
+  margin: 0.25rem 0;
+}
+
+ref:views {
+  margin-top: 2rem;
+}
+
+button,
+[role="button"] {
+  display: block;
+  padding: 1rem;
+  width: 100%;
+  font-family: sans-serif;
+  font-size: 1.125em;
+  text-align: left;
+  text-decoration: none;
+  color: black;
+  background-color: gainsboro;
+  border: 0;
+  border-radius: 0.125rem;
+  cursor: default;
+}
+
+button:not(:last-child),
+[role="button"]:not(:last-child) {
+  margin-right: 0.25rem;
+}
+
+pre {
+  padding: 1rem;
+  margin: 2rem 0;
+  overflow: auto;
+  font-size: 1.2307692307692308rem; /* 16px */
+  background-color: whitesmoke;
+  border: 1px solid lightgray;
+  border-radius: 0.125rem;
+}
+
+[data-timestamp] {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0;
+  font-size: 0.875em;
+}
+
+[data-timestamp] span {
+  margin-left: 0.5rem;
+}
+
+[data-is-open="true"] {
+  color: black;
+  background-color: limegreen;
+}
+
+[data-is-visible="true"] {
+  color: white;
+  background-color: royalblue;
+}
+
+ref:delete {
+  color: white;
+  background-color: crimson;
+}
+</style>

@@ -1,0 +1,8 @@
+{
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "name": "Electron crash report server",
+  "short_name": "ECRS",
+  "display": "minimal-ui",
+  "start_url": "/"
+}

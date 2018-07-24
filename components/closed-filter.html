@@ -1,0 +1,33 @@
+<label>
+  <input
+    bind:checked=$closed
+    checked="false"
+    on:click="$set({closed: !$closed})"
+    type="checkbox"
+  >
+  Show closed
+</label>
+
+<script type="module">
+/* global localStorage */
+export default {
+  oncreate() {
+    if (localStorage.closed) {
+      this.store.set({ closed: JSON.parse(localStorage.closed) });
+    }
+
+    this.store.on("state", ({ changed, current }) => {
+      if (changed.closed) {
+        localStorage.closed = current.closed;
+      }
+    });
+  },
+};
+</script>
+
+<style>
+label {
+  width: 25%;
+  margin-right: 2rem;
+}
+</style>

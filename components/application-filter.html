@@ -1,0 +1,38 @@
+<label>
+  <span class="sr-only">
+    Show application
+  </span>
+  <select bind:value=$application>
+    <option value="">Show all</option>
+    {#each $applications as application}
+    <option value={application}>{application}</option>
+    {/each}
+  </select>
+</label>
+
+<script type="module">
+/* global localStorage */
+export default {
+  oncreate() {
+    if (localStorage.application) {
+      this.store.set({ application: localStorage.application });
+    }
+
+    this.store.on("state", ({ changed, current }) => {
+      if (changed.application) {
+        localStorage.application = current.application;
+      }
+    });
+  },
+};
+</script>
+
+<style>
+label {
+  width: 25%;
+}
+
+select {
+  width: 10rem;
+}
+</style>

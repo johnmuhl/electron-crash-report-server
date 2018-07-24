@@ -1,1 +1,1 @@
-web: node -r esm --optimize_for_size --max_old_space_size=460 --gc_interval=100 ./server/index.js
+web: yarn start --optimize_for_size --max_old_space_size=460 --gc_interval=100

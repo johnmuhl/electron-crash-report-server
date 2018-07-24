@@ -1,0 +1,32 @@
+<picture>
+  <source srcset="/icons-1x.png, /icons-2x.png 2x">
+  <img
+    {alt}
+    src="/icons-1x.png"
+    srcset="/icons-1x.png, /icons-2x.png 2x"
+    style="object-position: {position};"
+    {width}
+    {height}
+  >
+</picture>
+
+<script type="module">
+export default {
+  data: () => ({
+    alt: "",
+    height: 18,
+    width: 18,
+  }),
+};
+</script>
+
+<style>
+picture {
+  line-height: 0;
+}
+
+picture img {
+  object-fit: none;
+  object-position: 0 0;
+}
+</style>

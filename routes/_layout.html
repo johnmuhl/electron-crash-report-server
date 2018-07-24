@@ -1,0 +1,36 @@
+<AppBar path={child.segment} />
+
+<main>
+  <svelte:component this={child.component} {...child.props} />
+</main>
+
+<script type="module">
+export default {
+  components: {
+    AppBar: "../components/app-bar.html",
+  },
+
+  oncreate() {
+    this.store.compute("applications", ["reports"], reports =>
+      reports
+        // eslint-disable-next-line no-underscore-dangle
+        .map(report => report.body._productName)
+        .filter(item => item != null)
+        .filter(item => item.toString().trim().length)
+        .filter(item => !!item)
+        .sort()
+        .reduce((a, b) => {
+          if (a.length === 0 || a[a.length - 1] !== b) a.push(b);
+          return a;
+        }, [])
+    );
+  },
+};
+</script>
+
+<style>
+main {
+  margin: 0 auto;
+  width: 45rem;
+}
+</style>

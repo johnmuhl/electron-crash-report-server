@@ -15,6 +15,9 @@ jobs:
             yarn global add greenkeeper-lockfile@1
             yarn install
       - run:
+          name: yarn build
+          command: yarn build
+      - run:
           name: yarn test
           command: |
             "`yarn global bin`/greenkeeper-lockfile-update"

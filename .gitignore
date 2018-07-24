@@ -1,1 +1,4 @@
-/server/public/bundle.*
+/app/manifest/
+/build/
+/export/
+/.sapper/

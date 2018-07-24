@@ -1,0 +1,64 @@
+<div ref:app_bar>
+  <div ref:wrap>
+    <h1>
+      <a href="/">
+        Crash reports
+      </a>
+    </h1>
+
+    <div>
+      {#if path === undefined}
+      <ClosedFilter />
+      {#if $applications.length > 1}
+      <ApplicationFilter />
+      {/if}
+      {:else}
+      <span>
+        #{$report.id}
+      </span>
+      {/if}
+    </div>
+  </div>
+</div>
+
+<script type="module">
+export default {
+  components: {
+    ApplicationFilter: "./application-filter.html",
+    ClosedFilter: "./closed-filter.html",
+  },
+};
+</script>
+
+<style>
+ref:wrap {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  width: 45rem;
+  margin: 0 auto;
+}
+
+ref:wrap > div {
+  padding: 2rem;
+}
+
+h1 {
+  padding: 2rem;
+  font-family: monospace;
+  font-size: 1.8461538461538463rem; /* 24px...thanks browsers */
+  font-weight: 300;
+  text-transform: lowercase;
+  background-color: white;
+}
+
+a {
+  text-decoration: none;
+  color: gray;
+}
+
+span {
+  font-family: monospace;
+  font-size: 1.6153846153846154rem; /* 21px */
+}
+</style>

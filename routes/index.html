@@ -1,0 +1,143 @@
+<svelte:head>
+  <link rel="prefetch" href="/icons-{$devicePixelRatio > 1 ? 2 : 1}x.png">
+</svelte:head>
+
+<ul>
+  {#each $reports as report}
+  {#if !$application || report.body._productName === $application}
+  {#if $closed || report.open}
+  <li data-is-open={report.open}>
+    <a href="/reports/{report.id}">
+      <div>
+        <div data-id>
+          <span>#</span>{report.id}
+        </div>
+
+        <div data-created-at>
+          {created(report.created_at)}
+        </div>
+      </div>
+
+      {#if report.body._productName}
+      <div data-name>
+        {report.body._productName}
+      </div>
+      {/if}
+
+      {#if report.body._version}
+      <div data-version>
+        v{report.body._version}
+      </div>
+      {/if}
+
+      {#if report.body.platform}
+      <div data-platform>
+        {report.body.platform}
+      </div>
+      {/if}
+
+      {#if report.body.process_type}
+      <div data-process-type>
+        {report.body.process_type}
+      </div>
+      {/if}
+    </a>
+  </li>
+  {/if}
+  {/if}
+  {/each}
+</ul>
+
+<script type="module">
+/* global window */
+import headers from "./_headers.js";
+import prettyMs from "pretty-ms";
+
+export default {
+  helpers: {
+    created: createdAt => {
+      const options = { compact: true };
+      const created = new Date(createdAt);
+      const current = new Date(Date.now());
+      const duration = prettyMs(current - created, options).replace("~", "");
+
+      return `created ${duration} ago`;
+    },
+  },
+
+  async preload() {
+    if (process.browser) {
+      this.store.set({ devicePixelRatio: window.devicePixelRatio });
+    }
+
+    try {
+      const response = await this.fetch("reports.json", { headers });
+      const reports = await response.json();
+
+      return this.store.set({ reports });
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  },
+};
+</script>
+
+<style>
+ul {
+  list-style-type: none;
+}
+
+li {
+  border-top: 1px solid gainsboro;
+}
+
+a {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  text-decoration: none;
+  color: black;
+}
+
+a > div {
+  width: 20%;
+}
+
+a > div:not(:last-child) {
+  margin-right: 2rem;
+}
+
+[data-id] {
+  font-family: monospace;
+  font-size: 1.6153846153846154rem;
+  font-weight: 900;
+}
+
+[data-id] span {
+  font-weight: 300;
+  color: dimgray;
+}
+
+[data-created-at] {
+  font-size: 0.875rem;
+  color: dimgray;
+}
+
+[data-name],
+[data-version],
+[data-platform],
+[data-process-type] {
+  text-transform: lowercase;
+}
+
+[data-is-open="false"],
+[data-is-open="false"] a {
+  color: gray;
+  background-color: whitesmoke;
+}
+
+[data-is-open="false"] [data-id] {
+  font-weight: 400;
+}
+</style>
