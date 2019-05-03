@@ -22,13 +22,16 @@ const walkStackAsync = promisify(walkStack);
 const writeFileAsync = promisify(writeFile);
 
 const main = async () => {
+	const database_url =
+		process.env.DATABASE_URL ||
+		"postgres://localhost/electron_crash_report_server_development";
 	const server = Hapi.server({
-		port: process.env.PORT || 3000,
+		port: process.env.PORT || "3000",
 		router: { stripTrailingSlash: true },
 	});
 
 	try {
-		const db = await massive(process.env.DATABASE_URL);
+		const db = await massive(database_url);
 
 		await db.query(migrate);
 		await server.register([Inert, Vision]);
