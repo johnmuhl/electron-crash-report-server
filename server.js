@@ -1,5 +1,6 @@
 import "dotenv/config";
 import Boom from "@hapi/boom";
+import Brok from "brok";
 import Hapi from "@hapi/hapi";
 import Inert from "@hapi/inert";
 import Vision from "@hapi/vision";
@@ -36,7 +37,7 @@ const main = async () => {
 		const db = await massive(database_url);
 
 		await db.query(migrate);
-		await server.register([Inert, Vision]);
+		await server.register([Brok, Inert, Vision]);
 
 		pg_monitor.attach(db.driverConfig);
 
