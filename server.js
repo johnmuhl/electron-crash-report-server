@@ -52,8 +52,8 @@ const main = async () => {
 		// route: GET /
 		server.route({
 			handler: async (request, h) => {
-				const col = "id, body, closed_at";
-				const sql = `SELECT ${col} FROM reports ORDER BY created_at DESC`;
+				const col = "id, body";
+				const sql = `SELECT ${col} FROM reports WHERE closed_at is NULL ORDER BY created_at DESC`;
 
 				try {
 					const reports = await server.app.db.query(sql);
