@@ -6,6 +6,8 @@ import Vision from "@hapi/vision";
 import handlebars from "handlebars";
 import massive from "massive";
 import migrate from "./migrate.js";
+import pg_monitor from "pg-monitor";
+
 import { promisify } from "util";
 import { resolve } from "path";
 import { tmpdir } from "os";
@@ -35,6 +37,8 @@ const main = async () => {
 
 		await db.query(migrate);
 		await server.register([Inert, Vision]);
+
+		pg_monitor.attach(db.driverConfig);
 
 		server.app.db = db;
 
