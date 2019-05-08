@@ -40,7 +40,7 @@ const main = async () => {
 		await db.query(migrate);
 		await server.register([Brok, Inert, Vision]);
 
-		pg_monitor.attach(db.driverConfig);
+		// pg_monitor.attach(db.driverConfig);
 
 		server.app.db = db;
 
@@ -259,7 +259,9 @@ const main = async () => {
 
 					const stack = await walkStackAsync(path);
 					document.stack = report.stack = stack.toString();
-
+					console.log("-------------------------")
+					console.log(document)
+					console.log("-------------------------")
 					await unlinkAsync(path);
 					await server.app.db.reports.save(document);
 
