@@ -9,11 +9,11 @@
 	"repository": "github:johnmuhl/electron-crash-report-server",
 	"scripts": {
 		"fmt": "run-p -cs fmt:*",
-		"fmt:css": "yarn run prettier --write 'assets/*.css'",
-		"fmt:js": "yarn run prettier --write '*.js'",
-		"fmt:json": "yarn run prettier --write '*.json'",
-		"fmt:markdown": "yarn run prettier --write '*.markdown'",
-		"fmt:templates": "yarn run prettier --write 'templates/*' --parser html",
+		"fmt:css": "yarn run prettier --loglevel warn --write 'assets/*.css'",
+		"fmt:js": "yarn run prettier --loglevel warn --write '*.js'",
+		"fmt:json": "yarn run prettier --loglevel warn --write '*.json'",
+		"fmt:markdown": "yarn run prettier --loglevel warn --write '*.markdown'",
+		"fmt:templates": "yarn run prettier --loglevel warn --write 'templates/*' --parser html",
 		"start": "node index.js",
 		"start:dev": "nodemon -w '*.*' -w templates/ -e handlebars,js index.js",
 		"test": "echo ⚠ no tests defined ⚠"
