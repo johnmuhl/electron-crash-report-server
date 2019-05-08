@@ -1,4 +1,4 @@
-**electron-crash-report-server** is a Node.js ([hapi], [svelte]) and PostgreSQL
+**electron-crash-report-server** is a Node.js ([hapi]) and PostgreSQL
 ([massive]) application for collecting crash reports from Electron applications.
 
 ## install
@@ -37,14 +37,14 @@ reports to the demo server.
 
 ## development
 
-**Requirements**: Node.js LTS 8.9+ and PostgreSQL 9.4+.
+**Requirements**: Node.js LTS 10.x and PostgreSQL 10.x.
 
 ```sh
 git clone https://github.com/johnmuhl/electron-crash-report-server
 cd electron-crash-report-server
-createdb electron-crash-report-server
-cp .env-example .env
-yarn && yarn dev
+createdb electron_crash_report_server_development
+cp .env.example .env
+yarn && yarn start:dev
 # make changes
 yarn fmt
 ```
@@ -55,16 +55,15 @@ Use the [issue tracker][issues] to report bugs or discuss changes and features.
 
 ## license
 
-[MIT license][license]
+[The Unlicense][license]
 
 [hapi]: https://hapijs.com/
-[svelte]: https://svelte.technology/
-[massive]: https://dmfay.github.io/massive-js/
+[massive]: https://massivejs.org/
 [deploy-img]: https://www.herokucdn.com/deploy/button.svg
 [deploy-url]: https://heroku.com/deploy
-[docs]: http://electron.atom.io/docs/api/crash-reporter/
+[docs]: https://electronjs.org/docs/api/crash-reporter
 [example]: https://github.com/johnmuhl/electron-bomb
 [demo]: https://pacific-falls-32011.herokuapp.com/
 [issues]: https://github.com/johnmuhl/electron-crash-report-server/issues
 [license]:
-	https://github.com/johnmuhl/electron-crash-report-server/blob/master/LICENSE.md
+	https://github.com/johnmuhl/electron-crash-report-server/blob/master/license.markdown
