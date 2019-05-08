@@ -259,9 +259,7 @@ const main = async () => {
 
 					const stack = await walkStackAsync(path);
 					document.stack = report.stack = stack.toString();
-					console.log("-------------------------")
-					console.log(document)
-					console.log("-------------------------")
+
 					await unlinkAsync(path);
 					await server.app.db.reports.save(document);
 
