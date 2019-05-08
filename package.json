@@ -8,7 +8,8 @@
 	"bugs": "https://github.com/johnmuhl/electron-crash-report-server/issues",
 	"repository": "github:johnmuhl/electron-crash-report-server",
 	"scripts": {
-		"fmt": "run-p --race fmt:*",
+		"fmt": "run-p -cs fmt:*",
+		"fmt:css": "yarn run prettier --write 'assets/*.css'",
 		"fmt:js": "yarn run prettier --write '*.js'",
 		"fmt:json": "yarn run prettier --write '*.json'",
 		"fmt:markdown": "yarn run prettier --write '*.markdown'",
