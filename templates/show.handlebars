@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="/assets/show.css">
+
 <h1>
 	<span>#</span>{{report.id}}
 </h1>
@@ -6,7 +8,7 @@
 	{{report.created_at}}
 </div>
 
-<div id="closed_at">
+<div id="closed-at">
 	{{#if report.closed_at}}
 		{{report.closed_at}}
 	{{else}}
@@ -14,73 +16,64 @@
 	{{/if}}
 </div>
 
-<div id="opened_duration">—</div>
+<div id="open-duration">
+	{{report.open_duration}}
+</div>
 
-{{#if report.closed_at}}
-<button id="toggle-report-status-button" type="button">open report</button>
-{{else}}
-<button id="toggle-report-status-button" type="button">close report</button>
-{{/if}}
+<pre>{{report.body}}</pre>
 
-<button id="delete-report-button" type="button">delete report</button>
+<button id="status-button" type="button">
+	{{#if report.closed_at}}
+		open
+	{{else}}
+		close
+	{{/if}}
+</button>
 
-<button id="view-report-body-button" type="button">view report details</button>
-<pre class="hidden" id="report-body-text">{{report.body}}</pre>
+<button id="delete-button" type="button">
+	delete
+</button>
 
-<a class="button" id="view-stack-trace-button" href="/r/{{report.id}}/stack">view stack trace</a>
-<pre class="hidden" id="stack-trace-text"></pre>
+<a class="button" href="/r/{{report.id}}/stack">
+	stack trace
+</a>
 
-<a class="button" href="/r/{{report.id}}/dump">download dump file</a>
+<a class="button" href="/r/{{report.id}}/dump">
+	minidump
+</a>
 
 <script type="module">
-	const delete_report_button = document.querySelector("#delete-report-button");
-	const view_report_body_button = document.querySelector("#view-report-body-button");
-	const view_stack_trace_button = document.querySelector("#view-stack-trace-button");
-	const toggle_report_status_button = document.querySelector("#toggle-report-status-button");
-	const report_body_text = document.querySelector("#report-body-text");
-	const stack_trace_text = document.querySelector("#stack-trace-text");
+	const delete_button = document.querySelector("#delete-button");
+	const status_button = document.querySelector("#status-button");
 
-	let report_body_visible = true;
-	let stack_trace_loaded = false;
-	let stack_trace_visible = false;
+	status_button.addEventListener("click", async event => {
+		try {
+			const method = "PATCH";
+			const div = document.querySelector("#closed-at");
+			const response = await fetch("/r/{{report.id}}", { method });
+			const { closed_at } = await response.json();
+			let button_content, text_content;
 
-	toggle_report_status_button.addEventListener("click", async event => {
-		const response = await fetch("/r/{{report.id}}", { method: "PATCH" });
-		const report = await response.json();
-
-		console.log(report);
-	});
-
-	delete_report_button.addEventListener("click", async event => {
-		await fetch("/r/{{report.id}}", { method: "DELETE" });
-		document.location.href = "/";
-	});
-
-	view_report_body_button.addEventListener("click", event => {
-		report_body_text.classList.toggle("hidden");
-	});
-
-	view_stack_trace_button.addEventListener("click", async event => {
-		event.preventDefault();
-
-		if (stack_trace_text.classList.contains("hidden")) {
-			if (!stack_trace_loaded) {
-				try {
-					const response = await fetch("/r/{{report.id}}/stack");
-					const stack_trace = await response.text();
-
-					stack_trace_loaded = true;
-					stack_trace_text.textContent = stack_trace;
-				} catch (error) {
-					throw error;
-				}
+			if (closed_at) {
+				button_content = "open";
+				text_content = new Date(closed_at);
+			} else {
+				button_content = "close";
+				text_content = "—";
 			}
 
-			stack_trace_text.classList.remove("hidden");
-		} else {
-			stack_trace_text.classList.add("hidden");
+			div.textContent = text_content;
+			status_button.textContent = button_content;
+		} catch (error) {
+			throw error;
 		}
+	});
 
-		
+	delete_button.addEventListener("click", async event => {
+		const method = "DELETE";
+
+		await fetch("/r/{{report.id}}", { method });
+
+		document.location.href = "/";
 	});
 </script>

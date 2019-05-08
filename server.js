@@ -7,6 +7,7 @@ import Vision from "@hapi/vision";
 import handlebars from "handlebars";
 import massive from "massive";
 import migrate from "./migrate.js";
+import pretty_ms from "pretty-ms";
 import pg_monitor from "pg-monitor";
 
 import { promisify } from "util";
@@ -52,11 +53,19 @@ const main = async () => {
 		// route: GET /
 		server.route({
 			handler: async (request, h) => {
-				const col = "id, body";
-				const sql = `SELECT ${col} FROM reports WHERE closed_at is NULL ORDER BY created_at DESC`;
+				const q = request.query;
+				let columns = "id, body";
+				let where = "closed_at is NULL";
+				let select = `SELECT ${columns} FROM reports WHERE ${where} ORDER BY created_at DESC`;
+
+				if (q.closed === "true" || q.closed === "" || q.open === "false") {
+					columns = `${columns}, closed_at`;
+					where = "closed_at is NOT NULL";
+					select = `SELECT ${columns} FROM reports WHERE ${where} ORDER BY created_at DESC`;
+				}
 
 				try {
-					const reports = await server.app.db.query(sql);
+					const reports = await server.app.db.query(select);
 					return h.view("index", { reports });
 				} catch (error) {
 					throw error;
@@ -111,18 +120,30 @@ const main = async () => {
 		server.route({
 			handler: async (request, h) => {
 				const id = Number(request.params.id);
+				const fields = ["id", "body", "closed_at", "created_at", "updated_at"];
 
 				try {
+					const compact = true;
 					const report = await server.app.db.reports.findOne(
-						{
-							id,
-						},
-						{
-							fields: ["id", "body", "closed_at", "created_at", "updated_at"],
-						}
+						{ id },
+						{ fields }
 					);
+					const open = report.created_at;
+					let close;
 
 					report.body = JSON.stringify(report.body, null, "\t");
+
+					if (report.closed_at) {
+						close = report.closed_at;
+						report.open_duration = pretty_ms(close - open, {
+							compact,
+						});
+					} else {
+						close = Date.now();
+						report.open_duration = pretty_ms(close - open, {
+							compact,
+						});
+					}
 
 					return h.view("show", { report });
 				} catch (error) {
