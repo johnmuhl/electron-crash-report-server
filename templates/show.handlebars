@@ -50,8 +50,9 @@
 		try {
 			const method = "PATCH";
 			const div = document.querySelector("#closed-at");
+			const open_duration_div = document.querySelector("#open-duration");
 			const response = await fetch("/r/{{report.id}}", { method });
-			const { closed_at } = await response.json();
+			const { closed_at, open_duration } = await response.json();
 			let button_content, text_content;
 
 			if (closed_at) {
@@ -64,6 +65,7 @@
 
 			div.textContent = text_content;
 			status_button.textContent = button_content;
+			open_duration_div.textContent = open_duration;
 		} catch (error) {
 			throw error;
 		}

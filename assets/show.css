@@ -1,4 +1,15 @@
+a.button,
+button {
+	all: unset;
+	background-color: silver;
+	cursor: pointer;
+	display: inline-block;
+	line-height: 1;
+	padding: 1rem;
+}
+
 pre {
 	font-size: 1.2307692307692308rem; /* roughly 16px...probably */
+	margin: 1rem 0;
 	tab-size: 4;
 }

@@ -160,13 +160,31 @@ const main = async () => {
 				const id = Number(request.params.id);
 
 				try {
+					const compact = true;
 					const report = await server.app.db.reports.find(id);
+					const open = report.created_at;
+					let close;
 
 					report.closed_at = report.closed_at ? null : new Date();
 
 					await server.app.db.reports.save(report);
 
-					return { closed_at: report.closed_at };
+					if (report.closed_at) {
+						close = report.closed_at;
+						report.open_duration = pretty_ms(close - open, {
+							compact,
+						});
+					} else {
+						close = Date.now();
+						report.open_duration = pretty_ms(close - open, {
+							compact,
+						});
+					}
+
+					return {
+						closed_at: report.closed_at,
+						open_duration: report.open_duration,
+					};
 				} catch (error) {
 					throw error;
 				}
