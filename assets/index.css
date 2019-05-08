@@ -21,6 +21,10 @@ ul li a {
 	color: #212121;
 }
 
+ul li a:focus {
+	outline: 0.25rem dotted blue;
+}
+
 ul li a span {
 	color: #757575;
 }

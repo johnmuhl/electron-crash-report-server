@@ -41,23 +41,41 @@
 </div>
 
 <pre>{{report.body}}</pre>
+<div id="actions">
+	<button
+		class="{{#if report.closed_at}}closed{{else}}opened{{/if}}"
+		id="status-button"
+		type="button"
+	>
+		{{#if report.closed_at}}
+		<img alt="" width="20" height="20" src="/assets/baseline-replay-24px.svg" />
+		<span>open</span>
+		{{else}}
+		<img alt="" width="20" height="20" src="/assets/baseline-check-24px.svg" />
+		<span>close</span>
+		{{/if}}
+	</button>
 
-<button id="status-button" type="button">
-	{{#if report.closed_at}} open {{else}} close {{/if}}
-</button>
+	<a class="button" href="/r/{{report.id}}/stack">
+		<img alt="" width="20" height="20" src="/assets/baseline-notes-24px.svg" />
+		stack trace
+	</a>
 
-<button id="delete-button" type="button">
-	delete
-</button>
+	<a class="button" href="/r/{{report.id}}/dump">
+		<img alt="" width="20" height="20" src="/assets/baseline-save-24px.svg" />
+		minidump
+	</a>
 
-<a class="button" href="/r/{{report.id}}/stack">
-	stack trace
-</a>
-
-<a class="button" href="/r/{{report.id}}/dump">
-	minidump
-</a>
-
+	<button id="delete-button" type="button">
+		<img
+			alt=""
+			width="20"
+			height="20"
+			src="/assets/baseline-delete_forever-24px.svg"
+		/>
+		delete
+	</button>
+</div>
 <script type="module">
 	const delete_button = document.querySelector("#delete-button");
 	const status_button = document.querySelector("#status-button");
@@ -83,11 +101,19 @@
 			opened_duration.textContent = report.opened_duration;
 
 			if (report.closed_at !== "—") {
-				status_button.textContent = "open";
+				status_button.classList.add("closed");
+				status_button.classList.remove("opened");
+				status_button.querySelector("span").textContent = "open";
+				status_button.querySelector("img").src =
+					"/assets/baseline-replay-24px.svg";
 				closed_count.parentNode.classList.add("active");
 				opened_count.parentNode.classList.remove("active");
 			} else {
-				status_button.textContent = "close";
+				status_button.classList.add("opened");
+				status_button.classList.remove("closed");
+				status_button.querySelector("span").textContent = "close";
+				status_button.querySelector("img").src =
+					"/assets/baseline-check-24px.svg";
 				opened_count.parentNode.classList.add("active");
 				closed_count.parentNode.classList.remove("active");
 			}

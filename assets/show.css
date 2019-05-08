@@ -2,16 +2,6 @@ main {
 	padding: 2rem;
 }
 
-main button,
-main .button {
-	all: unset;
-	background-color: silver;
-	cursor: pointer;
-	display: inline-block;
-	line-height: 1;
-	padding: 1rem;
-}
-
 pre {
 	font-size: 1.2307692307692308rem; /* ~16px */
 	margin: 1rem 0;
@@ -36,4 +26,44 @@ pre {
 
 #timestamps div img {
 	margin-right: 0.25rem;
+}
+
+#actions {
+	display: flex;
+}
+
+#actions button,
+#actions .button {
+	all: unset;
+	background-color: #bdbdbd;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	line-height: 1;
+	padding: 1rem 1.5rem;
+	text-transform: capitalize;
+	font-size: 1.25rem;
+}
+
+#actions button:focus,
+#actions .button:focus {
+	outline: 0.25rem dotted blue;
+}
+
+#actions button:not(:last-child),
+#actions .button:not(:last-child) {
+	margin-right: 1rem;
+}
+
+#actions button img,
+#actions .button img {
+	margin-right: 0.5rem;
+}
+
+#actions .opened {
+	background-color: #81c784;
+}
+
+#actions #delete-button {
+	background-color: #ef9a9a;
 }
