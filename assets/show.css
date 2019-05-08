@@ -1,5 +1,9 @@
-a.button,
-button {
+main {
+	padding: 2rem;
+}
+
+main button,
+main .button {
 	all: unset;
 	background-color: silver;
 	cursor: pointer;
@@ -9,7 +13,27 @@ button {
 }
 
 pre {
-	font-size: 1.2307692307692308rem; /* roughly 16px...probably */
+	font-size: 1.2307692307692308rem; /* ~16px */
 	margin: 1rem 0;
 	tab-size: 4;
+	overflow-x: auto;
+}
+
+#timestamps {
+	display: flex;
+}
+
+#timestamps div {
+	display: flex;
+	align-items: center;
+	font-family: monospace;
+	font-size: 1.0769230769230769rem; /* ~14px */
+}
+
+#timestamps div:not(:last-child) {
+	margin-right: 2rem;
+}
+
+#timestamps div img {
+	margin-right: 0.25rem;
 }

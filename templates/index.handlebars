@@ -3,11 +3,21 @@
 <ul>
 	{{#each reports}}
 	<li>
-		<a href="/r/{{id}}"><span>#</span>{{id}}</a>
-		<span class="application">{{body._productName}}</span>
-		<span class="version">{{body._version}}</span>
-		<span class="{{body.process_type}}">{{body.process_type}}</span>
-		<span class="{{body.platform}}">{{body.platform}}</span>
+		<div>
+			<a href="/r/{{id}}"><span>#</span>{{id}}</a>
+			{{#if body._productName}}
+			<span class="application">{{body._productName}}</span>
+			{{/if}} {{#if body._version}}
+			<span class="version">{{body._version}}</span>
+			{{/if}} {{#if body.process_type}}
+			<span class="{{body.process_type}}">{{body.process_type}}</span>
+			{{/if}} {{#if body.platform}}
+			<span class="{{body.platform}}">{{body.platform}}</span>
+			{{/if}}
+		</div>
+		<div>
+			{{#if created_at}} {{created_at}} {{else}} {{closed_at}} {{/if}}
+		</div>
 	</li>
 	{{/each}}
 </ul>

@@ -25,12 +25,17 @@ const unlinkAsync = promisify(unlink);
 const walkStackAsync = promisify(walkStack);
 const writeFileAsync = promisify(writeFile);
 
+function opened_duration(report) {
+	const closed_at = report.closed_at || Date.now();
+
+	return pretty_ms(closed_at - report.created_at, { compact: true });
+}
+
 const main = async () => {
-	const database_url =
-		process.env.DATABASE_URL ||
-		"postgres://localhost/electron_crash_report_server_development";
+	const database_url = process.env.DATABASE_URL;
 	const server = Hapi.server({
-		port: process.env.PORT || "3000",
+		compression: { minBytes: 1 },
+		port: process.env.PORT,
 		router: { stripTrailingSlash: true },
 	});
 
@@ -42,8 +47,6 @@ const main = async () => {
 
 		pg_monitor.attach(db.driverConfig);
 
-		server.app.db = db;
-
 		server.views({
 			engines: { handlebars },
 			layout: true,
@@ -53,20 +56,56 @@ const main = async () => {
 		// route: GET /
 		server.route({
 			handler: async (request, h) => {
-				const q = request.query;
-				let columns = "id, body";
-				let where = "closed_at is NULL";
-				let select = `SELECT ${columns} FROM reports WHERE ${where} ORDER BY created_at DESC`;
-
-				if (q.closed === "true" || q.closed === "" || q.open === "false") {
-					columns = `${columns}, closed_at`;
-					where = "closed_at is NOT NULL";
-					select = `SELECT ${columns} FROM reports WHERE ${where} ORDER BY created_at DESC`;
-				}
-
 				try {
-					const reports = await server.app.db.query(select);
-					return h.view("index", { reports });
+					const q = request.query;
+
+					let closed_active, closed_count, opened_active, opened_count, reports;
+
+					if (q.closed === "true" || q.closed === "" || q.open === "false") {
+						reports = await db.query(
+							`SELECT id, body, closed_at FROM reports WHERE closed_at is NOT NULL ORDER BY closed_at DESC`
+						);
+
+						[{ count: opened_count }] = await db.query(
+							`select count(1) from reports where closed_at is null`
+						);
+
+						reports.forEach(r => {
+							let duration = pretty_ms(Date.now() - r.closed_at, {
+								compact: true,
+							});
+							duration = duration.replace(/~/, "");
+							r.closed_at = `closed ${duration} ago`;
+						});
+
+						closed_active = true;
+						closed_count = reports.length;
+					} else {
+						reports = await db.query(
+							`SELECT id, body, created_at FROM reports WHERE closed_at is NULL ORDER BY created_at DESC`
+						);
+
+						[{ count: closed_count }] = await db.query(
+							`select count(1) from reports where closed_at is not null`
+						);
+
+						reports.forEach(r => {
+							let duration = opened_duration(r);
+							duration = duration.replace(/~/, "");
+							r.created_at = `opened ${duration} ago`;
+						});
+
+						opened_active = true;
+						opened_count = reports.length;
+					}
+
+					return h.view("index", {
+						closed_active,
+						closed_count,
+						opened_active,
+						opened_count,
+						reports,
+					});
 				} catch (error) {
 					throw error;
 				}
@@ -102,7 +141,7 @@ const main = async () => {
 					}
 
 					try {
-						const document = await server.app.db.reports.save(report);
+						const document = await db.reports.save(report);
 						return document.id;
 					} catch (error) {
 						console.error(error);
@@ -119,33 +158,37 @@ const main = async () => {
 		// route: GET /r/{id}
 		server.route({
 			handler: async (request, h) => {
-				const id = Number(request.params.id);
-				const fields = ["id", "body", "closed_at", "created_at", "updated_at"];
-
 				try {
-					const compact = true;
-					const report = await server.app.db.reports.findOne(
-						{ id },
-						{ fields }
+					const id = Number(request.params.id);
+					const fields = ["id", "body", "closed_at", "created_at"];
+					const report = await db.reports.find(id, { fields });
+					const [{ count: opened_count }] = await db.query(
+						`select count(1) from reports where closed_at is null`
 					);
-					const open = report.created_at;
-					let close;
+					const [{ count: closed_count }] = await db.query(
+						`select count(1) from reports where closed_at is not null`
+					);
 
+					let closed_active, opened_active;
+
+					report.opened_duration = opened_duration(report);
 					report.body = JSON.stringify(report.body, null, "\t");
+					report.created_at = report.created_at.toLocaleString();
 
 					if (report.closed_at) {
-						close = report.closed_at;
-						report.open_duration = pretty_ms(close - open, {
-							compact,
-						});
+						closed_active = true;
+						report.closed_at = report.closed_at.toLocaleString();
 					} else {
-						close = Date.now();
-						report.open_duration = pretty_ms(close - open, {
-							compact,
-						});
+						opened_active = true;
 					}
 
-					return h.view("show", { report });
+					return h.view("show", {
+						closed_active,
+						closed_count,
+						opened_active,
+						opened_count,
+						report,
+					});
 				} catch (error) {
 					throw error;
 				}
@@ -157,33 +200,41 @@ const main = async () => {
 		// route: PATCH /r/{id}
 		server.route({
 			handler: async (request, h) => {
-				const id = Number(request.params.id);
-
 				try {
-					const compact = true;
-					const report = await server.app.db.reports.find(id);
-					const open = report.created_at;
-					let close;
+					const id = Number(request.params.id);
+					const fields = ["id", "closed_at", "created_at"];
+					const report = await db.reports.find(id, { fields });
+
+					let closed_active, opened_active;
 
 					report.closed_at = report.closed_at ? null : new Date();
 
-					await server.app.db.reports.save(report);
+					await db.reports.save(report);
+
+					const [{ count: opened_count }] = await db.query(
+						`select count(1) from reports where closed_at is null`
+					);
+					const [{ count: closed_count }] = await db.query(
+						`select count(1) from reports where closed_at is not null`
+					);
+
+					report.opened_duration = opened_duration(report);
+					report.created_at = report.created_at.toLocaleString();
 
 					if (report.closed_at) {
-						close = report.closed_at;
-						report.open_duration = pretty_ms(close - open, {
-							compact,
-						});
+						closed_active = true;
+						report.closed_at = report.closed_at.toLocaleString();
 					} else {
-						close = Date.now();
-						report.open_duration = pretty_ms(close - open, {
-							compact,
-						});
+						opened_active = true;
+						report.closed_at = "—";
 					}
 
 					return {
-						closed_at: report.closed_at,
-						open_duration: report.open_duration,
+						closed_active,
+						closed_count,
+						opened_active,
+						opened_count,
+						report,
 					};
 				} catch (error) {
 					throw error;
@@ -196,10 +247,9 @@ const main = async () => {
 		// route: DELETE /r/{id}
 		server.route({
 			handler: async (request, h) => {
-				const id = Number(request.params.id);
-
 				try {
-					const response = await server.app.db.reports.destroy(id);
+					const id = Number(request.params.id);
+					const response = await db.reports.destroy(id);
 
 					return { id: response.id };
 				} catch (error) {
@@ -213,10 +263,9 @@ const main = async () => {
 		// route: GET /r/{id}/dump
 		server.route({
 			handler: async (request, h) => {
-				const id = Number(request.params.id);
-
 				try {
-					const report = await server.app.db.reports.find(id);
+					const id = Number(request.params.id);
+					const report = await db.reports.find(id);
 					const name = `${report.body._productName}-crash-${id}.dmp`;
 
 					return h
@@ -234,34 +283,25 @@ const main = async () => {
 		// route: GET /r/{id}/stack
 		server.route({
 			handler: async (request, h) => {
-				const id = Number(request.params.id);
-
 				try {
-					const report = await server.app.db.reports.findOne(
-						{
-							id,
-						},
-						{
-							fields: ["stack"],
-						}
-					);
-
-					if (report.stack) {
-						return h.response(report.stack).type("text/plain");
-					}
+					const id = Number(request.params.id);
+					const report = await db.reports.find(id, { fields: ["stack"] });
 
 					// Reports from pre-2.x do not have a stored stack trace.
 					// Generate and store stack trace on first view.
-					const document = await server.app.db.reports.find(id);
-					const path = resolve(tmpdir(), `${document.id}.dmp`);
+					if (!report.stack) {
+						const document = await db.reports.find(id);
+						const path = resolve(tmpdir(), `${document.id}.dmp`);
 
-					await writeFileAsync(path, document.dump, "binary");
+						await writeFileAsync(path, document.dump, "binary");
 
-					const stack = await walkStackAsync(path);
-					document.stack = report.stack = stack.toString();
+						const stack = await walkStackAsync(path);
 
-					await unlinkAsync(path);
-					await server.app.db.reports.save(document);
+						document.stack = report.stack = stack.toString();
+
+						await unlinkAsync(path);
+						await db.reports.save(document);
+					}
 
 					return h.response(report.stack).type("text/plain");
 				} catch (error) {

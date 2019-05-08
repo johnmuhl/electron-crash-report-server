@@ -1,33 +1,49 @@
-<link rel="stylesheet" href="/assets/show.css">
+<link rel="stylesheet" href="/assets/show.css" />
 
-<h1>
-	<span>#</span>{{report.id}}
-</h1>
+<h1><span>#</span>{{report.id}}</h1>
 
-<div id="created-at">
-	{{report.created_at}}
-</div>
+<div id="timestamps">
+	<div>
+		<img
+			alt="created at"
+			width="20"
+			height="20"
+			src="/assets/baseline-access_time-24px.svg"
+		/>
+		<span>
+			{{report.created_at}}
+		</span>
+	</div>
 
-<div id="closed-at">
-	{{#if report.closed_at}}
-		{{report.closed_at}}
-	{{else}}
-		—
-	{{/if}}
-</div>
+	<div id="closed-at">
+		<img
+			alt="closed at"
+			width="20"
+			height="20"
+			src="/assets/baseline-watch_later-24px.svg"
+		/>
+		<span>
+			{{#if report.closed_at}} {{report.closed_at}} {{else}} — {{/if}}
+		</span>
+	</div>
 
-<div id="open-duration">
-	{{report.open_duration}}
+	<div id="opened-duration">
+		<img
+			alt="open duration"
+			width="20"
+			height="20"
+			src="/assets/baseline-timer-24px.svg"
+		/>
+		<span>
+			{{report.opened_duration}}
+		</span>
+	</div>
 </div>
 
 <pre>{{report.body}}</pre>
 
 <button id="status-button" type="button">
-	{{#if report.closed_at}}
-		open
-	{{else}}
-		close
-	{{/if}}
+	{{#if report.closed_at}} open {{else}} close {{/if}}
 </button>
 
 <button id="delete-button" type="button">
@@ -48,34 +64,40 @@
 
 	status_button.addEventListener("click", async event => {
 		try {
-			const method = "PATCH";
-			const div = document.querySelector("#closed-at");
-			const open_duration_div = document.querySelector("#open-duration");
-			const response = await fetch("/r/{{report.id}}", { method });
-			const { closed_at, open_duration } = await response.json();
-			let button_content, text_content;
+			const response = await fetch("/r/{{report.id}}", { method: "PATCH" });
+			const {
+				closed_active,
+				closed_count: closed,
+				opened_active,
+				opened_count: opened,
+				report,
+			} = await response.json();
+			const closed_at = document.querySelector("#closed-at span");
+			const closed_count = document.querySelector("#closed-count span");
+			const opened_duration = document.querySelector("#opened-duration span");
+			const opened_count = document.querySelector("#opened-count span");
 
-			if (closed_at) {
-				button_content = "open";
-				text_content = new Date(closed_at);
+			closed_at.textContent = report.closed_at;
+			closed_count.textContent = closed;
+			opened_count.textContent = opened;
+			opened_duration.textContent = report.opened_duration;
+
+			if (report.closed_at !== "—") {
+				status_button.textContent = "open";
+				closed_count.parentNode.classList.add("active");
+				opened_count.parentNode.classList.remove("active");
 			} else {
-				button_content = "close";
-				text_content = "—";
+				status_button.textContent = "close";
+				opened_count.parentNode.classList.add("active");
+				closed_count.parentNode.classList.remove("active");
 			}
-
-			div.textContent = text_content;
-			status_button.textContent = button_content;
-			open_duration_div.textContent = open_duration;
 		} catch (error) {
 			throw error;
 		}
 	});
 
 	delete_button.addEventListener("click", async event => {
-		const method = "DELETE";
-
-		await fetch("/r/{{report.id}}", { method });
-
+		await fetch("/r/{{report.id}}", { method: "DELETE" });
 		document.location.href = "/";
 	});
 </script>

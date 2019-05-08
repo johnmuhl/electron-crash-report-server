@@ -21,10 +21,68 @@
 		}
 
 		body {
+			margin-top: 3.5rem;
 			font-family: sans-serif;
 			line-height: 1.5;
+			color: #212121;
+			background-color: #fafafa;
+		}
+
+		header {
+			display: flex;
+			position: fixed;
+			top: 0;
+			right: 0;
+			left: 0;
+			background-color: #eee;
+			box-shadow: 0 0 0.375rem -1px black;
+		}
+
+		header .button {
+			all: unset;
+			display: flex;
+			align-items: center;
+			padding: 1rem;
+			cursor: pointer;
+		}
+
+		header .button img {
+			margin-right: 0.25rem;
+		}
+
+		header .button.active {
+			font-weight: bold;
 		}
 	</style>
+
+	<header>
+		<a
+			class="button {{#if opened_active}}active{{/if}}"
+			id="opened-count"
+			href="/"
+		>
+			<img
+				alt=""
+				width="24"
+				height="24"
+				src="/assets/baseline-error_outline-24px.svg"
+			/>
+			<span> {{opened_count}} </span>&nbsp; Open
+		</a>
+		<a
+			class="button {{#if closed_active}}active{{/if}}"
+			id="closed-count"
+			href="/?closed=true"
+		>
+			<img
+				alt=""
+				width="24"
+				height="24"
+				src="/assets/baseline-check-24px.svg"
+			/>
+			<span> {{closed_count}} </span>&nbsp; Closed
+		</a>
+	</header>
 
 	<main>{{{content}}}</main>
 </html>
