@@ -40,7 +40,7 @@ const main = async () => {
 		await db.query(migrate);
 		await server.register([Brok, Inert, Vision]);
 
-		// pg_monitor.attach(db.driverConfig);
+		pg_monitor.attach(db.driverConfig);
 
 		server.app.db = db;
 
