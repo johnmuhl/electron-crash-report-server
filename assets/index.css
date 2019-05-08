@@ -16,7 +16,7 @@ ul li:not(:last-child) {
 ul li a {
 	display: inline-block;
 	padding: 1rem;
-	/* min-width: 8rem; */
+	min-width: 8rem;
 	font-size: 1.25rem;
 	color: #212121;
 }
