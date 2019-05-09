@@ -1,4 +1,5 @@
 import "dotenv/config";
+import Basic from "@hapi/basic";
 import Boom from "@hapi/boom";
 import Brok from "brok";
 import Hapi from "@hapi/hapi";
@@ -26,10 +27,18 @@ const unlinkAsync = promisify(unlink);
 const walkStackAsync = promisify(walkStack);
 const writeFileAsync = promisify(writeFile);
 
-function opened_duration(report) {
+const opened_duration = report => {
 	const closed_at = report.closed_at || new Date();
 	return pretty_ms(closed_at - report.created_at, { compact: true });
-}
+};
+
+const validate = async (request, username, password, h) => {
+	if (!username || !password) return Boom.unauthorized();
+	if (username !== process.env.AUTH_USER) return Boom.unauthorized();
+	if (password !== process.env.AUTH_PASS) return Boom.unauthorized();
+
+	return { credentials: { password, username }, isValid: true };
+};
 
 const main = async () => {
 	const database_url = process.env.DATABASE_URL;
@@ -44,6 +53,7 @@ const main = async () => {
 
 		await db.query(migrate);
 		await server.register([
+			Basic,
 			Brok,
 			Inert,
 			Vision,
@@ -51,9 +61,13 @@ const main = async () => {
 				plugin: Pino,
 				options: {
 					prettyPrint: !production,
+					redact: ["req.headers.authorization"],
 				},
 			},
 		]);
+
+		server.auth.strategy("simple", "basic", { validate });
+		server.auth.default("simple");
 
 		if (!production) pg_monitor.attach(db.driverConfig);
 
@@ -162,6 +176,7 @@ const main = async () => {
 				}
 			},
 			method: POST,
+			options: { auth: false },
 			path: "/",
 		});
 
