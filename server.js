@@ -55,7 +55,7 @@ const main = async () => {
 			},
 		]);
 
-		pg_monitor.attach(db.driverConfig);
+		if (!production) pg_monitor.attach(db.driverConfig);
 
 		server.views({
 			engines: { handlebars },
