@@ -41,6 +41,7 @@
 	"devDependencies": {
 		"nodemon": "1.x",
 		"npm-run-all": "4.x",
+		"pino-colada": "1.x",
 		"prettier": "1.x"
 	},
 	"private": true

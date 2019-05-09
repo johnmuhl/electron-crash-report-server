@@ -52,24 +52,15 @@ const main = async () => {
 		const db = await massive(database_url);
 
 		await db.query(migrate);
-		await server.register([
-			Basic,
-			Brok,
-			Inert,
-			Vision,
-			{
-				plugin: Pino,
-				options: {
-					prettyPrint: !production,
-					redact: ["req.headers.authorization"],
-				},
-			},
-		]);
+		await server.register([Basic, Brok, Inert, Vision]);
+
+		if (!production) {
+			await server.register(Pino);
+			pg_monitor.attach(db.driverConfig);
+		}
 
 		server.auth.strategy("simple", "basic", { validate });
 		server.auth.default("simple");
-
-		if (!production) pg_monitor.attach(db.driverConfig);
 
 		server.views({
 			engines: { handlebars },
