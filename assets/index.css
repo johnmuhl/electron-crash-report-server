@@ -13,7 +13,7 @@ ul li:not(:last-child) {
 	border-bottom: 2px solid #e0e0e0;
 }
 
-ul li a {
+ul div > a {
 	display: inline-block;
 	padding: 1rem;
 	min-width: 8rem;
@@ -29,7 +29,8 @@ ul li a span {
 	color: #757575;
 }
 
-ul div > span {
+ul div > span a {
+	display: inline-block;
 	padding: 0.375rem;
 	margin-right: 0.375rem;
 	line-height: 1;
@@ -38,31 +39,31 @@ ul div > span {
 	color: #fafafa;
 	background-color: #424242;
 	border-radius: 0.25rem;
-	cursor: default;
+	text-decoration: none;
 }
 
-ul div > .application {
+ul div > .application a {
 	color: #424242;
 	background-color: #fff;
 }
 
-ul div > .renderer {
+ul div > .renderer a {
 	background-color: #1b5e20;
 }
 
-ul div > .browser {
+ul div > .browser a {
 	background-color: #6d4c41;
 }
 
-ul div > .darwin {
+ul div > .darwin a {
 	background-color: #880e4f;
 }
 
-ul div > .linux {
+ul div > .linux a {
 	background-color: #7b1fa2;
 }
 
-ul div > .win32 {
+ul div > .win32 a {
 	background-color: #0d47a1;
 }
 

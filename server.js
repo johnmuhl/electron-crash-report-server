@@ -26,8 +26,7 @@ const walkStackAsync = promisify(walkStack);
 const writeFileAsync = promisify(writeFile);
 
 function opened_duration(report) {
-	const closed_at = report.closed_at || Date.now();
-
+	const closed_at = report.closed_at || new Date();
 	return pretty_ms(closed_at - report.created_at, { compact: true });
 }
 
@@ -310,6 +309,68 @@ const main = async () => {
 			},
 			method: GET,
 			path: "/r/{id}/stack",
+		});
+
+		// route: GET /search
+		server.route({
+			handler: async (request, h) => {
+				const { app, version, process_type, platform } = request.query;
+				const [{ count: opened_count }] = await db.query(
+					`select count(1) from reports where closed_at is null`
+				);
+				const [{ count: closed_count }] = await db.query(
+					`select count(1) from reports where closed_at is not null`
+				);
+
+				let reports = [];
+				let key = ``;
+				let val = ``;
+				let select = `select id, body, created_at, closed_at from reports where`;
+				let where = ``;
+
+				if (app) {
+					if (where) where = `${where} and`;
+					where = `${where} body @> '{"_productName": "${app}"}'`;
+				}
+
+				if (version) {
+					if (where) where = `${where} and`;
+					where = `${where} body @> '{"_version": "${version}"}'`;
+				}
+
+				if (process_type) {
+					if (where) where = `${where} and`;
+					where = `${where} body @> '{"process_type": "${process_type}"}'`;
+				}
+
+				if (platform) {
+					if (where) where = `${where} and`;
+					where = `${where} body @> '{"platform": "${platform}"}'`;
+				}
+
+				select = `${select} ${where} order by created_at desc`;
+				reports = await db.query(select);
+
+				reports.forEach(r => {
+					let duration = opened_duration(r);
+					duration = duration.replace(/~/, "");
+					r.created_at = `opened ${duration} ago`;
+				});
+
+				reports.forEach(r => {
+					if (r.closed_at) {
+						let duration = pretty_ms(Date.now() - r.closed_at, {
+							compact: true,
+						});
+						duration = duration.replace(/~/, "");
+						r.closed_at = `closed ${duration} ago`;
+					}
+				});
+
+				return h.view("search", { closed_count, opened_count, reports });
+			},
+			method: GET,
+			path: "/search",
 		});
 
 		// Serve static assets
