@@ -9,7 +9,6 @@ import massive from "massive";
 import migrate from "./migrate.js";
 import pretty_ms from "pretty-ms";
 import pg_monitor from "pg-monitor";
-
 import { promisify } from "util";
 import { resolve } from "path";
 import { tmpdir } from "os";
@@ -323,8 +322,6 @@ const main = async () => {
 				);
 
 				let reports = [];
-				let key = ``;
-				let val = ``;
 				let select = `select id, body, created_at, closed_at from reports where`;
 				let where = ``;
 
