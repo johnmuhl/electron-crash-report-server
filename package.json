@@ -8,15 +8,16 @@
 	"bugs": "https://github.com/johnmuhl/electron-crash-report-server/issues",
 	"repository": "github:johnmuhl/electron-crash-report-server",
 	"scripts": {
-		"fmt": "run-p -cs fmt:*",
-		"fmt:css": "yarn run prettier --loglevel warn --write 'assets/*.css'",
-		"fmt:js": "yarn run prettier --loglevel warn --write '*.js'",
-		"fmt:json": "yarn run prettier --loglevel warn --write '*.json'",
-		"fmt:markdown": "yarn run prettier --loglevel warn --write '*.markdown'",
-		"fmt:templates": "yarn run prettier --loglevel warn --write 'templates/*' --parser html",
+		"fmt": "run-p -cs fmt:* && yarn run lint --fix",
+		"fmt:css": "prettier --loglevel warn --write 'assets/*.css'",
+		"fmt:js": "prettier --loglevel warn --write '*.js'",
+		"fmt:json": "prettier --loglevel warn --write '*.json'",
+		"fmt:markdown": "prettier --loglevel warn --write '*.markdown'",
+		"fmt:templates": "prettier --loglevel warn --write 'templates/*' --parser html",
+		"lint": "eslint .",
 		"start": "node index.js",
 		"start:dev": "nodemon -w '*.*' -w templates/ -e handlebars,js index.js",
-		"test": "echo ⚠ no tests defined ⚠"
+		"test": "yarn run lint"
 	},
 	"engines": {
 		"node": "10.x",
@@ -39,6 +40,14 @@
 		"pretty-ms": "5.0.0"
 	},
 	"devDependencies": {
+		"eslint": "5.x",
+		"eslint-config-airbnb-base": "13.x",
+		"eslint-config-oz": "github:johnmuhl/eslint-config-oz",
+		"eslint-config-prettier": "4.x",
+		"eslint-import-resolver-node": "0.x",
+		"eslint-plugin-html": "5.x",
+		"eslint-plugin-import": "2.x",
+		"eslint-plugin-unicorn": "8.x",
 		"nodemon": "1.x",
 		"npm-run-all": "4.x",
 		"pino-colada": "1.x",

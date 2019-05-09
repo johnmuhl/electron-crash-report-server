@@ -1,20 +1,20 @@
 import "dotenv/config";
-import Basic from "@hapi/basic";
+import { unlink, writeFile } from "fs";
+import basic from "@hapi/basic";
 import Boom from "@hapi/boom";
-import Brok from "brok";
-import Hapi from "@hapi/hapi";
-import Inert from "@hapi/inert";
-import Pino from "hapi-pino";
-import Vision from "@hapi/vision";
+import brok from "brok";
 import handlebars from "handlebars";
+import hapi from "@hapi/hapi";
+import inert from "@hapi/inert";
 import massive from "massive";
 import migrate from "./migrate.js";
-import pretty_ms from "pretty-ms";
-import pg_monitor from "pg-monitor";
+import pgMonitor from "pg-monitor";
+import pino from "hapi-pino";
+import prettyMs from "pretty-ms";
 import { promisify } from "util";
 import { resolve } from "path";
 import { tmpdir } from "os";
-import { unlink, writeFile } from "fs";
+import vision from "@hapi/vision";
 import { walkStack } from "minidump";
 
 const DELETE = "DELETE";
@@ -27,12 +27,12 @@ const unlinkAsync = promisify(unlink);
 const walkStackAsync = promisify(walkStack);
 const writeFileAsync = promisify(writeFile);
 
-const opened_duration = report => {
+const openedDuration = report => {
 	const closed_at = report.closed_at || new Date();
-	return pretty_ms(closed_at - report.created_at, { compact: true });
+	return prettyMs(closed_at - report.created_at, { compact: true });
 };
 
-const validate = async (request, username, password, h) => {
+const validate = async (request, username, password) => {
 	if (!username || !password) return Boom.unauthorized();
 	if (username !== process.env.AUTH_USER) return Boom.unauthorized();
 	if (password !== process.env.AUTH_PASS) return Boom.unauthorized();
@@ -41,22 +41,24 @@ const validate = async (request, username, password, h) => {
 };
 
 const main = async () => {
-	const database_url = process.env.DATABASE_URL;
-	const server = Hapi.server({
+	const {
+		env: { DATABASE_URL: database_url },
+	} = process;
+	const server = hapi.server({
 		compression: { minBytes: 1 },
 		port: process.env.PORT,
 		router: { stripTrailingSlash: true },
 	});
 
 	try {
-		const db = await massive(database_url);
+		const database = await massive(database_url);
 
-		await db.query(migrate);
-		await server.register([Basic, Brok, Inert, Vision]);
+		await database.query(migrate);
+		await server.register([basic, brok, inert, vision]);
 
 		if (!production) {
-			await server.register(Pino);
-			pg_monitor.attach(db.driverConfig);
+			await server.register(pino);
+			pgMonitor.attach(database.driverConfig);
 		}
 
 		server.auth.strategy("simple", "basic", { validate });
@@ -72,46 +74,56 @@ const main = async () => {
 		server.route({
 			handler: async (request, h) => {
 				try {
-					const q = request.query;
+					const { query } = request;
 
-					let closed_active, closed_count, opened_active, opened_count, reports;
+					let closed_active;
+					let closed_count;
+					let opened_active;
+					let opened_count;
+					let reports;
 
-					if (q.closed === "true" || q.closed === "" || q.open === "false") {
-						reports = await db.query(
+					if (
+						query.closed === "true" ||
+						query.closed === "" ||
+						query.open === "false"
+					) {
+						reports = await database.query(
+							/* eslint-disable-next-line max-len */
 							`SELECT id, body, closed_at FROM reports WHERE closed_at is NOT NULL ORDER BY closed_at DESC`
 						);
 
-						[{ count: opened_count }] = await db.query(
+						[{ count: opened_count }] = await database.query(
 							`select count(1) from reports where closed_at is null`
 						);
 
-						reports.forEach(r => {
-							let duration = pretty_ms(Date.now() - r.closed_at, {
+						reports.forEach((x, i) => {
+							let duration = prettyMs(Date.now() - x.closed_at, {
 								compact: true,
 							});
 							duration = duration.replace(/~/, "");
-							r.closed_at = `closed ${duration} ago`;
+							reports[i].closed_at = `closed ${duration} ago`;
 						});
 
 						closed_active = true;
-						closed_count = reports.length;
+						({ length: closed_count } = reports);
 					} else {
-						reports = await db.query(
+						reports = await database.query(
+							/* eslint-disable-next-line max-len */
 							`SELECT id, body, created_at FROM reports WHERE closed_at is NULL ORDER BY created_at DESC`
 						);
 
-						[{ count: closed_count }] = await db.query(
+						[{ count: closed_count }] = await database.query(
 							`select count(1) from reports where closed_at is not null`
 						);
 
-						reports.forEach(r => {
-							let duration = opened_duration(r);
+						reports.forEach((x, i) => {
+							let duration = openedDuration(x);
 							duration = duration.replace(/~/, "");
-							r.created_at = `opened ${duration} ago`;
+							reports[i].created_at = `opened ${duration} ago`;
 						});
 
 						opened_active = true;
-						opened_count = reports.length;
+						({ length: opened_count } = reports);
 					}
 
 					return h.view("index", {
@@ -131,7 +143,7 @@ const main = async () => {
 
 		// route: POST /
 		server.route({
-			handler: async (request, h) => {
+			handler: async request => {
 				if (request.payload) {
 					const report = {
 						body: Object.assign({}, request.payload),
@@ -151,15 +163,15 @@ const main = async () => {
 
 						await unlinkAsync(path);
 					} catch (error) {
-						console.error(error);
+						console.error(error); /* eslint-disable-line no-console */
 						throw error;
 					}
 
 					try {
-						const document = await db.reports.save(report);
+						const document = await database.reports.save(report);
 						return document.id;
 					} catch (error) {
-						console.error(error);
+						console.error(error); /* eslint-disable-line no-console */
 						throw error;
 					}
 				} else {
@@ -177,17 +189,18 @@ const main = async () => {
 				try {
 					const id = Number(request.params.id);
 					const fields = ["id", "body", "closed_at", "created_at"];
-					const report = await db.reports.find(id, { fields });
-					const [{ count: opened_count }] = await db.query(
+					const report = await database.reports.find(id, { fields });
+					const [{ count: opened_count }] = await database.query(
 						`select count(1) from reports where closed_at is null`
 					);
-					const [{ count: closed_count }] = await db.query(
+					const [{ count: closed_count }] = await database.query(
 						`select count(1) from reports where closed_at is not null`
 					);
 
-					let closed_active, opened_active;
+					let closed_active;
+					let opened_active;
 
-					report.opened_duration = opened_duration(report);
+					report.opened_duration = openedDuration(report);
 					report.body = JSON.stringify(report.body, null, "\t");
 					report.created_at = report.created_at.toLocaleString();
 
@@ -215,26 +228,27 @@ const main = async () => {
 
 		// route: PATCH /r/{id}
 		server.route({
-			handler: async (request, h) => {
+			handler: async request => {
 				try {
 					const id = Number(request.params.id);
 					const fields = ["id", "closed_at", "created_at"];
-					const report = await db.reports.find(id, { fields });
+					const report = await database.reports.find(id, { fields });
 
-					let closed_active, opened_active;
+					let closed_active;
+					let opened_active;
 
 					report.closed_at = report.closed_at ? null : new Date();
 
-					await db.reports.save(report);
+					await database.reports.save(report);
 
-					const [{ count: opened_count }] = await db.query(
+					const [{ count: opened_count }] = await database.query(
 						`select count(1) from reports where closed_at is null`
 					);
-					const [{ count: closed_count }] = await db.query(
+					const [{ count: closed_count }] = await database.query(
 						`select count(1) from reports where closed_at is not null`
 					);
 
-					report.opened_duration = opened_duration(report);
+					report.opened_duration = openedDuration(report);
 					report.created_at = report.created_at.toLocaleString();
 
 					if (report.closed_at) {
@@ -262,10 +276,10 @@ const main = async () => {
 
 		// route: DELETE /r/{id}
 		server.route({
-			handler: async (request, h) => {
+			handler: async request => {
 				try {
 					const id = Number(request.params.id);
-					const response = await db.reports.destroy(id);
+					const response = await database.reports.destroy(id);
 
 					return { id: response.id };
 				} catch (error) {
@@ -281,7 +295,8 @@ const main = async () => {
 			handler: async (request, h) => {
 				try {
 					const id = Number(request.params.id);
-					const report = await db.reports.find(id);
+					const report = await database.reports.find(id);
+					/* eslint-disable-next-line no-underscore-dangle */
 					const name = `${report.body._productName}-crash-${id}.dmp`;
 
 					return h
@@ -301,22 +316,23 @@ const main = async () => {
 			handler: async (request, h) => {
 				try {
 					const id = Number(request.params.id);
-					const report = await db.reports.find(id, { fields: ["stack"] });
+					const report = await database.reports.find(id, { fields: ["stack"] });
 
 					// Reports from pre-2.x do not have a stored stack trace.
 					// Generate and store stack trace on first view.
 					if (!report.stack) {
-						const document = await db.reports.find(id);
+						const document = await database.reports.find(id);
 						const path = resolve(tmpdir(), `${document.id}.dmp`);
 
 						await writeFileAsync(path, document.dump, "binary");
 
 						const stack = await walkStackAsync(path);
 
-						document.stack = report.stack = stack.toString();
+						document.stack = stack.toString();
+						report.stack = stack.toString();
 
 						await unlinkAsync(path);
-						await db.reports.save(document);
+						await database.reports.save(document);
 					}
 
 					return h.response(report.stack).type("text/plain");
@@ -331,11 +347,13 @@ const main = async () => {
 		// route: GET /search
 		server.route({
 			handler: async (request, h) => {
-				const { app, version, process_type, platform } = request.query;
-				const [{ count: opened_count }] = await db.query(
+				const {
+					query: { app, version, process_type, platform },
+				} = request;
+				const [{ count: opened_count }] = await database.query(
 					`select count(1) from reports where closed_at is null`
 				);
-				const [{ count: closed_count }] = await db.query(
+				const [{ count: closed_count }] = await database.query(
 					`select count(1) from reports where closed_at is not null`
 				);
 
@@ -364,21 +382,21 @@ const main = async () => {
 				}
 
 				select = `${select} ${where} order by created_at desc`;
-				reports = await db.query(select);
+				reports = await database.query(select);
 
-				reports.forEach(r => {
-					let duration = opened_duration(r);
+				reports.forEach((x, i) => {
+					let duration = openedDuration(x);
 					duration = duration.replace(/~/, "");
-					r.created_at = `opened ${duration} ago`;
+					reports[i].created_at = `opened ${duration} ago`;
 				});
 
-				reports.forEach(r => {
-					if (r.closed_at) {
-						let duration = pretty_ms(Date.now() - r.closed_at, {
+				reports.forEach((x, i) => {
+					if (x.closed_at) {
+						let duration = prettyMs(Date.now() - x.closed_at, {
 							compact: true,
 						});
 						duration = duration.replace(/~/, "");
-						r.closed_at = `closed ${duration} ago`;
+						reports[i].closed_at = `closed ${duration} ago`;
 					}
 				});
 
@@ -399,13 +417,13 @@ const main = async () => {
 
 		return server;
 	} catch (error) {
-		console.error(error);
+		console.error(error); /* eslint-disable-line no-console */
 		throw error;
 	}
 };
 
 process.on("unhandledRejection", error => {
-	console.error(error);
+	console.error(error); /* eslint-disable-line no-console */
 	process.exit(1);
 });
 
