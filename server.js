@@ -396,7 +396,6 @@ const main = async () => {
 		});
 
 		await server.start();
-		console.log("Server running on %s", server.info.uri);
 
 		return server;
 	} catch (error) {
