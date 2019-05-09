@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-export default `
+module.exports = `
   CREATE TABLE IF NOT EXISTS reports (
     id serial PRIMARY KEY,
     body jsonb NOT NULL,

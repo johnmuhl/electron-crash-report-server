@@ -31,7 +31,6 @@
 		"@hapi/vision": "5.5.2",
 		"brok": "3.1.0",
 		"dotenv": "8.0.0",
-		"esm": "3.2.22",
 		"handlebars": "4.1.2",
 		"hapi-pino": "5.4.1",
 		"massive": "5.8.0",
