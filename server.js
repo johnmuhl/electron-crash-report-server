@@ -3,6 +3,7 @@ import Boom from "@hapi/boom";
 import Brok from "brok";
 import Hapi from "@hapi/hapi";
 import Inert from "@hapi/inert";
+import Pino from "hapi-pino";
 import Vision from "@hapi/vision";
 import handlebars from "handlebars";
 import massive from "massive";
@@ -19,6 +20,7 @@ const DELETE = "DELETE";
 const GET = "GET";
 const PATCH = "PATCH";
 const POST = "POST";
+const production = process.env.NODE_ENV === "production";
 
 const unlinkAsync = promisify(unlink);
 const walkStackAsync = promisify(walkStack);
@@ -41,7 +43,17 @@ const main = async () => {
 		const db = await massive(database_url);
 
 		await db.query(migrate);
-		await server.register([Brok, Inert, Vision]);
+		await server.register([
+			Brok,
+			Inert,
+			Vision,
+			{
+				plugin: Pino,
+				options: {
+					prettyPrint: !production,
+				},
+			},
+		]);
 
 		pg_monitor.attach(db.driverConfig);
 
