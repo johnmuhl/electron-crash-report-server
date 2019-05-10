@@ -8,16 +8,15 @@
 	"bugs": "https://github.com/johnmuhl/electron-crash-report-server/issues",
 	"repository": "github:johnmuhl/electron-crash-report-server",
 	"scripts": {
-		"fmt": "run-p -cs fmt:* && yarn run lint --fix",
-		"fmt:css": "prettier --loglevel warn --write 'assets/*.css'",
-		"fmt:js": "prettier --loglevel warn --write '**/*.js'",
-		"fmt:json": "prettier --loglevel warn --write '*.json'",
-		"fmt:markdown": "prettier --loglevel warn --write '*.markdown'",
-		"fmt:templates": "prettier --loglevel warn --write 'templates/*' --parser html",
-		"lint": "eslint .",
+		"fmt": "run-p -cs fmt:* && eslint . --fix",
+		"fmt:default": "yarn run prettier:default --write",
+		"fmt:html": "yarn run prettier:html --write",
+		"lint": "eslint . && yarn run prettier:default -l && yarn run prettier:html -l",
+		"prettier:default": "prettier --loglevel warn '**/*.{css,js,json,markdown}'",
+		"prettier:html": "prettier --loglevel warn 'templates/*' --parser html",
 		"start": "node index.js",
 		"start:dev": "nodemon -w '*.*' -w templates/ -e handlebars,js index.js",
-		"test": "lab -cLv -t 80 --shuffle test.js",
+		"test": "lab -cLv --coverage-exclude test.js --shuffle test.js",
 		"test:watch": "nodemon lab --shuffle test.js"
 	},
 	"engines": {
