@@ -1,11 +1,12 @@
 require("dotenv").config();
 const { unlink, writeFile } = require("fs");
 const basic = require("@hapi/basic");
-const Boom = require("@hapi/boom");
+const boom = require("@hapi/boom");
 const brok = require("brok");
 const handlebars = require("handlebars");
 const hapi = require("@hapi/hapi");
 const inert = require("@hapi/inert");
+const joi = require("@hapi/joi");
 const massive = require("massive");
 const migrate = require("./migrate.js");
 const pgMonitor = require("pg-monitor");
@@ -21,6 +22,8 @@ const DELETE = "DELETE";
 const GET = "GET";
 const PATCH = "PATCH";
 const POST = "POST";
+const MINIDUMP_MIN = 2;
+const SEMVER_REGEX = /(?<=^v?|\sv?)(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)(?:-(?:[1-9]\d*|[\da-z-]*[a-z-][\da-z-]*)(?:\.(?:[1-9]\d*|[\da-z-]*[a-z-][\da-z-]*))*)?(?:\+[\da-z-]+(?:\.[\da-z-]+)*)?(?=$|\s)/i; /* eslint-disable-line max-len */
 
 const unlinkAsync = promisify(unlink);
 const walkStackAsync = promisify(walkStack);
@@ -32,9 +35,9 @@ const openedDuration = report => {
 };
 
 const validate = async (request, username, password) => {
-	if (!username || !password) return Boom.unauthorized();
-	if (username !== process.env.AUTH_USER) return Boom.unauthorized();
-	if (password !== process.env.AUTH_PASS) return Boom.unauthorized();
+	if (!username || !password) return boom.unauthorized();
+	if (username !== process.env.AUTH_USER) return boom.unauthorized();
+	if (password !== process.env.AUTH_PASS) return boom.unauthorized();
 
 	return { credentials: { password, username }, isValid: true };
 };
@@ -179,11 +182,42 @@ const start = async () => {
 						throw error;
 					}
 				} else {
-					return Boom.badRequest();
+					return boom.badRequest();
 				}
 			},
 			method: POST,
-			options: { auth: false },
+			options: {
+				auth: false,
+				validate: {
+					/* eslint-disable sort-keys, unicorn/prevent-abbreviations */
+					payload: {
+						_companyName: joi.string(),
+						_productName: joi.string(),
+						_version: joi
+							.string()
+							.regex(SEMVER_REGEX, { name: "semantic versioning" }),
+						extra: joi.alternatives(joi.object(), joi.string()),
+						guid: joi.string().guid(),
+						platform: joi.string().regex(/^darwin|linux|win32$/),
+						process_type: joi.string().regex(/^browser|renderer$/),
+						prod: joi.string().regex(/^Electron$/),
+						upload_file_minidump: joi
+							.binary()
+							.min(MINIDUMP_MIN)
+							.required(),
+						ver: joi.string().regex(SEMVER_REGEX),
+						// Other attributes observed in the wild.
+						extra1: joi.string(),
+						extra2: joi.string(),
+						list_annotations: joi.string(),
+						"lsb-release": joi.string(),
+						pid: joi.string(),
+						ptime: joi.string(),
+						rept: joi.string(),
+					},
+					/* eslint-enable sort-keys, unicorn/prevent-abbreviations */
+				},
+			},
 			path: "/",
 		});
 
