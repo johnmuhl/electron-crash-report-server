@@ -1,0 +1,2486 @@
+Operating system: Windows NT
+                  10.0.17134 
+CPU: amd64
+     family 6 model 158 stepping 9
+     4 CPUs
+
+GPU: UNKNOWN
+
+Crash reason:  EXCEPTION_ACCESS_VIOLATION_READ
+Crash address: 0x0
+Assertion: Unknown assertion type 0x00000000
+Process uptime: not available
+
+Thread 0 (crashed)
+ 0  electron.exe + 0x18f216a
+    rax = 0x00007ff6231e60e0   rdx = 0x0000000000000001
+    rcx = 0x0000000000000000   rbx = 0x0000000000000000
+    rsi = 0x0000018487f19c28   rdi = 0x0000018487f19c20
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafe850
+     r8 = 0x0000018487ed1e40    r9 = 0x0000018487ed1e40
+    r10 = 0x0000018487ed1e40   r11 = 0x000000354fafe870
+    r12 = 0x00000184879e3a80   r13 = 0x00000184879e3aa8
+    r14 = 0x00000184879e3ab8   r15 = 0x00000184879e3ac0
+    rip = 0x00007ff62155216a
+    Found by: given as instruction pointer in context
+ 1  electron.exe + 0x18f3e94
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafe880
+    rip = 0x00007ff621553e94
+    Found by: stack scanning
+ 2  electron.exe + 0x1829462
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafe8b0
+    rip = 0x00007ff621489462
+    Found by: stack scanning
+ 3  electron.exe + 0x182c3c4
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafe900
+    rip = 0x00007ff62148c3c4
+    Found by: stack scanning
+ 4  electron.exe + 0x18589c7
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafe930
+    rip = 0x00007ff6214b89c7
+    Found by: stack scanning
+ 5  electron.exe + 0x1878c75
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafe960
+    rip = 0x00007ff6214d8c75
+    Found by: stack scanning
+ 6  electron.exe + 0x199aa67
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafe980
+    rip = 0x00007ff6215faa67
+    Found by: stack scanning
+ 7  electron.exe + 0x1879774
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafe9f0
+    rip = 0x00007ff6214d9774
+    Found by: stack scanning
+ 8  electron.exe + 0x183978e
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafea20
+    rip = 0x00007ff62149978e
+    Found by: stack scanning
+ 9  electron.exe + 0x1867b14
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafea50
+    rip = 0x00007ff6214c7b14
+    Found by: stack scanning
+10  electron.exe + 0x1867a8a
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafea80
+    rip = 0x00007ff6214c7a8a
+    Found by: stack scanning
+11  electron.exe + 0x15d037b
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafeac0
+    rip = 0x00007ff62123037b
+    Found by: stack scanning
+12  electron.exe + 0x159a80d
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafeb00
+    rip = 0x00007ff6211fa80d
+    Found by: stack scanning
+13  electron.exe + 0x4078898
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafeb28
+    rip = 0x00007ff623cd8898
+    Found by: stack scanning
+14  electron.exe + 0x3251d3
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafeb30
+    rip = 0x00007ff61ff851d3
+    Found by: stack scanning
+15  electron.exe + 0x40e3be0
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafeb50
+    rip = 0x00007ff623d43be0
+    Found by: stack scanning
+16  electron.exe + 0x3fe3e00
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafeb58
+    rip = 0x00007ff623c43e00
+    Found by: stack scanning
+17  electron.exe + 0x322e44
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafeb60
+    rip = 0x00007ff61ff82e44
+    Found by: stack scanning
+18  electron.exe + 0x354ca00
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafeb78
+    rip = 0x00007ff6231aca00
+    Found by: stack scanning
+19  electron.exe + 0x2f97ecf
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafebe0
+    rip = 0x00007ff622bf7ecf
+    Found by: stack scanning
+20  electron.exe + 0x40787a8
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafebf0
+    rip = 0x00007ff623cd87a8
+    Found by: stack scanning
+21  electron.exe + 0x159cb14
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafec10
+    rip = 0x00007ff6211fcb14
+    Found by: stack scanning
+22  electron.exe + 0x159ada5
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafec40
+    rip = 0x00007ff6211fada5
+    Found by: stack scanning
+23  electron.exe + 0x15993cb
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafec70
+    rip = 0x00007ff6211f93cb
+    Found by: stack scanning
+24  electron.exe + 0x40787a0
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafec98
+    rip = 0x00007ff623cd87a0
+    Found by: stack scanning
+25  electron.exe + 0x15990ce
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafed00
+    rip = 0x00007ff6211f90ce
+    Found by: stack scanning
+26  electron.exe + 0x146764d
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafed30
+    rip = 0x00007ff6210c764d
+    Found by: stack scanning
+27  electron.exe + 0x3d164d0
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafede8
+    rip = 0x00007ff6239764d0
+    Found by: stack scanning
+28  electron.exe + 0x1469084
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafee10
+    rip = 0x00007ff6210c9084
+    Found by: stack scanning
+29  electron.exe + 0x25a719
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafee40
+    rip = 0x00007ff61feba719
+    Found by: stack scanning
+30  electron.exe + 0x1469070
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafee48
+    rip = 0x00007ff6210c9070
+    Found by: stack scanning
+31  electron.exe + 0x3d164d0
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafee70
+    rip = 0x00007ff6239764d0
+    Found by: stack scanning
+32  electron.exe + 0x25a454
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafee90
+    rip = 0x00007ff61feba454
+    Found by: stack scanning
+33  electron.exe + 0x3d15008
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafee98
+    rip = 0x00007ff623975008
+    Found by: stack scanning
+34  electron.exe + 0x353da20
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafeeb0
+    rip = 0x00007ff62319da20
+    Found by: stack scanning
+35  electron.exe + 0x1e3572
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafeec0
+    rip = 0x00007ff61fe43572
+    Found by: stack scanning
+36  electron.exe + 0x25a440
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafeec8
+    rip = 0x00007ff61feba440
+    Found by: stack scanning
+37  electron.exe + 0x3d164f0
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafeee8
+    rip = 0x00007ff6239764f0
+    Found by: stack scanning
+38  electron.exe + 0x2e4d3d
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafeef0
+    rip = 0x00007ff61ff44d3d
+    Found by: stack scanning
+39  electron.exe + 0x2e528c
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafef10
+    rip = 0x00007ff61ff4528c
+    Found by: stack scanning
+40  electron.exe + 0x1de1bf
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafef18
+    rip = 0x00007ff61fe3e1bf
+    Found by: stack scanning
+41  electron.exe + 0x3d164f0
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafef20
+    rip = 0x00007ff6239764f0
+    Found by: stack scanning
+42  electron.exe + 0x3d164d0
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafef30
+    rip = 0x00007ff6239764d0
+    Found by: stack scanning
+43  electron.exe + 0x3d164f0
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafef38
+    rip = 0x00007ff6239764f0
+    Found by: stack scanning
+44  electron.exe + 0x1de1bf
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafef48
+    rip = 0x00007ff61fe3e1bf
+    Found by: stack scanning
+45  electron.exe + 0x2e4ed5
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafefc0
+    rip = 0x00007ff61ff44ed5
+    Found by: stack scanning
+46  electron.exe + 0x3545970
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354fafeff0
+    rip = 0x00007ff6231a5970
+    Found by: stack scanning
+47  electron.exe + 0x2e590e
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff050
+    rip = 0x00007ff61ff4590e
+    Found by: stack scanning
+48  electron.exe + 0x35ebf10
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff088
+    rip = 0x00007ff62324bf10
+    Found by: stack scanning
+49  electron.exe + 0x35ebf10
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff0b0
+    rip = 0x00007ff62324bf10
+    Found by: stack scanning
+50  electron.exe + 0x2d9de4
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff0f0
+    rip = 0x00007ff61ff39de4
+    Found by: stack scanning
+51  electron.exe + 0x1539c92
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff120
+    rip = 0x00007ff621199c92
+    Found by: stack scanning
+52  electron.exe + 0x153c224
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff150
+    rip = 0x00007ff62119c224
+    Found by: stack scanning
+53  electron.exe + 0x3fe4110
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff170
+    rip = 0x00007ff623c44110
+    Found by: stack scanning
+54  electron.exe + 0x15660c4
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff180
+    rip = 0x00007ff6211c60c4
+    Found by: stack scanning
+55  electron.exe + 0x4078160
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff1a8
+    rip = 0x00007ff623cd8160
+    Found by: stack scanning
+56  electron.exe + 0x2ad69c
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff1b0
+    rip = 0x00007ff61ff0d69c
+    Found by: stack scanning
+57  electron.exe + 0x3fe3d10
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff1c0
+    rip = 0x00007ff623c43d10
+    Found by: stack scanning
+58  electron.exe + 0x1550183
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff1e0
+    rip = 0x00007ff6211b0183
+    Found by: stack scanning
+59  electron.exe + 0x31d879
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff210
+    rip = 0x00007ff61ff7d879
+    Found by: stack scanning
+60  electron.exe + 0x40e3be0
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff218
+    rip = 0x00007ff623d43be0
+    Found by: stack scanning
+61  ucrtbase.dll + 0x9686
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff250
+    rip = 0x00007fff917b9686
+    Found by: stack scanning
+62  electron.exe + 0x156373e
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff260
+    rip = 0x00007ff6211c373e
+    Found by: stack scanning
+63  electron.exe + 0x35e0000
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff270
+    rip = 0x00007ff623240000
+    Found by: stack scanning
+64  electron.exe + 0x322778
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff290
+    rip = 0x00007ff61ff82778
+    Found by: stack scanning
+65  electron.exe + 0x40e3be0
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff2a0
+    rip = 0x00007ff623d43be0
+    Found by: stack scanning
+66  electron.exe + 0x1563222
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff2b0
+    rip = 0x00007ff6211c3222
+    Found by: stack scanning
+67  electron.exe + 0x35ebf10
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff2c8
+    rip = 0x00007ff62324bf10
+    Found by: stack scanning
+68  electron.exe + 0x153eb25
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff2e0
+    rip = 0x00007ff62119eb25
+    Found by: stack scanning
+69  electron.exe + 0x295ffc
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff320
+    rip = 0x00007ff61fef5ffc
+    Found by: stack scanning
+70  electron.exe + 0x1d7b9c7
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff360
+    rip = 0x00007ff6219db9c7
+    Found by: stack scanning
+71  electron.exe + 0x1d7b8b4
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff3a0
+    rip = 0x00007ff6219db8b4
+    Found by: stack scanning
+72  electron.exe + 0x3537800
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff3f8
+    rip = 0x00007ff623197800
+    Found by: stack scanning
+73  electron.exe + 0x271e19c
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff440
+    rip = 0x00007ff62237e19c
+    Found by: stack scanning
+74  electron.exe + 0x38d3c00
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff4b0
+    rip = 0x00007ff623533c00
+    Found by: stack scanning
+75  ntdll.dll + 0x1922b
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff500
+    rip = 0x00007fff9498922b
+    Found by: stack scanning
+76  ucrtbase.dll + 0x9686
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff550
+    rip = 0x00007fff917b9686
+    Found by: stack scanning
+77  0x7ff61fc60000
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff560
+    rip = 0x00007ff61fc60000
+    Found by: stack scanning
+78  ucrtbase.dll + 0x9686
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff590
+    rip = 0x00007fff917b9686
+    Found by: stack scanning
+79  electron.exe + 0xd0000
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff5b0
+    rip = 0x00007ff61fd30000
+    Found by: stack scanning
+80  electron.exe + 0x2e4e50f
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff5c0
+    rip = 0x00007ff622aae50f
+    Found by: stack scanning
+81  electron.exe + 0xd4036
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff5e0
+    rip = 0x00007ff61fd34036
+    Found by: stack scanning
+82  electron.exe + 0x1d7b2d4
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff5f0
+    rip = 0x00007ff6219db2d4
+    Found by: stack scanning
+83  0x7ff61fc60000
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff638
+    rip = 0x00007ff61fc60000
+    Found by: stack scanning
+84  electron.exe + 0x1442a20
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff650
+    rip = 0x00007ff6210a2a20
+    Found by: stack scanning
+85  electron.exe + 0xd61aa
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff670
+    rip = 0x00007ff61fd361aa
+    Found by: stack scanning
+86  electron.exe + 0x35a4ec0
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff678
+    rip = 0x00007ff623204ec0
+    Found by: stack scanning
+87  0x7ff61fc60000
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff688
+    rip = 0x00007ff61fc60000
+    Found by: stack scanning
+88  0x7ff61fc60000
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff6b0
+    rip = 0x00007ff61fc60000
+    Found by: stack scanning
+89  electron.exe + 0xd3d57
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff6c0
+    rip = 0x00007ff61fd33d57
+    Found by: stack scanning
+90  ucrtbase.dll + 0x4567e
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff720
+    rip = 0x00007fff917f567e
+    Found by: stack scanning
+91  ucrtbase.dll + 0xea080
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff738
+    rip = 0x00007fff9189a080
+    Found by: stack scanning
+92  ucrtbase.dll + 0x8143
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff750
+    rip = 0x00007fff917b8143
+    Found by: stack scanning
+93  0x7ff61fc60000
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff770
+    rip = 0x00007ff61fc60000
+    Found by: stack scanning
+94  electron.exe + 0x3c39c38
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff790
+    rip = 0x00007ff623899c38
+    Found by: stack scanning
+95  electron.exe + 0x3433880
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff7c0
+    rip = 0x00007ff623093880
+    Found by: stack scanning
+96  electron.exe + 0x2e4e9f3
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff840
+    rip = 0x00007ff622aae9f3
+    Found by: stack scanning
+97  kernel32.dll + 0x14034
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff880
+    rip = 0x00007fff921c4034
+    Found by: stack scanning
+98  ntdll.dll + 0x73691
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff8b0
+    rip = 0x00007fff949e3691
+    Found by: stack scanning
+99  KERNELBASE.dll + 0xebc40
+    rbp = 0x00000184879e3ab0   rsp = 0x000000354faff8e0
+    rip = 0x00007fff91c0bc40
+    Found by: stack scanning
+
+Thread 1
+ 0  ntdll.dll + 0x9aac4
+    rax = 0x0000000000000009   rdx = 0x000000354ffff910
+    rcx = 0x00000000000002f8   rbx = 0x000000354ffff908
+    rsi = 0x0000018484fce810   rdi = 0x000000354ffff900
+    rbp = 0x000000354ffff950   rsp = 0x000000354ffff868
+     r8 = 0x0000018484ef0d80    r9 = 0x0000000000008000
+    r10 = 0x0000000000000000   r11 = 0x0000000000000246
+    r12 = 0x0000000000000000   r13 = 0x0000000000000000
+    r14 = 0x00000000000002fc   r15 = 0x00000000000002f8
+    rip = 0x00007fff94a0aac4
+    Found by: given as instruction pointer in context
+ 1  KERNELBASE.dll + 0x53682
+    rbp = 0x000000354ffff950   rsp = 0x000000354ffff870
+    rip = 0x00007fff91b73682
+    Found by: stack scanning
+ 2  KERNELBASE.dll + 0x5962a
+    rbp = 0x000000354ffff950   rsp = 0x000000354ffff8a0
+    rip = 0x00007fff91b7962a
+    Found by: stack scanning
+ 3  electron.exe + 0x1d7e905
+    rbp = 0x000000354ffff950   rsp = 0x000000354ffff8d0
+    rip = 0x00007ff6219de905
+    Found by: stack scanning
+ 4  kernel32.dll + 0x14034
+    rsp = 0x000000354ffff970   rip = 0x00007fff921c4034
+    Found by: stack scanning
+ 5  ntdll.dll + 0x73691
+    rsp = 0x000000354ffff9a0   rip = 0x00007fff949e3691
+    Found by: stack scanning
+
+Thread 2
+ 0  ntdll.dll + 0x9e294
+    rax = 0x00000000000001c8   rdx = 0x0000000000000000
+    rcx = 0x0000018484fcc6e8   rbx = 0x0000000000000000
+    rsi = 0x0000018484fcc6e8   rdi = 0x0000000000000000
+    rbp = 0x00000035500ff950   rsp = 0x00000035500ff8f8
+     r8 = 0x000001c25ce80d48    r9 = 0x000001c25ceb0e39
+    r10 = 0x00007fff4f1798f0   r11 = 0x0000000000000001
+    r12 = 0x0000000000000000   r13 = 0x0000000000000000
+    r14 = 0x0000018484fcc710   r15 = 0x00000035500ff928
+    rip = 0x00007fff94a0e294
+    Found by: given as instruction pointer in context
+ 1  ntdll.dll + 0x75ee2
+    rbp = 0x00000035500ff950   rsp = 0x00000035500ff900
+    rip = 0x00007fff949e5ee2
+    Found by: stack scanning
+ 2  KERNELBASE.dll + 0x6f318
+    rsp = 0x00000035500ff970   rip = 0x00007fff91b8f318
+    Found by: stack scanning
+ 3  KERNELBASE.dll + 0x6f2f0
+    rsp = 0x00000035500ff988   rip = 0x00007fff91b8f2f0
+    Found by: stack scanning
+ 4  node.dll + 0x9cfc5
+    rsp = 0x00000035500ff9a0   rip = 0x00007fff4e68cfc5
+    Found by: stack scanning
+ 5  ntdll.dll + 0x735e0
+    rsp = 0x00000035500ff9a8   rip = 0x00007fff949e35e0
+    Found by: stack scanning
+ 6  KERNELBASE.dll + 0x545b8
+    rsp = 0x00000035500ff9d0   rip = 0x00007fff91b745b8
+    Found by: stack scanning
+ 7  node.dll + 0x9ce20
+    rsp = 0x00000035500ffa58   rip = 0x00007fff4e68ce20
+    Found by: stack scanning
+ 8  node.dll + 0x13f681
+    rsp = 0x00000035500ffa60   rip = 0x00007fff4e72f681
+    Found by: stack scanning
+ 9  node.dll + 0x9ce20
+    rsp = 0x00000035500ffa88   rip = 0x00007fff4e68ce20
+    Found by: stack scanning
+10  ucrtbase.dll + 0x1e3fe
+    rsp = 0x00000035500ffab0   rip = 0x00007fff917ce3fe
+    Found by: stack scanning
+11  kernel32.dll + 0x14034
+    rsp = 0x00000035500ffae0   rip = 0x00007fff921c4034
+    Found by: stack scanning
+12  ntdll.dll + 0x73691
+    rsp = 0x00000035500ffb10   rip = 0x00007fff949e3691
+    Found by: stack scanning
+
+Thread 3
+ 0  ntdll.dll + 0x9e294
+    rax = 0x00000000000001c8   rdx = 0x0000000000000000
+    rcx = 0x0000018484fcc6e8   rbx = 0x0000000000000000
+    rsi = 0x0000018484fcc6e8   rdi = 0x0000000000000000
+    rbp = 0x00000035501ff820   rsp = 0x00000035501ff7c8
+     r8 = 0x00000035502ffd10    r9 = 0x0000018484fcc710
+    r10 = 0x0000018484fcc710   r11 = 0x000001849068a930
+    r12 = 0x0000000000000000   r13 = 0x0000000000000000
+    r14 = 0x0000018484fcc710   r15 = 0x00000035501ff7f8
+    rip = 0x00007fff94a0e294
+    Found by: given as instruction pointer in context
+ 1  ntdll.dll + 0x75ee2
+    rbp = 0x00000035501ff820   rsp = 0x00000035501ff7d0
+    rip = 0x00007fff949e5ee2
+    Found by: stack scanning
+ 2  KERNELBASE.dll + 0x6f318
+    rsp = 0x00000035501ff840   rip = 0x00007fff91b8f318
+    Found by: stack scanning
+ 3  KERNELBASE.dll + 0x6f2f0
+    rsp = 0x00000035501ff858   rip = 0x00007fff91b8f2f0
+    Found by: stack scanning
+ 4  node.dll + 0x9cfc5
+    rsp = 0x00000035501ff870   rip = 0x00007fff4e68cfc5
+    Found by: stack scanning
+ 5  ntdll.dll + 0x735e0
+    rsp = 0x00000035501ff878   rip = 0x00007fff949e35e0
+    Found by: stack scanning
+ 6  ntdll.dll + 0x83d0
+    rsp = 0x00000035501ff8b0   rip = 0x00007fff949783d0
+    Found by: stack scanning
+ 7  ucrtbase.dll + 0x8c31
+    rsp = 0x00000035501ff8d0   rip = 0x00007fff917b8c31
+    Found by: stack scanning
+ 8  node.dll + 0x9ce20
+    rsp = 0x00000035501ff928   rip = 0x00007fff4e68ce20
+    Found by: stack scanning
+ 9  node.dll + 0x13f681
+    rsp = 0x00000035501ff930   rip = 0x00007fff4e72f681
+    Found by: stack scanning
+10  node.dll + 0xafa660
+    rsp = 0x00000035501ff938   rip = 0x00007fff4f0ea660
+    Found by: stack scanning
+11  node.dll + 0x9ce20
+    rsp = 0x00000035501ff958   rip = 0x00007fff4e68ce20
+    Found by: stack scanning
+12  ucrtbase.dll + 0x1e3fe
+    rsp = 0x00000035501ff980   rip = 0x00007fff917ce3fe
+    Found by: stack scanning
+13  kernel32.dll + 0x14034
+    rsp = 0x00000035501ff9b0   rip = 0x00007fff921c4034
+    Found by: stack scanning
+14  ntdll.dll + 0x73691
+    rsp = 0x00000035501ff9e0   rip = 0x00007fff949e3691
+    Found by: stack scanning
+
+Thread 4
+ 0  ntdll.dll + 0x9e294
+    rax = 0x00000000000001c8   rdx = 0x0000000000000000
+    rcx = 0x0000018484fcc6e8   rbx = 0x0000000000000000
+    rsi = 0x0000018484fcc6e8   rdi = 0x0000000000000000
+    rbp = 0x00000035502ffd40   rsp = 0x00000035502ffce8
+     r8 = 0x00007fff4e5f0000    r9 = 0x000001c25ceae3f0
+    r10 = 0x00007fff4f1798f0   r11 = 0x0000018487fd89b0
+    r12 = 0x0000000000000000   r13 = 0x0000000000000000
+    r14 = 0x0000018484fcc710   r15 = 0x00000035502ffd10
+    rip = 0x00007fff94a0e294
+    Found by: given as instruction pointer in context
+ 1  ntdll.dll + 0x75ee2
+    rbp = 0x00000035502ffd40   rsp = 0x00000035502ffcf0
+    rip = 0x00007fff949e5ee2
+    Found by: stack scanning
+ 2  KERNELBASE.dll + 0x6f318
+    rsp = 0x00000035502ffd60   rip = 0x00007fff91b8f318
+    Found by: stack scanning
+ 3  KERNELBASE.dll + 0x6f2f0
+    rsp = 0x00000035502ffd78   rip = 0x00007fff91b8f2f0
+    Found by: stack scanning
+ 4  node.dll + 0x9cfc5
+    rsp = 0x00000035502ffd90   rip = 0x00007fff4e68cfc5
+    Found by: stack scanning
+ 5  node.dll + 0x2dbd60
+    rsp = 0x00000035502ffd98   rip = 0x00007fff4e8cbd60
+    Found by: stack scanning
+ 6  ntdll.dll + 0x83d0
+    rsp = 0x00000035502ffdd0   rip = 0x00007fff949783d0
+    Found by: stack scanning
+ 7  ucrtbase.dll + 0x8c31
+    rsp = 0x00000035502ffdf0   rip = 0x00007fff917b8c31
+    Found by: stack scanning
+ 8  node.dll + 0x9ce20
+    rsp = 0x00000035502ffe48   rip = 0x00007fff4e68ce20
+    Found by: stack scanning
+ 9  node.dll + 0x13f681
+    rsp = 0x00000035502ffe50   rip = 0x00007fff4e72f681
+    Found by: stack scanning
+10  node.dll + 0xafa660
+    rsp = 0x00000035502ffe58   rip = 0x00007fff4f0ea660
+    Found by: stack scanning
+11  node.dll + 0x9ce20
+    rsp = 0x00000035502ffe78   rip = 0x00007fff4e68ce20
+    Found by: stack scanning
+12  ucrtbase.dll + 0x1e3fe
+    rsp = 0x00000035502ffea0   rip = 0x00007fff917ce3fe
+    Found by: stack scanning
+13  kernel32.dll + 0x14034
+    rsp = 0x00000035502ffed0   rip = 0x00007fff921c4034
+    Found by: stack scanning
+14  ntdll.dll + 0x73691
+    rsp = 0x00000035502fff00   rip = 0x00007fff949e3691
+    Found by: stack scanning
+
+Thread 5
+ 0  ntdll.dll + 0x9e2f4
+    rax = 0x00000000000001cb   rdx = 0x0000018487ae6160
+    rcx = 0x00000000000003fc   rbx = 0x0000018487ae6160
+    rsi = 0x00007fff9499a150   rdi = 0x0000000000000010
+    rbp = 0x0000000000000000   rsp = 0x00000035504ff938
+     r8 = 0x00000035504ff700    r9 = 0x0000000000000000
+    r10 = 0x00007ff6238aa000   r11 = 0x0000000000501400
+    r12 = 0x0000000000000000   r13 = 0x0000018487e97df0
+    r14 = 0x00007fff94997a70   r15 = 0x00007fff94998360
+    rip = 0x00007fff94a0e2f4
+    Found by: given as instruction pointer in context
+ 1  ntdll.dll + 0x26866
+    rsp = 0x00000035504ff940   rip = 0x00007fff94996866
+    Found by: stack scanning
+
+Thread 6
+ 0  ntdll.dll + 0x9e294
+    rax = 0x00000000000001c8   rdx = 0x0000000000000000
+    rcx = 0x00007fff4f6ef0b8   rbx = 0x0000000000000000
+    rsi = 0x00007fff4f6ef0b8   rdi = 0x0000000000000000
+    rbp = 0x00000035505ff890   rsp = 0x00000035505ff838
+     r8 = 0x00000035508ff890    r9 = 0x00007fff4f6ef2c0
+    r10 = 0x00007fff4f6ef2c0   r11 = 0x0000000000000246
+    r12 = 0x0000000000000000   r13 = 0x0000000000000000
+    r14 = 0x00007fff4f6ef2c0   r15 = 0x00000035505ff868
+    rip = 0x00007fff94a0e294
+    Found by: given as instruction pointer in context
+ 1  node.dll + 0x10ff340
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035505ff8a0
+    rip = 0x00007fff4f6ef340
+    Found by: previous frame's frame pointer
+ 2  KERNELBASE.dll + 0x6f318
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035505ff8b0
+    rip = 0x00007fff91b8f318
+    Found by: stack scanning
+ 3  KERNELBASE.dll + 0x6f2f0
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035505ff8b8
+    rip = 0x00007fff91b8f2f0
+    Found by: stack scanning
+ 4  node.dll + 0x10ff340
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035505ff8c0
+    rip = 0x00007fff4f6ef340
+    Found by: stack scanning
+ 5  KERNELBASE.dll + 0x6f2f0
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035505ff8d8
+    rip = 0x00007fff91b8f2f0
+    Found by: stack scanning
+ 6  node.dll + 0x14d4f5
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035505ff8e0
+    rip = 0x00007fff4e73d4f5
+    Found by: stack scanning
+ 7  node.dll + 0x146dc0
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035505ff8f0
+    rip = 0x00007fff4e736dc0
+    Found by: stack scanning
+ 8  node.dll + 0x13f681
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035505ff930
+    rip = 0x00007fff4e72f681
+    Found by: stack scanning
+ 9  node.dll + 0x14d440
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035505ff938
+    rip = 0x00007fff4e73d440
+    Found by: stack scanning
+10  node.dll + 0x14d440
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035505ff958
+    rip = 0x00007fff4e73d440
+    Found by: stack scanning
+11  ucrtbase.dll + 0x1e3fe
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035505ff980
+    rip = 0x00007fff917ce3fe
+    Found by: stack scanning
+12  kernel32.dll + 0x14034
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035505ff9b0
+    rip = 0x00007fff921c4034
+    Found by: stack scanning
+13  ntdll.dll + 0x73691
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035505ff9e0
+    rip = 0x00007fff949e3691
+    Found by: stack scanning
+
+Thread 7
+ 0  ntdll.dll + 0x9e294
+    rax = 0x00000000000001c8   rdx = 0x0000000000000000
+    rcx = 0x00007fff4f6ef0b8   rbx = 0x0000000000000000
+    rsi = 0x00007fff4f6ef0b8   rdi = 0x0000000000000000
+    rbp = 0x00000035506ff7e0   rsp = 0x00000035506ff788
+     r8 = 0x0000000000000000    r9 = 0x00000035506ff7e0
+    r10 = 0x0000000000000000   r11 = 0x00000035506ff7e0
+    r12 = 0x0000000000000000   r13 = 0x0000000000000000
+    r14 = 0x00007fff4f6ef2c0   r15 = 0x00000035506ff7b8
+    rip = 0x00007fff94a0e294
+    Found by: given as instruction pointer in context
+ 1  node.dll + 0x10ff340
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035506ff7f0
+    rip = 0x00007fff4f6ef340
+    Found by: previous frame's frame pointer
+ 2  KERNELBASE.dll + 0x6f318
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035506ff800
+    rip = 0x00007fff91b8f318
+    Found by: stack scanning
+ 3  KERNELBASE.dll + 0x6f2f0
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035506ff808
+    rip = 0x00007fff91b8f2f0
+    Found by: stack scanning
+ 4  node.dll + 0x10ff340
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035506ff810
+    rip = 0x00007fff4f6ef340
+    Found by: stack scanning
+ 5  KERNELBASE.dll + 0x6f2f0
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035506ff828
+    rip = 0x00007fff91b8f2f0
+    Found by: stack scanning
+ 6  node.dll + 0x14d4f5
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035506ff830
+    rip = 0x00007fff4e73d4f5
+    Found by: stack scanning
+ 7  node.dll + 0x146dc0
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035506ff840
+    rip = 0x00007fff4e736dc0
+    Found by: stack scanning
+ 8  node.dll + 0x13f681
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035506ff880
+    rip = 0x00007fff4e72f681
+    Found by: stack scanning
+ 9  node.dll + 0x14d440
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035506ff888
+    rip = 0x00007fff4e73d440
+    Found by: stack scanning
+10  node.dll + 0x14d440
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035506ff8a8
+    rip = 0x00007fff4e73d440
+    Found by: stack scanning
+11  ucrtbase.dll + 0x1e3fe
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035506ff8d0
+    rip = 0x00007fff917ce3fe
+    Found by: stack scanning
+12  kernel32.dll + 0x14034
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035506ff900
+    rip = 0x00007fff921c4034
+    Found by: stack scanning
+13  ntdll.dll + 0x73691
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035506ff930
+    rip = 0x00007fff949e3691
+    Found by: stack scanning
+
+Thread 8
+ 0  ntdll.dll + 0x9e294
+    rax = 0x00000000000001c8   rdx = 0x0000000000000000
+    rcx = 0x00007fff4f6ef0b8   rbx = 0x0000000000000000
+    rsi = 0x00007fff4f6ef0b8   rdi = 0x0000000000000000
+    rbp = 0x00000035507ff720   rsp = 0x00000035507ff6c8
+     r8 = 0x00000035507ff6c8    r9 = 0x00000035507ff720
+    r10 = 0x0000000000000000   r11 = 0x00000035507ff720
+    r12 = 0x0000000000000000   r13 = 0x0000000000000000
+    r14 = 0x00007fff4f6ef2c0   r15 = 0x00000035507ff6f8
+    rip = 0x00007fff94a0e294
+    Found by: given as instruction pointer in context
+ 1  node.dll + 0x10ff340
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035507ff730
+    rip = 0x00007fff4f6ef340
+    Found by: previous frame's frame pointer
+ 2  KERNELBASE.dll + 0x6f318
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035507ff740
+    rip = 0x00007fff91b8f318
+    Found by: stack scanning
+ 3  KERNELBASE.dll + 0x6f2f0
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035507ff748
+    rip = 0x00007fff91b8f2f0
+    Found by: stack scanning
+ 4  node.dll + 0x10ff340
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035507ff750
+    rip = 0x00007fff4f6ef340
+    Found by: stack scanning
+ 5  KERNELBASE.dll + 0x6f2f0
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035507ff768
+    rip = 0x00007fff91b8f2f0
+    Found by: stack scanning
+ 6  node.dll + 0x14d4f5
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035507ff770
+    rip = 0x00007fff4e73d4f5
+    Found by: stack scanning
+ 7  node.dll + 0x146dc0
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035507ff780
+    rip = 0x00007fff4e736dc0
+    Found by: stack scanning
+ 8  node.dll + 0x13f681
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035507ff7c0
+    rip = 0x00007fff4e72f681
+    Found by: stack scanning
+ 9  node.dll + 0x14d440
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035507ff7c8
+    rip = 0x00007fff4e73d440
+    Found by: stack scanning
+10  node.dll + 0x14d440
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035507ff7e8
+    rip = 0x00007fff4e73d440
+    Found by: stack scanning
+11  ucrtbase.dll + 0x1e3fe
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035507ff810
+    rip = 0x00007fff917ce3fe
+    Found by: stack scanning
+12  kernel32.dll + 0x14034
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035507ff840
+    rip = 0x00007fff921c4034
+    Found by: stack scanning
+13  ntdll.dll + 0x73691
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035507ff870
+    rip = 0x00007fff949e3691
+    Found by: stack scanning
+
+Thread 9
+ 0  ntdll.dll + 0x9e294
+    rax = 0x00000000000001c8   rdx = 0x0000000000000000
+    rcx = 0x00007fff4f6ef0b8   rbx = 0x0000000000000000
+    rsi = 0x00007fff4f6ef0b8   rdi = 0x0000000000000000
+    rbp = 0x00000035508ff8c0   rsp = 0x00000035508ff868
+     r8 = 0x00000035506ff7b0    r9 = 0x00007fff4f6ef2c0
+    r10 = 0x00007fff4f6ef2c0   r11 = 0x0000000000000246
+    r12 = 0x0000000000000000   r13 = 0x0000000000000000
+    r14 = 0x00007fff4f6ef2c0   r15 = 0x00000035508ff898
+    rip = 0x00007fff94a0e294
+    Found by: given as instruction pointer in context
+ 1  node.dll + 0x10ff340
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035508ff8d0
+    rip = 0x00007fff4f6ef340
+    Found by: previous frame's frame pointer
+ 2  KERNELBASE.dll + 0x6f318
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035508ff8e0
+    rip = 0x00007fff91b8f318
+    Found by: stack scanning
+ 3  KERNELBASE.dll + 0x6f2f0
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035508ff8e8
+    rip = 0x00007fff91b8f2f0
+    Found by: stack scanning
+ 4  node.dll + 0x10ff340
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035508ff8f0
+    rip = 0x00007fff4f6ef340
+    Found by: stack scanning
+ 5  KERNELBASE.dll + 0x6f2f0
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035508ff908
+    rip = 0x00007fff91b8f2f0
+    Found by: stack scanning
+ 6  node.dll + 0x14d4f5
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035508ff910
+    rip = 0x00007fff4e73d4f5
+    Found by: stack scanning
+ 7  node.dll + 0x146dc0
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035508ff920
+    rip = 0x00007fff4e736dc0
+    Found by: stack scanning
+ 8  node.dll + 0x13f681
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035508ff960
+    rip = 0x00007fff4e72f681
+    Found by: stack scanning
+ 9  node.dll + 0x14d440
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035508ff968
+    rip = 0x00007fff4e73d440
+    Found by: stack scanning
+10  node.dll + 0x14d440
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035508ff988
+    rip = 0x00007fff4e73d440
+    Found by: stack scanning
+11  ucrtbase.dll + 0x1e3fe
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035508ff9b0
+    rip = 0x00007fff917ce3fe
+    Found by: stack scanning
+12  kernel32.dll + 0x14034
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035508ff9e0
+    rip = 0x00007fff921c4034
+    Found by: stack scanning
+13  ntdll.dll + 0x73691
+    rbp = 0x00007fff4f6ef320   rsp = 0x00000035508ffa10
+    rip = 0x00007fff949e3691
+    Found by: stack scanning
+
+Thread 10
+ 0  ntdll.dll + 0x9aa24
+    rax = 0x0000000000000004   rdx = 0x0000000000000000
+    rcx = 0x00000000000004f4   rbx = 0x0000000000000000
+    rsi = 0x0000003550bff6e8   rdi = 0x00000000000004f4
+    rbp = 0x00000000000004f4   rsp = 0x0000003550bff6b8
+     r8 = 0x0000018487be1400    r9 = 0x0000000000000000
+    r10 = 0x0000018487be0010   r11 = 0x0000000000000000
+    r12 = 0x20c49ba5e353f7cf   r13 = 0x0000000000000000
+    r14 = 0x00000000000004f4   r15 = 0x00000000ffffffff
+    rip = 0x00007fff94a0aa24
+    Found by: given as instruction pointer in context
+ 1  KERNELBASE.dll + 0x39252
+    rsp = 0x0000003550bff6c0   rip = 0x00007fff91b59252
+    Found by: stack scanning
+ 2  electron.exe + 0x2e70c0
+    rsp = 0x0000003550bff6e0   rip = 0x00007ff61ff470c0
+    Found by: stack scanning
+ 3  electron.exe + 0x2e726f
+    rsp = 0x0000003550bff740   rip = 0x00007ff61ff4726f
+    Found by: stack scanning
+ 4  electron.exe + 0x2b5bf4
+    rsp = 0x0000003550bff760   rip = 0x00007ff61ff15bf4
+    Found by: stack scanning
+ 5  electron.exe + 0x30375a
+    rsp = 0x0000003550bff7a0   rip = 0x00007ff61ff6375a
+    Found by: stack scanning
+ 6  electron.exe + 0x2e766e
+    rsp = 0x0000003550bff7d0   rip = 0x00007ff61ff4766e
+    Found by: stack scanning
+ 7  electron.exe + 0x2ad70e
+    rsp = 0x0000003550bff830   rip = 0x00007ff61ff0d70e
+    Found by: stack scanning
+ 8  electron.exe + 0x2ad61f
+    rsp = 0x0000003550bff870   rip = 0x00007ff61ff0d61f
+    Found by: stack scanning
+ 9  electron.exe + 0x2d3768
+    rsp = 0x0000003550bff8a0   rip = 0x00007ff61ff33768
+    Found by: stack scanning
+10  electron.exe + 0x2d3c24
+    rsp = 0x0000003550bff8c0   rip = 0x00007ff61ff33c24
+    Found by: stack scanning
+11  electron.exe + 0x2d19e6
+    rsp = 0x0000003550bff960   rip = 0x00007ff61ff319e6
+    Found by: stack scanning
+12  electron.exe + 0x2d193c
+    rsp = 0x0000003550bff988   rip = 0x00007ff61ff3193c
+    Found by: stack scanning
+13  kernel32.dll + 0x14034
+    rsp = 0x0000003550bffa10   rip = 0x00007fff921c4034
+    Found by: stack scanning
+14  ntdll.dll + 0x73691
+    rsp = 0x0000003550bffa40   rip = 0x00007fff949e3691
+    Found by: stack scanning
+
+Thread 11
+ 0  ntdll.dll + 0x9aa24
+    rax = 0x0000000000000004   rdx = 0x0000000000000000
+    rcx = 0x0000000000000500   rbx = 0x0000000000000000
+    rsi = 0x0000003550cff678   rdi = 0x0000000000000500
+    rbp = 0x0000000000000500   rsp = 0x0000003550cff648
+     r8 = 0x0000003550cff648    r9 = 0x0000000000000500
+    r10 = 0x0000000000000000   r11 = 0x0000000000000246
+    r12 = 0x20c49ba5e353f7cf   r13 = 0x00007ff62397d050
+    r14 = 0x0000000000000500   r15 = 0x00000000ffffffff
+    rip = 0x00007fff94a0aa24
+    Found by: given as instruction pointer in context
+ 1  KERNELBASE.dll + 0x39252
+    rsp = 0x0000003550cff650   rip = 0x00007fff91b59252
+    Found by: stack scanning
+ 2  electron.exe + 0x2b5bf4
+    rsp = 0x0000003550cff6f0   rip = 0x00007ff61ff15bf4
+    Found by: stack scanning
+ 3  electron.exe + 0x30375a
+    rsp = 0x0000003550cff730   rip = 0x00007ff61ff6375a
+    Found by: stack scanning
+ 4  electron.exe + 0x2c6155
+    rsp = 0x0000003550cff760   rip = 0x00007ff61ff26155
+    Found by: stack scanning
+ 5  electron.exe + 0x2c5bb5
+    rsp = 0x0000003550cff7b0   rip = 0x00007ff61ff25bb5
+    Found by: stack scanning
+ 6  electron.exe + 0x3fe3d90
+    rsp = 0x0000003550cff7c0   rip = 0x00007ff623c43d90
+    Found by: stack scanning
+ 7  ucrtbase.dll + 0x9686
+    rsp = 0x0000003550cff7f0   rip = 0x00007fff917b9686
+    Found by: stack scanning
+ 8  electron.exe + 0x291896
+    rsp = 0x0000003550cff800   rip = 0x00007ff61fef1896
+    Found by: stack scanning
+ 9  electron.exe + 0xe0000
+    rsp = 0x0000003550cff810   rip = 0x00007ff61fd40000
+    Found by: stack scanning
+10  electron.exe + 0x2e4e50f
+    rsp = 0x0000003550cff820   rip = 0x00007ff622aae50f
+    Found by: stack scanning
+11  electron.exe + 0x2d5793
+    rsp = 0x0000003550cff840   rip = 0x00007ff61ff35793
+    Found by: stack scanning
+12  electron.exe + 0x2d58e6
+    rsp = 0x0000003550cff850   rip = 0x00007ff61ff358e6
+    Found by: stack scanning
+13  ntdll.dll + 0x16ff8
+    rsp = 0x0000003550cff860   rip = 0x00007fff94986ff8
+    Found by: stack scanning
+14  electron.exe + 0x2d3c24
+    rsp = 0x0000003550cff890   rip = 0x00007ff61ff33c24
+    Found by: stack scanning
+15  KERNELBASE.dll + 0x5f175
+    rsp = 0x0000003550cff8c0   rip = 0x00007fff91b7f175
+    Found by: stack scanning
+16  electron.exe + 0x2d19e6
+    rsp = 0x0000003550cff930   rip = 0x00007ff61ff319e6
+    Found by: stack scanning
+17  electron.exe + 0x2d193c
+    rsp = 0x0000003550cff958   rip = 0x00007ff61ff3193c
+    Found by: stack scanning
+18  kernel32.dll + 0x14034
+    rsp = 0x0000003550cff9e0   rip = 0x00007fff921c4034
+    Found by: stack scanning
+19  ntdll.dll + 0x73691
+    rsp = 0x0000003550cffa10   rip = 0x00007fff949e3691
+    Found by: stack scanning
+
+Thread 12
+ 0  ntdll.dll + 0x9aa24
+    rax = 0x0000000000000004   rdx = 0x0000000000000000
+    rcx = 0x0000000000000508   rbx = 0x0000000000000000
+    rsi = 0x0000003550dff7c8   rdi = 0x0000000000000508
+    rbp = 0x0000000000000508   rsp = 0x0000003550dff798
+     r8 = 0x0000018484ef0d80    r9 = 0x0000000000008000
+    r10 = 0x0000000000000000   r11 = 0x0000000000000246
+    r12 = 0x20c49ba5e353f7cf   r13 = 0x00007ff62397d050
+    r14 = 0x0000000000000508   r15 = 0x00000000ffffffff
+    rip = 0x00007fff94a0aa24
+    Found by: given as instruction pointer in context
+ 1  KERNELBASE.dll + 0x39252
+    rsp = 0x0000003550dff7a0   rip = 0x00007fff91b59252
+    Found by: stack scanning
+ 2  electron.exe + 0x2b5bf4
+    rsp = 0x0000003550dff840   rip = 0x00007ff61ff15bf4
+    Found by: stack scanning
+ 3  electron.exe + 0x30375a
+    rsp = 0x0000003550dff880   rip = 0x00007ff61ff6375a
+    Found by: stack scanning
+ 4  electron.exe + 0x2c6155
+    rsp = 0x0000003550dff8b0   rip = 0x00007ff61ff26155
+    Found by: stack scanning
+ 5  KERNELBASE.dll + 0x5962a
+    rsp = 0x0000003550dff8d0   rip = 0x00007fff91b7962a
+    Found by: stack scanning
+ 6  electron.exe + 0x2c5bb5
+    rsp = 0x0000003550dff900   rip = 0x00007ff61ff25bb5
+    Found by: stack scanning
+ 7  electron.exe + 0x3fe3d90
+    rsp = 0x0000003550dff910   rip = 0x00007ff623c43d90
+    Found by: stack scanning
+ 8  ucrtbase.dll + 0x9686
+    rsp = 0x0000003550dff940   rip = 0x00007fff917b9686
+    Found by: stack scanning
+ 9  electron.exe + 0x29185d
+    rsp = 0x0000003550dff950   rip = 0x00007ff61fef185d
+    Found by: stack scanning
+10  electron.exe + 0xe0000
+    rsp = 0x0000003550dff960   rip = 0x00007ff61fd40000
+    Found by: stack scanning
+11  electron.exe + 0x2e4e50f
+    rsp = 0x0000003550dff970   rip = 0x00007ff622aae50f
+    Found by: stack scanning
+12  electron.exe + 0x2d5793
+    rsp = 0x0000003550dff990   rip = 0x00007ff61ff35793
+    Found by: stack scanning
+13  ntdll.dll + 0x16ff8
+    rsp = 0x0000003550dff9b0   rip = 0x00007fff94986ff8
+    Found by: stack scanning
+14  electron.exe + 0x2d3c24
+    rsp = 0x0000003550dff9e0   rip = 0x00007ff61ff33c24
+    Found by: stack scanning
+15  KERNELBASE.dll + 0x5f175
+    rsp = 0x0000003550dffa10   rip = 0x00007fff91b7f175
+    Found by: stack scanning
+16  electron.exe + 0x2d19e6
+    rsp = 0x0000003550dffa80   rip = 0x00007ff61ff319e6
+    Found by: stack scanning
+17  electron.exe + 0x2d193c
+    rsp = 0x0000003550dffaa8   rip = 0x00007ff61ff3193c
+    Found by: stack scanning
+18  kernel32.dll + 0x14034
+    rsp = 0x0000003550dffb30   rip = 0x00007fff921c4034
+    Found by: stack scanning
+19  ntdll.dll + 0x73691
+    rsp = 0x0000003550dffb60   rip = 0x00007fff949e3691
+    Found by: stack scanning
+
+Thread 13
+ 0  ntdll.dll + 0x9aa24
+    rax = 0x0000000000000004   rdx = 0x0000000000000000
+    rcx = 0x0000000000000560   rbx = 0x0000000000000000
+    rsi = 0x0000000000000000   rdi = 0x0000000000000560
+    rbp = 0x00000035515ffcc0   rsp = 0x00000035515ffa68
+     r8 = 0x0000018484ef1800    r9 = 0x0000000000008000
+    r10 = 0x00000035515fe000   r11 = 0x00000035515fe000
+    r12 = 0x0000000000000000   r13 = 0x00007ff62397d050
+    r14 = 0x0000000000000560   r15 = 0x0000018487c644a0
+    rip = 0x00007fff94a0aa24
+    Found by: given as instruction pointer in context
+ 1  KERNELBASE.dll + 0x5f175
+    rbp = 0x0000018487b08c60   rsp = 0x00000035515ffcd0
+    rip = 0x00007fff91b7f175
+    Found by: previous frame's frame pointer
+ 2  electron.exe + 0x2d19e6
+    rbp = 0x0000018487b08c60   rsp = 0x00000035515ffd40
+    rip = 0x00007ff61ff319e6
+    Found by: stack scanning
+ 3  electron.exe + 0x2d193c
+    rbp = 0x0000018487b08c60   rsp = 0x00000035515ffd68
+    rip = 0x00007ff61ff3193c
+    Found by: stack scanning
+ 4  kernel32.dll + 0x14034
+    rbp = 0x0000018487b08c60   rsp = 0x00000035515ffdf0
+    rip = 0x00007fff921c4034
+    Found by: stack scanning
+ 5  ntdll.dll + 0x73691
+    rbp = 0x0000018487b08c60   rsp = 0x00000035515ffe20
+    rip = 0x00007fff949e3691
+    Found by: stack scanning
+
+Thread 14
+ 0  ntdll.dll + 0x9aac4
+    rax = 0x0000000000000009   rdx = 0x0000003551bff9a8
+    rcx = 0x0000000000000700   rbx = 0x0000003551bff990
+    rsi = 0x0000000000000000   rdi = 0x0000003551bff960
+    rbp = 0x0000003551bff970   rsp = 0x0000003551bff8b8
+     r8 = 0x0000018484ef1680    r9 = 0x0000000000008000
+    r10 = 0x0000000000000000   r11 = 0x0000000000000246
+    r12 = 0x0000000000000001   r13 = 0x0000000000000000
+    r14 = 0x00000000ffffffff   r15 = 0x00007ff623ce4db8
+    rip = 0x00007fff94a0aac4
+    Found by: given as instruction pointer in context
+ 1  KERNELBASE.dll + 0x53682
+    rbp = 0x0000003551bff970   rsp = 0x0000003551bff8c0
+    rip = 0x00007fff91b73682
+    Found by: stack scanning
+ 2  electron.exe + 0x3737888
+    rbp = 0x0000003551bff970   rsp = 0x0000003551bff8c8
+    rip = 0x00007ff623397888
+    Found by: stack scanning
+ 3  electron.exe + 0x2adb7a
+    rbp = 0x0000003551bff970   rsp = 0x0000003551bff8d0
+    rip = 0x00007ff61ff0db7a
+    Found by: stack scanning
+ 4  electron.exe + 0x234b8fd
+    rbp = 0x0000003551bff970   rsp = 0x0000003551bff8d8
+    rip = 0x00007ff621fab8fd
+    Found by: stack scanning
+ 5  ntdll.dll + 0x83d0
+    rbp = 0x0000003551bff970   rsp = 0x0000003551bff8e0
+    rip = 0x00007fff949783d0
+    Found by: stack scanning
+ 6  electron.exe + 0x234b8fd
+    rbp = 0x0000003551bff970   rsp = 0x0000003551bff8f0
+    rip = 0x00007ff621fab8fd
+    Found by: stack scanning
+ 7  electron.exe + 0x2e726f
+    rbp = 0x0000003551bff970   rsp = 0x0000003551bff900
+    rip = 0x00007ff61ff4726f
+    Found by: stack scanning
+ 8  electron.exe + 0x2e82ad
+    rbp = 0x0000003551bff970   rsp = 0x0000003551bff920
+    rip = 0x00007ff61ff482ad
+    Found by: stack scanning
+ 9  electron.exe + 0x30375a
+    rbp = 0x0000003551bff970   rsp = 0x0000003551bff930
+    rip = 0x00007ff61ff6375a
+    Found by: stack scanning
+10  electron.exe + 0x2e816a
+    rsp = 0x0000003551bff990   rip = 0x00007ff61ff4816a
+    Found by: stack scanning
+11  electron.exe + 0x2e0000
+    rsp = 0x0000003551bff9c0   rip = 0x00007ff61ff40000
+    Found by: stack scanning
+12  electron.exe + 0x2adea6
+    rsp = 0x0000003551bff9e0   rip = 0x00007ff61ff0dea6
+    Found by: stack scanning
+13  electron.exe + 0x2e7734
+    rsp = 0x0000003551bffa00   rip = 0x00007ff61ff47734
+    Found by: stack scanning
+14  electron.exe + 0x4084db8
+    rsp = 0x0000003551bffa48   rip = 0x00007ff623ce4db8
+    Found by: stack scanning
+15  electron.exe + 0x2ad70e
+    rsp = 0x0000003551bffa50   rip = 0x00007ff61ff0d70e
+    Found by: stack scanning
+16  electron.exe + 0x4084db8
+    rsp = 0x0000003551bffa80   rip = 0x00007ff623ce4db8
+    Found by: stack scanning
+17  electron.exe + 0x4084db8
+    rsp = 0x0000003551bffa88   rip = 0x00007ff623ce4db8
+    Found by: stack scanning
+18  electron.exe + 0x2ad61f
+    rsp = 0x0000003551bffa90   rip = 0x00007ff61ff0d61f
+    Found by: stack scanning
+19  electron.exe + 0x4084db8
+    rsp = 0x0000003551bffaa0   rip = 0x00007ff623ce4db8
+    Found by: stack scanning
+20  electron.exe + 0x4084db8
+    rsp = 0x0000003551bffab0   rip = 0x00007ff623ce4db8
+    Found by: stack scanning
+21  electron.exe + 0x2d3768
+    rsp = 0x0000003551bffac0   rip = 0x00007ff61ff33768
+    Found by: stack scanning
+22  electron.exe + 0x4084db8
+    rsp = 0x0000003551bffad8   rip = 0x00007ff623ce4db8
+    Found by: stack scanning
+23  electron.exe + 0x2d3c24
+    rsp = 0x0000003551bffae0   rip = 0x00007ff61ff33c24
+    Found by: stack scanning
+24  electron.exe + 0x2d19e6
+    rsp = 0x0000003551bffb80   rip = 0x00007ff61ff319e6
+    Found by: stack scanning
+25  electron.exe + 0x2d193c
+    rsp = 0x0000003551bffba8   rip = 0x00007ff61ff3193c
+    Found by: stack scanning
+26  kernel32.dll + 0x14034
+    rsp = 0x0000003551bffc30   rip = 0x00007fff921c4034
+    Found by: stack scanning
+27  ntdll.dll + 0x73691
+    rsp = 0x0000003551bffc60   rip = 0x00007fff949e3691
+    Found by: stack scanning
+
+Thread 15
+ 0  win32u.dll + 0x96e4
+    rax = 0x0000000000001436   rdx = 0x0000003551cffb48
+    rcx = 0x0000000000000001   rbx = 0x0000018487be3cb8
+    rsi = 0x0000018487be3ca0   rdi = 0x0000000000000001
+    rbp = 0x0000003551cffc40   rsp = 0x0000003551cffab8
+     r8 = 0x0000000000000000    r9 = 0x0000000000000000
+    r10 = 0x0000000000000000   r11 = 0x000000354f9b8800
+    r12 = 0x0000000000000000   r13 = 0x00007ff62397d050
+    r14 = 0x00000000ffffffff   r15 = 0x0000018487be3ca0
+    rip = 0x00007fff90df96e4
+    Found by: given as instruction pointer in context
+ 1  user32.dll + 0x2031d
+    rbp = 0x0000003551cffc40   rsp = 0x0000003551cffac0
+    rip = 0x00007fff9232031d
+    Found by: stack scanning
+ 2  electron.exe + 0x2cb97b
+    rbp = 0x0000003551cffc40   rsp = 0x0000003551cffaf0
+    rip = 0x00007ff61ff2b97b
+    Found by: stack scanning
+ 3  electron.exe + 0x2c4971
+    rbp = 0x0000003551cffc40   rsp = 0x0000003551cffb00
+    rip = 0x00007ff61ff24971
+    Found by: stack scanning
+ 4  electron.exe + 0x3fe3d90
+    rbp = 0x0000003551cffc40   rsp = 0x0000003551cffb38
+    rip = 0x00007ff623c43d90
+    Found by: stack scanning
+ 5  electron.exe + 0x2c5bb5
+    rbp = 0x0000003551cffc40   rsp = 0x0000003551cffb40
+    rip = 0x00007ff61ff25bb5
+    Found by: stack scanning
+ 6  ucrtbase.dll + 0x9686
+    rbp = 0x0000003551cffc40   rsp = 0x0000003551cffb80
+    rip = 0x00007fff917b9686
+    Found by: stack scanning
+ 7  electron.exe + 0x291896
+    rbp = 0x0000003551cffc40   rsp = 0x0000003551cffb90
+    rip = 0x00007ff61fef1896
+    Found by: stack scanning
+ 8  electron.exe + 0xe0000
+    rbp = 0x0000003551cffc40   rsp = 0x0000003551cffba0
+    rip = 0x00007ff61fd40000
+    Found by: stack scanning
+ 9  electron.exe + 0x2e4e50f
+    rbp = 0x0000003551cffc40   rsp = 0x0000003551cffbb0
+    rip = 0x00007ff622aae50f
+    Found by: stack scanning
+10  electron.exe + 0x2d5793
+    rbp = 0x0000003551cffc40   rsp = 0x0000003551cffbd0
+    rip = 0x00007ff61ff35793
+    Found by: stack scanning
+11  ntdll.dll + 0x16ff8
+    rbp = 0x0000003551cffc40   rsp = 0x0000003551cffbf0
+    rip = 0x00007fff94986ff8
+    Found by: stack scanning
+12  electron.exe + 0x2d3c24
+    rbp = 0x0000003551cffc40   rsp = 0x0000003551cffc20
+    rip = 0x00007ff61ff33c24
+    Found by: stack scanning
+13  electron.exe + 0x2d19e6
+    rsp = 0x0000003551cffcc0   rip = 0x00007ff61ff319e6
+    Found by: stack scanning
+14  electron.exe + 0x2d193c
+    rsp = 0x0000003551cffce8   rip = 0x00007ff61ff3193c
+    Found by: stack scanning
+15  kernel32.dll + 0x14034
+    rsp = 0x0000003551cffd70   rip = 0x00007fff921c4034
+    Found by: stack scanning
+16  ntdll.dll + 0x73691
+    rsp = 0x0000003551cffda0   rip = 0x00007fff949e3691
+    Found by: stack scanning
+
+Thread 16
+ 0  ntdll.dll + 0x9aa24
+    rax = 0x0000000000000004   rdx = 0x0000000000000000
+    rcx = 0x0000000000000a24   rbx = 0x0000000000000000
+    rsi = 0x0000000000000000   rdi = 0x0000000000000a24
+    rbp = 0x0000003550fffe30   rsp = 0x0000003550fffbd8
+     r8 = 0x0000018484ef1800    r9 = 0x0000000000008000
+    r10 = 0x0000003550ffe000   r11 = 0x0000003550ffe000
+    r12 = 0x0000000000000000   r13 = 0x00007ff62397d050
+    r14 = 0x0000000000000a24   r15 = 0x0000018488129410
+    rip = 0x00007fff94a0aa24
+    Found by: given as instruction pointer in context
+ 1  KERNELBASE.dll + 0x39252
+    rbp = 0x0000003550fffe30   rsp = 0x0000003550fffbe0
+    rip = 0x00007fff91b59252
+    Found by: stack scanning
+ 2  electron.exe + 0x2b5b0a
+    rbp = 0x0000003550fffe30   rsp = 0x0000003550fffc80
+    rip = 0x00007ff61ff15b0a
+    Found by: stack scanning
+ 3  electron.exe + 0x2c60c4
+    rbp = 0x0000003550fffe30   rsp = 0x0000003550fffce0
+    rip = 0x00007ff61ff260c4
+    Found by: stack scanning
+ 4  electron.exe + 0x2c41cf
+    rbp = 0x0000003550fffe30   rsp = 0x0000003550fffd00
+    rip = 0x00007ff61ff241cf
+    Found by: stack scanning
+ 5  electron.exe + 0x2c58fc
+    rbp = 0x0000003550fffe30   rsp = 0x0000003550fffd30
+    rip = 0x00007ff61ff258fc
+    Found by: stack scanning
+ 6  electron.exe + 0x3fe3d90
+    rbp = 0x0000003550fffe30   rsp = 0x0000003550fffd40
+    rip = 0x00007ff623c43d90
+    Found by: stack scanning
+ 7  ucrtbase.dll + 0x9686
+    rbp = 0x0000003550fffe30   rsp = 0x0000003550fffd70
+    rip = 0x00007fff917b9686
+    Found by: stack scanning
+ 8  electron.exe + 0x291896
+    rbp = 0x0000003550fffe30   rsp = 0x0000003550fffd80
+    rip = 0x00007ff61fef1896
+    Found by: stack scanning
+ 9  electron.exe + 0xe0000
+    rbp = 0x0000003550fffe30   rsp = 0x0000003550fffd90
+    rip = 0x00007ff61fd40000
+    Found by: stack scanning
+10  electron.exe + 0x2e4e50f
+    rbp = 0x0000003550fffe30   rsp = 0x0000003550fffda0
+    rip = 0x00007ff622aae50f
+    Found by: stack scanning
+11  electron.exe + 0x2d5793
+    rbp = 0x0000003550fffe30   rsp = 0x0000003550fffdc0
+    rip = 0x00007ff61ff35793
+    Found by: stack scanning
+12  electron.exe + 0x2d58e6
+    rbp = 0x0000003550fffe30   rsp = 0x0000003550fffdd0
+    rip = 0x00007ff61ff358e6
+    Found by: stack scanning
+13  ntdll.dll + 0x16ff8
+    rbp = 0x0000003550fffe30   rsp = 0x0000003550fffde0
+    rip = 0x00007fff94986ff8
+    Found by: stack scanning
+14  electron.exe + 0x2d3c24
+    rbp = 0x0000003550fffe30   rsp = 0x0000003550fffe10
+    rip = 0x00007ff61ff33c24
+    Found by: stack scanning
+15  electron.exe + 0x2d19e6
+    rsp = 0x0000003550fffeb0   rip = 0x00007ff61ff319e6
+    Found by: stack scanning
+16  electron.exe + 0x2d193c
+    rsp = 0x0000003550fffed8   rip = 0x00007ff61ff3193c
+    Found by: stack scanning
+17  kernel32.dll + 0x14034
+    rsp = 0x0000003550ffff60   rip = 0x00007fff921c4034
+    Found by: stack scanning
+18  ntdll.dll + 0x73691
+    rsp = 0x0000003550ffff90   rip = 0x00007fff949e3691
+    Found by: stack scanning
+
+Thread 17
+ 0  win32u.dll + 0x96e4
+    rax = 0x0000000000001436   rdx = 0x0000003551eff530
+    rcx = 0x0000000000000001   rbx = 0x0000000000000001
+    rsi = 0x00000184880f0270   rdi = 0x0000000000000004
+    rbp = 0x0000003551eff638   rsp = 0x0000003551eff498
+     r8 = 0x0000003551eff4d8    r9 = 0x0000003551eff638
+    r10 = 0x0000000000000000   r11 = 0x0000000000000246
+    r12 = 0x0000000000000001   r13 = 0x0000000000000002
+    r14 = 0x00000000ffffffff   r15 = 0x0000000000000003
+    rip = 0x00007fff90df96e4
+    Found by: given as instruction pointer in context
+ 1  user32.dll + 0x2031d
+    rbp = 0x0000003551eff638   rsp = 0x0000003551eff4a0
+    rip = 0x00007fff9232031d
+    Found by: stack scanning
+ 2  duser.dll + 0x121c6
+    rbp = 0x0000003551eff638   rsp = 0x0000003551eff4b0
+    rip = 0x00007fff5d6d21c6
+    Found by: stack scanning
+ 3  duser.dll + 0x11a5d
+    rbp = 0x0000003551eff638   rsp = 0x0000003551eff4e0
+    rip = 0x00007fff5d6d1a5d
+    Found by: stack scanning
+ 4  user32.dll + 0x17042
+    rbp = 0x0000003551eff638   rsp = 0x0000003551eff540
+    rip = 0x00007fff92317042
+    Found by: stack scanning
+ 5  duser.dll + 0x116c2
+    rbp = 0x0000003551eff638   rsp = 0x0000003551eff580
+    rip = 0x00007fff5d6d16c2
+    Found by: stack scanning
+ 6  user32.dll + 0x25094
+    rbp = 0x0000003551eff638   rsp = 0x0000003551eff5e0
+    rip = 0x00007fff92325094
+    Found by: stack scanning
+ 7  user32.dll + 0x83070
+    rsp = 0x0000003551eff670   rip = 0x00007fff92383070
+    Found by: stack scanning
+ 8  ntdll.dll + 0x9e6b4
+    rsp = 0x0000003551eff680   rip = 0x00007fff94a0e6b4
+    Found by: stack scanning
+ 9  win32u.dll + 0x1144
+    rsp = 0x0000003551eff6b8   rip = 0x00007fff90df1144
+    Found by: stack scanning
+10  user32.dll + 0x21b8b
+    rsp = 0x0000003551eff700   rip = 0x00007fff92321b8b
+    Found by: stack scanning
+11  dui70.dll + 0x9246f
+    rsp = 0x0000003551eff760   rip = 0x00007fff55df246f
+    Found by: stack scanning
+12  msctfuimanager.dll + 0x11b40
+    rsp = 0x0000003551eff7c0   rip = 0x00007fff5fec1b40
+    Found by: stack scanning
+13  msctfuimanager.dll + 0x4ed88
+    rsp = 0x0000003551eff7f0   rip = 0x00007fff5fefed88
+    Found by: stack scanning
+14  msctfuimanager.dll + 0x4eda8
+    rsp = 0x0000003551eff820   rip = 0x00007fff5fefeda8
+    Found by: stack scanning
+15  msctfuimanager.dll + 0x5ffb8
+    rsp = 0x0000003551eff840   rip = 0x00007fff5ff0ffb8
+    Found by: stack scanning
+16  msctfuimanager.dll + 0x11c0e
+    rsp = 0x0000003551eff880   rip = 0x00007fff5fec1c0e
+    Found by: stack scanning
+17  kernel32.dll + 0x14034
+    rsp = 0x0000003551eff8b0   rip = 0x00007fff921c4034
+    Found by: stack scanning
+18  0x7fff5feb0000
+    rsp = 0x0000003551eff8b8   rip = 0x00007fff5feb0000
+    Found by: stack scanning
+19  ntdll.dll + 0x73691
+    rsp = 0x0000003551eff8e0   rip = 0x00007fff949e3691
+    Found by: stack scanning
+
+Thread 18
+ 0  win32u.dll + 0x96e4
+    rax = 0x0000000000001436   rdx = 0x00000035520ffb10
+    rcx = 0x0000000000000001   rbx = 0x0000000000000001
+    rsi = 0x00000184880f19e0   rdi = 0x0000000000000004
+    rbp = 0x00000035520ffbf8   rsp = 0x00000035520ffa78
+     r8 = 0x0000000000000001    r9 = 0x00007fff5d6d2190
+    r10 = 0x0000000000000000   r11 = 0x0000000000000000
+    r12 = 0x0000000000000001   r13 = 0x0000000000000003
+    r14 = 0x00000000ffffffff   r15 = 0x0000000000000003
+    rip = 0x00007fff90df96e4
+    Found by: given as instruction pointer in context
+ 1  user32.dll + 0x2031d
+    rbp = 0x00000035520ffbf8   rsp = 0x00000035520ffa80
+    rip = 0x00007fff9232031d
+    Found by: stack scanning
+ 2  duser.dll + 0x121c6
+    rbp = 0x00000035520ffbf8   rsp = 0x00000035520ffa90
+    rip = 0x00007fff5d6d21c6
+    Found by: stack scanning
+ 3  duser.dll + 0x165b0
+    rbp = 0x00000035520ffbf8   rsp = 0x00000035520ffaa0
+    rip = 0x00007fff5d6d65b0
+    Found by: stack scanning
+ 4  duser.dll + 0x11bda
+    rbp = 0x00000035520ffbf8   rsp = 0x00000035520ffac0
+    rip = 0x00007fff5d6d1bda
+    Found by: stack scanning
+ 5  duser.dll + 0x6a1d0
+    rbp = 0x00000035520ffbf8   rsp = 0x00000035520ffad0
+    rip = 0x00007fff5d72a1d0
+    Found by: stack scanning
+ 6  duser.dll + 0x4927
+    rbp = 0x00000035520ffbf8   rsp = 0x00000035520ffae0
+    rip = 0x00007fff5d6c4927
+    Found by: stack scanning
+ 7  duser.dll + 0x165b0
+    rbp = 0x00000035520ffbf8   rsp = 0x00000035520ffaf0
+    rip = 0x00007fff5d6d65b0
+    Found by: stack scanning
+ 8  duser.dll + 0x3a47
+    rbp = 0x00000035520ffbf8   rsp = 0x00000035520ffb60
+    rip = 0x00007fff5d6c3a47
+    Found by: stack scanning
+ 9  duser.dll + 0x4283
+    rbp = 0x00000035520ffbf8   rsp = 0x00000035520ffbb0
+    rip = 0x00007fff5d6c4283
+    Found by: stack scanning
+10  msvcrt.dll + 0x3a5da
+    rbp = 0x00000035520ffbf8   rsp = 0x00000035520ffbe0
+    rip = 0x00007fff9259a5da
+    Found by: stack scanning
+11  msvcrt.dll + 0x8f0a0
+    rsp = 0x00000035520ffc00   rip = 0x00007fff925ef0a0
+    Found by: stack scanning
+12  msvcrt.dll + 0x3a553
+    rsp = 0x00000035520ffc10   rip = 0x00007fff9259a553
+    Found by: stack scanning
+13  msvcrt.dll + 0x3aa96
+    rsp = 0x00000035520ffc40   rip = 0x00007fff9259aa96
+    Found by: stack scanning
+14  msvcrt.dll + 0x3ab6c
+    rsp = 0x00000035520ffc70   rip = 0x00007fff9259ab6c
+    Found by: stack scanning
+15  msvcrt.dll + 0x906d0
+    rsp = 0x00000035520ffc78   rip = 0x00007fff925f06d0
+    Found by: stack scanning
+16  kernel32.dll + 0x14034
+    rsp = 0x00000035520ffca0   rip = 0x00007fff921c4034
+    Found by: stack scanning
+17  ntdll.dll + 0x73691
+    rsp = 0x00000035520ffcd0   rip = 0x00007fff949e3691
+    Found by: stack scanning
+
+Thread 19
+ 0  ntdll.dll + 0x9b4f4
+    rax = 0x000000000000005b   rdx = 0x00000035523ffd60
+    rcx = 0x0000000000000002   rbx = 0x0000000000000002
+    rsi = 0x0000000000000000   rdi = 0x0000000000000002
+    rbp = 0x00000035523ffd80   rsp = 0x00000035523ff9d8
+     r8 = 0x0000000000201030    r9 = 0x00000035523ff318
+    r10 = 0x0000000000000000   r11 = 0x00000035523ff268
+    r12 = 0x0000000000000000   r13 = 0x00000035523ffd60
+    r14 = 0x0000000000000000   r15 = 0x0000000000000000
+    rip = 0x00007fff94a0b4f4
+    Found by: given as instruction pointer in context
+ 1  KERNELBASE.dll + 0x46099
+    rbp = 0x00000035523ffd80   rsp = 0x00000035523ff9e0
+    rip = 0x00007fff91b66099
+    Found by: stack scanning
+ 2  KERNELBASE.dll + 0x39903
+    rbp = 0x00000035523ffd80   rsp = 0x00000035523ffa30
+    rip = 0x00007fff91b59903
+    Found by: stack scanning
+ 3  msiltcfg.dll + 0x2847
+    rbp = 0x00000035523ffd80   rsp = 0x00000035523ffaa0
+    rip = 0x00007fff839a2847
+    Found by: stack scanning
+
+Thread 20
+ 0  ntdll.dll + 0x9aa24
+    rax = 0x0000000000000004   rdx = 0x0000000000000000
+    rcx = 0x0000000000000de4   rbx = 0x0000000000000000
+    rsi = 0x00000035510ff778   rdi = 0x0000000000000de4
+    rbp = 0x0000000000000de4   rsp = 0x00000035510ff748
+     r8 = 0x0000018484fa1488    r9 = 0x0000000000000000
+    r10 = 0x0000018488d3ad73   r11 = 0x000001848ce33b80
+    r12 = 0x20c49ba5e353f7cf   r13 = 0x00007ff62397d050
+    r14 = 0x0000000000000de4   r15 = 0x00000000ffffffff
+    rip = 0x00007fff94a0aa24
+    Found by: given as instruction pointer in context
+ 1  KERNELBASE.dll + 0x39252
+    rsp = 0x00000035510ff750   rip = 0x00007fff91b59252
+    Found by: stack scanning
+ 2  electron.exe + 0x2b5bf4
+    rsp = 0x00000035510ff7f0   rip = 0x00007ff61ff15bf4
+    Found by: stack scanning
+ 3  electron.exe + 0x30375a
+    rsp = 0x00000035510ff830   rip = 0x00007ff61ff6375a
+    Found by: stack scanning
+ 4  electron.exe + 0x2c6155
+    rsp = 0x00000035510ff860   rip = 0x00007ff61ff26155
+    Found by: stack scanning
+ 5  KERNELBASE.dll + 0x5962a
+    rsp = 0x00000035510ff880   rip = 0x00007fff91b7962a
+    Found by: stack scanning
+ 6  electron.exe + 0x2c5bb5
+    rsp = 0x00000035510ff8b0   rip = 0x00007ff61ff25bb5
+    Found by: stack scanning
+ 7  electron.exe + 0x3fe3d90
+    rsp = 0x00000035510ff8c0   rip = 0x00007ff623c43d90
+    Found by: stack scanning
+ 8  ucrtbase.dll + 0x9686
+    rsp = 0x00000035510ff8f0   rip = 0x00007fff917b9686
+    Found by: stack scanning
+ 9  electron.exe + 0x291896
+    rsp = 0x00000035510ff900   rip = 0x00007ff61fef1896
+    Found by: stack scanning
+10  electron.exe + 0xe0000
+    rsp = 0x00000035510ff910   rip = 0x00007ff61fd40000
+    Found by: stack scanning
+11  electron.exe + 0x2e4e50f
+    rsp = 0x00000035510ff920   rip = 0x00007ff622aae50f
+    Found by: stack scanning
+12  electron.exe + 0x2d5793
+    rsp = 0x00000035510ff940   rip = 0x00007ff61ff35793
+    Found by: stack scanning
+13  ntdll.dll + 0x16ff8
+    rsp = 0x00000035510ff960   rip = 0x00007fff94986ff8
+    Found by: stack scanning
+14  electron.exe + 0x2d3c24
+    rsp = 0x00000035510ff990   rip = 0x00007ff61ff33c24
+    Found by: stack scanning
+15  electron.exe + 0x2d19e6
+    rsp = 0x00000035510ffa30   rip = 0x00007ff61ff319e6
+    Found by: stack scanning
+16  electron.exe + 0x2d193c
+    rsp = 0x00000035510ffa58   rip = 0x00007ff61ff3193c
+    Found by: stack scanning
+17  kernel32.dll + 0x14034
+    rsp = 0x00000035510ffae0   rip = 0x00007fff921c4034
+    Found by: stack scanning
+18  ntdll.dll + 0x73691
+    rsp = 0x00000035510ffb10   rip = 0x00007fff949e3691
+    Found by: stack scanning
+
+Thread 21
+ 0  win32u.dll + 0x96e4
+    rax = 0x0000000000001436   rdx = 0x00000035511ff760
+    rcx = 0x0000000000000001   rbx = 0x0000000000000001
+    rsi = 0x000001848cef5010   rdi = 0x0000000000000004
+    rbp = 0x00000035511ff868   rsp = 0x00000035511ff6c8
+     r8 = 0x00000035511ff6c8    r9 = 0x00000035511ff868
+    r10 = 0x0000000000000000   r11 = 0x0000000000000246
+    r12 = 0x0000000000000001   r13 = 0x0000000000000002
+    r14 = 0x00000000ffffffff   r15 = 0x0000000000000003
+    rip = 0x00007fff90df96e4
+    Found by: given as instruction pointer in context
+ 1  user32.dll + 0x2031d
+    rbp = 0x00000035511ff868   rsp = 0x00000035511ff6d0
+    rip = 0x00007fff9232031d
+    Found by: stack scanning
+ 2  duser.dll + 0x121c6
+    rbp = 0x00000035511ff868   rsp = 0x00000035511ff6e0
+    rip = 0x00007fff5d6d21c6
+    Found by: stack scanning
+ 3  duser.dll + 0x11a5d
+    rbp = 0x00000035511ff868   rsp = 0x00000035511ff710
+    rip = 0x00007fff5d6d1a5d
+    Found by: stack scanning
+ 4  uxtheme.dll + 0x4b9a
+    rbp = 0x00000035511ff868   rsp = 0x00000035511ff750
+    rip = 0x00007fff8e954b9a
+    Found by: stack scanning
+ 5  duser.dll + 0x116c2
+    rbp = 0x00000035511ff868   rsp = 0x00000035511ff7b0
+    rip = 0x00007fff5d6d16c2
+    Found by: stack scanning
+ 6  user32.dll + 0x25094
+    rbp = 0x00000035511ff868   rsp = 0x00000035511ff810
+    rip = 0x00007fff92325094
+    Found by: stack scanning
+ 7  user32.dll + 0x83070
+    rsp = 0x00000035511ff8a0   rip = 0x00007fff92383070
+    Found by: stack scanning
+ 8  ntdll.dll + 0x9e6b4
+    rsp = 0x00000035511ff8b0   rip = 0x00007fff94a0e6b4
+    Found by: stack scanning
+ 9  user32.dll + 0x1772b
+    rsp = 0x00000035511ff8c0   rip = 0x00007fff9231772b
+    Found by: stack scanning
+10  user32.dll + 0x17b44
+    rsp = 0x00000035511ff8c8   rip = 0x00007fff92317b44
+    Found by: stack scanning
+11  win32u.dll + 0x1144
+    rsp = 0x00000035511ff8e8   rip = 0x00007fff90df1144
+    Found by: stack scanning
+12  user32.dll + 0x21b8b
+    rsp = 0x00000035511ff930   rip = 0x00007fff92321b8b
+    Found by: stack scanning
+13  msctfuimanager.dll + 0x18ae4
+    rsp = 0x00000035511ff990   rip = 0x00007fff5fec8ae4
+    Found by: stack scanning
+14  ntdll.dll + 0x9e6b4
+    rsp = 0x00000035511ff9c0   rip = 0x00007fff94a0e6b4
+    Found by: stack scanning
+15  uxtheme.dll + 0x4b70
+    rsp = 0x00000035511ff9e0   rip = 0x00007fff8e954b70
+    Found by: stack scanning
+16  msctfuimanager.dll + 0x4f420
+    rsp = 0x00000035511ffa00   rip = 0x00007fff5feff420
+    Found by: stack scanning
+17  msctfuimanager.dll + 0x5ffb8
+    rsp = 0x00000035511ffa20   rip = 0x00007fff5ff0ffb8
+    Found by: stack scanning
+18  msctfuimanager.dll + 0x18979
+    rsp = 0x00000035511ffa50   rip = 0x00007fff5fec8979
+    Found by: stack scanning
+19  0x7fff5feb0000
+    rsp = 0x00000035511ffa68   rip = 0x00007fff5feb0000
+    Found by: stack scanning
+20  kernel32.dll + 0x14034
+    rsp = 0x00000035511ffa80   rip = 0x00007fff921c4034
+    Found by: stack scanning
+21  0x7fff5feb0000
+    rsp = 0x00000035511ffa90   rip = 0x00007fff5feb0000
+    Found by: stack scanning
+22  ntdll.dll + 0x73691
+    rsp = 0x00000035511ffab0   rip = 0x00007fff949e3691
+    Found by: stack scanning
+
+Thread 22
+ 0  ntdll.dll + 0x9e2f4
+    rax = 0x00000000000001cb   rdx = 0x000001848cc6ee30
+    rcx = 0x0000000000000e94   rbx = 0x000001848cc6ee30
+    rsi = 0x00007fff9499a150   rdi = 0x0000000000000010
+    rbp = 0x0000000000000000   rsp = 0x0000003551aff4d8
+     r8 = 0x0000000000000018    r9 = 0x0000000000000000
+    r10 = 0x00000fffec3d192c   r11 = 0x0000100000000000
+    r12 = 0x0000000000000000   r13 = 0x000001848cb328f0
+    r14 = 0x00007fff94997a70   r15 = 0x00007fff94998360
+    rip = 0x00007fff94a0e2f4
+    Found by: given as instruction pointer in context
+ 1  ntdll.dll + 0x26866
+    rsp = 0x0000003551aff4e0   rip = 0x00007fff94996866
+    Found by: stack scanning
+ 2  ntdll.dll + 0x2a150
+    rsp = 0x0000003551aff4f8   rip = 0x00007fff9499a150
+    Found by: stack scanning
+
+Thread 23
+ 0  win32u.dll + 0x96e4
+    rax = 0x0000000000001436   rdx = 0x000001848f0b0c10
+    rcx = 0x0000000000000001   rbx = 0x0000000000000001
+    rsi = 0x0000000000000001   rdi = 0x0000000000000000
+    rbp = 0x00000035513ffa29   rsp = 0x00000035513ff978
+     r8 = 0x0000000000000000    r9 = 0x0000000000001cff
+    r10 = 0x0000000000000000   r11 = 0x00000000ffffffff
+    r12 = 0x0000000000000001   r13 = 0x000001848f0b08c0
+    r14 = 0x000001848f0b0c10   r15 = 0x0000000000000000
+    rip = 0x00007fff90df96e4
+    Found by: given as instruction pointer in context
+ 1  user32.dll + 0x2031d
+    rbp = 0x00000035513ffa29   rsp = 0x00000035513ff980
+    rip = 0x00007fff9232031d
+    Found by: stack scanning
+ 2  directmanipulation.dll + 0x15bd6
+    rbp = 0x00000035513ffa29   rsp = 0x00000035513ff9c0
+    rip = 0x00007fff77955bd6
+    Found by: stack scanning
+ 3  directmanipulation.dll + 0x77798
+    rbp = 0x00000035513ffa29   rsp = 0x00000035513ffa20
+    rip = 0x00007fff779b7798
+    Found by: stack scanning
+ 4  directmanipulation.dll + 0x85000
+    rsp = 0x00000035513ffa38   rip = 0x00007fff779c5000
+    Found by: stack scanning
+ 5  combase.dll + 0xa0e26
+    rsp = 0x00000035513ffa40   rip = 0x00007fff91eb0e26
+    Found by: stack scanning
+ 6  directmanipulation.dll + 0x77798
+    rsp = 0x00000035513ffa58   rip = 0x00007fff779b7798
+    Found by: stack scanning
+ 7  directmanipulation.dll + 0x85000
+    rsp = 0x00000035513ffa88   rip = 0x00007fff779c5000
+    Found by: stack scanning
+ 8  directmanipulation.dll + 0x15e94
+    rsp = 0x00000035513ffa90   rip = 0x00007fff77955e94
+    Found by: stack scanning
+ 9  kernel32.dll + 0x14034
+    rsp = 0x00000035513ffad0   rip = 0x00007fff921c4034
+    Found by: stack scanning
+10  ntdll.dll + 0x73691
+    rsp = 0x00000035513ffb00   rip = 0x00007fff949e3691
+    Found by: stack scanning
+
+Thread 24
+ 0  ntdll.dll + 0x9aac4
+    rax = 0x0000000000000009   rdx = 0x000000354fbffa70
+    rcx = 0x0000000000000aa8   rbx = 0x0000000000000000
+    rsi = 0x0000000000000001   rdi = 0x00007fff904e0000
+    rbp = 0x0000000000000000   rsp = 0x000000354fbffa08
+     r8 = 0x0000000000000001    r9 = 0x0000018490990600
+    r10 = 0x0000000000000000   r11 = 0x0000000000000246
+    r12 = 0x0000000000000000   r13 = 0x0000000000000000
+    r14 = 0x0000000000000000   r15 = 0x0000000000000000
+    rip = 0x00007fff94a0aac4
+    Found by: given as instruction pointer in context
+ 1  mswsock.dll + 0xf338
+    rsp = 0x000000354fbffa10   rip = 0x00007fff904ef338
+    Found by: stack scanning
+ 2  0x7fff904e0000
+    rsp = 0x000000354fbffa30   rip = 0x00007fff904e0000
+    Found by: stack scanning
+ 3  mswsock.dll + 0x503b8
+    rsp = 0x000000354fbffa38   rip = 0x00007fff905303b8
+    Found by: stack scanning
+ 4  kernel32.dll + 0x14034
+    rsp = 0x000000354fbffa70   rip = 0x00007fff921c4034
+    Found by: stack scanning
+ 5  mswsock.dll + 0x1d50
+    rsp = 0x000000354fbffa78   rip = 0x00007fff904e1d50
+    Found by: stack scanning
+ 6  ntdll.dll + 0x73691
+    rsp = 0x000000354fbffaa0   rip = 0x00007fff949e3691
+    Found by: stack scanning
+
+Thread 25
+ 0  ntdll.dll + 0x9e2f4
+    rax = 0x00000000000001cb   rdx = 0x000001848cc6ea90
+    rcx = 0x0000000000000010   rbx = 0x000001848cc6ea90
+    rsi = 0x00007fff9499a150   rdi = 0x0000000000000010
+    rbp = 0x0000000000000000   rsp = 0x00000035512ffb08
+     r8 = 0x00000035512ffa08    r9 = 0x00000035512ffc78
+    r10 = 0x0000000000000000   r11 = 0x0000000000000246
+    r12 = 0x0000000000000000   r13 = 0x0000018484f80b30
+    r14 = 0x00007fff94997a70   r15 = 0x00007fff94998360
+    rip = 0x00007fff94a0e2f4
+    Found by: given as instruction pointer in context
+ 1  ntdll.dll + 0x26866
+    rsp = 0x00000035512ffb10   rip = 0x00007fff94996866
+    Found by: stack scanning
+ 2  ntdll.dll + 0x2a150
+    rsp = 0x00000035512ffb28   rip = 0x00007fff9499a150
+    Found by: stack scanning
+
+Thread 26
+ 0  ntdll.dll + 0x9e2f4
+    rax = 0x00000000000001cb   rdx = 0x000001848cc6e350
+    rcx = 0x0000000000000010   rbx = 0x000001848cc6e350
+    rsi = 0x00007fff9499a150   rdi = 0x0000000000000010
+    rbp = 0x0000000000000000   rsp = 0x00000035503ff818
+     r8 = 0x0000000000007530    r9 = 0x0000000000001cff
+    r10 = 0x0000000000000006   r11 = 0x0000018485678dc0
+    r12 = 0x0000000000000000   r13 = 0x0000018484f80b30
+    r14 = 0x00007fff94997a70   r15 = 0x00007fff94998360
+    rip = 0x00007fff94a0e2f4
+    Found by: given as instruction pointer in context
+ 1  ntdll.dll + 0x26866
+    rsp = 0x00000035503ff820   rip = 0x00007fff94996866
+    Found by: stack scanning
+ 2  ntdll.dll + 0x2a150
+    rsp = 0x00000035503ff838   rip = 0x00007fff9499a150
+    Found by: stack scanning
+
+Thread 27
+ 0  ntdll.dll + 0x9e2f4
+    rax = 0x00000000000001cb   rdx = 0x000001848cc6e6f0
+    rcx = 0x0000000000000010   rbx = 0x000001848cc6e6f0
+    rsi = 0x00007fff9499a150   rdi = 0x0000000000000010
+    rbp = 0x0000000000000000   rsp = 0x000000354feff8e8
+     r8 = 0x0000000000000000    r9 = 0x0000000000000000
+    r10 = 0x0000000000000000   r11 = 0x0000000000000000
+    r12 = 0x0000000000000000   r13 = 0x0000018484f80b30
+    r14 = 0x00007fff94997a70   r15 = 0x00007fff94998360
+    rip = 0x00007fff94a0e2f4
+    Found by: given as instruction pointer in context
+ 1  ntdll.dll + 0x26866
+    rsp = 0x000000354feff8f0   rip = 0x00007fff94996866
+    Found by: stack scanning
+
+Thread 28
+ 0  ntdll.dll + 0x9aa24
+    rax = 0x0000000000000004   rdx = 0x0000000000000000
+    rcx = 0x0000000000000510   rbx = 0x0000000000000000
+    rsi = 0x000000354fdff428   rdi = 0x0000000000000510
+    rbp = 0x0000000000000510   rsp = 0x000000354fdff3f8
+     r8 = 0x0000018484ef0d80    r9 = 0x0000000000008000
+    r10 = 0x0000000000000000   r11 = 0x0000000000000246
+    r12 = 0x20c49ba5e353f7cf   r13 = 0x00007ff62397d050
+    r14 = 0x0000000000000510   r15 = 0x00000000ffffffff
+    rip = 0x00007fff94a0aa24
+    Found by: given as instruction pointer in context
+ 1  KERNELBASE.dll + 0x39252
+    rsp = 0x000000354fdff400   rip = 0x00007fff91b59252
+    Found by: stack scanning
+ 2  electron.exe + 0x2b5bf4
+    rsp = 0x000000354fdff4a0   rip = 0x00007ff61ff15bf4
+    Found by: stack scanning
+ 3  electron.exe + 0x30375a
+    rsp = 0x000000354fdff4e0   rip = 0x00007ff61ff6375a
+    Found by: stack scanning
+ 4  electron.exe + 0x2c6155
+    rsp = 0x000000354fdff510   rip = 0x00007ff61ff26155
+    Found by: stack scanning
+ 5  KERNELBASE.dll + 0x5962a
+    rsp = 0x000000354fdff530   rip = 0x00007fff91b7962a
+    Found by: stack scanning
+ 6  electron.exe + 0x2c5bb5
+    rsp = 0x000000354fdff560   rip = 0x00007ff61ff25bb5
+    Found by: stack scanning
+ 7  electron.exe + 0x3fe3d90
+    rsp = 0x000000354fdff570   rip = 0x00007ff623c43d90
+    Found by: stack scanning
+ 8  ucrtbase.dll + 0x9686
+    rsp = 0x000000354fdff5a0   rip = 0x00007fff917b9686
+    Found by: stack scanning
+ 9  electron.exe + 0x29185d
+    rsp = 0x000000354fdff5b0   rip = 0x00007ff61fef185d
+    Found by: stack scanning
+10  electron.exe + 0xe0000
+    rsp = 0x000000354fdff5c0   rip = 0x00007ff61fd40000
+    Found by: stack scanning
+11  electron.exe + 0x2e4e50f
+    rsp = 0x000000354fdff5d0   rip = 0x00007ff622aae50f
+    Found by: stack scanning
+12  electron.exe + 0x2d5793
+    rsp = 0x000000354fdff5f0   rip = 0x00007ff61ff35793
+    Found by: stack scanning
+13  ntdll.dll + 0x16ff8
+    rsp = 0x000000354fdff610   rip = 0x00007fff94986ff8
+    Found by: stack scanning
+14  electron.exe + 0x2d3c24
+    rsp = 0x000000354fdff640   rip = 0x00007ff61ff33c24
+    Found by: stack scanning
+15  electron.exe + 0x2d19e6
+    rsp = 0x000000354fdff6e0   rip = 0x00007ff61ff319e6
+    Found by: stack scanning
+16  electron.exe + 0x2d193c
+    rsp = 0x000000354fdff708   rip = 0x00007ff61ff3193c
+    Found by: stack scanning
+17  kernel32.dll + 0x14034
+    rsp = 0x000000354fdff790   rip = 0x00007fff921c4034
+    Found by: stack scanning
+18  ntdll.dll + 0x73691
+    rsp = 0x000000354fdff7c0   rip = 0x00007fff949e3691
+    Found by: stack scanning
+
+Thread 29
+ 0  ntdll.dll + 0x9aa24
+    rax = 0x0000000000000004   rdx = 0x0000000000000000
+    rcx = 0x00000000000009dc   rbx = 0x0000000000000000
+    rsi = 0x000000354fcff9c8   rdi = 0x00000000000009dc
+    rbp = 0x00000000000009dc   rsp = 0x000000354fcff998
+     r8 = 0x00007e71966111e0    r9 = 0x0000000000000100
+    r10 = 0x0000000000000001   r11 = 0x000000354fcff400
+    r12 = 0x20c49ba5e353f7cf   r13 = 0x00007ff62397d050
+    r14 = 0x00000000000009dc   r15 = 0x00000000ffffffff
+    rip = 0x00007fff94a0aa24
+    Found by: given as instruction pointer in context
+ 1  KERNELBASE.dll + 0x39252
+    rsp = 0x000000354fcff9a0   rip = 0x00007fff91b59252
+    Found by: stack scanning
+ 2  electron.exe + 0x2b5bf4
+    rsp = 0x000000354fcffa40   rip = 0x00007ff61ff15bf4
+    Found by: stack scanning
+ 3  electron.exe + 0x30375a
+    rsp = 0x000000354fcffa80   rip = 0x00007ff61ff6375a
+    Found by: stack scanning
+ 4  electron.exe + 0x2c6155
+    rsp = 0x000000354fcffab0   rip = 0x00007ff61ff26155
+    Found by: stack scanning
+ 5  KERNELBASE.dll + 0x5962a
+    rsp = 0x000000354fcffad0   rip = 0x00007fff91b7962a
+    Found by: stack scanning
+ 6  electron.exe + 0x2c5bb5
+    rsp = 0x000000354fcffb00   rip = 0x00007ff61ff25bb5
+    Found by: stack scanning
+ 7  electron.exe + 0x3fe3d90
+    rsp = 0x000000354fcffb10   rip = 0x00007ff623c43d90
+    Found by: stack scanning
+ 8  ucrtbase.dll + 0x9686
+    rsp = 0x000000354fcffb40   rip = 0x00007fff917b9686
+    Found by: stack scanning
+ 9  electron.exe + 0x2918f0
+    rsp = 0x000000354fcffb50   rip = 0x00007ff61fef18f0
+    Found by: stack scanning
+10  electron.exe + 0xe0000
+    rsp = 0x000000354fcffb60   rip = 0x00007ff61fd40000
+    Found by: stack scanning
+11  electron.exe + 0x2e4e50f
+    rsp = 0x000000354fcffb70   rip = 0x00007ff622aae50f
+    Found by: stack scanning
+12  electron.exe + 0x2d5793
+    rsp = 0x000000354fcffb90   rip = 0x00007ff61ff35793
+    Found by: stack scanning
+13  ntdll.dll + 0x16ff8
+    rsp = 0x000000354fcffbb0   rip = 0x00007fff94986ff8
+    Found by: stack scanning
+14  electron.exe + 0x2d3c24
+    rsp = 0x000000354fcffbe0   rip = 0x00007ff61ff33c24
+    Found by: stack scanning
+15  electron.exe + 0x2d19e6
+    rsp = 0x000000354fcffc80   rip = 0x00007ff61ff319e6
+    Found by: stack scanning
+16  electron.exe + 0x2d193c
+    rsp = 0x000000354fcffca8   rip = 0x00007ff61ff3193c
+    Found by: stack scanning
+17  kernel32.dll + 0x14034
+    rsp = 0x000000354fcffd30   rip = 0x00007fff921c4034
+    Found by: stack scanning
+18  ntdll.dll + 0x73691
+    rsp = 0x000000354fcffd60   rip = 0x00007fff949e3691
+    Found by: stack scanning
+
+Thread 30
+ 0  ntdll.dll + 0x9aa24
+    rax = 0x0000000000000004   rdx = 0x0000000000000000
+    rcx = 0x0000000000000d08   rbx = 0x0000000000000000
+    rsi = 0x0000003550eff428   rdi = 0x0000000000000d08
+    rbp = 0x0000000000000d08   rsp = 0x0000003550eff3f8
+     r8 = 0x0000018487fbe2c8    r9 = 0x0000000000008000
+    r10 = 0x0000000000000000   r11 = 0x0000003550efed90
+    r12 = 0x20c49ba5e353f7cf   r13 = 0x00007ff62397d050
+    r14 = 0x0000000000000d08   r15 = 0x00000000ffffffff
+    rip = 0x00007fff94a0aa24
+    Found by: given as instruction pointer in context
+ 1  KERNELBASE.dll + 0x39252
+    rsp = 0x0000003550eff400   rip = 0x00007fff91b59252
+    Found by: stack scanning
+ 2  electron.exe + 0x2b5bf4
+    rsp = 0x0000003550eff4a0   rip = 0x00007ff61ff15bf4
+    Found by: stack scanning
+ 3  electron.exe + 0x30375a
+    rsp = 0x0000003550eff4e0   rip = 0x00007ff61ff6375a
+    Found by: stack scanning
+ 4  electron.exe + 0x2c6155
+    rsp = 0x0000003550eff510   rip = 0x00007ff61ff26155
+    Found by: stack scanning
+ 5  KERNELBASE.dll + 0x5962a
+    rsp = 0x0000003550eff530   rip = 0x00007fff91b7962a
+    Found by: stack scanning
+ 6  electron.exe + 0x2c5bb5
+    rsp = 0x0000003550eff560   rip = 0x00007ff61ff25bb5
+    Found by: stack scanning
+ 7  electron.exe + 0x3fe3d90
+    rsp = 0x0000003550eff570   rip = 0x00007ff623c43d90
+    Found by: stack scanning
+ 8  ucrtbase.dll + 0x9686
+    rsp = 0x0000003550eff5a0   rip = 0x00007fff917b9686
+    Found by: stack scanning
+ 9  electron.exe + 0x2918f0
+    rsp = 0x0000003550eff5b0   rip = 0x00007ff61fef18f0
+    Found by: stack scanning
+10  electron.exe + 0xe0000
+    rsp = 0x0000003550eff5c0   rip = 0x00007ff61fd40000
+    Found by: stack scanning
+11  electron.exe + 0x2e4e50f
+    rsp = 0x0000003550eff5d0   rip = 0x00007ff622aae50f
+    Found by: stack scanning
+12  electron.exe + 0x2d5793
+    rsp = 0x0000003550eff5f0   rip = 0x00007ff61ff35793
+    Found by: stack scanning
+13  ntdll.dll + 0x16ff8
+    rsp = 0x0000003550eff610   rip = 0x00007fff94986ff8
+    Found by: stack scanning
+14  electron.exe + 0x2d3c24
+    rsp = 0x0000003550eff640   rip = 0x00007ff61ff33c24
+    Found by: stack scanning
+15  electron.exe + 0x2d19e6
+    rsp = 0x0000003550eff6e0   rip = 0x00007ff61ff319e6
+    Found by: stack scanning
+16  electron.exe + 0x2d193c
+    rsp = 0x0000003550eff708   rip = 0x00007ff61ff3193c
+    Found by: stack scanning
+17  kernel32.dll + 0x14034
+    rsp = 0x0000003550eff790   rip = 0x00007fff921c4034
+    Found by: stack scanning
+18  ntdll.dll + 0x73691
+    rsp = 0x0000003550eff7c0   rip = 0x00007fff949e3691
+    Found by: stack scanning
+
+Thread 31
+ 0  ntdll.dll + 0x9b4f4
+    rax = 0x000000000000005b   rdx = 0x0000003551dff540
+    rcx = 0x0000000000000001   rbx = 0x0000000000000001
+    rsi = 0x0000000000000000   rdi = 0x0000000000000001
+    rbp = 0x0000000000000ea4   rsp = 0x0000003551dff1e8
+     r8 = 0x000001848ceb2d20    r9 = 0x00007fff91ed63f0
+    r10 = 0x00000ffff23dac7e   r11 = 0x4000000000000000
+    r12 = 0x0000000000000000   r13 = 0x0000003551dff540
+    r14 = 0x0000000000000000   r15 = 0x0000000000000000
+    rip = 0x00007fff94a0b4f4
+    Found by: given as instruction pointer in context
+ 1  KERNELBASE.dll + 0x46099
+    rsp = 0x0000003551dff1f0   rip = 0x00007fff91b66099
+    Found by: stack scanning
+ 2  xmllite.dll + 0xe0b0
+    rsp = 0x0000003551dff1f8   rip = 0x00007fff8c34e0b0
+    Found by: stack scanning
+ 3  ntdll.dll + 0x390ce
+    rsp = 0x0000003551dff200   rip = 0x00007fff949a90ce
+    Found by: stack scanning
+ 4  xmllite.dll + 0xe0b0
+    rsp = 0x0000003551dff220   rip = 0x00007fff8c34e0b0
+    Found by: stack scanning
+ 5  ntdll.dll + 0x39096
+    rsp = 0x0000003551dff2c0   rip = 0x00007fff949a9096
+    Found by: stack scanning
+ 6  ntdll.dll + 0x390b6
+    rsp = 0x0000003551dff2c8   rip = 0x00007fff949a90b6
+    Found by: stack scanning
+ 7  ntdll.dll + 0x750ae
+    rsp = 0x0000003551dff2e0   rip = 0x00007fff949e50ae
+    Found by: stack scanning
+ 8  0x7fff94970000
+    rsp = 0x0000003551dff378   rip = 0x00007fff94970000
+    Found by: stack scanning
+ 9  ntdll.dll + 0x74feb
+    rsp = 0x0000003551dff380   rip = 0x00007fff949e4feb
+    Found by: stack scanning
+10  ntdll.dll + 0x74fa8
+    rsp = 0x0000003551dff3b0   rip = 0x00007fff949e4fa8
+    Found by: stack scanning
+11  ntdll.dll + 0x83d0
+    rsp = 0x0000003551dff430   rip = 0x00007fff949783d0
+    Found by: stack scanning
+12  KERNELBASE.dll + 0x475f9
+    rsp = 0x0000003551dff480   rip = 0x00007fff91b675f9
+    Found by: stack scanning
+13  combase.dll + 0x47d47
+    rsp = 0x0000003551dff4f0   rip = 0x00007fff91e57d47
+    Found by: stack scanning
+14  ntdll.dll + 0x73670
+    rsp = 0x0000003551dff500   rip = 0x00007fff949e3670
+    Found by: stack scanning
+
+Thread 32
+ 0  ntdll.dll + 0x9aa24
+    rax = 0x0000000000000004   rdx = 0x0000000000000000
+    rcx = 0x0000000000000cc4   rbx = 0x0000000000000000
+    rsi = 0x0000003551fffb98   rdi = 0x0000000000000cc4
+    rbp = 0x0000000000000cc4   rsp = 0x0000003551fffb68
+     r8 = 0x0000018484ef1500    r9 = 0x0000000000008000
+    r10 = 0x0000003551ffe000   r11 = 0x0000003551ffe000
+    r12 = 0x20c49ba5e353f7cf   r13 = 0x00007ff62397d050
+    r14 = 0x0000000000000cc4   r15 = 0x00000000ffffffff
+    rip = 0x00007fff94a0aa24
+    Found by: given as instruction pointer in context
+ 1  KERNELBASE.dll + 0x39252
+    rsp = 0x0000003551fffb70   rip = 0x00007fff91b59252
+    Found by: stack scanning
+ 2  electron.exe + 0x2b5bf4
+    rsp = 0x0000003551fffc10   rip = 0x00007ff61ff15bf4
+    Found by: stack scanning
+ 3  electron.exe + 0x30375a
+    rsp = 0x0000003551fffc50   rip = 0x00007ff61ff6375a
+    Found by: stack scanning
+ 4  electron.exe + 0x2c6155
+    rsp = 0x0000003551fffc80   rip = 0x00007ff61ff26155
+    Found by: stack scanning
+ 5  electron.exe + 0x2c58fc
+    rsp = 0x0000003551fffcd0   rip = 0x00007ff61ff258fc
+    Found by: stack scanning
+ 6  electron.exe + 0x3fe3d90
+    rsp = 0x0000003551fffce0   rip = 0x00007ff623c43d90
+    Found by: stack scanning
+ 7  ucrtbase.dll + 0x9686
+    rsp = 0x0000003551fffd10   rip = 0x00007fff917b9686
+    Found by: stack scanning
+ 8  electron.exe + 0x2918f0
+    rsp = 0x0000003551fffd20   rip = 0x00007ff61fef18f0
+    Found by: stack scanning
+ 9  electron.exe + 0xe0000
+    rsp = 0x0000003551fffd30   rip = 0x00007ff61fd40000
+    Found by: stack scanning
+10  electron.exe + 0x2e4e50f
+    rsp = 0x0000003551fffd40   rip = 0x00007ff622aae50f
+    Found by: stack scanning
+11  electron.exe + 0x2d5793
+    rsp = 0x0000003551fffd60   rip = 0x00007ff61ff35793
+    Found by: stack scanning
+12  electron.exe + 0x2d58e6
+    rsp = 0x0000003551fffd70   rip = 0x00007ff61ff358e6
+    Found by: stack scanning
+13  ntdll.dll + 0x16ff8
+    rsp = 0x0000003551fffd80   rip = 0x00007fff94986ff8
+    Found by: stack scanning
+14  electron.exe + 0x2d3c24
+    rsp = 0x0000003551fffdb0   rip = 0x00007ff61ff33c24
+    Found by: stack scanning
+15  KERNELBASE.dll + 0x5f175
+    rsp = 0x0000003551fffde0   rip = 0x00007fff91b7f175
+    Found by: stack scanning
+16  electron.exe + 0x2d19e6
+    rsp = 0x0000003551fffe50   rip = 0x00007ff61ff319e6
+    Found by: stack scanning
+17  electron.exe + 0x2d193c
+    rsp = 0x0000003551fffe78   rip = 0x00007ff61ff3193c
+    Found by: stack scanning
+18  kernel32.dll + 0x14034
+    rsp = 0x0000003551ffff00   rip = 0x00007fff921c4034
+    Found by: stack scanning
+19  ntdll.dll + 0x73691
+    rsp = 0x0000003551ffff30   rip = 0x00007fff949e3691
+    Found by: stack scanning
+
+Thread 33
+ 0  ntdll.dll + 0x9aa24
+    rax = 0x0000000000000004   rdx = 0x0000000000000000
+    rcx = 0x0000000000000dc4   rbx = 0x0000000000000000
+    rsi = 0x00000035521ff6d8   rdi = 0x0000000000000dc4
+    rbp = 0x0000000000000dc4   rsp = 0x00000035521ff6a8
+     r8 = 0x00000035521fe848    r9 = 0x00000035521fe918
+    r10 = 0x0000000000000000   r11 = 0x0000000000000246
+    r12 = 0x20c49ba5e353f7cf   r13 = 0x00007ff62397d050
+    r14 = 0x0000000000000dc4   r15 = 0x00000000ffffffff
+    rip = 0x00007fff94a0aa24
+    Found by: given as instruction pointer in context
+ 1  KERNELBASE.dll + 0x39252
+    rsp = 0x00000035521ff6b0   rip = 0x00007fff91b59252
+    Found by: stack scanning
+ 2  electron.exe + 0x2b5bf4
+    rsp = 0x00000035521ff750   rip = 0x00007ff61ff15bf4
+    Found by: stack scanning
+ 3  electron.exe + 0x30375a
+    rsp = 0x00000035521ff790   rip = 0x00007ff61ff6375a
+    Found by: stack scanning
+ 4  electron.exe + 0x2c6155
+    rsp = 0x00000035521ff7c0   rip = 0x00007ff61ff26155
+    Found by: stack scanning
+ 5  KERNELBASE.dll + 0x5962a
+    rsp = 0x00000035521ff7e0   rip = 0x00007fff91b7962a
+    Found by: stack scanning
+ 6  electron.exe + 0x2c5bb5
+    rsp = 0x00000035521ff810   rip = 0x00007ff61ff25bb5
+    Found by: stack scanning
+ 7  electron.exe + 0x3fe3d90
+    rsp = 0x00000035521ff820   rip = 0x00007ff623c43d90
+    Found by: stack scanning
+ 8  ucrtbase.dll + 0x9686
+    rsp = 0x00000035521ff850   rip = 0x00007fff917b9686
+    Found by: stack scanning
+ 9  electron.exe + 0x29185d
+    rsp = 0x00000035521ff860   rip = 0x00007ff61fef185d
+    Found by: stack scanning
+10  electron.exe + 0xe0000
+    rsp = 0x00000035521ff870   rip = 0x00007ff61fd40000
+    Found by: stack scanning
+11  electron.exe + 0x2e4e50f
+    rsp = 0x00000035521ff880   rip = 0x00007ff622aae50f
+    Found by: stack scanning
+12  electron.exe + 0x2d5793
+    rsp = 0x00000035521ff8a0   rip = 0x00007ff61ff35793
+    Found by: stack scanning
+13  ntdll.dll + 0x16ff8
+    rsp = 0x00000035521ff8c0   rip = 0x00007fff94986ff8
+    Found by: stack scanning
+14  electron.exe + 0x2d3c24
+    rsp = 0x00000035521ff8f0   rip = 0x00007ff61ff33c24
+    Found by: stack scanning
+15  electron.exe + 0x2d19e6
+    rsp = 0x00000035521ff990   rip = 0x00007ff61ff319e6
+    Found by: stack scanning
+16  electron.exe + 0x2d193c
+    rsp = 0x00000035521ff9b8   rip = 0x00007ff61ff3193c
+    Found by: stack scanning
+17  kernel32.dll + 0x14034
+    rsp = 0x00000035521ffa40   rip = 0x00007fff921c4034
+    Found by: stack scanning
+18  ntdll.dll + 0x73691
+    rsp = 0x00000035521ffa70   rip = 0x00007fff949e3691
+    Found by: stack scanning
+
+Thread 34
+ 0  ntdll.dll + 0x9aa24
+    rax = 0x0000000000000004   rdx = 0x0000000000000000
+    rcx = 0x00000000000004dc   rbx = 0x0000000000000000
+    rsi = 0x00000035522ff518   rdi = 0x00000000000004dc
+    rbp = 0x00000000000004dc   rsp = 0x00000035522ff4e8
+     r8 = 0x0000000000000000    r9 = 0x0000000000000000
+    r10 = 0x0000000000000000   r11 = 0x0000000000000000
+    r12 = 0x20c49ba5e353f7cf   r13 = 0x00007ff62397d050
+    r14 = 0x00000000000004dc   r15 = 0x00000000ffffffff
+    rip = 0x00007fff94a0aa24
+    Found by: given as instruction pointer in context
+ 1  KERNELBASE.dll + 0x39252
+    rsp = 0x00000035522ff4f0   rip = 0x00007fff91b59252
+    Found by: stack scanning
+ 2  electron.exe + 0x2b5bf4
+    rsp = 0x00000035522ff590   rip = 0x00007ff61ff15bf4
+    Found by: stack scanning
+ 3  electron.exe + 0x30375a
+    rsp = 0x00000035522ff5d0   rip = 0x00007ff61ff6375a
+    Found by: stack scanning
+ 4  electron.exe + 0x2c6155
+    rsp = 0x00000035522ff600   rip = 0x00007ff61ff26155
+    Found by: stack scanning
+ 5  electron.exe + 0x2c58fc
+    rsp = 0x00000035522ff650   rip = 0x00007ff61ff258fc
+    Found by: stack scanning
+ 6  electron.exe + 0x3fe3d90
+    rsp = 0x00000035522ff660   rip = 0x00007ff623c43d90
+    Found by: stack scanning
+ 7  ucrtbase.dll + 0x9686
+    rsp = 0x00000035522ff690   rip = 0x00007fff917b9686
+    Found by: stack scanning
+ 8  electron.exe + 0x291896
+    rsp = 0x00000035522ff6a0   rip = 0x00007ff61fef1896
+    Found by: stack scanning
+ 9  electron.exe + 0xe0000
+    rsp = 0x00000035522ff6b0   rip = 0x00007ff61fd40000
+    Found by: stack scanning
+10  electron.exe + 0x2e4e50f
+    rsp = 0x00000035522ff6c0   rip = 0x00007ff622aae50f
+    Found by: stack scanning
+11  electron.exe + 0x2d5793
+    rsp = 0x00000035522ff6e0   rip = 0x00007ff61ff35793
+    Found by: stack scanning
+12  electron.exe + 0x2d58e6
+    rsp = 0x00000035522ff6f0   rip = 0x00007ff61ff358e6
+    Found by: stack scanning
+13  ntdll.dll + 0x16ff8
+    rsp = 0x00000035522ff700   rip = 0x00007fff94986ff8
+    Found by: stack scanning
+14  electron.exe + 0x2d3c24
+    rsp = 0x00000035522ff730   rip = 0x00007ff61ff33c24
+    Found by: stack scanning
+15  electron.exe + 0x2d19e6
+    rsp = 0x00000035522ff7d0   rip = 0x00007ff61ff319e6
+    Found by: stack scanning
+16  electron.exe + 0x2d193c
+    rsp = 0x00000035522ff7f8   rip = 0x00007ff61ff3193c
+    Found by: stack scanning
+17  kernel32.dll + 0x14034
+    rsp = 0x00000035522ff880   rip = 0x00007fff921c4034
+    Found by: stack scanning
+18  ntdll.dll + 0x73691
+    rsp = 0x00000035522ff8b0   rip = 0x00007fff949e3691
+    Found by: stack scanning
+
+Thread 35
+ 0  win32u.dll + 0x96e4
+    rax = 0x0000000000001436   rdx = 0x00000035516ff618
+    rcx = 0x0000000000000001   rbx = 0x000001848cec1c88
+    rsi = 0x000001848cec1c70   rdi = 0x0000000000000001
+    rbp = 0x00000035516ff710   rsp = 0x00000035516ff588
+     r8 = 0x0000000000000000    r9 = 0x0000000000000000
+    r10 = 0x0000000000000000   r11 = 0x000000354f9ac800
+    r12 = 0x0000000000000000   r13 = 0x00007ff62397d050
+    r14 = 0x00000000ffffffff   r15 = 0x000001848cec1c70
+    rip = 0x00007fff90df96e4
+    Found by: given as instruction pointer in context
+ 1  user32.dll + 0x2031d
+    rbp = 0x00000035516ff710   rsp = 0x00000035516ff590
+    rip = 0x00007fff9232031d
+    Found by: stack scanning
+ 2  electron.exe + 0x2cb97b
+    rbp = 0x00000035516ff710   rsp = 0x00000035516ff5c0
+    rip = 0x00007ff61ff2b97b
+    Found by: stack scanning
+ 3  electron.exe + 0x2c4971
+    rbp = 0x00000035516ff710   rsp = 0x00000035516ff5d0
+    rip = 0x00007ff61ff24971
+    Found by: stack scanning
+ 4  electron.exe + 0x3fe3d90
+    rbp = 0x00000035516ff710   rsp = 0x00000035516ff608
+    rip = 0x00007ff623c43d90
+    Found by: stack scanning
+ 5  electron.exe + 0x2c5bb5
+    rbp = 0x00000035516ff710   rsp = 0x00000035516ff610
+    rip = 0x00007ff61ff25bb5
+    Found by: stack scanning
+ 6  ucrtbase.dll + 0x9686
+    rbp = 0x00000035516ff710   rsp = 0x00000035516ff650
+    rip = 0x00007fff917b9686
+    Found by: stack scanning
+ 7  electron.exe + 0x29185d
+    rbp = 0x00000035516ff710   rsp = 0x00000035516ff660
+    rip = 0x00007ff61fef185d
+    Found by: stack scanning
+ 8  electron.exe + 0xe0000
+    rbp = 0x00000035516ff710   rsp = 0x00000035516ff670
+    rip = 0x00007ff61fd40000
+    Found by: stack scanning
+ 9  electron.exe + 0x2e4e50f
+    rbp = 0x00000035516ff710   rsp = 0x00000035516ff680
+    rip = 0x00007ff622aae50f
+    Found by: stack scanning
+10  electron.exe + 0x2d5793
+    rbp = 0x00000035516ff710   rsp = 0x00000035516ff6a0
+    rip = 0x00007ff61ff35793
+    Found by: stack scanning
+11  ntdll.dll + 0x16ff8
+    rbp = 0x00000035516ff710   rsp = 0x00000035516ff6c0
+    rip = 0x00007fff94986ff8
+    Found by: stack scanning
+12  electron.exe + 0x2d3c24
+    rbp = 0x00000035516ff710   rsp = 0x00000035516ff6f0
+    rip = 0x00007ff61ff33c24
+    Found by: stack scanning
+13  electron.exe + 0x2d19e6
+    rsp = 0x00000035516ff790   rip = 0x00007ff61ff319e6
+    Found by: stack scanning
+14  electron.exe + 0x2d193c
+    rsp = 0x00000035516ff7b8   rip = 0x00007ff61ff3193c
+    Found by: stack scanning
+15  kernel32.dll + 0x14034
+    rsp = 0x00000035516ff840   rip = 0x00007fff921c4034
+    Found by: stack scanning
+16  ntdll.dll + 0x73691
+    rsp = 0x00000035516ff870   rip = 0x00007fff949e3691
+    Found by: stack scanning
+
+Loaded modules:
+0x7ff61fc60000 - 0x7ff6240b0fff  electron.exe  3.1.8.0  (main)  (WARNING: No symbols, electron.exe.pdb, 50831F4F3C64400AAA06B87541D50CA41)
+0x7fff4e5f0000 - 0x7fff4f7befff  node.dll  10.2.0.0  (WARNING: No symbols, node.dll.pdb, 498A0111104048EA861A608B231889A71)
+0x7fff55d60000 - 0x7fff55f0afff  dui70.dll  10.0.17134.112  (WARNING: No symbols, DUI70.pdb, CDDC383DD2F514C81A44FDDDE0E94B561)
+0x7fff5bdf0000 - 0x7fff5c12afff  ffmpeg.dll  ???
+0x7fff5d6c0000 - 0x7fff5d752fff  duser.dll  10.0.17134.1  (WARNING: No symbols, DUser.pdb, 78AB6B3B3AA3851A00AABD9AFCF6BD791)
+0x7fff5feb0000 - 0x7fff5ffa0fff  msctfuimanager.dll  10.0.17134.1  (WARNING: No symbols, MsctfUIManager.pdb, 04F9E4581800BF1E945BBDB9A20DF8611)
+0x7fff61e10000 - 0x7fff6258dfff  D3D10Warp.dll  10.0.17134.619
+0x7fff62e60000 - 0x7fff62e78fff  usp10.dll  10.0.17134.1
+0x7fff65ca0000 - 0x7fff66085fff  msi.dll  5.0.17134.706
+0x7fff66380000 - 0x7fff6641efff  msvcp140.dll  14.11.25325.0
+0x7fff6dd00000 - 0x7fff6defffff  UIAutomationCore.DLL  7.2.17134.112
+0x7fff73580000 - 0x7fff735d7fff  dataexchange.dll  10.0.17134.1
+0x7fff775d0000 - 0x7fff778ebfff  DWrite.dll  10.0.17134.376
+0x7fff77940000 - 0x7fff779d9fff  directmanipulation.dll  10.0.17134.1  (WARNING: No symbols, directmanipulation.pdb, DE40DF7668756723E5214C0F8960FC1F1)
+0x7fff7c3d0000 - 0x7fff7c418fff  UIAnimation.dll  10.0.17134.1
+0x7fff7c810000 - 0x7fff7cb2dfff  CoreUIComponents.dll  10.0.17134.376
+0x7fff7cc80000 - 0x7fff7cd15fff  TextInputFramework.dll  10.0.17134.376
+0x7fff7eaf0000 - 0x7fff7ed58fff  comctl32.dll  6.10.17134.706
+0x7fff81340000 - 0x7fff817fcfff  wininet.dll  11.0.17134.648
+0x7fff82ef0000 - 0x7fff82f5afff  oleacc.dll  7.2.17134.1
+0x7fff82f60000 - 0x7fff82f66fff  msimg32.dll  10.0.17134.1
+0x7fff82f70000 - 0x7fff82ff4fff  winspool.drv  10.0.17134.648
+0x7fff833e0000 - 0x7fff833f5fff  VCRUNTIME140.dll  14.11.25325.0
+0x7fff839a0000 - 0x7fff839a9fff  msiltcfg.dll  5.0.17134.1  (WARNING: No symbols, msiltcfg.pdb, EAE2D70E3F8E4219779CA8DB7864F7C11)
+0x7fff86df0000 - 0x7fff86e19fff  winmmbase.dll  10.0.17134.1
+0x7fff86f20000 - 0x7fff86f42fff  winmm.dll  10.0.17134.1
+0x7fff87420000 - 0x7fff8754bfff  AudioSes.dll  10.0.17134.619
+0x7fff875b0000 - 0x7fff875b9fff  rasadhlp.dll  10.0.17134.1
+0x7fff88770000 - 0x7fff88817fff  mscms.dll  10.0.17134.1
+0x7fff89410000 - 0x7fff89477fff  wlanapi.dll  10.0.17134.1
+0x7fff89530000 - 0x7fff89545fff  dhcpcsvc6.DLL  10.0.17134.1
+0x7fff89550000 - 0x7fff895c5fff  MMDevAPI.dll  10.0.17134.1
+0x7fff89eb0000 - 0x7fff89ec9fff  dhcpcsvc.dll  10.0.17134.1
+0x7fff8b3d0000 - 0x7fff8b3e8fff  nlaapi.dll  10.0.17134.1
+0x7fff8b3f0000 - 0x7fff8b3fbfff  atlthunk.dll  10.0.17134.1
+0x7fff8b6a0000 - 0x7fff8b6a9fff  version.dll  10.0.17134.1
+0x7fff8bee0000 - 0x7fff8bee9fff  avrt.dll  10.0.17134.1
+0x7fff8c0b0000 - 0x7fff8c0c2fff  wtsapi32.dll  10.0.17134.1
+0x7fff8c110000 - 0x7fff8c11ffff  ColorAdapterClient.dll  10.0.17134.1
+0x7fff8c340000 - 0x7fff8c378fff  xmllite.dll  10.0.17134.1  (WARNING: No symbols, XmlLite.pdb, A7D70D1EDBEDD245D9049A94E2E509571)
+0x7fff8c980000 - 0x7fff8caccfff  WinTypes.dll  10.0.17134.523
+0x7fff8cfd0000 - 0x7fff8d183fff  propsys.dll  7.0.17134.619
+0x7fff8d8a0000 - 0x7fff8dbaafff  d3d11.dll  10.0.17134.441
+0x7fff8dfe0000 - 0x7fff8e17bfff  dcomp.dll  10.0.17134.1
+0x7fff8e4c0000 - 0x7fff8e599fff  CoreMessaging.dll  10.0.17134.471
+0x7fff8e950000 - 0x7fff8e9e7fff  uxtheme.dll  10.0.17134.1  (WARNING: No symbols, UxTheme.pdb, B390C1F71BF3F009212E16D3F7CC9EAF1)
+0x7fff8ea10000 - 0x7fff8ebd8fff  dbghelp.dll  10.0.17134.1
+0x7fff8edf0000 - 0x7fff8eeccfff  winhttp.dll  10.0.17134.590
+0x7fff8f130000 - 0x7fff8f158fff  dwmapi.dll  10.0.17134.1
+0x7fff8f160000 - 0x7fff8f188fff  rmclient.dll  10.0.17134.556
+0x7fff8f1e0000 - 0x7fff8f397fff  twinapi.appcore.dll  10.0.17134.137
+0x7fff8f840000 - 0x7fff8f84bfff  hid.dll  10.0.17134.1
+0x7fff8fa20000 - 0x7fff8fadafff  dxgi.dll  10.0.17134.112
+0x7fff8fd50000 - 0x7fff8fd80fff  ntmarta.dll  10.0.17134.1
+0x7fff8fdf0000 - 0x7fff8fe45fff  winsta.dll  10.0.17134.1
+0x7fff90260000 - 0x7fff90297fff  IPHLPAPI.DLL  10.0.17134.1
+0x7fff904e0000 - 0x7fff90545fff  mswsock.dll  10.0.17134.1  (WARNING: No symbols, mswsock.pdb, 9899648E36CAAF7116B67561AC6521891)
+0x7fff906b0000 - 0x7fff906bafff  CRYPTBASE.DLL  10.0.17134.1
+0x7fff90750000 - 0x7fff90785fff  ntasn1.dll  10.0.17134.1
+0x7fff90790000 - 0x7fff907b5fff  ncrypt.dll  10.0.17134.1
+0x7fff907c0000 - 0x7fff907e4fff  bcrypt.dll  10.0.17134.112
+0x7fff90a70000 - 0x7fff90a96fff  devobj.dll  10.0.17134.1
+0x7fff90ac0000 - 0x7fff90b59fff  sxs.dll  10.0.17134.1
+0x7fff90bb0000 - 0x7fff90bd7fff  userenv.dll  10.0.17134.1
+0x7fff90c80000 - 0x7fff90c91fff  msasn1.dll  10.0.17134.1
+0x7fff90ca0000 - 0x7fff90cb0fff  kernel.appcore.dll  10.0.17134.112
+0x7fff90cc0000 - 0x7fff90cdefff  profapi.dll  10.0.17134.1
+0x7fff90ce0000 - 0x7fff90d2bfff  powrprof.dll  10.0.17134.1
+0x7fff90d30000 - 0x7fff90d39fff  fltLib.dll  10.0.17134.1
+0x7fff90df0000 - 0x7fff90e0ffff  win32u.dll  10.0.17134.1  (WARNING: No symbols, win32u.pdb, E7B63B3D79E4637F1D13D11EDAFB4C151)
+0x7fff90e10000 - 0x7fff90eaefff  msvcp_win.dll  10.0.17134.619
+0x7fff90eb0000 - 0x7fff91091fff  crypt32.dll  10.0.17134.1
+0x7fff910a0000 - 0x7fff917acfff  windows.storage.dll  10.0.17134.677
+0x7fff917b0000 - 0x7fff918a7fff  ucrtbase.dll  10.0.17134.677  (WARNING: No symbols, ucrtbase.pdb, 3A82FF62E89F939FDEFD6715115E98861)
+0x7fff918b0000 - 0x7fff918f8fff  cfgmgr32.dll  10.0.17134.1
+0x7fff91900000 - 0x7fff91979fff  bcryptPrimitives.dll  10.0.17134.1
+0x7fff91980000 - 0x7fff91b11fff  gdi32full.dll  10.0.17134.706
+0x7fff91b20000 - 0x7fff91d92fff  KERNELBASE.dll  10.0.17134.556  (WARNING: No symbols, kernelbase.pdb, CD6C76E6120253287103CD7E22CC0A5D1)
+0x7fff91e00000 - 0x7fff91e07fff  nsi.dll  10.0.17134.1
+0x7fff91e10000 - 0x7fff92131fff  combase.dll  10.0.17134.619  (WARNING: No symbols, combase.pdb, AA3A99D90EE78224206B6B074E4BF9821)
+0x7fff92140000 - 0x7fff9219afff  sechost.dll  10.0.17134.319
+0x7fff921a0000 - 0x7fff921a7fff  psapi.dll  10.0.17134.1
+0x7fff921b0000 - 0x7fff92260fff  kernel32.dll  10.0.17134.706  (WARNING: No symbols, kernel32.pdb, CA130BEBF44E36EAC20C5E95752843F61)
+0x7fff92270000 - 0x7fff92297fff  gdi32.dll  10.0.17134.285
+0x7fff92300000 - 0x7fff9248ffff  user32.dll  10.0.17134.376  (WARNING: No symbols, user32.pdb, A6ECA7AE60EF5C0B7889F47B2D1E345F1)
+0x7fff92490000 - 0x7fff924bcfff  imm32.dll  10.0.17134.1
+0x7fff924c0000 - 0x7fff9255ffff  clbcatq.dll  2001.12.10941.16384
+0x7fff92560000 - 0x7fff925fdfff  msvcrt.dll  7.0.17134.1  (WARNING: No symbols, msvcrt.pdb, D6265247309A824B989B0487E235D7431)
+0x7fff92600000 - 0x7fff926a0fff  advapi32.dll  10.0.17134.471
+0x7fff92850000 - 0x7fff928f8fff  SHCore.dll  10.0.17134.112
+0x7fff92900000 - 0x7fff9296bfff  ws2_32.dll  10.0.17134.1
+0x7fff92970000 - 0x7fff92ac0fff  ole32.dll  10.0.17134.407
+0x7fff92ad0000 - 0x7fff92bbcfff  comdlg32.dll  10.0.17134.1
+0x7fff92bc0000 - 0x7fff92c10fff  shlwapi.dll  10.0.17134.1
+0x7fff92c20000 - 0x7fff9405ffff  shell32.dll  10.0.17134.441
+0x7fff940e0000 - 0x7fff94252fff  msctf.dll  10.0.17134.619
+0x7fff946c0000 - 0x7fff947e3fff  rpcrt4.dll  10.0.17134.648
+0x7fff94850000 - 0x7fff94911fff  oleaut32.dll  10.0.17134.706
+0x7fff94970000 - 0x7fff94b50fff  ntdll.dll  10.0.17134.556  (WARNING: No symbols, ntdll.pdb, 95927C40B68E505CD22742795247114C1)

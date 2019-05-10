@@ -21,7 +21,6 @@ const DELETE = "DELETE";
 const GET = "GET";
 const PATCH = "PATCH";
 const POST = "POST";
-const production = process.env.NODE_ENV === "production";
 
 const unlinkAsync = promisify(unlink);
 const walkStackAsync = promisify(walkStack);
@@ -40,7 +39,10 @@ const validate = async (request, username, password) => {
 	return { credentials: { password, username }, isValid: true };
 };
 
-const main = async () => {
+const start = async () => {
+	const production = process.env.NODE_ENV === "production";
+	const test = process.env.NODE_ENV === "test";
+
 	const {
 		env: { DATABASE_URL: database_url },
 	} = process;
@@ -56,10 +58,12 @@ const main = async () => {
 		await database.query(migrate);
 		await server.register([basic, brok, inert, vision]);
 
-		if (!production) {
+		if (!production && !test) {
 			await server.register(pino);
 			pgMonitor.attach(database.driverConfig);
 		}
+
+		server.app.database = database;
 
 		server.auth.strategy("simple", "basic", { validate });
 		server.auth.default("simple");
@@ -381,6 +385,8 @@ const main = async () => {
 					where = `${where} body @> '{"platform": "${platform}"}'`;
 				}
 
+				if (!where) return [];
+
 				select = `${select} ${where} order by created_at desc`;
 				reports = await database.query(select);
 
@@ -427,4 +433,4 @@ process.on("unhandledRejection", error => {
 	process.exit(1);
 });
 
-main();
+exports.start = start;
