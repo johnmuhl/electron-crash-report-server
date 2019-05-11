@@ -33,7 +33,7 @@
 		"brok": "3.1.0",
 		"dotenv": "8.0.0",
 		"handlebars": "4.1.2",
-		"hapi-pino": "5.4.1",
+		"hapi-pino": "6.0.0",
 		"massive": "5.8.0",
 		"minidump": "0.15.0",
 		"pg-monitor": "1.1.0",
