@@ -1,6 +1,23 @@
 # Changelog
 
-## [Unreleased]
+## [2.0.0] - 2019-05-10
+
+### Added
+
+- Use Joi to validate POST payload.
+
+schema search brotli node10 psql10 new ui valid8
+
+### Added
+
+- Log PostgreSQL and HTTP requests in development
+- Use brotli compression
+
+### Changed
+
+- Upgrade to Node.js 10
+- Upgrade to PostgreSQL 10
+- New database schema
 
 ## [1.2.0] - 2018-06-04
 
@@ -333,7 +350,9 @@
 - Dependency on virtual-dom
 
 [unreleased]:
-	https://github.com/johnmuhl/electron-crash-report-server/compare/v1.2.0...HEAD
+	https://github.com/johnmuhl/electron-crash-report-server/compare/v2.0.0...HEAD
+[2.0.0]:
+	https://github.com/johnmuhl/electron-crash-report-server/compare/v1.2.0...v2.0.0
 [1.2.0]:
 	https://github.com/johnmuhl/electron-crash-report-server/compare/v1.1.0...v1.2.0
 [1.1.0]:

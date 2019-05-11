@@ -10,7 +10,7 @@ the app has deployed use those values to login.
 
 _If crash reports do not appear after the first deploy restart the app._
 
-Read the **development** section for information about running in other
+Read the [**development**](#development) section for information about running in other
 environments.
 
 ## usage
@@ -37,16 +37,20 @@ reports to the demo server.
 
 ## development
 
-**Requirements**: Node.js LTS 10.x and PostgreSQL 10.x.
+[![CircleCI][circle-img]][circle-url]
+
+**Requirements**: Node.js LTS 10.x and PostgreSQL 11.x.
 
 ```sh
 git clone https://github.com/johnmuhl/electron-crash-report-server
 cd electron-crash-report-server
 createdb electron_crash_report_server_development
 cp .env.example .env
-yarn && yarn start:dev
+yarn install
+yarn start:dev
 # make changes
 yarn fmt
+yarn test
 ```
 
 ## bugs & features
@@ -59,7 +63,9 @@ Use the [issue tracker][issues] to report bugs or discuss changes and features.
 
 [hapi]: https://hapijs.com/
 [massive]: https://massivejs.org/
-[deploy-img]: https://www.herokucdn.com/deploy/button.svg
+[circle-img]: https://img.shields.io/circleci/project/github/johnmuhl/electron-crash-report-server.svg?style=for-the-badge
+[circle-url]: https://circleci.com/gh/johnmuhl/electron-crash-report-server
+[deploy-img]: https://img.shields.io/badge/deploy-heroku-%237056BF.svg?style=for-the-badge
 [deploy-url]: https://heroku.com/deploy
 [docs]: https://electronjs.org/docs/api/crash-reporter
 [example]: https://github.com/johnmuhl/electron-bomb
