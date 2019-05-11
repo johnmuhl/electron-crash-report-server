@@ -1,7 +1,7 @@
 {
 	"name": "electron-crash-report-server",
 	"description": "Crash report server for Electron applications",
-	"version": "2.0.0-pre",
+	"version": "2.0.0",
 	"license": "Unlicense",
 	"author": "John Muhl",
 	"homepage": "https://pacific-falls-32011.herokuapp.com/",
