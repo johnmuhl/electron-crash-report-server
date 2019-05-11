@@ -178,7 +178,7 @@
     "@hapi/hoek" "6.x.x"
     "@hapi/joi" "15.x.x"
 
-"@hapi/hoek@6.x.x":
+"@hapi/hoek@6.x.x", "@hapi/hoek@^6.2.0":
   version "6.2.1"
   resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-6.2.1.tgz#d3a66329159af879bfdf0b0cff2229c43c5a3451"
   integrity sha512-+ryw4GU9pjr1uT6lBuErHJg3NYqzwJTvZ75nKuJijEzpd00Uqi6oiawTGDDf5Hl0zWmI7qHfOtaqB0kpQZJQzA==
@@ -1641,14 +1641,14 @@ handlebars@4.1.2, handlebars@4.x.x:
   optionalDependencies:
     uglify-js "^3.1.4"
 
-hapi-pino@5.4.1:
-  version "5.4.1"
-  resolved "https://registry.yarnpkg.com/hapi-pino/-/hapi-pino-5.4.1.tgz#b4ea582037b924b05e826cb68907295ba9bbe531"
-  integrity sha512-Bmt0XtRm5xPRE26bcn4dakgLPyAPyadEI5LF9P4EMP43XDzbxl4wQqwe2uVC463X9txdkwOAjaan3vDTC/guaQ==
+hapi-pino@6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/hapi-pino/-/hapi-pino-6.0.0.tgz#63c74ece17a394a222eb46fa586b67175a222384"
+  integrity sha512-CshDWGkF7WcFfnaHiHIubSuGcPh84+Ws4J2fIyJFurgucxaJel38C+pVcskay0qf7JzNxE9Q6tWgW+oVOGfsnw==
   dependencies:
+    "@hapi/hoek" "^6.2.0"
     abstract-logging "^1.0.0"
-    hoek "^6.1.2"
-    pino "^5.10.1"
+    pino "^5.12.3"
     pino-pretty "^2.5.0"
 
 has-flag@^3.0.0:
@@ -1703,11 +1703,6 @@ has@^1.0.1, has@^1.0.3:
   integrity sha512-f2dvO0VU6Oej7RkWJGrehjbzMAjFp5/VKPp5tTpWIV4JHHZK1/BxbFRtf/siA2SWTe09caDmVtYYzWEIbBS4zw==
   dependencies:
     function-bind "^1.1.1"
-
-hoek@^6.1.2:
-  version "6.1.3"
-  resolved "https://registry.yarnpkg.com/hoek/-/hoek-6.1.3.tgz#73b7d33952e01fe27a38b0457294b79dd8da242c"
-  integrity sha512-YXXAAhmF9zpQbC7LEcREFtXfGq5K1fmd+4PHkBq8NUqmzW3G+Dq10bI/i0KucLRwss3YYFQ0fSfoxBZYiGUqtQ==
 
 hosted-git-info@^2.1.4:
   version "2.7.1"
@@ -2958,7 +2953,7 @@ pino-std-serializers@^2.3.0:
   resolved "https://registry.yarnpkg.com/pino-std-serializers/-/pino-std-serializers-2.4.0.tgz#c0588b5ab0905ac55bae2cb61639ed93153681fb"
   integrity sha512-ysT2ylXu1aEec9k8cm/lz7emBcfpdxFWHqvHeGXf1wvfw7TKPMGhLWwS+ciHw6u4ffnmV+pkAMF4MUIZmZZdSg==
 
-pino@^5.10.1:
+pino@^5.12.3:
   version "5.12.3"
   resolved "https://registry.yarnpkg.com/pino/-/pino-5.12.3.tgz#5ebc7d15b3584b91de8d3cdae01ef3a10e7fb977"
   integrity sha512-/PiX7QXOMZz7edRVGm/apt22nkdRByB6ki0ftWcDpHjjNmjnE7UubNd7NeDX7cBey27obxvBvZy3oQuJbz1+Ag==
