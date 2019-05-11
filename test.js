@@ -1,4 +1,6 @@
-process.env.DATABASE_URL = `postgres://localhost/electron_crash_report_server_test`;
+process.env.DATABASE_URL =
+	process.env.DATABASE_URL ||
+	`postgres://localhost/electron_crash_report_server_test`;
 process.env.PORT = `0`;
 
 const fixture = require(`./fixtures/index.js`);
