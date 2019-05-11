@@ -4,20 +4,16 @@
 
 ### Added
 
+- Search by application, version, process type and platform
 - Use Joi to validate POST payload.
-
-schema search brotli node10 psql10 new ui valid8
-
-### Added
-
 - Log PostgreSQL and HTTP requests in development
 - Use brotli compression
 
 ### Changed
 
 - Upgrade to Node.js 10
-- Upgrade to PostgreSQL 10
-- New database schema
+- Upgrade to PostgreSQL 11
+- New database schema; existing databases will be upgraded automatically
 
 ## [1.2.0] - 2018-06-04
 
