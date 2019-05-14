@@ -2069,10 +2069,10 @@ handlebars@4.1.2, handlebars@4.x.x:
   optionalDependencies:
     uglify-js "^3.1.4"
 
-hapi-pino@6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/hapi-pino/-/hapi-pino-6.0.0.tgz#63c74ece17a394a222eb46fa586b67175a222384"
-  integrity sha512-CshDWGkF7WcFfnaHiHIubSuGcPh84+Ws4J2fIyJFurgucxaJel38C+pVcskay0qf7JzNxE9Q6tWgW+oVOGfsnw==
+hapi-pino@6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/hapi-pino/-/hapi-pino-6.0.1.tgz#f6e851099f2f68df43817f165240f8b36a969114"
+  integrity sha512-w1ExeOgUt3PagAvaPDhW3ec2hxANvwYug5a8a05sb94bg6jCw/xh+eADwhmh8XtFBUFhH/3arztNpexqre8xjw==
   dependencies:
     "@hapi/hoek" "^6.2.0"
     abstract-logging "^1.0.0"
