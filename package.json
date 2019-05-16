@@ -42,7 +42,7 @@
 	},
 	"devDependencies": {
 		"@hapi/code": "5.x",
-		"@hapi/lab": "18.x",
+		"@hapi/lab": "^19.0.0",
 		"eslint": "5.x",
 		"eslint-config-airbnb-base": "13.x",
 		"eslint-config-oz": "github:johnmuhl/eslint-config-oz",
