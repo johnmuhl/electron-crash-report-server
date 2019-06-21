@@ -1,5 +1,11 @@
 # Changelog
 
+## [unreleased]
+
+### Added
+
+- Create GitHub issues from crash reports
+
 ## [2.0.1] - 2019-06-20
 
 ### Fixed
@@ -352,7 +358,9 @@
 - Dependency on virtual-dom
 
 [unreleased]:
-	https://github.com/johnmuhl/electron-crash-report-server/compare/v2.0.0...HEAD
+	https://github.com/johnmuhl/electron-crash-report-server/compare/v2.0.1...HEAD
+[2.0.1]:
+	https://github.com/johnmuhl/electron-crash-report-server/compare/v2.0.0...v2.0.1
 [2.0.0]:
 	https://github.com/johnmuhl/electron-crash-report-server/compare/v1.2.0...v2.0.0
 [1.2.0]:

@@ -3,6 +3,7 @@ const { unlink, writeFile } = require("fs");
 const basic = require("@hapi/basic");
 const boom = require("@hapi/boom");
 const brok = require("brok");
+const gh = require("gh-got");
 const handlebars = require("handlebars");
 const hapi = require("@hapi/hapi");
 const inert = require("@hapi/inert");
@@ -176,6 +177,33 @@ const start = async () => {
 
 					try {
 						const document = await database.reports.save(report);
+
+						if (process.env.GITHUB_TOKEN) {
+							const title = `ecrs: Crash report ${document.id}`;
+							const body = `[Download dump file](${process.env.ECRS_URL}/r/${document.id}/dump)\n\n~~~\n${document.stack}\n~~~`; /* eslint-disable-line max-len */
+							const labels = [];
+
+							/* eslint-disable no-underscore-dangle */
+							if (document.body._productName)
+								labels.push(document.body._productName);
+							if (document.body._version) labels.push(document.body._version);
+							if (document.body.process_type)
+								labels.push(document.body.process_type);
+							if (document.body.platform) labels.push(document.body.platform);
+							/* eslint-enable no-underscore-dangle */
+
+							await gh.post(
+								`/repos/${process.env.GITHUB_OWNER}/${process.env.GITHUB_REPO}/issues` /* eslint-disable-line max-len */,
+								{
+									body: {
+										body,
+										labels,
+										title,
+									},
+								}
+							);
+						}
+
 						return document.id;
 					} catch (error) {
 						console.error(error); /* eslint-disable-line no-console */
@@ -190,32 +218,34 @@ const start = async () => {
 				auth: false,
 				validate: {
 					/* eslint-disable sort-keys, unicorn/prevent-abbreviations */
-					payload: joi.object({
-						_companyName: joi.string(),
-						_productName: joi.string(),
-						_version: joi
-							.string()
-							.regex(SEMVER_REGEX, { name: "semantic versioning" }),
-						guid: joi.string().guid(),
-						platform: joi.string().regex(/^darwin|linux|win32$/),
-						process_type: joi.string().regex(/^browser|renderer$/),
-						prod: joi.string().regex(/^Electron$/),
-						upload_file_minidump: joi
-							.binary()
-							.min(MINIDUMP_MIN)
-							.required(),
-						ver: joi
-							.string()
-							.regex(SEMVER_REGEX, { name: "semantic versioning" }),
-						// Other attributes observed in the wild.
-						extra1: joi.string(),
-						extra2: joi.string(),
-						list_annotations: joi.string(),
-						"lsb-release": joi.string(),
-						pid: joi.string(),
-						ptime: joi.string(),
-						rept: joi.string(),
-					}).unknown(),
+					payload: joi
+						.object({
+							_companyName: joi.string(),
+							_productName: joi.string(),
+							_version: joi
+								.string()
+								.regex(SEMVER_REGEX, { name: "semantic versioning" }),
+							guid: joi.string().guid(),
+							platform: joi.string().regex(/^darwin|linux|win32$/),
+							process_type: joi.string().regex(/^browser|renderer$/),
+							prod: joi.string().regex(/^Electron$/),
+							upload_file_minidump: joi
+								.binary()
+								.min(MINIDUMP_MIN)
+								.required(),
+							ver: joi
+								.string()
+								.regex(SEMVER_REGEX, { name: "semantic versioning" }),
+							// Other attributes observed in the wild.
+							extra1: joi.string(),
+							extra2: joi.string(),
+							list_annotations: joi.string(),
+							"lsb-release": joi.string(),
+							pid: joi.string(),
+							ptime: joi.string(),
+							rept: joi.string(),
+						})
+						.unknown(),
 					/* eslint-enable sort-keys, unicorn/prevent-abbreviations */
 				},
 			},
