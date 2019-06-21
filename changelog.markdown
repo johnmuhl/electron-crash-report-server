@@ -5,6 +5,7 @@
 ### Added
 
 - Create GitHub issues from crash reports
+- Create Gitlab issues from crash reports
 
 ## [2.0.1] - 2019-06-20
 
