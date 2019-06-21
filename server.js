@@ -182,7 +182,7 @@ const start = async () => {
 
 						if (process.env.GITHUB_TOKEN || process.env.GITLAB_TOKEN) {
 							const title = `ecrs: Crash report ${document.id}`;
-							const body = `[Download dump file](${process.env.ECRS_URL}/r/${document.id}/dump)\n\n~~~\n${document.stack}\n~~~`; /* eslint-disable-line max-len */
+							const body = `[Download dump file](${process.env.ECRS_URL}/r/${document.id}/dump)\n\n~~~json\n${JSON.stringify(document.body, null, "\t")}\n~~~\n\n~~~\n${document.stack}\n~~~`; /* eslint-disable-line max-len */
 							const labels = [];
 
 							/* eslint-disable no-underscore-dangle */
