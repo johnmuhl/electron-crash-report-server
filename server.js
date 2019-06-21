@@ -3,7 +3,9 @@ const { unlink, writeFile } = require("fs");
 const basic = require("@hapi/basic");
 const boom = require("@hapi/boom");
 const brok = require("brok");
+const FormData = require("form-data");
 const gh = require("gh-got");
+const got = require("got");
 const handlebars = require("handlebars");
 const hapi = require("@hapi/hapi");
 const inert = require("@hapi/inert");
@@ -178,30 +180,52 @@ const start = async () => {
 					try {
 						const document = await database.reports.save(report);
 
-						if (process.env.GITHUB_TOKEN) {
+						if (process.env.GITHUB_TOKEN || process.env.GITLAB_TOKEN) {
 							const title = `ecrs: Crash report ${document.id}`;
 							const body = `[Download dump file](${process.env.ECRS_URL}/r/${document.id}/dump)\n\n~~~\n${document.stack}\n~~~`; /* eslint-disable-line max-len */
 							const labels = [];
 
 							/* eslint-disable no-underscore-dangle */
-							if (document.body._productName)
+							if (document.body._productName) {
 								labels.push(document.body._productName);
-							if (document.body._version) labels.push(document.body._version);
-							if (document.body.process_type)
+							}
+							if (document.body._version) {
+								labels.push(document.body._version);
+							}
+							if (document.body.process_type) {
 								labels.push(document.body.process_type);
-							if (document.body.platform) labels.push(document.body.platform);
+							}
+							if (document.body.platform) {
+								labels.push(document.body.platform);
+							}
 							/* eslint-enable no-underscore-dangle */
 
-							await gh.post(
-								`/repos/${process.env.GITHUB_OWNER}/${process.env.GITHUB_REPO}/issues` /* eslint-disable-line max-len */,
-								{
-									body: {
-										body,
-										labels,
-										title,
-									},
-								}
-							);
+							if (process.env.GITHUB_TOKEN) {
+								await gh.post(
+									`/repos/${process.env.GITHUB_OWNER}/${process.env.GITHUB_REPO}/issues` /* eslint-disable-line max-len */,
+									{ body: { body, labels, title } }
+								);
+							}
+
+							if (process.env.GITLAB_TOKEN) {
+								const base_url =
+									process.env.GITLAB_URL || "https://gitlab.com/api/v4";
+								const form_data = new FormData();
+
+								form_data.append("title", title);
+								form_data.append("description", body);
+								form_data.append("labels", labels.join(","));
+
+								got.post(
+									`${base_url}/projects/${process.env.GITLAB_ID}/issues`,
+									{
+										body: form_data,
+										headers: {
+											"Private-Token": process.env.GITLAB_TOKEN,
+										},
+									}
+								);
+							}
 						}
 
 						return document.id;
