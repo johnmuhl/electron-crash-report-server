@@ -31,7 +31,7 @@
 		"@hapi/inert": "5.2.0",
 		"@hapi/joi": "15.0.3",
 		"@hapi/vision": "5.5.2",
-		"brok": "3.1.0",
+		"brok": "4.0.0",
 		"dotenv": "8.0.0",
 		"form-data": "2.4.0",
 		"gh-got": "8.1.0",
