@@ -1,0 +1,18 @@
+image: node:10-stretch-slim
+
+services:
+  - postgres:11-alpine
+
+variables:
+  POSTGRES_DB: electron_crash_report_server
+
+before_script:
+  - apt-get update -q && apt-get install -yqq build-essential python
+  - yarn install
+
+test:
+  variables:
+    DATABASE_URL: "postgresql://postgres:postgres@localhost:5432/$POSTGRES_DB"
+  script:
+    - yarn lint
+    - yarn test || true && yarn test

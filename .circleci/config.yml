@@ -3,7 +3,7 @@ version: 2
 jobs:
   build:
     working_directory: ~/electron-crash-report-server
-    
+
     docker:
       - image: circleci/node:10
         environment:
@@ -11,12 +11,12 @@ jobs:
           NODE_ENV: test
           PGHOST: 127.0.0.1
           PGUSER: root
-    
+
       - image: circleci/postgres:11-alpine
         environment:
           POSTGRES_USER: root
           POSTGRES_DB: electron_crash_report_server_test
-        
+
     steps:
       - checkout
 
@@ -33,5 +33,5 @@ jobs:
             - ./node_modules
 
       - run: sudo apt install -y postgresql-client || true
-      - run: yarn test || true
-      - run: yarn test && yarn lint
+      - run: yarn lint
+      - run: yarn test || true && yarn test

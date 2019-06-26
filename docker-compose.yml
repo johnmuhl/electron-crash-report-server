@@ -10,7 +10,7 @@ services:
 
   web:
     image: jmuhl/electron-crash-report-server
-    depends_on: 
+    depends_on:
       - db
     environment:
       AUTH_PASS: electron

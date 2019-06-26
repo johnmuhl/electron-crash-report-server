@@ -11,4 +11,6 @@ install: "yarn install"
 before_script:
   - psql -c 'create database electron_crash_report_server_test;' -U postgres
 
-script: "yarn test || true && yarn test"
+script:
+  - yarn lint
+  - yarn test || true && yarn test
