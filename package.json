@@ -40,7 +40,7 @@
 		"hapi-pino": "6.0.1",
 		"massive": "5.11.0",
 		"minidump": "0.15.0",
-		"nodemailer": "6.2.1",
+		"nodemailer": "6.3.0",
 		"pg-monitor": "1.1.0",
 		"pretty-ms": "5.0.0"
 	},
