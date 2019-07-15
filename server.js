@@ -11,7 +11,6 @@ const hapi = require("@hapi/hapi");
 const inert = require("@hapi/inert");
 const joi = require("@hapi/joi");
 const massive = require("massive");
-const migrate = require("./migrate.js");
 const nodemailer = require("nodemailer");
 const pgMonitor = require("pg-monitor");
 const pino = require("hapi-pino");
@@ -21,6 +20,7 @@ const { resolve } = require("path");
 const { tmpdir } = require("os");
 const vision = require("@hapi/vision");
 const { walkStack } = require("minidump");
+const migrate = require("./migrate.js");
 
 const DELETE = "DELETE";
 const GET = "GET";

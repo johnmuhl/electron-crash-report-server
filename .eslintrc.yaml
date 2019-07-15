@@ -1,5 +1,7 @@
 extends:
-  - oz
+  - airbnb-base
+  - prettier
+  - plugin:unicorn/recommended
 
 rules:
   camelcase: 0

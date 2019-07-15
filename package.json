@@ -49,7 +49,6 @@
 		"@hapi/lab": "19.x",
 		"eslint": "5.x",
 		"eslint-config-airbnb-base": "13.x",
-		"eslint-config-oz": "github:johnmuhl/eslint-config-oz",
 		"eslint-config-prettier": "^5.0.0",
 		"eslint-import-resolver-node": "0.x",
 		"eslint-plugin-html": "5.x",
