@@ -8,7 +8,7 @@ variables:
 
 before_script:
   - apt-get update -q && apt-get install -yqq build-essential python
-  - yarn check || yarn install
+  - yarn install
 
 test:
   variables:
