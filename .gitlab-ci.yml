@@ -7,7 +7,7 @@ variables:
   POSTGRES_DB: electron_crash_report_server
 
 before_script:
-  - apt-get update -q && apt-get install -yqq build-essential
+  - apt-get update -q && apt-get install -yqq build-essential python
   - yarn check || yarn install
 
 test:
