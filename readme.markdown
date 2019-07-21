@@ -102,7 +102,7 @@ server.
 **Requirements**: Node.js LTS 10.x and PostgreSQL 11.x.
 
 ```sh
-git clone https://git.axlotl.io/jm/electron-crash-report-server
+git clone https://github.com/johnmuhl/electron-crash-report-server
 cd electron-crash-report-server
 createdb electron_crash_report_server_development
 cp .env.example .env
@@ -127,10 +127,10 @@ Use the [issue tracker][issues] to report bugs or discuss changes and features.
 	https://img.shields.io/badge/deploy-heroku-%237056BF.svg?style=for-the-badge
 [deploy-url]: https://heroku.com/deploy
 [docker-compose]:
-	https://git.axlotl.io/jm/electron-crash-report-server/blob/master/docker-compose.yaml
+	https://github.com/johnmuhl/electron-crash-report-server/blob/master/docker-compose.yaml
 [docs]: https://electronjs.org/docs/api/crash-reporter
-[example]: https://git.axlotl.io/jm/electron-bomb
+[example]: https://github.com/johnmuhl/electron-bomb
 [demo]: https://pacific-falls-32011.herokuapp.com/
-[issues]: https://git.axlotl.io/jm/electron-crash-report-server/issues
+[issues]: https://github.com/johnmuhl/electron-crash-report-server/issues
 [license]:
-	https://git.axlotl.io/jm/electron-crash-report-server/blob/master/LICENSE.markdown
+	https://github.com/johnmuhl/electron-crash-report-server/blob/master/LICENSE.markdown
