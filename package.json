@@ -47,7 +47,7 @@
 	"devDependencies": {
 		"@hapi/code": "5.x",
 		"@hapi/lab": "19.x",
-		"eslint": "5.x",
+		"eslint": "^6.1.0",
 		"eslint-config-airbnb-base": "13.x",
 		"eslint-config-prettier": "5.x",
 		"eslint-import-resolver-node": "0.x",
