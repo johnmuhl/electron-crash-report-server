@@ -38,7 +38,7 @@
 		"got": "9.6.0",
 		"handlebars": "4.1.2",
 		"hapi-pino": "6.0.1",
-		"massive": "5.11.1",
+		"massive": "5.11.2",
 		"minidump": "0.15.0",
 		"nodemailer": "6.3.0",
 		"pg-monitor": "1.1.0",
