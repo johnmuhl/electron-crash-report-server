@@ -209,12 +209,12 @@
     "@hapi/joi" "15.x.x"
     "@hapi/podium" "3.x.x"
 
-"@hapi/code@5.x":
-  version "5.3.1"
-  resolved "https://registry.yarnpkg.com/@hapi/code/-/code-5.3.1.tgz#fc4c2f45f33d1c29f12a7609732f8bfa63a43545"
-  integrity sha512-gPOtttouEx0BGusbm3cNKJ7x0y6mdXt6D08xXxaDvv9TaY1/oqn+dd3L4vkwIfrQGiHRFU6x00d26MrtknWjAQ==
+"@hapi/code@6.x":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@hapi/code/-/code-6.0.0.tgz#4858dc81991658a6ae3c96bcab5a4b7f51ac4f3e"
+  integrity sha512-h7fMAMfkhDFVcu4mgIHiuLr03AkWm8zWt6T3kIlTdVWqZ7SK/OeQZBhhbXJ2GAidiCJJ31ilaeOEyCB45sYNrw==
   dependencies:
-    "@hapi/hoek" "6.x.x"
+    "@hapi/hoek" "8.x.x"
 
 "@hapi/content@4.x.x":
   version "4.1.0"

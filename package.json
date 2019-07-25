@@ -45,7 +45,7 @@
 		"pretty-ms": "5.0.0"
 	},
 	"devDependencies": {
-		"@hapi/code": "5.x",
+		"@hapi/code": "6.x",
 		"@hapi/lab": "19.x",
 		"eslint": "6.x",
 		"eslint-config-airbnb-base": "13.x",
