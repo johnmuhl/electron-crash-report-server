@@ -53,7 +53,7 @@
 		"eslint-import-resolver-node": "0.x",
 		"eslint-plugin-html": "6.x",
 		"eslint-plugin-import": "2.x",
-		"eslint-plugin-unicorn": "9.x",
+		"eslint-plugin-unicorn": "^10.0.0",
 		"nodemon": "1.x",
 		"npm-run-all": "4.x",
 		"pino-colada": "1.x",
