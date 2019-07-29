@@ -1050,10 +1050,10 @@ cli-boxes@^1.0.0:
   resolved "https://registry.yarnpkg.com/cli-boxes/-/cli-boxes-1.0.0.tgz#4fa917c3e59c94a004cd61f8ee509da651687143"
   integrity sha1-T6kXw+WclKAEzWH47lCdplFocUM=
 
-cli-color@1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/cli-color/-/cli-color-1.3.0.tgz#cd2ec212efbd1a0eeb5b017f17d4e2d15e91420f"
-  integrity sha512-XmbLr8MzgOup/sPHF4nOZerCOcL7rD7vKWpEl0axUsMAY+AEimOhYva1ksskWqkLGY/bjR9h7Cfbr+RrJRfmTQ==
+cli-color@1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/cli-color/-/cli-color-1.4.0.tgz#7d10738f48526824f8fe7da51857cb0f572fe01f"
+  integrity sha512-xu6RvQqqrWEo6MPR1eixqGPywhYBHRs653F9jfXB2Hx4jdM/3WxiNE1vppRmxtMIfl16SFYTpYlrnqH/HsK/2w==
   dependencies:
     ansi-regex "^2.1.1"
     d "1"
@@ -3670,12 +3670,12 @@ pg-minify@1.4.1:
   resolved "https://registry.yarnpkg.com/pg-minify/-/pg-minify-1.4.1.tgz#ff9a9febefa6cec53055e2fd24e3115a275e2a08"
   integrity sha512-8aZ9xdx7Pe/ppFYVOqvU5KgmM6ttXjaBlsl9Y8yzrUH4xSNVucJKKOwm4Y4H+LCvzZGjZIm4Rkf2Ajt5ixtkBQ==
 
-pg-monitor@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/pg-monitor/-/pg-monitor-1.1.0.tgz#748c69d6ab2ebff6bd929737be72cb2adb4bc1e3"
-  integrity sha512-qeXsToBc62lBdxlqKhDQClJdimz4hv/6GuzfA3Mpm00LZJdJ1BxfWTuvYLn7v3h3Y3JFa5dg1Xdjr7CdOcNUdw==
+pg-monitor@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/pg-monitor/-/pg-monitor-1.2.0.tgz#2ec463ad6801cb2ce96efa331b0208c6e9bb6a4f"
+  integrity sha512-IpjLiuT+xHk4lp32Qc4CP8dGtUHAtMs2bFZ2cmBQxKjV38aQi7OcrDdmDpNnioTiiYngbSnE0VqPEVnD+Rf6nA==
   dependencies:
-    cli-color "1.3.0"
+    cli-color "1.4.0"
 
 pg-pool@^2.0.4:
   version "2.0.6"
