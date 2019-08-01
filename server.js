@@ -1,5 +1,8 @@
 require("dotenv").config();
 const { unlink, writeFile } = require("fs");
+const { promisify } = require("util");
+const { resolve } = require("path");
+const { tmpdir } = require("os");
 const basic = require("@hapi/basic");
 const boom = require("@hapi/boom");
 const brok = require("brok");
@@ -15,9 +18,6 @@ const nodemailer = require("nodemailer");
 const pgMonitor = require("pg-monitor");
 const pino = require("hapi-pino");
 const prettyMs = require("pretty-ms");
-const { promisify } = require("util");
-const { resolve } = require("path");
-const { tmpdir } = require("os");
 const vision = require("@hapi/vision");
 const { walkStack } = require("minidump");
 const migrate = require("./migrate.js");
@@ -27,7 +27,7 @@ const GET = "GET";
 const PATCH = "PATCH";
 const POST = "POST";
 const MINIDUMP_MIN = 2;
-const SEMVER_REGEX = /(?<=^v?|\sv?)(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)(?:-(?:[1-9]\d*|[\da-z-]*[a-z-][\da-z-]*)(?:\.(?:[1-9]\d*|[\da-z-]*[a-z-][\da-z-]*))*)?(?:\+[\da-z-]+(?:\.[\da-z-]+)*)?(?=$|\s)/i; /* eslint-disable-line max-len */
+const SEMVER_REGEX = /(?<=^v?|\sv?)(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)(?:-(?:[1-9]\d*|[\da-z-]*[a-z-][\da-z-]*)(?:\.(?:[1-9]\d*|[\da-z-]*[a-z-][\da-z-]*))*)?(?:\+[\da-z-]+(?:\.[\da-z-]+)*)?(?=$|\s)/i;
 
 const unlinkAsync = promisify(unlink);
 const walkStackAsync = promisify(walkStack);
@@ -83,83 +83,77 @@ const start = async () => {
 			path: "templates",
 		});
 
-		// route: GET /
+		// Route: GET /
 		server.route({
 			handler: async (request, h) => {
-				try {
-					const { query } = request;
+				const { query } = request;
 
-					let closed_active;
-					let closed_count;
-					let opened_active;
-					let opened_count;
-					let reports;
+				let closed_active;
+				let closed_count;
+				let opened_active;
+				let opened_count;
+				let reports;
 
-					if (
-						query.closed === "true" ||
-						query.closed === "" ||
-						query.open === "false"
-					) {
-						reports = await database.query(
-							/* eslint-disable-next-line max-len */
-							`SELECT id, body, closed_at FROM reports WHERE closed_at is NOT NULL ORDER BY closed_at DESC`
-						);
+				if (
+					query.closed === "true" ||
+					query.closed === "" ||
+					query.open === "false"
+				) {
+					reports = await database.query(
+						`SELECT id, body, closed_at FROM reports WHERE closed_at is NOT NULL ORDER BY closed_at DESC`
+					);
 
-						[{ count: opened_count }] = await database.query(
-							`select count(1) from reports where closed_at is null`
-						);
+					[{ count: opened_count }] = await database.query(
+						`select count(1) from reports where closed_at is null`
+					);
 
-						reports.forEach((x, i) => {
-							let duration = prettyMs(Date.now() - x.closed_at, {
-								compact: true,
-							});
-							duration = duration.replace(/~/, "");
-							reports[i].closed_at = `closed ${duration} ago`;
+					reports.forEach((x, i) => {
+						let duration = prettyMs(Date.now() - x.closed_at, {
+							compact: true,
 						});
-
-						closed_active = true;
-						({ length: closed_count } = reports);
-					} else {
-						reports = await database.query(
-							/* eslint-disable-next-line max-len */
-							`SELECT id, body, created_at FROM reports WHERE closed_at is NULL ORDER BY created_at DESC`
-						);
-
-						[{ count: closed_count }] = await database.query(
-							`select count(1) from reports where closed_at is not null`
-						);
-
-						reports.forEach((x, i) => {
-							let duration = openedDuration(x);
-							duration = duration.replace(/~/, "");
-							reports[i].created_at = `opened ${duration} ago`;
-						});
-
-						opened_active = true;
-						({ length: opened_count } = reports);
-					}
-
-					return h.view("index", {
-						closed_active,
-						closed_count,
-						opened_active,
-						opened_count,
-						reports,
+						duration = duration.replace(/~/, "");
+						reports[i].closed_at = `closed ${duration} ago`;
 					});
-				} catch (error) {
-					throw error;
+
+					closed_active = true;
+					({ length: closed_count } = reports);
+				} else {
+					reports = await database.query(
+						`SELECT id, body, created_at FROM reports WHERE closed_at is NULL ORDER BY created_at DESC`
+					);
+
+					[{ count: closed_count }] = await database.query(
+						`select count(1) from reports where closed_at is not null`
+					);
+
+					reports.forEach((x, i) => {
+						let duration = openedDuration(x);
+						duration = duration.replace(/~/, "");
+						reports[i].created_at = `opened ${duration} ago`;
+					});
+
+					opened_active = true;
+					({ length: opened_count } = reports);
 				}
+
+				return h.view("index", {
+					closed_active,
+					closed_count,
+					opened_active,
+					opened_count,
+					reports,
+				});
 			},
 			method: GET,
 			path: "/",
 		});
 
-		// route: POST /
+		// Route: POST /
 		server.route({
 			handler: async request => {
 				if (request.payload) {
 					const report = {
-						body: Object.assign({}, request.payload),
+						body: { ...request.payload },
 						dump: request.payload.upload_file_minidump,
 					};
 
@@ -176,7 +170,7 @@ const start = async () => {
 
 						await unlinkAsync(path);
 					} catch (error) {
-						console.error(error); /* eslint-disable-line no-console */
+						console.error(error);
 						throw error;
 					}
 
@@ -191,29 +185,28 @@ const start = async () => {
 								document.body,
 								null,
 								"\t"
-							)}\n~~~\n\n~~~\n${
-								document.stack
-							}\n~~~`; /* eslint-disable-line max-len */
+							)}\n~~~\n\n~~~\n${document.stack}\n~~~`;
 							const labels = [];
 
-							/* eslint-disable no-underscore-dangle */
 							if (document.body._productName) {
 								labels.push(document.body._productName);
 							}
+
 							if (document.body._version) {
 								labels.push(document.body._version);
 							}
+
 							if (document.body.process_type) {
 								labels.push(document.body.process_type);
 							}
+
 							if (document.body.platform) {
 								labels.push(document.body.platform);
 							}
-							/* eslint-enable no-underscore-dangle */
 
 							if (process.env.GITHUB_TOKEN) {
 								await gh.post(
-									`/repos/${process.env.GITHUB_OWNER}/${process.env.GITHUB_REPO}/issues` /* eslint-disable-line max-len */,
+									`/repos/${process.env.GITHUB_OWNER}/${process.env.GITHUB_REPO}/issues`,
 									{ body: { body, labels, title } }
 								);
 							}
@@ -243,12 +236,11 @@ const start = async () => {
 							const labels = process.env.SMTP_LABELS.split(",")
 								.map(x => document.body[x])
 								.join(", ");
-							/* eslint-disable no-eval, no-underscore-dangle */
 							const {
 								body: { _productName: product_name },
 							} = document;
+							/* eslint-disable-next-line no-eval */
 							const subject = eval(process.env.SMTP_SUBJECT);
-							/* eslint-enable no-eval, no-underscore-dangle */
 							const transporter = nodemailer.createTransport({
 								auth: {
 									pass: process.env.SMTP_PASSWORD,
@@ -278,7 +270,7 @@ const start = async () => {
 
 						return document.id;
 					} catch (error) {
-						console.error(error); /* eslint-disable-line no-console */
+						console.error(error);
 						throw error;
 					}
 				} else {
@@ -289,7 +281,6 @@ const start = async () => {
 			options: {
 				auth: false,
 				validate: {
-					/* eslint-disable sort-keys, unicorn/prevent-abbreviations */
 					payload: joi
 						.object({
 							_companyName: joi.string(),
@@ -318,104 +309,95 @@ const start = async () => {
 							rept: joi.string(),
 						})
 						.unknown(),
-					/* eslint-enable sort-keys, unicorn/prevent-abbreviations */
 				},
 			},
 			path: "/",
 		});
 
-		// route: GET /r/{id}
+		// Route: GET /r/{id}
 		server.route({
 			handler: async (request, h) => {
-				try {
-					const id = Number(request.params.id);
-					const fields = ["id", "body", "closed_at", "created_at"];
-					const report = await database.reports.find(id, { fields });
-					const [{ count: opened_count }] = await database.query(
-						`select count(1) from reports where closed_at is null`
-					);
-					const [{ count: closed_count }] = await database.query(
-						`select count(1) from reports where closed_at is not null`
-					);
+				const id = Number(request.params.id);
+				const fields = ["id", "body", "closed_at", "created_at"];
+				const report = await database.reports.find(id, { fields });
+				const [{ count: opened_count }] = await database.query(
+					`select count(1) from reports where closed_at is null`
+				);
+				const [{ count: closed_count }] = await database.query(
+					`select count(1) from reports where closed_at is not null`
+				);
 
-					let closed_active;
-					let opened_active;
+				let closed_active;
+				let opened_active;
 
-					report.opened_duration = openedDuration(report);
-					report.body = JSON.stringify(report.body, null, "\t");
-					report.created_at = report.created_at.toLocaleString();
+				report.opened_duration = openedDuration(report);
+				report.body = JSON.stringify(report.body, null, "\t");
+				report.created_at = report.created_at.toLocaleString();
 
-					if (report.closed_at) {
-						closed_active = true;
-						report.closed_at = report.closed_at.toLocaleString();
-					} else {
-						opened_active = true;
-					}
-
-					return h.view("show", {
-						closed_active,
-						closed_count,
-						opened_active,
-						opened_count,
-						report,
-					});
-				} catch (error) {
-					throw error;
+				if (report.closed_at) {
+					closed_active = true;
+					report.closed_at = report.closed_at.toLocaleString();
+				} else {
+					opened_active = true;
 				}
+
+				return h.view("show", {
+					closed_active,
+					closed_count,
+					opened_active,
+					opened_count,
+					report,
+				});
 			},
 			method: GET,
 			path: "/r/{id}",
 		});
 
-		// route: PATCH /r/{id}
+		// Route: PATCH /r/{id}
 		server.route({
 			handler: async request => {
-				try {
-					const id = Number(request.params.id);
-					const fields = ["id", "closed_at", "created_at"];
-					const report = await database.reports.find(id, { fields });
+				const id = Number(request.params.id);
+				const fields = ["id", "closed_at", "created_at"];
+				const report = await database.reports.find(id, { fields });
 
-					let closed_active;
-					let opened_active;
+				let closed_active;
+				let opened_active;
 
-					report.closed_at = report.closed_at ? null : new Date();
+				report.closed_at = report.closed_at ? null : new Date();
 
-					await database.reports.save(report);
+				await database.reports.save(report);
 
-					const [{ count: opened_count }] = await database.query(
-						`select count(1) from reports where closed_at is null`
-					);
-					const [{ count: closed_count }] = await database.query(
-						`select count(1) from reports where closed_at is not null`
-					);
+				const [{ count: opened_count }] = await database.query(
+					`select count(1) from reports where closed_at is null`
+				);
+				const [{ count: closed_count }] = await database.query(
+					`select count(1) from reports where closed_at is not null`
+				);
 
-					report.opened_duration = openedDuration(report);
-					report.created_at = report.created_at.toLocaleString();
+				report.opened_duration = openedDuration(report);
+				report.created_at = report.created_at.toLocaleString();
 
-					if (report.closed_at) {
-						closed_active = true;
-						report.closed_at = report.closed_at.toLocaleString();
-					} else {
-						opened_active = true;
-						report.closed_at = "—";
-					}
-
-					return {
-						closed_active,
-						closed_count,
-						opened_active,
-						opened_count,
-						report,
-					};
-				} catch (error) {
-					throw error;
+				if (report.closed_at) {
+					closed_active = true;
+					report.closed_at = report.closed_at.toLocaleString();
+				} else {
+					opened_active = true;
+					report.closed_at = "—";
 				}
+
+				return {
+					closed_active,
+					closed_count,
+					opened_active,
+					opened_count,
+					report,
+				};
 			},
 			method: PATCH,
 			path: "/r/{id}",
 		});
 
-		// route: DELETE /r/{id}
+		// Route: DELETE /r/{id}
 		server.route({
 			handler: async request => {
 				try {
@@ -431,61 +413,52 @@ const start = async () => {
 			path: "/r/{id}",
 		});
 
-		// route: GET /r/{id}/dump
+		// Route: GET /r/{id}/dump
 		server.route({
 			handler: async (request, h) => {
-				try {
-					const id = Number(request.params.id);
-					const report = await database.reports.find(id);
-					/* eslint-disable-next-line no-underscore-dangle */
-					const name = `${report.body._productName}-crash-${id}.dmp`;
+				const id = Number(request.params.id);
+				const report = await database.reports.find(id);
+				const name = `${report.body._productName}-crash-${id}.dmp`;
 
-					return h
-						.response(report.dump)
-						.header("content-disposition", `attachment; filename=${name}`)
-						.type("application/x-dmp");
-				} catch (error) {
-					throw error;
-				}
+				return h
+					.response(report.dump)
+					.header("content-disposition", `attachment; filename=${name}`)
+					.type("application/x-dmp");
 			},
 			method: GET,
 			path: "/r/{id}/dump",
 		});
 
-		// route: GET /r/{id}/stack
+		// Route: GET /r/{id}/stack
 		server.route({
 			handler: async (request, h) => {
-				try {
-					const id = Number(request.params.id);
-					const report = await database.reports.find(id, { fields: ["stack"] });
+				const id = Number(request.params.id);
+				const report = await database.reports.find(id, { fields: ["stack"] });
 
-					// Reports from pre-2.x do not have a stored stack trace.
-					// Generate and store stack trace on first view.
-					if (!report.stack) {
-						const document = await database.reports.find(id);
-						const path = resolve(tmpdir(), `${document.id}.dmp`);
+				// Reports from pre-2.x do not have a stored stack trace.
+				// Generate and store stack trace on first view.
+				if (!report.stack) {
+					const document = await database.reports.find(id);
+					const path = resolve(tmpdir(), `${document.id}.dmp`);
 
-						await writeFileAsync(path, document.dump, "binary");
+					await writeFileAsync(path, document.dump, "binary");
 
-						const stack = await walkStackAsync(path);
+					const stack = await walkStackAsync(path);
 
-						document.stack = stack.toString();
-						report.stack = stack.toString();
+					document.stack = stack.toString();
+					report.stack = stack.toString();
 
-						await unlinkAsync(path);
-						await database.reports.save(document);
-					}
-
-					return h.response(report.stack).type("text/plain");
-				} catch (error) {
-					throw error;
+					await unlinkAsync(path);
+					await database.reports.save(document);
 				}
+
+				return h.response(report.stack).type("text/plain");
 			},
 			method: GET,
 			path: "/r/{id}/stack",
 		});
 
-		// route: GET /search
+		// Route: GET /search
 		server.route({
 			handler: async (request, h) => {
 				const {
@@ -560,13 +533,13 @@ const start = async () => {
 
 		return server;
 	} catch (error) {
-		console.error(error); /* eslint-disable-line no-console */
+		console.error(error);
 		throw error;
 	}
 };
 
 process.on("unhandledRejection", error => {
-	console.error(error); /* eslint-disable-line no-console */
+	console.error(error);
 	process.exit(1);
 });
 
