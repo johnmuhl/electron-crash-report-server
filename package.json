@@ -12,12 +12,12 @@
 		"fmt.xo": "xo --fix --prettier",
 		"fmt.prettier": "prettier --write '**/*.{css,handlebars,js,json,markdown}'",
 		"lint": "run-p -s lint.*",
-		"lint.eslint": "eslint .",
+		"lint.xo": "xo --prettier",
 		"lint.prettier": "prettier -l '**/*.{css,handlebars,js,json,markdown}'",
 		"lint.stylelint": "stylelint 'assets/*.css'",
 		"start": "node index.js",
 		"start.dev": "nodemon -w '*.*' -w templates/ -e handlebars,js index.js",
-		"test": "xo --prettier && lab -cv --coverage-exclude test.js --shuffle test.js",
+		"test": "lab -cv --coverage-exclude test.js --shuffle test.js",
 		"test.watch": "nodemon --exec 'lab --shuffle test.js'"
 	},
 	"engines": {
