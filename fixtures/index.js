@@ -12,7 +12,7 @@ module.exports = {
 		extra: "info from the main process",
 		platform: "win32",
 		process_type: "browser",
-		prod: "Electron" /* eslint-disable-line unicorn/prevent-abbreviations */,
+		prod: "Electron",
 		ptime: "13035812",
 		rept: "electron-crash-service",
 		ver: "3.1.8",

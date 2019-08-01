@@ -8,17 +8,17 @@
 	"bugs": "https://github.com/johnmuhl/electron-crash-report-server/issues",
 	"repository": "github:johnmuhl/electron-crash-report-server",
 	"scripts": {
-		"fmt": "run-s -s fmt:*",
-		"fmt:prettier": "prettier --write '**/*.{css,handlebars,js,json,markdown}'",
-		"fmt:eslint": "eslint . --fix",
-		"lint": "run-p -s lint:*",
-		"lint:eslint": "eslint .",
-		"lint:prettier": "prettier -l '**/*.{css,handlebars,js,json,markdown}'",
-		"lint:stylelint": "stylelint 'assets/*.css'",
+		"fmt": "run-s -s fmt.*",
+		"fmt.xo": "xo --fix --prettier",
+		"fmt.prettier": "prettier --write '**/*.{css,handlebars,js,json,markdown}'",
+		"lint": "run-p -s lint.*",
+		"lint.eslint": "eslint .",
+		"lint.prettier": "prettier -l '**/*.{css,handlebars,js,json,markdown}'",
+		"lint.stylelint": "stylelint 'assets/*.css'",
 		"start": "node index.js",
-		"start:dev": "nodemon -w '*.*' -w templates/ -e handlebars,js index.js",
-		"test": "lab -Lcv --coverage-exclude test.js --shuffle test.js",
-		"test:watch": "nodemon --exec 'lab --shuffle test.js'"
+		"start.dev": "nodemon -w '*.*' -w templates/ -e handlebars,js index.js",
+		"test": "xo --prettier && lab -cv --coverage-exclude test.js --shuffle test.js",
+		"test.watch": "nodemon --exec 'lab --shuffle test.js'"
 	},
 	"engines": {
 		"node": "10.x",
@@ -47,25 +47,23 @@
 	"devDependencies": {
 		"@hapi/code": "6.x",
 		"@hapi/lab": "19.x",
-		"eslint": "6.x",
-		"eslint-config-airbnb-base": "13.x",
-		"eslint-config-prettier": "6.x",
-		"eslint-import-resolver-node": "0.x",
-		"eslint-plugin-html": "6.x",
-		"eslint-plugin-import": "2.x",
-		"eslint-plugin-unicorn": "10.x",
 		"nodemon": "1.x",
 		"npm-run-all": "4.x",
 		"pino-colada": "1.x",
-		"prettier": "1.x",
 		"stylelint": "10.x",
 		"stylelint-config-recess-order": "2.x",
-		"stylelint-config-standard": "18.x"
+		"stylelint-config-standard": "18.x",
+		"xo": "0.24.0"
+	},
+	"xo": {
+		"prettier": true,
+		"rules": {
+			"camelcase": 0,
+			"import/extensions": 0
+		}
 	},
 	"prettier": {
-		"proseWrap": "always",
-		"trailingComma": "es5",
-		"useTabs": true,
+		"bracketSpacing": true,
 		"overrides": [
 			{
 				"files": "*.handlebars",
@@ -73,7 +71,10 @@
 					"parser": "html"
 				}
 			}
-		]
+		],
+		"singleQuote": false,
+		"trailingComma": "es5",
+		"useTabs": true
 	},
 	"stylelint": {
 		"extends": [

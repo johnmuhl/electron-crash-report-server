@@ -123,14 +123,11 @@ Use the [issue tracker][issues] to report bugs or discuss changes and features.
 
 [hapi]: https://hapijs.com/
 [massive]: https://massivejs.org/
-[deploy-img]:
-	https://img.shields.io/badge/deploy-heroku-%237056BF.svg?style=for-the-badge
+[deploy-img]: https://img.shields.io/badge/deploy-heroku-%237056BF.svg?style=for-the-badge
 [deploy-url]: https://heroku.com/deploy
-[docker-compose]:
-	https://github.com/johnmuhl/electron-crash-report-server/blob/master/docker-compose.yaml
+[docker-compose]: https://github.com/johnmuhl/electron-crash-report-server/blob/master/docker-compose.yaml
 [docs]: https://electronjs.org/docs/api/crash-reporter
 [example]: https://github.com/johnmuhl/electron-bomb
 [demo]: https://pacific-falls-32011.herokuapp.com/
 [issues]: https://github.com/johnmuhl/electron-crash-report-server/issues
-[license]:
-	https://github.com/johnmuhl/electron-crash-report-server/blob/master/LICENSE.markdown
+[license]: https://github.com/johnmuhl/electron-crash-report-server/blob/master/LICENSE.markdown
