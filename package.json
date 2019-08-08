@@ -47,7 +47,7 @@
 	},
 	"devDependencies": {
 		"@hapi/code": "6.x",
-		"@hapi/lab": "19.x",
+		"@hapi/lab": "^20.0.0",
 		"nodemon": "1.x",
 		"npm-run-all": "4.x",
 		"pino-colada": "1.x",
