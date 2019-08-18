@@ -33,7 +33,7 @@
 		"@hapi/joi": "15.1.0",
 		"@hapi/vision": "5.5.2",
 		"brok": "4.0.0",
-		"dotenv": "8.0.0",
+		"dotenv": "8.1.0",
 		"form-data": "2.5.0",
 		"gh-got": "8.1.0",
 		"got": "9.6.0",
